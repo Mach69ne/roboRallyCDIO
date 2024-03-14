@@ -31,6 +31,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.awt.*;
+
 /**
  * ...
  *
@@ -75,6 +77,8 @@ public class RoboRally extends Application {
                     appController.exit();} );
         stage.setResizable(false);
         stage.sizeToScene();
+        stage.setX((double) (Toolkit.getDefaultToolkit().getScreenSize().width / 2) - (double) MIN_APP_WIDTH / 2);
+        stage.setY(0.0);
         stage.show();
     }
 
