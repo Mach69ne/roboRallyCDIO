@@ -24,5 +24,7 @@ public class MainMenuView extends VBox
         this.getChildren().add(exitGameButton);
         exitGameButton.setOnAction(e -> appController.exit());
 
+        //Set spacing between buttons here
+        this.setSpacing(30);
     }
 }
