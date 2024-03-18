@@ -2,6 +2,7 @@ package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.roborally.controller.AppController;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 public class MainMenuView extends VBox
@@ -9,6 +10,8 @@ public class MainMenuView extends VBox
 
     public MainMenuView(AppController appController)
     {
+        Label label = new Label("RoboRally");
+        this.getChildren().add(label);
         Button newGameButton = new Button();
         newGameButton.setText("New Game");
         this.getChildren().add(newGameButton);
