@@ -1,6 +1,7 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.roborally.controller.AppController;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -10,8 +11,14 @@ public class MainMenuView extends VBox
 
     public MainMenuView(AppController appController)
     {
+        // Move all elements 50 pixels down.
+        // Format is Top, Left, Down, Right (I think, i cant really remember at this point)
+        this.setPadding(new Insets(50, 0, 0, 0));
+
         Label label = new Label("RoboRally");
         this.getChildren().add(label);
+
+
         Button newGameButton = new Button();
         newGameButton.setText("New Game");
         this.getChildren().add(newGameButton);
