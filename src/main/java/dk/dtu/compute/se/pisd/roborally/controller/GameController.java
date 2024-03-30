@@ -248,19 +248,62 @@ public class GameController
     // TODO Task2
     public void turnRight(@NotNull Player player)
     {
-
+        Heading heading = player.getHeading();
+        switch (heading) {
+            case NORTH:
+                player.setHeading(Heading.EAST);
+                break;
+            case SOUTH:
+                player.setHeading(Heading.WEST);
+                break;
+            case EAST:
+                player.setHeading(Heading.SOUTH);
+                break;
+            case WEST:
+                player.setHeading(Heading.NORTH);
+                break;
+        }
     }
 
     // TODO Task2
     public void turnLeft(@NotNull Player player)
     {
-
+        Heading heading = player.getHeading();
+        switch (heading) {
+            case NORTH:
+                player.setHeading(Heading.WEST);
+                break;
+            case SOUTH:
+                player.setHeading(Heading.EAST);
+                break;
+            case EAST:
+                player.setHeading(Heading.NORTH);
+                break;
+            case WEST:
+                player.setHeading(Heading.SOUTH);
+                break;
+        }
     }
 
     // TODO Task2
     public void fastForward(@NotNull Player player)
     {
-
+        Space currentSpace = player.getSpace();
+        Heading heading = player.getHeading();
+        switch (heading) {
+            case NORTH:
+                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x, currentSpace.y - 2));
+                break;
+            case SOUTH:
+                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x, currentSpace.y + 2));
+                break;
+            case EAST:
+                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x + 2, currentSpace.y));
+                break;
+            case WEST:
+                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x - 2, currentSpace.y));
+                break;
+        }
     }
 
     // XXX: implemented in the current version
