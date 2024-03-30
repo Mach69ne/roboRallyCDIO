@@ -104,10 +104,14 @@ public class GameController
     }
 
     // XXX: implemented in the current version
-    public void executePrograms()
+    public void executePrograms() {
+    board.setStepMode(true);
+    continuePrograms();
+}
+    public void ActivationPhase()
     {
-        board.setStepMode(false);
-        continuePrograms();
+        board.setPhase(Phase.ACTIVATION);
+        board.setCurrentPlayer(board.getPlayer(0));
     }
 
     // XXX: implemented in the current version
@@ -129,38 +133,46 @@ public class GameController
             int step = board.getStep();
             if (step >= 0 && step < Player.NO_REGISTERS)
             {
-                CommandCard card = currentPlayer.getProgramField(step).getCard();
-                if (card != null)
-                {
-                    Command command = card.command;
-                    executeCommand(currentPlayer, command);
+                for (int i = 0; i < Player.NO_REGISTERS; i++) {
+                    for (int j = 0; j < board.getPlayersNumber(); j++) {
+                        Player player = board.getPlayer(j);
+                        CommandCardField field = player.getProgramField(i);
+                        if (field != null && field.getCard() != null) {
+                            CommandCard card = field.getCard();
+                            Command command = card.command;
+                            executeCommand(player, command);
+                        }
+                    }
                 }
-                int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
-                if (nextPlayerNumber < board.getPlayersNumber())
+                startProgrammingPhase();
+                /*
+                if (i < Player.NO_REGISTERS)
                 {
-                    board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+                    makeProgramFieldsVisible(i);
+                    board.setStep(i);
                 }
                 else
                 {
-                    step++;
-                    if (step < Player.NO_REGISTERS)
+                    int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
+                    if (nextPlayerNumber < board.getPlayersNumber())
                     {
-                        makeProgramFieldsVisible(step);
-                        board.setStep(step);
-                        board.setCurrentPlayer(board.getPlayer(0));
+                        board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+                        board.setStep(0);
                     }
                     else
                     {
-                        startProgrammingPhase();
+
                     }
+
                 }
+
+                 */
             }
-            else
-            {
-                // this should not happen
-                assert false;
+
+
             }
-        }
+
+
         else
         {
             // this should not happen
@@ -201,6 +213,7 @@ public class GameController
     public void startProgrammingPhase()
     {
         board.setPhase(Phase.PROGRAMMING);
+        board.getPhase();
         board.setCurrentPlayer(board.getPlayer(0));
         board.setStep(0);
 
@@ -231,17 +244,25 @@ public class GameController
         Heading heading = player.getHeading();
         switch (heading) {
             case NORTH:
-                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x, currentSpace.y - 1));
+
+                player.setSpace(board.getSpace(currentSpace.x, currentSpace.y - 1));
                 break;
+
             case SOUTH:
-                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x, currentSpace.y + 1));
+
+                player.setSpace(board.getSpace(currentSpace.x, currentSpace.y + 1));
                 break;
+
             case EAST:
-                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x + 1, currentSpace.y));
+
+                player.setSpace(board.getSpace(currentSpace.x + 1, currentSpace.y));
                 break;
+
             case WEST:
-                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x - 1, currentSpace.y));
+
+                player.setSpace(board.getSpace(currentSpace.x - 1, currentSpace.y));
                 break;
+
         }
     }
 
@@ -249,40 +270,15 @@ public class GameController
     public void turnRight(@NotNull Player player)
     {
         Heading heading = player.getHeading();
-        switch (heading) {
-            case NORTH:
-                player.setHeading(Heading.EAST);
-                break;
-            case SOUTH:
-                player.setHeading(Heading.WEST);
-                break;
-            case EAST:
-                player.setHeading(Heading.SOUTH);
-                break;
-            case WEST:
-                player.setHeading(Heading.NORTH);
-                break;
-        }
+        player.setHeading(heading.next());
+
     }
 
     // TODO Task2
     public void turnLeft(@NotNull Player player)
     {
         Heading heading = player.getHeading();
-        switch (heading) {
-            case NORTH:
-                player.setHeading(Heading.WEST);
-                break;
-            case SOUTH:
-                player.setHeading(Heading.EAST);
-                break;
-            case EAST:
-                player.setHeading(Heading.NORTH);
-                break;
-            case WEST:
-                player.setHeading(Heading.SOUTH);
-                break;
-        }
+        player.setHeading(heading.prev());
     }
 
     // TODO Task2
@@ -292,16 +288,16 @@ public class GameController
         Heading heading = player.getHeading();
         switch (heading) {
             case NORTH:
-                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x, currentSpace.y - 2));
+                player.setSpace(board.getSpace(currentSpace.x, currentSpace.y - 2));
                 break;
             case SOUTH:
-                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x, currentSpace.y + 2));
+                player.setSpace(board.getSpace(currentSpace.x, currentSpace.y + 2));
                 break;
             case EAST:
-                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x + 2, currentSpace.y));
+                player.setSpace(board.getSpace(currentSpace.x + 2, currentSpace.y));
                 break;
             case WEST:
-                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x - 2, currentSpace.y));
+                player.setSpace(board.getSpace(currentSpace.x - 2, currentSpace.y));
                 break;
         }
     }
