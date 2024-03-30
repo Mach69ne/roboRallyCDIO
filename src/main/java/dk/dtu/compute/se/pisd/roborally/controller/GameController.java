@@ -51,6 +51,7 @@ public class GameController
         {
             board.getCurrentPlayer().setSpace(space);
             board.setCurrentPlayer(board.getPlayer(board.getPlayerNumber(board.getCurrentPlayer()) + 1));
+            board.setStep(board.getStep() + 1);
         }
         // TODO Task1: method should be implemented by the students:
         //   - the current player should be moved to the given space
