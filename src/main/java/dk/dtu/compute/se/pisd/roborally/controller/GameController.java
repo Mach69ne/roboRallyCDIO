@@ -22,6 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
 import dk.dtu.compute.se.pisd.roborally.model.*;
+import dk.dtu.compute.se.pisd.roborally.view.PlayerView;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -66,6 +67,7 @@ public class GameController
     // XXX: implemented in the current version
     public void finishProgrammingPhase()
     {
+
         makeProgramFieldsInvisible();
         makeProgramFieldsVisible(0);
         board.setPhase(Phase.ACTIVATION);
@@ -224,9 +226,23 @@ public class GameController
     }
 
     // TODO Task2
-    public void moveForward(@NotNull Player player)
-    {
-
+    public void moveForward(@NotNull Player player) {
+        Space currentSpace = player.getSpace();
+        Heading heading = player.getHeading();
+        switch (heading) {
+            case NORTH:
+                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x, currentSpace.y - 1));
+                break;
+            case SOUTH:
+                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x, currentSpace.y + 1));
+                break;
+            case EAST:
+                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x + 1, currentSpace.y));
+                break;
+            case WEST:
+                moveCurrentPlayerToSpace(board.getSpace(currentSpace.x - 1, currentSpace.y));
+                break;
+        }
     }
 
     // TODO Task2
