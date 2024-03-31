@@ -238,6 +238,7 @@ public class Board extends Subject
             if (nextPlayerToBe)
             {
                 this.setCurrentPlayer(player);
+                nextPlayerToBe = false;
                 break;
             }
             if (player.equals(current))
@@ -245,6 +246,11 @@ public class Board extends Subject
                 nextPlayerToBe = true;
             }
         }
+        if (nextPlayerToBe)
+        {
+            setCurrentPlayer(players.get(0));
+        }
+
     }
 
     public int getStep()
