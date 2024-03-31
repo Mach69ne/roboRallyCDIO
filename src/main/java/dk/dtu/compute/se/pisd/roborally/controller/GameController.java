@@ -32,7 +32,6 @@ import org.jetbrains.annotations.NotNull;
  */
 public class GameController
 {
-
     final public Board board;
 
     public GameController(@NotNull Board board)
@@ -106,7 +105,14 @@ public class GameController
     // XXX: implemented in the current version
     public void executePrograms() {
     board.setStepMode(true);
-    continuePrograms();
+    for (int step = 0; step < Player.NO_REGISTERS; step++) {
+        for (int i = 0; i < board.getPlayersNumber(); i++) {
+            Player player = board.getPlayer(i);
+            board.setCurrentPlayer(player);
+            board.setStep(step);
+            executeNextStep();
+        }
+    }
 }
     public void ActivationPhase()
     {
@@ -115,7 +121,7 @@ public class GameController
     }
 
     // XXX: implemented in the current version
-    private void continuePrograms()
+    public void continuePrograms()
     {
         do
         {
@@ -125,60 +131,29 @@ public class GameController
     }
 
     // XXX: implemented in the current version
-    private void executeNextStep()
-    {
-        Player currentPlayer = board.getCurrentPlayer();
-        if (board.getPhase() == Phase.ACTIVATION && currentPlayer != null)
-        {
-            int step = board.getStep();
-            if (step >= 0 && step < Player.NO_REGISTERS)
-            {
-                for (int i = 0; i < Player.NO_REGISTERS; i++) {
-                    for (int j = 0; j < board.getPlayersNumber(); j++) {
-                        Player player = board.getPlayer(j);
-                        CommandCardField field = player.getProgramField(i);
-                        if (field != null && field.getCard() != null) {
-                            CommandCard card = field.getCard();
-                            Command command = card.command;
-                            executeCommand(player, command);
-                        }
-                    }
-                }
+    private void executeNextStep() {
+    Player currentPlayer = board.getCurrentPlayer();
+    if (board.getPhase() == Phase.ACTIVATION && currentPlayer != null) {
+        int step = board.getStep();
+        if (step >= 0 && step < Player.NO_REGISTERS) {
+            CommandCardField field = currentPlayer.getProgramField(step);
+            if (field != null && field.getCard() != null) {
+                CommandCard card = field.getCard();
+                Command command = card.command;
+                executeCommand(currentPlayer, command);
+            }
+            board.setStep(step + 1);
+            if (board.getStep() >= Player.NO_REGISTERS) {
                 startProgrammingPhase();
-                /*
-                if (i < Player.NO_REGISTERS)
-                {
-                    makeProgramFieldsVisible(i);
-                    board.setStep(i);
-                }
-                else
-                {
-                    int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
-                    if (nextPlayerNumber < board.getPlayersNumber())
-                    {
-                        board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
-                        board.setStep(0);
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-
-                 */
             }
 
 
-            }
-
-
-        else
-        {
-            // this should not happen
-            assert false;
         }
+    } else {
+        // this should not happen
+        assert false;
     }
+}
 
     // XXX: implemented in the current version
     private void executeCommand(@NotNull Player player, Command command)
@@ -237,7 +212,25 @@ public class GameController
             }
         }
     }
-
+    public void clearCurrentPlayerRegisterAndRestart() {
+    Player currentPlayer = board.getCurrentPlayer();
+    if (currentPlayer != null) {
+        // Clear the current player's register
+        for (int i = 0; i < Player.NO_REGISTERS; i++) {
+            CommandCardField field = currentPlayer.getProgramField(i);
+            if (field != null) {
+                field.setCard(null);
+            }
+        }
+        // Restart the activation phase
+        startActivationPhase();
+    }
+}
+    public void startActivationPhase() {
+    board.setPhase(Phase.ACTIVATION);
+    board.setCurrentPlayer(board.getPlayer(0));
+    board.setStep(0);
+}
     // TODO Task2
     public void moveForward(@NotNull Player player) {
         Space currentSpace = player.getSpace();
