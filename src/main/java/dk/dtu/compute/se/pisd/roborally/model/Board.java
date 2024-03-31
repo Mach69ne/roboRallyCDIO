@@ -230,6 +230,22 @@ public class Board extends Subject
             notifyChange();
         }
     }
+    public void nextPlayerTurn()
+    {
+        boolean nextPlayerToBe = false;
+        for (Player player : players)
+        {
+            if (nextPlayerToBe)
+            {
+                this.setCurrentPlayer(player);
+                break;
+            }
+            if (player.equals(current))
+            {
+                nextPlayerToBe = true;
+            }
+        }
+    }
 
     public int getStep()
     {
