@@ -212,25 +212,7 @@ public class GameController
             }
         }
     }
-    public void clearCurrentPlayerRegisterAndRestart() {
-    Player currentPlayer = board.getCurrentPlayer();
-    if (currentPlayer != null) {
-        // Clear the current player's register
-        for (int i = 0; i < Player.NO_REGISTERS; i++) {
-            CommandCardField field = currentPlayer.getProgramField(i);
-            if (field != null) {
-                field.setCard(null);
-            }
-        }
-        // Restart the activation phase
-        startActivationPhase();
-    }
-}
-    public void startActivationPhase() {
-    board.setPhase(Phase.ACTIVATION);
-    board.setCurrentPlayer(board.getPlayer(0));
-    board.setStep(0);
-}
+
     // TODO Task2
     public void moveForward(@NotNull Player player) {
         Space currentSpace = player.getSpace();
