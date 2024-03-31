@@ -252,6 +252,10 @@ public class Board extends Subject
         }
 
     }
+    public boolean playerIsLast()
+    {
+        return players.get(players.size()-1).equals(current);
+    }
 
     public int getStep()
     {
