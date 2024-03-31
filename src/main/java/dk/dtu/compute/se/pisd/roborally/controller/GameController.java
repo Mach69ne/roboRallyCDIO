@@ -126,6 +126,7 @@ public class GameController
         do
         {
             executeNextStep();
+            board.nextPlayerTurn();
         }
         while (board.getPhase() == Phase.ACTIVATION && !board.isStepMode());
     }
@@ -142,7 +143,11 @@ public class GameController
                 Command command = card.command;
                 executeCommand(currentPlayer, command);
             }
-            board.setStep(step + 1);
+            if (board.playerIsLast())
+            {
+                board.setStep(step + 1);
+            }
+
             if (board.getStep() >= Player.NO_REGISTERS) {
                 startProgrammingPhase();
             }
