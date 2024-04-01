@@ -34,10 +34,16 @@ public class CommandCard extends Subject {
 
     final public Command command;
 
+    /**
+     * @param command the command represented by this card
+     */
     public CommandCard(@NotNull Command command) {
         this.command = command;
     }
 
+    /**
+     * @return the name of the command represented by this card
+     */
     public String getName() {
         return command.displayName;
     }
