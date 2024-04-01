@@ -104,15 +104,8 @@ public class GameController
 
     // XXX: implemented in the current version
     public void executePrograms() {
-    board.setStepMode(true);
-    for (int step = 0; step < Player.NO_REGISTERS; step++) {
-        for (int i = 0; i < board.getPlayersNumber(); i++) {
-            Player player = board.getPlayer(i);
-            board.setCurrentPlayer(player);
-            board.setStep(step);
-            executeNextStep();
-        }
-    }
+    board.setStepMode(false);
+    continuePrograms();
 }
     public void ActivationPhase()
     {
@@ -132,33 +125,43 @@ public class GameController
 
     // XXX: implemented in the current version
     private void executeNextStep() {
-    Player currentPlayer = board.getCurrentPlayer();
-    if (board.getPhase() == Phase.ACTIVATION && currentPlayer != null) {
-        int step = board.getStep();
-        if (step >= 0 && step < Player.NO_REGISTERS) {
-            CommandCardField field = currentPlayer.getProgramField(step);
-            if (field != null && field.getCard() != null) {
-                CommandCard card = field.getCard();
-                Command command = card.command;
-                executeCommand(currentPlayer, command);
+        Player currentPlayer = board.getCurrentPlayer();
+        if (board.getPhase() == Phase.ACTIVATION && currentPlayer != null) {
+            int step = board.getStep();
+            if (step >= 0 && step < Player.NO_REGISTERS) {
+                CommandCard card = currentPlayer.getProgramField(step).getCard();
+                if (card != null) {
+                    Command command = card.command;
+                    executeCommand(currentPlayer, command);
+                }
+                int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
+                if (nextPlayerNumber < board.getPlayersNumber()) {
+                    board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+                } else {
+                    step++;
+                    if (step < Player.NO_REGISTERS) {
+                        makeProgramFieldsVisible(step);
+                        board.setStep(step);
+                        board.setCurrentPlayer(board.getPlayer(0));
+                    } else {
+                        startProgrammingPhase();
+                    }
+                }
+            } else {
+                // this should not happen
+                assert false;
             }
-            board.setStep(step + 1);
-            if (board.getStep() >= Player.NO_REGISTERS) {
-                startProgrammingPhase();
-            }
-
-
+        } else {
+            // this should not happen
+            assert false;
         }
-    } else {
-        // this should not happen
-        assert false;
     }
-}
+
 
     // XXX: implemented in the current version
     private void executeCommand(@NotNull Player player, Command command)
     {
-        if (player != null && player.board == board && command != null)
+        if (player.board == board && command != null)
         {
             // XXX This is a very simplistic way of dealing with some basic cards and
             //     their execution. This should eventually be done in a more elegant way
