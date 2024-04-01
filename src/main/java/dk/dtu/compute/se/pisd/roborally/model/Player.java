@@ -48,6 +48,11 @@ public class Player extends Subject {
     private CommandCardField[] program;
     private CommandCardField[] cards;
 
+    /**
+     * @param board the board to which this player belongs
+     * @param color the color of the player
+     * @param name the name of the player
+     */
     public Player(@NotNull Board board, String color, @NotNull String name) {
         this.board = board;
         this.name = name;
@@ -66,10 +71,16 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * @return the name of the player
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @param name the name of the player
+     */
     public void setName(String name) {
         if (name != null && !name.equals(this.name)) {
             this.name = name;
@@ -80,10 +91,16 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * @return the color of the player
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     * @param color the color of the player
+     */
     public void setColor(String color) {
         this.color = color;
         notifyChange();
@@ -92,10 +109,16 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * @return the space on which the player is located
+     */
     public Space getSpace() {
         return space;
     }
 
+    /**
+     * @param space the space on which the player is located
+     */
     public void setSpace(Space space) {
         Space oldSpace = this.space;
         if (space != oldSpace &&
@@ -111,10 +134,16 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * @return the heading of the player
+     */
     public Heading getHeading() {
         return heading;
     }
 
+    /**
+     * @param heading the heading of the player
+     */
     public void setHeading(@NotNull Heading heading) {
         if (heading != this.heading) {
             this.heading = heading;
@@ -125,10 +154,18 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * @param i the index of the register to be returned
+     * @return the register with the given index
+     */
     public CommandCardField getProgramField(int i) {
         return program[i];
     }
 
+    /**
+     * @param i the index of the card field to be returned
+     * @return the card field with the given index
+     */
     public CommandCardField getCardField(int i) {
         return cards[i];
     }
