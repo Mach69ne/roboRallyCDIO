@@ -136,6 +136,9 @@ public class AppController implements Observer
         // XXX needs to be implemented eventually
     }
 
+    /**
+     * Exit the RoboRally application. If there is a game running, the user is asked whether the game should be closed
+     */
     public void exit()
     {
         if (gameController != null)

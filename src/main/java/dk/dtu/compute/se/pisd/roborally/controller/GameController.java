@@ -44,6 +44,8 @@ public class GameController
      * happening on the board. This method should eventually be deleted!
      *
      * @param space the space to which the current player should move
+     * @author Elias, Emil
+     * @return void
      */
     public void moveCurrentPlayerToSpace(@NotNull Space space)
     {
@@ -217,6 +219,12 @@ public class GameController
     }
 
     // TODO Task2
+    /**
+     * Moves the player one step forward in the direction of the player's heading.
+     * @author Adel
+     * @param player the player to be moved
+     * @return void
+     */
     public void moveForward(@NotNull Player player) {
         Space currentSpace = player.getSpace();
         Heading heading = player.getHeading();
@@ -225,20 +233,36 @@ public class GameController
     }
 
     // TODO Task2
+    /**
+     * Turns the player to the right by changing the player's heading to the next heading in the enumeration.
+     * @param player the player to be turned
+     * @author Mustafa
+     * @return void
+     */
     public void turnRight(@NotNull Player player)
     {
         Heading heading = player.getHeading();
         player.setHeading(heading.next());
 
     }
-
+    /**
+     * Turns the player to the left by changing the player's heading to the previous heading in the enumeration.
+     * @param player the player to be turned
+     * @author Mustafa
+     * @return void
+     */
     // TODO Task2
     public void turnLeft(@NotNull Player player)
     {
         Heading heading = player.getHeading();
         player.setHeading(heading.prev());
     }
-
+    /**
+     * Moves the player two steps forward in the direction of the player's heading.
+     * @param player the player to be moved
+     * @author Adel
+     * @return void
+     */
     // TODO Task2
     public void fastForward(@NotNull Player player)
     {

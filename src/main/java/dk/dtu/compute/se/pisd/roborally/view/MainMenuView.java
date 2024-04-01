@@ -9,6 +9,11 @@ import javafx.scene.layout.VBox;
 public class MainMenuView extends VBox
 {
 
+    /**
+     * @param appController The controller for the application
+     * @author Elias
+     *
+     */
     public MainMenuView(AppController appController)
     {
         // Move all elements 50 pixels down.
