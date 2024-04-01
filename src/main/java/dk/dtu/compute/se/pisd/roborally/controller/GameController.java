@@ -44,7 +44,8 @@ public class GameController
      * happening on the board. This method should eventually be deleted!
      *
      * @param space the space to which the current player should move
-     * @author Elias, Emil
+     * @author Elias
+     * @author Emil
      * @return void
      */
     public void moveCurrentPlayerToSpace(@NotNull Space space)
