@@ -52,6 +52,9 @@ public class AppController implements Observer
 
     private GameController gameController;
 
+    /**
+     * @param roboRally the RoboRally application
+     */
     public AppController(@NotNull RoboRally roboRally)
     {
         this.roboRally = roboRally;
@@ -67,6 +70,10 @@ public class AppController implements Observer
         }
     }
 
+    /**
+     * Start a new game. The user is asked to select the number of players.
+     * @return void
+     */
     public void newGame()
     {
         ChoiceDialog<Integer> dialog = new ChoiceDialog<>(PLAYER_NUMBER_OPTIONS.get(0), PLAYER_NUMBER_OPTIONS);
@@ -138,6 +145,7 @@ public class AppController implements Observer
 
     /**
      * Exit the RoboRally application. If there is a game running, the user is asked whether the game should be closed
+     * @return void
      */
     public void exit()
     {

@@ -65,6 +65,9 @@ public class GameController
 
     }
 
+    /**
+     * Starts Activation phase. This method should be called when the players have pressed finished programming button.
+     */
     // XXX: implemented in the current version
     public void finishProgrammingPhase()
     {
@@ -104,6 +107,10 @@ public class GameController
         }
     }
 
+    /**
+     * Executes the registers of the players. This method should be called when the players have pressed the execute registers button.
+     * @return void
+     */
     // XXX: implemented in the current version
     public void executePrograms() {
     board.setStepMode(false);
@@ -113,6 +120,7 @@ public class GameController
 
     /**
      * Continues the execution of the programs of the players. This method should be called when the
+     * @return void
      */
     // XXX: implemented in the current version
     public void continuePrograms()
@@ -190,6 +198,7 @@ public class GameController
 
     /**
      * Starts the programming phase of the game. This method should be called when the game
+     * @return void
      */
     // XXX: implemented in the current version
     public void startProgrammingPhase()

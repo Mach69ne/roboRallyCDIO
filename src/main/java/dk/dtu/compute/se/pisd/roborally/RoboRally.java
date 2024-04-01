@@ -52,17 +52,31 @@ public class RoboRally extends Application
 
     // private AppController appController;
 
+    /**
+     * @param args the command line arguments
+     * Start the application by launching the JavaFX application
+     */
     public static void main(String[] args)
     {
         launch(args);
     }
 
+    /**
+     * @throws Exception in case of an exception during the initialization
+     * @return void
+     * Initialize the application
+     */
     @Override
     public void init() throws Exception
     {
         super.init();
     }
 
+    /**
+     * @param primaryStage the primary stage for the application
+     * @return void
+     * Start the application
+     */
     @Override
     public void start(Stage primaryStage)
     {
@@ -101,6 +115,11 @@ public class RoboRally extends Application
         stage.show();
     }
 
+    /**
+     * @throws Exception in case of an exception during the stop
+     * @return void
+     * Stop the application
+     */
     @Override
     public void stop() throws Exception
     {
@@ -112,6 +131,11 @@ public class RoboRally extends Application
         //     so that the AppController can take care of that.
     }
 
+    /**
+     * @param appController the controller for the application
+     * @return void
+     * Create the main menu view
+     */
     public void createMainMenuView(AppController appController)
     {
         boardRoot.getChildren().clear();
@@ -126,6 +150,11 @@ public class RoboRally extends Application
         stage.sizeToScene();
     }
 
+    /**
+     * @param gameController the controller for the game
+     * @return void
+     * Create the board view
+     */
     public void createBoardView(GameController gameController)
     {
         // if present, remove old BoardView
