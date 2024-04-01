@@ -109,12 +109,11 @@ public class GameController
     board.setStepMode(false);
     continuePrograms();
 }
-    public void ActivationPhase()
-    {
-        board.setPhase(Phase.ACTIVATION);
-        board.setCurrentPlayer(board.getPlayer(0));
-    }
 
+
+    /**
+     * Continues the execution of the programs of the players. This method should be called when the
+     */
     // XXX: implemented in the current version
     public void continuePrograms()
     {
@@ -189,6 +188,9 @@ public class GameController
         }
     }
 
+    /**
+     * Starts the programming phase of the game. This method should be called when the game
+     */
     // XXX: implemented in the current version
     public void startProgrammingPhase()
     {
