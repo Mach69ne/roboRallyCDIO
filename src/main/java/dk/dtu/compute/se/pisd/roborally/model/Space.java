@@ -38,6 +38,11 @@ public class Space extends Subject {
 
     private Player player;
 
+    /**
+     * @param board the board to which this space belongs
+     * @param x the x-coordinate of this space
+     * @param y the y-coordinate of this space
+     */
     public Space(Board board, int x, int y) {
         this.board = board;
         this.x = x;
@@ -45,10 +50,16 @@ public class Space extends Subject {
         player = null;
     }
 
+    /**
+     * @return the player on this space
+     */
     public Player getPlayer() {
         return player;
     }
 
+    /**
+     * @param player the player to be placed on this space
+     */
     public void setPlayer(Player player) {
         Player oldPlayer = this.player;
         if (player != oldPlayer &&
