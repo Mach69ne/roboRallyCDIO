@@ -262,22 +262,8 @@ public class GameController
     // TODO Task2
     public void fastForward(@NotNull Player player)
     {
-        Space currentSpace = player.getSpace();
-        Heading heading = player.getHeading();
-        switch (heading) {
-            case NORTH:
-                player.setSpace(board.getSpace(currentSpace.x, currentSpace.y - 2));
-                break;
-            case SOUTH:
-                player.setSpace(board.getSpace(currentSpace.x, currentSpace.y + 2));
-                break;
-            case EAST:
-                player.setSpace(board.getSpace(currentSpace.x + 2, currentSpace.y));
-                break;
-            case WEST:
-                player.setSpace(board.getSpace(currentSpace.x - 2, currentSpace.y));
-                break;
-        }
+        moveForward(player);
+        moveForward(player);
     }
 
     // XXX: implemented in the current version
