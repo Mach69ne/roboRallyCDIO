@@ -53,11 +53,21 @@ public class Board extends Subject
 
     private boolean stepMode;
 
+    /**
+     * @param width the width of the board
+     * @param height the height of the board
+     */
     public Board(int width, int height)
     {
         this(width, height, "defaultboard");
     }
 
+    /**
+     * @param width the width of the board
+     * @param height the height of the board
+     * @param boardName the name of the board
+     *                (this is used for the name of the file in which the board is stored)
+     */
     public Board(int width, int height, @NotNull String boardName)
     {
         this.boardName = boardName;
@@ -75,11 +85,18 @@ public class Board extends Subject
         this.stepMode = false;
     }
 
+    /**
+     * @return the name of the board
+     */
     public Integer getGameId()
     {
         return gameId;
     }
 
+    /**
+     * @param gameId the id of the game to which this board belongs
+     *
+     */
     public void setGameId(int gameId)
     {
         if (this.gameId == null)
@@ -95,11 +112,17 @@ public class Board extends Subject
         }
     }
 
+    /**
+     * @return the number of players on the board
+     */
     public int getPlayersNumber()
     {
         return players.size();
     }
 
+    /**
+     * @param player the player to be added to the board
+     */
     public void addPlayer(@NotNull Player player)
     {
         if (player.board == this && !players.contains(player))
@@ -109,6 +132,10 @@ public class Board extends Subject
         }
     }
 
+    /**
+     * @param i the index of the player to be returned
+     * @return the player with the given index
+     */
     public Player getPlayer(int i)
     {
         i %= players.size();
@@ -122,11 +149,17 @@ public class Board extends Subject
         }
     }
 
+    /**
+     * @return the list of players on the board
+     */
     public boolean isStepMode()
     {
         return stepMode;
     }
 
+    /**
+     * @param stepMode the step mode to be set
+     */
     public void setStepMode(boolean stepMode)
     {
         if (stepMode != this.stepMode)
@@ -136,6 +169,10 @@ public class Board extends Subject
         }
     }
 
+    /**
+     * @param player the player for which the number should be returned
+     * @return the number of the player on the board; -1 if the player is not on the board
+     */
     public int getPlayerNumber(@NotNull Player player)
     {
         if (player.board == this)
@@ -181,6 +218,11 @@ public class Board extends Subject
         return getSpace(x, y);
     }
 
+    /**
+     * @param x the x-coordinate of the space
+     * @param y the y-coordinate of the space
+     * @return the space at the given coordinates; null if the coordinates are out of bounds
+     */
     public Space getSpace(int x, int y)
     {
         if (x >= 0 && x < width && y >= 0 && y < height)
@@ -193,6 +235,9 @@ public class Board extends Subject
         }
     }
 
+    /**
+     * @return the list of players on the board
+     */
     public String getStatusMessage()
     {
         // This is actually a view aspect, but for making the first task easy for
@@ -212,16 +257,26 @@ public class Board extends Subject
         //      be used to extend the status message
     }
 
+    /**
+     * @return the current phase of the board
+     */
     public Phase getPhase()
     {
         return phase;
     }
 
+    /**
+     * @return the current player
+     */
     public Player getCurrentPlayer()
     {
         return current;
     }
 
+    /**
+     * @param player the player to be set as the current player
+     *
+     */
     public void setCurrentPlayer(Player player)
     {
         if (player != this.current && players.contains(player))
@@ -230,6 +285,10 @@ public class Board extends Subject
             notifyChange();
         }
     }
+
+    /**
+     * @return the list of players on the board
+     */
     public void nextPlayerTurn()
     {
         boolean nextPlayerToBe = false;
@@ -252,16 +311,26 @@ public class Board extends Subject
         }
 
     }
+
+    /**
+     * @return the list of players on the board
+     */
     public boolean playerIsLast()
     {
         return players.get(players.size()-1).equals(current);
     }
 
+    /**
+     * @return the list of players on the board
+     */
     public int getStep()
     {
         return step;
     }
 
+    /**
+     * @param step the step to be set
+     */
     public void setStep(int step)
     {
         if (step != this.step)
@@ -271,6 +340,9 @@ public class Board extends Subject
         }
     }
 
+    /**
+     * @param phase the phase to be set
+     */
     public void setPhase(Phase phase)
     {
         if (phase != this.phase)
@@ -279,6 +351,4 @@ public class Board extends Subject
             notifyChange();
         }
     }
-
-
 }
