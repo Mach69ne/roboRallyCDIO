@@ -37,6 +37,7 @@ public class Space extends Subject {
     public final int y;
 
     private Player player;
+    private BoardElement boardElement;
 
     /**
      * @param board the board to which this space belongs
@@ -48,11 +49,20 @@ public class Space extends Subject {
         this.x = x;
         this.y = y;
         player = null;
+        boardElement = null;
     }
 
     /**
      * @return the player on this space
      */
+    public BoardElement getBoardElement()
+    {
+        return boardElement;
+    }
+    public void setBoardElement(BoardElement boardElement)
+    {
+        this.boardElement = boardElement;
+    }
     public Player getPlayer() {
         return player;
     }
