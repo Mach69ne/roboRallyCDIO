@@ -189,7 +189,7 @@ public class Board extends Subject
      * Returns the neighbour of the given space of the board in the given heading.
      * The neighbour is returned only, if it can be reached from the given space
      * (no walls or obstacles in either of the involved spaces); otherwise,
-     * null will be returned..
+     * null will be returned.
      *
      * @param space   the space for which the neighbour should be computed
      * @param heading the heading of the neighbour
