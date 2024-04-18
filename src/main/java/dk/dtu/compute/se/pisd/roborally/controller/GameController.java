@@ -56,13 +56,6 @@ public class GameController
             board.setCurrentPlayer(board.getPlayer(board.getPlayerNumber(board.getCurrentPlayer()) + 1));
             board.setStep(board.getStep() + 1);
         }
-        // TODO Task1: method should be implemented by the students:
-        //   - the current player should be moved to the given space
-        //     (if it is free())
-        //   - and the current player should be set to the player
-        //     following the current player
-        //   - the counter of moves in the game should be increased by one
-        //     if the player is moved
 
     }
 
@@ -230,7 +223,6 @@ public class GameController
         }
     }
 
-    // TODO Task2
     /**
      * Moves the player one step forward in the direction of the player's heading.
      * @author Adel
@@ -252,7 +244,6 @@ public class GameController
         }
     }
 
-    // TODO Task2
     /**
      * Turns the player to the right by changing the player's heading to the next heading in the enumeration.
      * @param player the player to be turned
@@ -271,7 +262,6 @@ public class GameController
      * @author Mustafa
      * @return void
      */
-    // TODO Task2
     public void turnLeft(@NotNull Player player)
     {
         Heading heading = player.getHeading();
@@ -283,7 +273,6 @@ public class GameController
      * @author Adel
      * @return void
      */
-    // TODO Task2
     public void fastForward(@NotNull Player player)
     {
         moveFowardRepeatedly(player,2);

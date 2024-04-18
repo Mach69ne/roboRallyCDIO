@@ -250,17 +250,8 @@ public class Board extends Subject
         // the students, this method gives a string representation of the current
         // status of the game (specifically, it shows the phase, the player and the step)
 
-        // TODO Task1: this string could eventually be refined
-        //      The status line should show more information based on
-        //      situation; for now, introduce a counter to the Board,
-        //      which is counted up every time a player makes a move; the
-        //      status line should show the current player and the number
-        //      of the current move!
         return "Phase: " + getPhase().name() + ", Player = " + getCurrentPlayer().getName() + ", Step: " + getStep();
 
-        // TODO Task1: add a counter along with a getter and a setter, so the
-        //      state of the board (game) contains the number of moves, which then can
-        //      be used to extend the status message
     }
 
     /**
