@@ -10,10 +10,14 @@ public abstract class BoardElement
         this.heading = heading;
     }
 
-    public boolean getIsWalkable(Heading heading)
+    public boolean getCanWalkOutOf(Heading heading)
+    {
+        return this.isWalkable && this.heading != heading;
+    }
+    public boolean getCanWalkInto(Heading heading)
     {
         Heading headingToCheck = heading.next().next();
-        return this.heading == heading && this.isWalkable;
+        return this.isWalkable && this.heading == headingToCheck;
     }
 
     public void activate()
