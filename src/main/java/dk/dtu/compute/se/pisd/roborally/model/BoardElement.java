@@ -1,6 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
-public class BoardElement
+public abstract class BoardElement
 {
     private final boolean isWalkable;
     private final Heading heading;
