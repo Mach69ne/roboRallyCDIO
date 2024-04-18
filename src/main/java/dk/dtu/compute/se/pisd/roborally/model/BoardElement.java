@@ -2,15 +2,17 @@ package dk.dtu.compute.se.pisd.roborally.model;
 
 public class BoardElement
 {
-    private boolean isWalkable;
-    BoardElement(boolean isWalkable)
+    private final boolean isWalkable;
+    private final Heading heading;
+    BoardElement(Heading heading, boolean isWalkable)
     {
         this.isWalkable = isWalkable;
+        this.heading = heading;
     }
 
-    public boolean getIsWalkable()
+    public boolean getIsWalkable(Heading heading)
     {
-        return isWalkable;
+        return this.heading == heading && this.isWalkable;
     }
 
     public void activate()
