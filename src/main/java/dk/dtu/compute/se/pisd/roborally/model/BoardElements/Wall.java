@@ -6,5 +6,4 @@ public class Wall extends BoardElement{
     Wall(Heading heading, boolean isWalkable) {
         super(heading, isWalkable);
     }
-
 }

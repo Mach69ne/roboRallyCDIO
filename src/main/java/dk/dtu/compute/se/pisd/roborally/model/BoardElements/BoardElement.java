@@ -26,4 +26,12 @@ public abstract class BoardElement
     {
         //
     }
+    public boolean getIsWalkable()
+    {
+        return this.isWalkable;
+    }
+    public Heading getHeading()
+    {
+        return this.heading;
+    }
 }
