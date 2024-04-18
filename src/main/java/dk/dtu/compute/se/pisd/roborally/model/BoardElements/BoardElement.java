@@ -2,7 +2,7 @@ package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 
-public class BoardElement
+public abstract class BoardElement
 {
     private final boolean isWalkable;
     private final Heading heading;
@@ -14,6 +14,7 @@ public class BoardElement
 
     public boolean getIsWalkable(Heading heading)
     {
+        Heading headingToCheck = heading.next().next();
         return this.heading == heading && this.isWalkable;
     }
 
