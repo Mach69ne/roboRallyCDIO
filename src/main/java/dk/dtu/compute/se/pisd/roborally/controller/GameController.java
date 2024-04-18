@@ -244,6 +244,14 @@ public class GameController
         player.setSpace(newSpace);
     }
 
+    public void moveFowardRepeatedly(@NotNull Player player, int amountOfMoves)
+    {
+        for (int i = 0; i < amountOfMoves; i++)
+        {
+            moveForward(player);
+        }
+    }
+
     // TODO Task2
     /**
      * Turns the player to the right by changing the player's heading to the next heading in the enumeration.
@@ -278,8 +286,7 @@ public class GameController
     // TODO Task2
     public void fastForward(@NotNull Player player)
     {
-        moveForward(player);
-        moveForward(player);
+        moveFowardRepeatedly(player,2);
     }
 
     // XXX: implemented in the current version
