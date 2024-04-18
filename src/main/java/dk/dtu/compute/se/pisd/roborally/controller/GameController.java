@@ -42,26 +42,6 @@ public class GameController
     }
 
     /**
-     * This is just some dummy controller operation to make a simple move to see something
-     * happening on the board. This method should eventually be deleted!
-     *
-     * @param space the space to which the current player should move
-     * @author Elias
-     * @author Emil
-     * @return void
-     */
-    public void moveCurrentPlayerToSpace(@NotNull Space space)
-    {
-        if (space.getPlayer() == null)
-        {
-            board.getCurrentPlayer().setSpace(space);
-            board.setCurrentPlayer(board.getPlayer(board.getPlayerNumber(board.getCurrentPlayer()) + 1));
-            board.setStep(board.getStep() + 1);
-        }
-
-    }
-
-    /**
      * Starts Activation phase. This method should be called when the players have pressed finished programming button.
      */
     // XXX: implemented in the current version
