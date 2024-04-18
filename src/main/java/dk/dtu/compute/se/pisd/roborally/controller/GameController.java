@@ -177,13 +177,6 @@ public class GameController
         }
     }
 
-    /**
-     * Moves the player one step forward in the direction of the player's heading.
-     * @author Adel
-     * @param player the player to be moved
-     * @return void
-     */
-
     // XXX: implemented in the current version
     private CommandCard generateRandomCommandCard()
     {
