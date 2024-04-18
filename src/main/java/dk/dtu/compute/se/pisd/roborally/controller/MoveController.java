@@ -51,7 +51,10 @@ public class MoveController
         Space currentSpace = player.getSpace();
         Heading heading = player.getHeading();
         Space newSpace = gameController.board.getNeighbour(currentSpace, heading);
-        player.setSpace(newSpace);
+        if (currentSpace.getBoardElement().getCanWalkOutOf(heading) && newSpace.getBoardElement().getCanWalkInto(heading))
+        {
+            player.setSpace(newSpace);
+        }
     }
 
     public void moveFowardRepeatedly(@NotNull Player player, int amountOfMoves)
