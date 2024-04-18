@@ -24,4 +24,5 @@ public class Checkpoint extends BoardElement {
     public void activate() {
         // TODO implement this
     }
+
 }
