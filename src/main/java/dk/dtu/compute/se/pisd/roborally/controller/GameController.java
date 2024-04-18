@@ -117,7 +117,7 @@ public class GameController
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
                 if (card != null) {
                     Command command = card.command;
-                    executeCommand(currentPlayer, command);
+                    moveController.executeCommand(currentPlayer, command);
                 }
                 int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (nextPlayerNumber < board.getPlayersNumber()) {
@@ -143,34 +143,6 @@ public class GameController
     }
 
 
-    // XXX: implemented in the current version
-    private void executeCommand(@NotNull Player player, Command command)
-    {
-        if (player.board == board && command != null)
-        {
-            // XXX This is a very simplistic way of dealing with some basic cards and
-            //     their execution. This should eventually be done in a more elegant way
-            //     (this concerns the way cards are modelled as well as the way they are executed).
-
-            switch (command)
-            {
-                case FORWARD:
-                    this.moveForward(player);
-                    break;
-                case RIGHT:
-                    this.turnRight(player);
-                    break;
-                case LEFT:
-                    this.turnLeft(player);
-                    break;
-                case FAST_FORWARD:
-                    this.fastForward(player);
-                    break;
-                default:
-                    // DO NOTHING (for now)
-            }
-        }
-    }
 
     /**
      * Starts the programming phase of the game. This method should be called when the game
@@ -211,54 +183,6 @@ public class GameController
      * @param player the player to be moved
      * @return void
      */
-    public void moveForward(@NotNull Player player) {
-        Space currentSpace = player.getSpace();
-        Heading heading = player.getHeading();
-        Space newSpace=board.getNeighbour(currentSpace, heading);
-        player.setSpace(newSpace);
-    }
-
-    public void moveFowardRepeatedly(@NotNull Player player, int amountOfMoves)
-    {
-        for (int i = 0; i < amountOfMoves; i++)
-        {
-            moveForward(player);
-        }
-    }
-
-    /**
-     * Turns the player to the right by changing the player's heading to the next heading in the enumeration.
-     * @param player the player to be turned
-     * @author Mustafa
-     * @return void
-     */
-    public void turnRight(@NotNull Player player)
-    {
-        Heading heading = player.getHeading();
-        player.setHeading(heading.next());
-
-    }
-    /**
-     * Turns the player to the left by changing the player's heading to the previous heading in the enumeration.
-     * @param player the player to be turned
-     * @author Mustafa
-     * @return void
-     */
-    public void turnLeft(@NotNull Player player)
-    {
-        Heading heading = player.getHeading();
-        player.setHeading(heading.prev());
-    }
-    /**
-     * Moves the player two steps forward in the direction of the player's heading.
-     * @param player the player to be moved
-     * @author Adel
-     * @return void
-     */
-    public void fastForward(@NotNull Player player)
-    {
-        moveFowardRepeatedly(player,2);
-    }
 
     // XXX: implemented in the current version
     private CommandCard generateRandomCommandCard()
