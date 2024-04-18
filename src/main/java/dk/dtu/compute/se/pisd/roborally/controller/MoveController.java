@@ -60,7 +60,6 @@ public class MoveController
      * Turns the player to the right by changing the player's heading to the next heading in the enumeration.
      * @param player the player to be turned
      * @author Mustafa
-     * @return void
      */
     public void turnRight(@NotNull Player player)
     {
@@ -72,7 +71,6 @@ public class MoveController
      * Turns the player to the left by changing the player's heading to the previous heading in the enumeration.
      * @param player the player to be turned
      * @author Mustafa
-     * @return void
      */
     public void turnLeft(@NotNull Player player)
     {
@@ -83,7 +81,6 @@ public class MoveController
      * Moves the player two steps forward in the direction of the player's heading.
      * @param player the player to be moved
      * @author Adel
-     * @return void
      */
     public void fastForward(@NotNull Player player)
     {
