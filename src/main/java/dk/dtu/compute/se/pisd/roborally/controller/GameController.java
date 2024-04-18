@@ -33,10 +33,12 @@ import org.jetbrains.annotations.NotNull;
 public class GameController
 {
     final public Board board;
+    final public MoveController moveController;
 
     public GameController(@NotNull Board board)
     {
         this.board = board;
+        this.moveController = new MoveController(this);
     }
 
     /**
