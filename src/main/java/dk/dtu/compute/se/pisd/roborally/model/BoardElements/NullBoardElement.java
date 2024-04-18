@@ -4,7 +4,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Heading;
 
 public class NullBoardElement extends BoardElement
 {
-    NullBoardElement()
+    public NullBoardElement()
     {
         super(Heading.NORTH,true);
     }

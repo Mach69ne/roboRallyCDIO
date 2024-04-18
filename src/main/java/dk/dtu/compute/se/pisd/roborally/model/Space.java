@@ -23,6 +23,7 @@ package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.NullBoardElement;
 
 /**
  * ...
@@ -50,7 +51,7 @@ public class Space extends Subject {
         this.x = x;
         this.y = y;
         player = null;
-        boardElement = null;
+        boardElement = new NullBoardElement();
     }
 
     /**
