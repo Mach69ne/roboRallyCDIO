@@ -45,7 +45,7 @@ public class MoveController
     /**
      * Moves the player one step forward in the direction of the player's heading.
      * @author Adel
-     * @param Player the player to be moved
+     * @param player the player to be moved
      */
     public void moveForward(@NotNull Player player) {
         Space currentSpace = player.getSpace();
