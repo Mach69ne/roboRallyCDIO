@@ -9,6 +9,11 @@ public class NullBoardElement extends BoardElement
         super(Heading.NORTH, true);
     }
 
+    public NullBoardElement(boolean isWalkable)
+    {
+        super(Heading.NORTH, isWalkable);
+    }
+
     @Override
     public boolean getCanWalkOutOf(Heading heading)
     {
