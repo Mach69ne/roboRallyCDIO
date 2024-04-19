@@ -22,7 +22,6 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
 import dk.dtu.compute.se.pisd.roborally.model.*;
-import dk.dtu.compute.se.pisd.roborally.view.PlayerView;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -84,18 +83,22 @@ public class GameController
     }
 
     /**
-     * Executes the registers of the players. This method should be called when the players have pressed the execute registers button.
+     * Executes the registers of the players. This method should be called when the players have pressed the execute
+     * registers button.
+     *
      * @return void
      */
     // XXX: implemented in the current version
-    public void executePrograms() {
-    board.setStepMode(false);
-    continuePrograms();
-}
+    public void executePrograms()
+    {
+        board.setStepMode(false);
+        continuePrograms();
+    }
 
 
     /**
      * Continues the execution of the programs of the players. This method should be called when the
+     *
      * @return void
      */
     // XXX: implemented in the current version
@@ -109,43 +112,58 @@ public class GameController
     }
 
     // XXX: implemented in the current version
-    private void executeNextStep() {
+    private void executeNextStep()
+    {
         Player currentPlayer = board.getCurrentPlayer();
-        if (board.getPhase() == Phase.ACTIVATION && currentPlayer != null) {
+        if (board.getPhase() == Phase.ACTIVATION && currentPlayer != null)
+        {
             int step = board.getStep();
-            if (step >= 0 && step < Player.NO_REGISTERS) {
+            if (step >= 0 && step < Player.NO_REGISTERS)
+            {
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
-                if (card != null) {
+                if (card != null)
+                {
                     Command command = card.command;
                     moveController.executeCommand(currentPlayer, command);
                 }
                 int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
-                if (nextPlayerNumber < board.getPlayersNumber()) {
+                if (nextPlayerNumber < board.getPlayersNumber())
+                {
                     board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
-                } else {
+                }
+                else
+                {
                     step++;
-                    if (step < Player.NO_REGISTERS) {
+                    board.activateBoardElements();
+                    if (step < Player.NO_REGISTERS)
+                    {
                         makeProgramFieldsVisible(step);
                         board.setStep(step);
                         board.setCurrentPlayer(board.getPlayer(0));
-                    } else {
+                    }
+                    else
+                    {
                         startProgrammingPhase();
                     }
                 }
-            } else {
+            }
+            else
+            {
                 // this should not happen
                 assert false;
             }
-        } else {
+        }
+        else
+        {
             // this should not happen
             assert false;
         }
     }
 
 
-
     /**
      * Starts the programming phase of the game. This method should be called when the game
+     *
      * @return void
      */
     // XXX: implemented in the current version

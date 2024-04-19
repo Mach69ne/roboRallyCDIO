@@ -363,4 +363,15 @@ public class Board extends Subject
     {
         return players.get(players.size() - 1).equals(current);
     }
+
+    public void activateBoardElements()
+    {
+        for (int i = 0; i < spaces.length; i++)
+        {
+            for (int k = 0; k < spaces[i].length; k++)
+            {
+                spaces[i][k].getBoardElement().activate(this);
+            }
+        }
+    }
 }
