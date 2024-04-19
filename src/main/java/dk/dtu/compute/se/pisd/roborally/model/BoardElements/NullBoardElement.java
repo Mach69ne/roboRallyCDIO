@@ -6,18 +6,18 @@ public class NullBoardElement extends BoardElement
 {
     public NullBoardElement()
     {
-        super(Heading.NORTH,true);
-    }
-
-    @Override
-    public boolean getCanWalkInto(Heading heading)
-    {
-        return true;
+        super(Heading.NORTH, true);
     }
 
     @Override
     public boolean getCanWalkOutOf(Heading heading)
     {
-        return true;
+        return this.getIsWalkable();
+    }
+
+    @Override
+    public boolean getCanWalkInto(Heading heading)
+    {
+        return this.getIsWalkable();
     }
 }
