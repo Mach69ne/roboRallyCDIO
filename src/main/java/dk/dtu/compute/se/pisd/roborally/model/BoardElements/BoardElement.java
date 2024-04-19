@@ -1,6 +1,7 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
+import dk.dtu.compute.se.pisd.roborally.model.Player;
 
 public abstract class BoardElement
 {
@@ -25,6 +26,10 @@ public abstract class BoardElement
     public void activate()
     {
         //
+    }
+    public void onWalkOver(Player player)
+    {
+
     }
     public boolean getIsWalkable()
     {
