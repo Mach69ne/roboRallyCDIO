@@ -22,6 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class Board extends Subject
     private final List<Player> players = new ArrayList<>();
     private Integer gameId;
     private Player current;
-
+    private ArrayList<Checkpoint> checkpoints;
     private Phase phase = INITIALISATION;
 
     private int step = 0;
@@ -53,7 +54,7 @@ public class Board extends Subject
     private boolean stepMode;
 
     /**
-     * @param width the width of the board
+     * @param width  the width of the board
      * @param height the height of the board
      */
     public Board(int width, int height)
@@ -62,10 +63,10 @@ public class Board extends Subject
     }
 
     /**
-     * @param width the width of the board
-     * @param height the height of the board
+     * @param width     the width of the board
+     * @param height    the height of the board
      * @param boardName the name of the board
-     *                (this is used for the name of the file in which the board is stored)
+     *                  (this is used for the name of the file in which the board is stored)
      */
     public Board(int width, int height, @NotNull String boardName)
     {
@@ -94,7 +95,6 @@ public class Board extends Subject
 
     /**
      * @param gameId the id of the game to which this board belongs
-     *
      */
     public void setGameId(int gameId)
     {
@@ -194,33 +194,39 @@ public class Board extends Subject
      * @param heading the heading of the neighbour
      * @return the space in the given direction; null if there is no (reachable) neighbour
      */
-    public Space getNeighbour(@NotNull Space space, @NotNull Heading heading) {
+    public Space getNeighbour(@NotNull Space space, @NotNull Heading heading)
+    {
         int x = space.x;
         int y = space.y;
-    
-        switch (heading) {
+
+        switch (heading)
+        {
             case SOUTH:
-                if (y + 1 < height) {
+                if (y + 1 < height)
+                {
                     y = y + 1;
                 }
                 break;
             case WEST:
-                if (x - 1 >= 0) {
+                if (x - 1 >= 0)
+                {
                     x = x - 1;
                 }
                 break;
             case NORTH:
-                if (y - 1 >= 0) {
+                if (y - 1 >= 0)
+                {
                     y = y - 1;
                 }
                 break;
             case EAST:
-                if (x + 1 < width) {
+                if (x + 1 < width)
+                {
                     x = x + 1;
                 }
                 break;
         }
-    
+
         return getSpace(x, y);
     }
 
@@ -272,7 +278,6 @@ public class Board extends Subject
 
     /**
      * @param player the player to be set as the current player
-     *
      */
     public void setCurrentPlayer(Player player)
     {
@@ -281,40 +286,6 @@ public class Board extends Subject
             this.current = player;
             notifyChange();
         }
-    }
-
-    /**
-     * @return the list of players on the board
-     */
-    public void nextPlayerTurn()
-    {
-        boolean nextPlayerToBe = false;
-        for (Player player : players)
-        {
-            if (nextPlayerToBe)
-            {
-                this.setCurrentPlayer(player);
-                nextPlayerToBe = false;
-                break;
-            }
-            if (player.equals(current))
-            {
-                nextPlayerToBe = true;
-            }
-        }
-        if (nextPlayerToBe)
-        {
-            setCurrentPlayer(players.get(0));
-        }
-
-    }
-
-    /**
-     * @return the list of players on the board
-     */
-    public boolean playerIsLast()
-    {
-        return players.get(players.size()-1).equals(current);
     }
 
     /**
@@ -347,5 +318,49 @@ public class Board extends Subject
             this.phase = phase;
             notifyChange();
         }
+    }
+
+    /**
+     * @return the list of players on the board
+     */
+    public void nextPlayerTurn()
+    {
+        boolean nextPlayerToBe = false;
+        for (Player player : players)
+        {
+            if (nextPlayerToBe)
+            {
+                this.setCurrentPlayer(player);
+                nextPlayerToBe = false;
+                break;
+            }
+            if (player.equals(current))
+            {
+                nextPlayerToBe = true;
+            }
+        }
+        if (nextPlayerToBe)
+        {
+            setCurrentPlayer(players.get(0));
+        }
+
+    }
+
+    public void addCheckPoint(Checkpoint checkpoint)
+    {
+        this.checkpoints.add(checkpoint);
+    }
+
+    public int getIndexOfCheckPoint(Checkpoint checkpoint)
+    {
+        return checkpoints.indexOf(checkpoint);
+    }
+
+    /**
+     * @return the list of players on the board
+     */
+    public boolean playerIsLast()
+    {
+        return players.get(players.size() - 1).equals(current);
     }
 }
