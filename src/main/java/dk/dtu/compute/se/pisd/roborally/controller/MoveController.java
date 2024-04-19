@@ -51,15 +51,7 @@ public class MoveController
      */
     public void moveForward(@NotNull Player player)
     {
-        Space currentSpace = player.getSpace();
-        Heading heading = player.getHeading();
-        Space newSpace = gameController.board.getNeighbour(currentSpace, heading);
-        if (currentSpace.getBoardElement().getCanWalkOutOf(heading) && newSpace.getBoardElement().getCanWalkInto(heading))
-        {
-            //Logic for moving to a space should be put here:
-            player.setSpace(newSpace);
-            newSpace.getBoardElement().onWalkOver(player);
-        }
+        movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 1);
     }
 
     /**
@@ -95,14 +87,21 @@ public class MoveController
      */
     public void fastForward(@NotNull Player player)
     {
-        moveFowardRepeatedly(player, 2);
+        movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 2);
     }
 
-    public void moveFowardRepeatedly(@NotNull Player player, int amountOfMoves)
+    public void movePlayerAmountOfTimesWithHeading(Player player, Heading heading, int amountOfTimesToMove)
     {
-        for (int i = 0; i < amountOfMoves; i++)
+        for (int i = 0; i < amountOfTimesToMove; i++)
         {
-            moveForward(player);
+            Space currentSpace = player.getSpace();
+            Space newSpace = gameController.board.getNeighbour(currentSpace, heading);
+            if (currentSpace.getBoardElement().getCanWalkOutOf(heading) && newSpace.getBoardElement().getCanWalkInto(heading))
+            {
+                //Logic for moving to a space should be put here:
+                player.setSpace(newSpace);
+                newSpace.getBoardElement().onWalkOver(player);
+            }
         }
     }
 }
