@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 public class MoveController
 {
     GameController gameController;
+
     public MoveController(GameController gameController)
     {
         this.gameController = gameController;
@@ -44,29 +45,26 @@ public class MoveController
 
     /**
      * Moves the player one step forward in the direction of the player's heading.
-     * @author Adel
+     *
      * @param player the player to be moved
+     * @author Adel
      */
-    public void moveForward(@NotNull Player player) {
+    public void moveForward(@NotNull Player player)
+    {
         Space currentSpace = player.getSpace();
         Heading heading = player.getHeading();
         Space newSpace = gameController.board.getNeighbour(currentSpace, heading);
         if (currentSpace.getBoardElement().getCanWalkOutOf(heading) && newSpace.getBoardElement().getCanWalkInto(heading))
         {
+            //Logic for moving to a space should be put here:
             player.setSpace(newSpace);
-        }
-    }
-
-    public void moveFowardRepeatedly(@NotNull Player player, int amountOfMoves)
-    {
-        for (int i = 0; i < amountOfMoves; i++)
-        {
-            moveForward(player);
+            newSpace.getBoardElement().onWalkOver(player);
         }
     }
 
     /**
      * Turns the player to the right by changing the player's heading to the next heading in the enumeration.
+     *
      * @param player the player to be turned
      * @author Mustafa
      */
@@ -76,8 +74,10 @@ public class MoveController
         player.setHeading(heading.next());
 
     }
+
     /**
      * Turns the player to the left by changing the player's heading to the previous heading in the enumeration.
+     *
      * @param player the player to be turned
      * @author Mustafa
      */
@@ -86,13 +86,23 @@ public class MoveController
         Heading heading = player.getHeading();
         player.setHeading(heading.prev());
     }
+
     /**
      * Moves the player two steps forward in the direction of the player's heading.
+     *
      * @param player the player to be moved
      * @author Adel
      */
     public void fastForward(@NotNull Player player)
     {
-        moveFowardRepeatedly(player,2);
+        moveFowardRepeatedly(player, 2);
+    }
+
+    public void moveFowardRepeatedly(@NotNull Player player, int amountOfMoves)
+    {
+        for (int i = 0; i < amountOfMoves; i++)
+        {
+            moveForward(player);
+        }
     }
 }
