@@ -1,17 +1,18 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
+import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 public class NullBoardElement extends BoardElement
 {
-    public NullBoardElement()
+    public NullBoardElement(Space space)
     {
-        super(Heading.NORTH, true);
+        this(true, space);
     }
 
-    public NullBoardElement(boolean isWalkable)
+    public NullBoardElement(boolean isWalkable, Space space)
     {
-        super(Heading.NORTH, isWalkable);
+        super(Heading.NORTH, isWalkable, space);
     }
 
     @Override

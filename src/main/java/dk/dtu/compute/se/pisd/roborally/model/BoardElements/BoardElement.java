@@ -3,16 +3,19 @@ package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
+import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 public abstract class BoardElement
 {
     private final boolean isWalkable;
     private final Heading heading;
+    private final Space space;
 
-    BoardElement(Heading heading, boolean isWalkable)
+    BoardElement(Heading heading, boolean isWalkable, Space space)
     {
         this.isWalkable = isWalkable;
         this.heading = heading;
+        this.space = space;
     }
 
     public boolean getCanWalkOutOf(Heading heading)

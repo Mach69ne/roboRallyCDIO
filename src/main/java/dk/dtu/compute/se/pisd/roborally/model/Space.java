@@ -29,9 +29,9 @@ import dk.dtu.compute.se.pisd.roborally.model.BoardElements.NullBoardElement;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
-public class Space extends Subject {
+public class Space extends Subject
+{
 
     public final Board board;
 
@@ -43,15 +43,16 @@ public class Space extends Subject {
 
     /**
      * @param board the board to which this space belongs
-     * @param x the x-coordinate of this space
-     * @param y the y-coordinate of this space
+     * @param x     the x-coordinate of this space
+     * @param y     the y-coordinate of this space
      */
-    public Space(Board board, int x, int y) {
+    public Space(Board board, int x, int y)
+    {
         this.board = board;
         this.x = x;
         this.y = y;
         player = null;
-        boardElement = new NullBoardElement();
+        boardElement = new NullBoardElement(this);
     }
 
     /**
@@ -61,34 +62,41 @@ public class Space extends Subject {
     {
         return boardElement;
     }
+
     public void setBoardElement(BoardElement boardElement)
     {
         this.boardElement = boardElement;
     }
-    public Player getPlayer() {
+
+    public Player getPlayer()
+    {
         return player;
     }
 
     /**
      * @param player the player to be placed on this space
      */
-    public void setPlayer(Player player) {
+    public void setPlayer(Player player)
+    {
         Player oldPlayer = this.player;
-        if (player != oldPlayer &&
-                (player == null || board == player.board)) {
+        if (player != oldPlayer && (player == null || board == player.board))
+        {
             this.player = player;
-            if (oldPlayer != null) {
+            if (oldPlayer != null)
+            {
                 // this should actually not happen
                 oldPlayer.setSpace(null);
             }
-            if (player != null) {
+            if (player != null)
+            {
                 player.setSpace(this);
             }
             notifyChange();
         }
     }
 
-    void playerChanged() {
+    void playerChanged()
+    {
         // This is a minor hack; since some views that are registered with the space
         // also need to update when some player attributes change, the player can
         // notify the space of these changes by calling this method.
