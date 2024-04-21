@@ -22,6 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
 import org.jetbrains.annotations.NotNull;
 
@@ -42,15 +43,21 @@ public class Board extends Subject
     public final int height;
 
     public final String boardName;
+    public final int GREEN_CONVEYOR_INDEX = 0;
+    public final int BLUE_CONVEYOR_INDEX = 1;
+    public final int PUSH_PANELS_INDEX = 2;
+    public final int GEARS_INDEX = 3;
+    public final int BOARD_LASER_INDEX = 4;
+    public final int ROBOT_LASER_INDEX = 5;
+    public final int ENERGY_SPACE_INDEX = 6;
+    public final int CHECKPOINTS_INDEX = 7;
     private final Space[][] spaces;
     private final List<Player> players = new ArrayList<>();
+    private final ArrayList<BoardElement>[] boardElements = new ArrayList[9];
     private Integer gameId;
     private Player current;
-    private ArrayList<Checkpoint> checkpoints;
     private Phase phase = INITIALISATION;
-
     private int step = 0;
-
     private boolean stepMode;
 
     /**
@@ -83,6 +90,10 @@ public class Board extends Subject
             }
         }
         this.stepMode = false;
+        for (int i = 0; i < boardElements.length; i++)
+        {
+            boardElements[i] = new ArrayList<BoardElement>();
+        }
     }
 
     /**
@@ -348,12 +359,12 @@ public class Board extends Subject
 
     public void addCheckPoint(Checkpoint checkpoint)
     {
-        this.checkpoints.add(checkpoint);
+        this.boardElements[CHECKPOINTS_INDEX].add(checkpoint);
     }
 
     public int getIndexOfCheckPoint(Checkpoint checkpoint)
     {
-        return checkpoints.indexOf(checkpoint);
+        return this.boardElements[CHECKPOINTS_INDEX].indexOf(checkpoint);
     }
 
     /**
