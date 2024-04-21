@@ -1,12 +1,13 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
 import dk.dtu.compute.se.pisd.roborally.model.Board;
+import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 public class Antenna extends NullBoardElement
 {
-    public Antenna()
+    public Antenna(Space space)
     {
-        super(true);
+        super(space);
     }
 
     @Override
