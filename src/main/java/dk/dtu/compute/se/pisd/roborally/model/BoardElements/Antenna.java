@@ -5,8 +5,6 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Position;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
-import java.util.Arrays;
-
 public class Antenna extends NullBoardElement
 {
     private Player[] players;
@@ -25,17 +23,16 @@ public class Antenna extends NullBoardElement
         Position positionOfSpace = board.getIndexOfSpace(this.getSpace());
         this.players = new Player[board.getPlayersNumber()];
         this.offsetArr = new Position[board.getPlayersNumber()];
-        Arrays.fill(players, null);
-        Arrays.fill(offsetArr, null);
+        for (int i = 0; i < board.getPlayersNumber(); i++)
+        {
+            this.players[i] = null;
+            this.offsetArr[i] = null;
+        }
         for (int i = 0; i < board.getPlayersNumber(); i++)
         {
             insertPlayerIntoTempArr(board.getPlayer(i));
         }
-        for (int i = 0; i < players.length; i++)
-        {
-            System.out.println(board.getPlayerNumber(players[i]));
-        }
-        //board.setPlayers(this.players);
+        board.setPlayers(this.players);
     }
 
     private void insertPlayerIntoTempArr(Player playerToInsert)
@@ -53,14 +50,23 @@ public class Antenna extends NullBoardElement
 
         for (int i = 0; i < this.players.length; i++)
         {
+
             if (players[i] == null)
             {
                 players[i] = playerToInsert;
                 offsetArr[i] = offset;
+                return;
             }
-            if (players[i].equals(playerToInsert))
+            for (Player player : players)
             {
-                break;
+                if (player == null)
+                {
+                    continue;
+                }
+                if (player.equals(playerToInsert))
+                {
+                    return;
+                }
             }
             int totalOffset = offset.x() + offset.y();
             if ((offsetArr[i].x() + offsetArr[i].y()) > totalOffset)
@@ -72,7 +78,7 @@ public class Antenna extends NullBoardElement
             }
             if ((offsetArr[i].x() + offsetArr[i].y()) == totalOffset)
             {
-                if (offsetArr[i].x() < offset.x())
+                if (board.getIndexOfSpace(players[i].getSpace()).x() < positionOfPlayer.x())
                 {
                     Player tempPlayer = players[i];
                     players[i] = playerToInsert;
