@@ -38,20 +38,18 @@ import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
  */
 public class Board extends Subject
 {
+    public final static int GREEN_CONVEYOR_INDEX = 0;
+    public final static int BLUE_CONVEYOR_INDEX = 1;
+    public final static int PUSH_PANELS_INDEX = 2;
+    public final static int GEARS_INDEX = 3;
+    public final static int BOARD_LASER_INDEX = 4;
+    public final static int ROBOT_LASER_INDEX = 5;
+    public final static int ENERGY_SPACE_INDEX = 6;
+    public final static int CHECKPOINTS_INDEX = 7;
+    public final static int ANTENNA_INDEX = 8;
     public final int width;
-
     public final int height;
-
     public final String boardName;
-    public final int GREEN_CONVEYOR_INDEX = 0;
-    public final int BLUE_CONVEYOR_INDEX = 1;
-    public final int PUSH_PANELS_INDEX = 2;
-    public final int GEARS_INDEX = 3;
-    public final int BOARD_LASER_INDEX = 4;
-    public final int ROBOT_LASER_INDEX = 5;
-    public final int ENERGY_SPACE_INDEX = 6;
-    public final int CHECKPOINTS_INDEX = 7;
-    public final int ANTENNA_INDEX = 8;
     private final ArrayList<BoardElement>[] boardElements = new ArrayList[9];
     private final Space[][] spaces;
     private final List<Player> players = new ArrayList<>();
