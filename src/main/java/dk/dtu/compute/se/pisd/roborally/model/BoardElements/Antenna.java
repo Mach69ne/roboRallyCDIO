@@ -31,6 +31,10 @@ public class Antenna extends NullBoardElement
         {
             insertPlayerIntoTempArr(board.getPlayer(i));
         }
+        for (int i = 0; i < players.length; i++)
+        {
+            System.out.println(board.getPlayerNumber(players[i]));
+        }
     }
 
     private void insertPlayerIntoTempArr(Player playerToInsert)

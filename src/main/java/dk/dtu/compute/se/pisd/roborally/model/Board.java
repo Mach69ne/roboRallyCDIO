@@ -22,6 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Antenna;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
 import org.jetbrains.annotations.NotNull;
@@ -94,6 +95,7 @@ public class Board extends Subject
         {
             boardElements[i] = new ArrayList<BoardElement>();
         }
+        spaces[4][4].setBoardElement(new Antenna(spaces[4][4]));
     }
 
     public void addBoardElement(int index, BoardElement boardElement)
