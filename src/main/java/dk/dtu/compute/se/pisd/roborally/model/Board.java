@@ -101,6 +101,21 @@ public class Board extends Subject
         this.boardElements[index].add(boardElement);
     }
 
+    public Position getIndexOfSpace(Space space)
+    {
+        for (int i = 0; i < this.width; i++)
+        {
+            for (int k = 0; k < this.height; k++)
+            {
+                if (this.spaces[i][k] == space)
+                {
+                    return new Position(i, k);
+                }
+            }
+        }
+        return null;
+    }
+
     /**
      * @return the name of the board
      */
