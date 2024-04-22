@@ -35,6 +35,7 @@ public class Antenna extends NullBoardElement
         {
             System.out.println(board.getPlayerNumber(players[i]));
         }
+        //board.setPlayers(this.players);
     }
 
     private void insertPlayerIntoTempArr(Player playerToInsert)
@@ -59,7 +60,7 @@ public class Antenna extends NullBoardElement
             }
             if (players[i].equals(playerToInsert))
             {
-                continue;
+                break;
             }
             int totalOffset = offset.x() + offset.y();
             if ((offsetArr[i].x() + offsetArr[i].y()) > totalOffset)

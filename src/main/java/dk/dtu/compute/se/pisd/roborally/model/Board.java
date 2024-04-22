@@ -28,6 +28,7 @@ import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
@@ -142,6 +143,12 @@ public class Board extends Subject
                 throw new IllegalStateException("A game with a set id may not be assigned a new id!");
             }
         }
+    }
+
+    public void setPlayers(Player[] playersArr)
+    {
+        players.clear();
+        Collections.addAll(players, playersArr);
     }
 
     /**
