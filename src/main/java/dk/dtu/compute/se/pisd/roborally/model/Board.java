@@ -51,14 +51,16 @@ public class Board extends Subject
     public final int ROBOT_LASER_INDEX = 5;
     public final int ENERGY_SPACE_INDEX = 6;
     public final int CHECKPOINTS_INDEX = 7;
+    public final int ANTENNA_INDEX = 8;
+    private final ArrayList<BoardElement>[] boardElements = new ArrayList[9];
     private final Space[][] spaces;
     private final List<Player> players = new ArrayList<>();
-    private final ArrayList<BoardElement>[] boardElements = new ArrayList[9];
     private Integer gameId;
     private Player current;
     private Phase phase = INITIALISATION;
     private int step = 0;
     private boolean stepMode;
+
 
     /**
      * @param width  the width of the board
@@ -94,6 +96,11 @@ public class Board extends Subject
         {
             boardElements[i] = new ArrayList<BoardElement>();
         }
+    }
+
+    public void addBoardElement(int index, BoardElement boardElement)
+    {
+        this.boardElements[index].add(boardElement);
     }
 
     /**
@@ -355,11 +362,6 @@ public class Board extends Subject
             setCurrentPlayer(players.get(0));
         }
 
-    }
-
-    public void addCheckPoint(Checkpoint checkpoint)
-    {
-        this.boardElements[CHECKPOINTS_INDEX].add(checkpoint);
     }
 
     public int getIndexOfCheckPoint(Checkpoint checkpoint)
