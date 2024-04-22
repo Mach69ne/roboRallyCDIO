@@ -15,6 +15,7 @@ public abstract class BoardElement
         this.isWalkable = isWalkable;
         this.heading = heading;
         this.space = space;
+        this.space.setBoardElement(this);
     }
 
     public boolean getCanWalkOutOf(Heading heading)
