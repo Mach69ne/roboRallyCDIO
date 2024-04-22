@@ -377,11 +377,11 @@ public class Board extends Subject
 
     public void activateBoardElements()
     {
-        for (int i = 0; i < spaces.length; i++)
+        for (int i = 0; i < boardElements.length; i++)
         {
-            for (int k = 0; k < spaces[i].length; k++)
+            for (int k = 0; k < boardElements[i].size(); k++)
             {
-                spaces[i][k].getBoardElement().activate(this);
+                boardElements[i].get(k).activate();
             }
         }
     }
