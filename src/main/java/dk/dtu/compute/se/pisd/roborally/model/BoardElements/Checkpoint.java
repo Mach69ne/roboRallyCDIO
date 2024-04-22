@@ -5,11 +5,16 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 public class Checkpoint extends NullBoardElement
 {
-    public Checkpoint(Board board, Space space)
+    public Checkpoint(Space space)
     {
         super(space);
-        board.addCheckPoint(this);
+        space.board.addBoardElement(Board.CHECKPOINTS_INDEX, this);
     }
 
-
+    @Override
+    public void activate()
+    {
+        // Method should already check if checkpoint is visited in the correct order.
+        this.getSpace().getPlayer().addCheckPointAsVisited(this);
+    }
 }
