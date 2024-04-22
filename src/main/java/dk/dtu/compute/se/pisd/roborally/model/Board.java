@@ -97,6 +97,18 @@ public class Board extends Subject
             boardElements[i] = new ArrayList<BoardElement>();
         }
         spaces[4][4].setBoardElement(new Antenna(spaces[4][4]));
+        this.activateBoardElements();
+    }
+
+    public void activateBoardElements()
+    {
+        for (int i = 0; i < boardElements.length; i++)
+        {
+            for (int k = 0; k < boardElements[i].size(); k++)
+            {
+                boardElements[i].get(k).activate();
+            }
+        }
     }
 
     public void addBoardElement(int index, BoardElement boardElement)
@@ -149,6 +161,11 @@ public class Board extends Subject
     {
         players.clear();
         Collections.addAll(players, playersArr);
+        if (this.players.isEmpty())
+        {
+            return;
+        }
+        this.setCurrentPlayer(players.get(0));
     }
 
     /**
@@ -397,16 +414,5 @@ public class Board extends Subject
     public boolean playerIsLast()
     {
         return players.get(players.size() - 1).equals(current);
-    }
-
-    public void activateBoardElements()
-    {
-        for (int i = 0; i < boardElements.length; i++)
-        {
-            for (int k = 0; k < boardElements[i].size(); k++)
-            {
-                boardElements[i].get(k).activate();
-            }
-        }
     }
 }
