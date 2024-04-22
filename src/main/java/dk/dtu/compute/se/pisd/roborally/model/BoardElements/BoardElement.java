@@ -28,6 +28,11 @@ public abstract class BoardElement
         return this.isWalkable && this.heading == headingToCheck;
     }
 
+    public Space getSpace()
+    {
+        return this.space;
+    }
+
     public void activate()
     {
         //
