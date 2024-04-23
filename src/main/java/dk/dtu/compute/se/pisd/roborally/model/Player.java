@@ -51,6 +51,7 @@ public class Player extends Subject
     private Space space;
     private Heading heading = SOUTH;
     private int tabNumber;
+    private boolean movedByConveyorThisTurn;
 
     /**
      * @param board the board to which this player belongs
@@ -214,5 +215,15 @@ public class Player extends Subject
     public void setTabNumber(int tabNumber)
     {
         this.tabNumber = tabNumber;
+    }
+
+    public boolean getMovedByConveyorThisTurn()
+    {
+        return movedByConveyorThisTurn;
+    }
+
+    public void setMovedByConveyorThisTurn(boolean movedByConveyorThisTurn)
+    {
+        this.movedByConveyorThisTurn = movedByConveyorThisTurn;
     }
 }

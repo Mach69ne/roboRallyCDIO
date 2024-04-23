@@ -110,6 +110,10 @@ public class Board extends Subject
                 boardElements[i].get(k).activate();
             }
         }
+        for (Player player : players)
+        {
+            player.setMovedByConveyorThisTurn(false);
+        }
     }
 
     public void activateBoardElementsOfIndex(int indexOfElementsToBeActivated)
