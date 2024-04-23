@@ -42,9 +42,9 @@ public class Player extends Subject
     final public static int NO_CARDS = 8;
 
     final public Board board;
+    public final MoveController moveController;
     private final CommandCardField[] program;
     private final CommandCardField[] cards;
-    private final MoveController moveController;
     private ArrayList<Checkpoint> visitedCheckPoints;
     private String name;
     private String color;
