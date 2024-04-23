@@ -55,6 +55,7 @@ public class Board extends Subject
     private final ArrayList<BoardElement>[] boardElements = new ArrayList[9];
     private final Space[][] spaces;
     private final List<Player> players = new ArrayList<>();
+    private boolean toSaveTabNumber = true;
     private Integer gameId;
     private Player current;
     private Phase phase = INITIALISATION;
@@ -167,6 +168,14 @@ public class Board extends Subject
 
     public void setPlayers(Player[] playersArr)
     {
+        if (toSaveTabNumber)
+        {
+            for (int i = 0; i < players.size(); i++)
+            {
+                players.get(i).setTabNumber(i);
+            }
+            this.toSaveTabNumber = false;
+        }
         players.clear();
         Collections.addAll(players, playersArr);
         if (this.players.isEmpty())

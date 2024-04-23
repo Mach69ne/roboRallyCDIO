@@ -49,6 +49,8 @@ public class Player extends Subject
     private Space space;
     private Heading heading = SOUTH;
 
+    private int tabNumber;
+
     /**
      * @param board the board to which this player belongs
      * @param color the color of the player
@@ -203,4 +205,13 @@ public class Player extends Subject
     }
 
 
+    public int getTabNumber()
+    {
+        return tabNumber;
+    }
+
+    public void setTabNumber(int tabNumber)
+    {
+        this.tabNumber = tabNumber;
+    }
 }
