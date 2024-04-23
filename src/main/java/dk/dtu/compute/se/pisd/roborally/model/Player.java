@@ -22,6 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.controller.MoveController;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
 import org.jetbrains.annotations.NotNull;
 
@@ -43,12 +44,12 @@ public class Player extends Subject
     final public Board board;
     private final CommandCardField[] program;
     private final CommandCardField[] cards;
+    private final MoveController moveController;
     private ArrayList<Checkpoint> visitedCheckPoints;
     private String name;
     private String color;
     private Space space;
     private Heading heading = SOUTH;
-
     private int tabNumber;
 
     /**
@@ -56,13 +57,13 @@ public class Player extends Subject
      * @param color the color of the player
      * @param name  the name of the player
      */
-    public Player(@NotNull Board board, String color, @NotNull String name)
+    public Player(@NotNull Board board, String color, @NotNull String name, MoveController moveController)
     {
         this.board = board;
         this.name = name;
         this.color = color;
-
         this.space = null;
+        this.moveController = moveController;
 
         program = new CommandCardField[NO_REGISTERS];
         for (int i = 0; i < program.length; i++)
