@@ -12,7 +12,7 @@ public class Antenna extends NullBoardElement
 
     public Antenna(Space space)
     {
-        super(space);
+        super(false, space);
         space.board.addBoardElement(Board.ANTENNA_INDEX, this);
     }
 
