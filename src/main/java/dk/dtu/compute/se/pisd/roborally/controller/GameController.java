@@ -46,11 +46,10 @@ public class GameController
     // XXX: implemented in the current version
     public void finishProgrammingPhase()
     {
-
         makeProgramFieldsInvisible();
         makeProgramFieldsVisible(0);
         board.setPhase(Phase.ACTIVATION);
-        board.setCurrentPlayer(board.getPlayer(0));
+        board.activateBoardElementsOfIndex(Board.ANTENNA_INDEX);
         board.setStep(0);
     }
 

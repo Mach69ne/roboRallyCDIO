@@ -111,6 +111,14 @@ public class Board extends Subject
         }
     }
 
+    public void activateBoardElementsOfIndex(int indexOfElementsToBeActivated)
+    {
+        for (BoardElement boardElement : boardElements[indexOfElementsToBeActivated])
+        {
+            boardElement.activate();
+        }
+    }
+
     public void addBoardElement(int index, BoardElement boardElement)
     {
         this.boardElements[index].add(boardElement);
