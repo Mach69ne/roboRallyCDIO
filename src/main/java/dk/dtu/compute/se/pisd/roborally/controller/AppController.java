@@ -72,6 +72,7 @@ public class AppController implements Observer
 
     /**
      * Start a new game. The user is asked to select the number of players.
+     *
      * @return void
      */
     public void newGame()
@@ -104,7 +105,7 @@ public class AppController implements Observer
                 board.addPlayer(player);
                 player.setSpace(board.getSpace(i % board.width, i));
             }
-
+            board.setTabNumbersOnPlayers();
             // XXX: the line below is commented out in the current version
             // board.setCurrentPlayer(board.getPlayer(0));
             gameController.startProgrammingPhase();
@@ -145,6 +146,7 @@ public class AppController implements Observer
 
     /**
      * Exit the RoboRally application. If there is a game running, the user is asked whether the game should be closed
+     *
      * @return void
      */
     public void exit()
