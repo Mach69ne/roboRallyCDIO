@@ -14,10 +14,10 @@ public class BoardLaser extends BoardElement{
    }
 
    @Override
-    public void activate()
-    {
+    public void activate(){
 
-
+        Heading heading = this.getHeading().next().next();
+        this.getSpace().board.getNeighbour(this.getSpace(), heading);
 
     }
 
