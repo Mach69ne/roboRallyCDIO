@@ -16,9 +16,25 @@ public class BoardLaser extends BoardElement
     @Override
     public void activate()
     {
+        Heading headingToCheck = this.getHeading().next().next();
+        Space spaceToCheck = this.getSpace();
 
-        Heading heading = this.getHeading().next().next();
-        this.getSpace().board.getNeighbour(this.getSpace(), heading);
+        while (spaceToCheck != null)
+        {
+            if (spaceToCheck.getPlayer() != null)
+            {
+                //TODO Add functionality for getting hit by laser here
+            }
+            Space nextSpace = spaceToCheck.board.getNeighbour(this.getSpace(), headingToCheck);
+            // We check if we were to hit a board element, and break if we do
+            if (!spaceToCheck.getBoardElement().getCanWalkOutOf(headingToCheck) || !nextSpace.getBoardElement().getCanWalkInto(headingToCheck))
+            {
+                break;
+            }
+
+
+            spaceToCheck = nextSpace;
+        }
 
     }
 
