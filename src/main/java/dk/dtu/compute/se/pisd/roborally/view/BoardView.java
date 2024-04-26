@@ -26,7 +26,9 @@ import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Phase;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
+import javafx.event.EventHandler;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
@@ -85,6 +87,35 @@ public class BoardView extends VBox implements ViewObserver
             Phase phase = board.getPhase();
             statusLabel.setText(board.getStatusMessage());
         }
+    }
+
+    // XXX this handler and its uses should eventually be deleted! This is just to help test the
+    //     behaviour of the game by being able to explicitly move the players on the board!
+
+    // one line is currently commented out as our moveCurrentPlayerToSpace is in MoveController
+    private class SpaceEventHandler implements EventHandler<MouseEvent> {
+
+        final public GameController gameController;
+
+        public SpaceEventHandler(@NotNull GameController gameController) {
+            this.gameController = gameController;
+        }
+
+        @Override
+        public void handle(MouseEvent event) {
+            Object source = event.getSource();
+            if (source instanceof SpaceView) {
+                SpaceView spaceView = (SpaceView) source;
+                Space space = spaceView.space;
+                Board board = space.board;
+
+                if (board == gameController.board) {
+                    // gameController.moveCurrentPlayerToSpace(space);
+                    event.consume();
+                }
+            }
+        }
+
     }
 
 }

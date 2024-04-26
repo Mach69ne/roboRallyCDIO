@@ -78,6 +78,8 @@ public class Board extends Subject
      * @param boardName the name of the board
      *                  (this is used for the name of the file in which the board is stored)
      */
+
+    //In the files given to us by the teacher spaces are stored in an arraylist instead of an array, maybe we should do that is well.
     public Board(int width, int height, @NotNull String boardName)
     {
         this.boardName = boardName;
@@ -274,6 +276,15 @@ public class Board extends Subject
      */
     public Space getNeighbour(@NotNull Space space, @NotNull Heading heading)
     {
+        // TODO needs to be implemented based on the actual spaces
+        //      and obstacles and walls placed there. For now it,
+        //      just calculates the next space in the respective
+        //      direction in a cyclic way.
+
+        // XXX an other option (not for now) would be that null represents a hole
+        //     or the edge of the board in which the players can fall
+
+
         int x = space.x;
         int y = space.y;
 

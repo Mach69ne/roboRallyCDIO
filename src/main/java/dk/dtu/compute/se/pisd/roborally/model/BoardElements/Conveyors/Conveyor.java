@@ -8,7 +8,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 public class Conveyor extends NullBoardElement
 {
     private final int moveAmount;
-    private final Heading orientation;
+    private Heading orientation;
 
     Conveyor(Heading orientation, int moveAmount, Space space)
     {
@@ -26,5 +26,14 @@ public class Conveyor extends NullBoardElement
             playerToMove.moveController.movePlayerAmountOfTimesWithHeading(playerToMove, orientation, moveAmount);
         }
         playerToMove.setMovedByConveyorThisTurn(true);
+    }
+    public void setHeading(Heading heading)
+    {
+        this.orientation = heading;
+    }
+
+    public Heading getHeading()
+    {
+        return this.orientation;
     }
 }

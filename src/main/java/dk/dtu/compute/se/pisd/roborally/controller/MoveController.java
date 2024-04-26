@@ -6,25 +6,20 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import org.jetbrains.annotations.NotNull;
 
-public class MoveController
-{
+public class MoveController {
     GameController gameController;
 
-    public MoveController(GameController gameController)
-    {
+    public MoveController(GameController gameController) {
         this.gameController = gameController;
     }
 
-    public void executeCommand(@NotNull Player player, Command command)
-    {
-        if (player.board == gameController.board && command != null)
-        {
+    public void executeCommand(@NotNull Player player, Command command) {
+        if (player.board == gameController.board && command != null) {
             // XXX This is a very simplistic way of dealing with some basic cards and
             //     their execution. This should eventually be done in a more elegant way
             //     (this concerns the way cards are modelled as well as the way they are executed).
 
-            switch (command)
-            {
+            switch (command) {
                 case FORWARD:
                     this.moveForward(player);
                     break;
@@ -49,8 +44,7 @@ public class MoveController
      * @param player the player to be moved
      * @author Adel
      */
-    public void moveForward(@NotNull Player player)
-    {
+    public void moveForward(@NotNull Player player) {
         movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 1);
     }
 
@@ -60,8 +54,7 @@ public class MoveController
      * @param player the player to be turned
      * @author Mustafa
      */
-    public void turnRight(@NotNull Player player)
-    {
+    public void turnRight(@NotNull Player player) {
         Heading heading = player.getHeading();
         player.setHeading(heading.next());
 
@@ -73,8 +66,7 @@ public class MoveController
      * @param player the player to be turned
      * @author Mustafa
      */
-    public void turnLeft(@NotNull Player player)
-    {
+    public void turnLeft(@NotNull Player player) {
         Heading heading = player.getHeading();
         player.setHeading(heading.prev());
     }
@@ -85,23 +77,39 @@ public class MoveController
      * @param player the player to be moved
      * @author Adel
      */
-    public void fastForward(@NotNull Player player)
-    {
+    public void fastForward(@NotNull Player player) {
         movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 2);
     }
 
-    public void movePlayerAmountOfTimesWithHeading(Player player, Heading heading, int amountOfTimesToMove)
-    {
-        for (int i = 0; i < amountOfTimesToMove; i++)
-        {
+    public void movePlayerAmountOfTimesWithHeading(Player player, Heading heading, int amountOfTimesToMove) {
+        for (int i = 0; i < amountOfTimesToMove; i++) {
             Space currentSpace = player.getSpace();
             Space newSpace = gameController.board.getNeighbour(currentSpace, heading);
-            if (currentSpace.getBoardElement().getCanWalkOutOf(heading) && newSpace.getBoardElement().getCanWalkInto(heading))
-            {
+            if (currentSpace.getBoardElement().getCanWalkOutOf(heading) && newSpace.getBoardElement().getCanWalkInto(heading)) {
                 //Logic for moving to a space should be put here:
                 player.setSpace(newSpace);
                 newSpace.getBoardElement().onWalkOver(player);
             }
         }
     }
+
+    public void moveCurrentPlayerToSpace(Space space) {
+        // TODO: Import or Implement this method. This method is only for debugging purposes. Not useful for the game.
+    }
+
+    class ImpossibleMoveException extends Exception {
+
+        private Player player;
+        private Space space;
+        private Heading heading;
+
+        public ImpossibleMoveException(Player player, Space space, Heading heading) {
+            super("Move impossible");
+            this.player = player;
+            this.space = space;
+            this.heading = heading;
+        }
+    }
+
+
 }

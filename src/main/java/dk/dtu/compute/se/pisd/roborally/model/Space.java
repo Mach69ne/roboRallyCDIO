@@ -25,13 +25,17 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.NullBoardElement;
 
+import java.util.List;
+
 /**
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  */
-public class Space extends Subject
-{
+
+// in the code provided to us by the teacher, this class has walls and actions (see fieldAction class for explanation)
+// as arraylists of Heading and FieldAction respectively. Maybe we should do that as well??
+public class Space extends Subject {
 
     public final Board board;
 
@@ -46,8 +50,7 @@ public class Space extends Subject
      * @param x     the x-coordinate of this space
      * @param y     the y-coordinate of this space
      */
-    public Space(Board board, int x, int y)
-    {
+    public Space(Board board, int x, int y) {
         this.board = board;
         this.x = x;
         this.y = y;
@@ -58,49 +61,53 @@ public class Space extends Subject
     /**
      * @return the player on this space
      */
-    public BoardElement getBoardElement()
-    {
+    public BoardElement getBoardElement() {
         return boardElement;
     }
 
-    public void setBoardElement(BoardElement boardElement)
-    {
+    public void setBoardElement(BoardElement boardElement) {
         this.boardElement = boardElement;
     }
 
-    public Player getPlayer()
-    {
+    public Player getPlayer() {
         return player;
     }
 
     /**
      * @param player the player to be placed on this space
      */
-    public void setPlayer(Player player)
-    {
+    public void setPlayer(Player player) {
         Player oldPlayer = this.player;
-        if (player != oldPlayer && (player == null || board == player.board))
-        {
+        if (player != oldPlayer && (player == null || board == player.board)) {
             this.player = player;
-            if (oldPlayer != null)
-            {
+            if (oldPlayer != null) {
                 // this should actually not happen
                 oldPlayer.setSpace(null);
             }
-            if (player != null)
-            {
+            if (player != null) {
                 player.setSpace(this);
             }
             notifyChange();
         }
     }
+/*
 
-    void playerChanged()
-    {
+// This is from the file given to us by the teachers, can be used if we choose to implement walls and actions as arraylists
+public List<Heading> getWalls() {
+    return walls;
+}
+
+    public List<FieldAction> getActions() {
+        return actions;
+    }
+*/
+
+    void playerChanged() {
         // This is a minor hack; since some views that are registered with the space
         // also need to update when some player attributes change, the player can
         // notify the space of these changes by calling this method.
         notifyChange();
     }
+
 
 }

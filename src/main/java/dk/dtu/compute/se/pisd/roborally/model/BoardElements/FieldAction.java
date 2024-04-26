@@ -19,44 +19,23 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  */
-package dk.dtu.compute.se.pisd.roborally.model;
+package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import dk.dtu.compute.se.pisd.roborally.controller.GameController;
+import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 /**
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
-public enum Command {
 
-    // This is a very simplistic way of realizing different commands.
+//This class is taken from the code given to us for assignment 3, it is not in use in our project yet,
+// it may be relevant at a later time but not now. It is used for field that have actions, eg. conveyor belts.
+    // TODO: See if this is relevant for our project
 
-    FORWARD("Fwd"),
-    RIGHT("Turn Right"),
-    LEFT("Turn Left"),
-    FAST_FORWARD("Fast Fwd"),
+public abstract class FieldAction {
 
-    OPTION_LEFT_RIGHT("Left OR Right",LEFT, RIGHT);
-
-
-    final public String displayName;
-
-    final private List<Command> options;
-
-    Command(String displayName, Command... options) {
-        this.displayName = displayName;
-        this.options = Collections.unmodifiableList(Arrays.asList(options));
-    }
-
-    public boolean isInteractive() {
-        return !options.isEmpty();
-    }
-    public List<Command> getOptions() {
-        return options;
-    }
+    public abstract boolean doAction(GameController gameController, Space space);
 
 }
