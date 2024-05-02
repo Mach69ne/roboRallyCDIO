@@ -79,6 +79,12 @@ public class Player extends Subject
         }
     }
 
+
+    public void die()
+    {
+        this.board.getRebootToken().reboot(this);
+    }
+
     /**
      * @return the name of the player
      */
@@ -225,5 +231,13 @@ public class Player extends Subject
     public void setMovedByConveyorThisTurn(boolean movedByConveyorThisTurn)
     {
         this.movedByConveyorThisTurn = movedByConveyorThisTurn;
+    }
+
+    public void clearRegisters()
+    {
+        for (int i = board.getStep(); i < program.length; i++)
+        {
+            program[i] = null;
+        }
     }
 }
