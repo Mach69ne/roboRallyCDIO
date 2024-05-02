@@ -25,6 +25,7 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Antenna;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.RebootToken;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -57,6 +58,7 @@ public class Board extends Subject
     private final Space[][] spaces;
     private final List<Player> players = new ArrayList<>();
     private final boolean toSaveTabNumber = true;
+    private RebootToken rebootToken;
     private Integer gameId;
     private Player current;
     private Phase phase = INITIALISATION;
@@ -448,5 +450,10 @@ public class Board extends Subject
     public boolean playerIsLast()
     {
         return players.get(players.size() - 1).equals(current);
+    }
+
+    public void setRebootToken(RebootToken rebootToken)
+    {
+        this.rebootToken = rebootToken;
     }
 }

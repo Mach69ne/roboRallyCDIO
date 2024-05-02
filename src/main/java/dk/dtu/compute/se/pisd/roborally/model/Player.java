@@ -226,4 +226,12 @@ public class Player extends Subject
     {
         this.movedByConveyorThisTurn = movedByConveyorThisTurn;
     }
+
+    public void clearRegisters()
+    {
+        for (int i = board.getStep(); i < program.length; i++)
+        {
+            program[i] = null;
+        }
+    }
 }
