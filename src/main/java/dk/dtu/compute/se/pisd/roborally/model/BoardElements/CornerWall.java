@@ -1,5 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
+import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
@@ -11,6 +12,7 @@ public class CornerWall extends BoardElement
     {
         super(heading1, isWalkable, space);
         this.heading2 = heading2;
+        space.board.addBoardElement(Board.NOT_ACTIVATE_ABLE_INDEX, this);
     }
 
     public boolean getCanWalkOutOf(Heading heading)
