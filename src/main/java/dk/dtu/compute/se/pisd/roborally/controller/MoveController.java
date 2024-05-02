@@ -33,7 +33,7 @@ public class MoveController {
                     this.fastForward(player);
                     break;
                 case OPTION_LEFT_RIGHT:
-                    this.optionLeftOrRight(player);
+                    this.optionLeftOrRight(player, command);
                     break;
                 default:
                     // DO NOTHING (for now)
@@ -75,6 +75,21 @@ public class MoveController {
     }
 
     /**
+     * Turns the player to the left or right depending on the command.
+     *
+     * @param player the player to be turned
+     * @param command the command to be executed
+     * @author Emil
+     */
+    public void optionLeftOrRight(Player player, Command command) {
+        if (command == Command.LEFT) {
+            turnLeft(player);
+        } else if (command == Command.RIGHT) {
+            turnRight(player);
+        }
+    }
+
+    /**
      * Moves the player two steps forward in the direction of the player's heading.
      *
      * @param player the player to be moved
@@ -82,10 +97,6 @@ public class MoveController {
      */
     public void fastForward(@NotNull Player player) {
         movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 2);
-    }
-
-    public void optionLeftOrRight (@NotNull Player player) {
-        
     }
 
     public void movePlayerAmountOfTimesWithHeading(Player player, Heading heading, int amountOfTimesToMove) {
