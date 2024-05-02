@@ -27,7 +27,6 @@ import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Queue;
 
 import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 
@@ -44,10 +43,10 @@ public class Player extends Subject
 
     final public Board board;
     public final MoveController moveController;
-    private final CommandCardField[] program;
-    private final CommandCardField[] cards;
-    private final ArrayList<CommandCard> activeCardsPile;
-    private final ArrayList<CommandCard> discardedCardsPile;
+    private final CardField[] program;
+    private final CardField[] cards;
+    private final ArrayList<Card> activeCardsPile;
+    private final ArrayList<Card> discardedCardsPile;
     private ArrayList<Checkpoint> visitedCheckPoints;
     private String name;
     private String color;
@@ -71,16 +70,16 @@ public class Player extends Subject
 
         activeCardsPile = new ArrayList<>();
         discardedCardsPile = new ArrayList<>();
-        program = new CommandCardField[NO_REGISTERS];
+        program = new CardField[NO_REGISTERS];
         for (int i = 0; i < program.length; i++)
         {
-            program[i] = new CommandCardField(this);
+            program[i] = new CardField(this);
         }
 
-        cards = new CommandCardField[NO_CARDS];
+        cards = new CardField[NO_CARDS];
         for (int i = 0; i < cards.length; i++)
         {
-            cards[i] = new CommandCardField(this);
+            cards[i] = new CardField(this);
         }
     }
 
@@ -192,7 +191,7 @@ public class Player extends Subject
      * @param i the index of the register to be returned
      * @return the register with the given index
      */
-    public CommandCardField getProgramField(int i)
+    public CardField getProgramField(int i)
     {
         return program[i];
     }
@@ -201,7 +200,7 @@ public class Player extends Subject
      * @param i the index of the card field to be returned
      * @return the card field with the given index
      */
-    public CommandCardField getCardField(int i)
+    public CardField getCardField(int i)
     {
         return cards[i];
     }

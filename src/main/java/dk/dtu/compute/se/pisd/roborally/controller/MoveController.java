@@ -32,6 +32,9 @@ public class MoveController {
                 case FAST_FORWARD:
                     this.fastForward(player);
                     break;
+                case OPTION_LEFT_RIGHT:
+                    this.optionLeftOrRight(player);
+                    break;
                 default:
                     // DO NOTHING (for now)
             }
@@ -79,6 +82,10 @@ public class MoveController {
      */
     public void fastForward(@NotNull Player player) {
         movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 2);
+    }
+
+    public void optionLeftOrRight (@NotNull Player player) {
+        
     }
 
     public void movePlayerAmountOfTimesWithHeading(Player player, Heading heading, int amountOfTimesToMove) {

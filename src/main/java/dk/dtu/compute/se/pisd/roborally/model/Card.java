@@ -22,6 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * ...
@@ -29,54 +30,23 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
  * @author Ekkart Kindler, ekki@dtu.dk
  *
  */
-public class CommandCardField extends Subject {
+public class Card extends Subject {
 
-    final public Player player;
-
-    private CommandCard card;
-
-    private boolean visible;
+    final public Command command;
 
     /**
-     * @param player the player to which this field belongs
+     * @param command the command represented by this card
      */
-    public CommandCardField(Player player) {
-        this.player = player;
-        this.card = null;
-        this.visible = true;
+    public Card(@NotNull Command command) {
+        this.command = command;
     }
 
     /**
-     * @return the card in this field
+     * @return the name of the command represented by this card
      */
-    public CommandCard getCard() {
-        return card;
+    public String getName() {
+        return command.displayName;
     }
 
-    /**
-     * @param card the card to be placed in this field
-     */
-    public void setCard(CommandCard card) {
-        if (card != this.card) {
-            this.card = card;
-            notifyChange();
-        }
-    }
 
-    /**
-     * @return whether the card in this field is visible
-     */
-    public boolean isVisible() {
-        return visible;
-    }
-
-    /**
-     * @param visible whether the card in this field should be visible
-     */
-    public void setVisible(boolean visible) {
-        if (visible != this.visible) {
-            this.visible = visible;
-            notifyChange();
-        }
-    }
 }

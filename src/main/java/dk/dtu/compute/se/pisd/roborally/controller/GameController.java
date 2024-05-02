@@ -61,7 +61,7 @@ public class GameController
             Player player = board.getPlayer(i);
             for (int j = 0; j < Player.NO_REGISTERS; j++)
             {
-                CommandCardField field = player.getProgramField(j);
+                CardField field = player.getProgramField(j);
                 field.setVisible(false);
             }
         }
@@ -75,7 +75,7 @@ public class GameController
             for (int i = 0; i < board.getPlayersNumber(); i++)
             {
                 Player player = board.getPlayer(i);
-                CommandCardField field = player.getProgramField(register);
+                CardField field = player.getProgramField(register);
                 field.setVisible(true);
             }
         }
@@ -119,7 +119,7 @@ public class GameController
             int step = board.getStep();
             if (step >= 0 && step < Player.NO_REGISTERS)
             {
-                CommandCard card = currentPlayer.getProgramField(step).getCard();
+                Card card = currentPlayer.getProgramField(step).getCard();
                 if (card != null)
                 {
                     Command command = card.command;
@@ -180,13 +180,13 @@ public class GameController
             {
                 for (int j = 0; j < Player.NO_REGISTERS; j++)
                 {
-                    CommandCardField field = player.getProgramField(j);
+                    CardField field = player.getProgramField(j);
                     field.setCard(null);
                     field.setVisible(true);
                 }
                 for (int j = 0; j < Player.NO_CARDS; j++)
                 {
-                    CommandCardField field = player.getCardField(j);
+                    CardField field = player.getCardField(j);
                     field.setCard(generateRandomCommandCard());
                     field.setVisible(true);
                 }
@@ -195,11 +195,11 @@ public class GameController
     }
 
     // XXX: implemented in the current version
-    private CommandCard generateRandomCommandCard()
+    private Card generateRandomCommandCard()
     {
         Command[] commands = Command.values();
         int random = (int) (Math.random() * commands.length);
-        return new CommandCard(commands[random]);
+        return new Card(commands[random]);
     }
 
     // XXX: implemented in the current version
@@ -209,10 +209,10 @@ public class GameController
         continuePrograms();
     }
 
-    public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target)
+    public boolean moveCards(@NotNull CardField source, @NotNull CardField target)
     {
-        CommandCard sourceCard = source.getCard();
-        CommandCard targetCard = target.getCard();
+        Card sourceCard = source.getCard();
+        Card targetCard = target.getCard();
         if (sourceCard != null && targetCard == null)
         {
             target.setCard(sourceCard);
