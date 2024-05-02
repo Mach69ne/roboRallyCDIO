@@ -79,6 +79,12 @@ public class Player extends Subject
         }
     }
 
+
+    public void die()
+    {
+        this.board.getRebootToken().reboot(this);
+    }
+
     /**
      * @return the name of the player
      */

@@ -452,6 +452,11 @@ public class Board extends Subject
         return players.get(players.size() - 1).equals(current);
     }
 
+    public RebootToken getRebootToken()
+    {
+        return rebootToken;
+    }
+
     public void setRebootToken(RebootToken rebootToken)
     {
         this.rebootToken = rebootToken;
