@@ -94,7 +94,8 @@ public class MoveController {
     }
 
     public void moveCurrentPlayerToSpace(Space space) {
-        // TODO: Import or Implement this method. This method is only for debugging purposes. Not useful for the game.
+        Player currentPlayer = gameController.board.getCurrentPlayer();
+        currentPlayer.setSpace(space);
     }
 
     class ImpossibleMoveException extends Exception {
