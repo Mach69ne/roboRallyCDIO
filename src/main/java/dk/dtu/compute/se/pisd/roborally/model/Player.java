@@ -45,8 +45,8 @@ public class Player extends Subject
     public final MoveController moveController;
     private final CardField[] program;
     private final CardField[] cards;
-    private final ArrayList<Card> activeCardsPile;
-    private final ArrayList<Card> discardedCardsPile;
+    private final Deck activeCardsPile;
+    private final Deck discardedCardsPile;
     private ArrayList<Checkpoint> visitedCheckPoints;
     private String name;
     private String color;
@@ -67,9 +67,8 @@ public class Player extends Subject
         this.color = color;
         this.space = null;
         this.moveController = moveController;
-
-        activeCardsPile = new ArrayList<>();
-        discardedCardsPile = new ArrayList<>();
+        activeCardsPile = new Deck();
+        discardedCardsPile = new Deck();
         program = new CardField[NO_REGISTERS];
         for (int i = 0; i < program.length; i++)
         {
