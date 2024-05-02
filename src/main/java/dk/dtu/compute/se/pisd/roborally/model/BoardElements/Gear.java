@@ -1,5 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
+import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 public class Gear extends NullBoardElement
@@ -10,6 +11,7 @@ public class Gear extends NullBoardElement
     {
         super(isWalkable, space);
         this.isClockwise = isClockwise;
+        space.board.addBoardElement(Board.GEARS_INDEX, this);
     }
 
     public void activate()

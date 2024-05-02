@@ -49,10 +49,11 @@ public class Board extends Subject
     public final static int ENERGY_SPACE_INDEX = 6;
     public final static int CHECKPOINTS_INDEX = 7;
     public final static int ANTENNA_INDEX = 8;
+    public final static int NOT_ACTIVATE_ABLE_INDEX = 9;
     public final int width;
     public final int height;
     public final String boardName;
-    private final ArrayList<BoardElement>[] boardElements = new ArrayList[9];
+    private final ArrayList<BoardElement>[] boardElements = new ArrayList[10];
     private final Space[][] spaces;
     private final List<Player> players = new ArrayList<>();
     private final boolean toSaveTabNumber = true;
@@ -79,7 +80,8 @@ public class Board extends Subject
      *                  (this is used for the name of the file in which the board is stored)
      */
 
-    //In the files given to us by the teacher spaces are stored in an arraylist instead of an array, maybe we should do that is well.
+    //In the files given to us by the teacher spaces are stored in an arraylist instead of an array, maybe we should
+    // do that is well.
     public Board(int width, int height, @NotNull String boardName)
     {
         this.boardName = boardName;
