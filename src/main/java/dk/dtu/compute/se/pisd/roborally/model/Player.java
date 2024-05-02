@@ -27,6 +27,7 @@ import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Queue;
 
 import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 
@@ -45,6 +46,8 @@ public class Player extends Subject
     public final MoveController moveController;
     private final CommandCardField[] program;
     private final CommandCardField[] cards;
+    private final ArrayList<CommandCard> activeCardsPile;
+    private final ArrayList<CommandCard> discardedCardsPile;
     private ArrayList<Checkpoint> visitedCheckPoints;
     private String name;
     private String color;
@@ -66,6 +69,8 @@ public class Player extends Subject
         this.space = null;
         this.moveController = moveController;
 
+        activeCardsPile = new ArrayList<>();
+        discardedCardsPile = new ArrayList<>();
         program = new CommandCardField[NO_REGISTERS];
         for (int i = 0; i < program.length; i++)
         {
