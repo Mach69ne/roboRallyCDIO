@@ -6,20 +6,25 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import org.jetbrains.annotations.NotNull;
 
-public class MoveController {
+public class MoveController
+{
     GameController gameController;
 
-    public MoveController(GameController gameController) {
+    public MoveController(GameController gameController)
+    {
         this.gameController = gameController;
     }
 
-    public void executeCommand(@NotNull Player player, Command command) {
-        if (player.board == gameController.board && command != null) {
+    public void executeCommand(@NotNull Player player, Command command)
+    {
+        if (player.board == gameController.board && command != null)
+        {
             // XXX This is a very simplistic way of dealing with some basic cards and
             //     their execution. This should eventually be done in a more elegant way
             //     (this concerns the way cards are modelled as well as the way they are executed).
 
-            switch (command) {
+            switch (command)
+            {
                 case FORWARD:
                     this.moveForward(player);
                     break;
@@ -36,7 +41,7 @@ public class MoveController {
                     this.optionLeftOrRight(player, command);
                     break;
                 default:
-                    // DO NOTHING (for now)
+                    throw new RuntimeException("Something went wrong");
             }
         }
     }
@@ -47,7 +52,8 @@ public class MoveController {
      * @param player the player to be moved
      * @author Adel
      */
-    public void moveForward(@NotNull Player player) {
+    public void moveForward(@NotNull Player player)
+    {
         movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 1);
     }
 
@@ -57,7 +63,8 @@ public class MoveController {
      * @param player the player to be turned
      * @author Mustafa
      */
-    public void turnRight(@NotNull Player player) {
+    public void turnRight(@NotNull Player player)
+    {
         Heading heading = player.getHeading();
         player.setHeading(heading.next());
 
@@ -69,24 +76,10 @@ public class MoveController {
      * @param player the player to be turned
      * @author Mustafa
      */
-    public void turnLeft(@NotNull Player player) {
+    public void turnLeft(@NotNull Player player)
+    {
         Heading heading = player.getHeading();
         player.setHeading(heading.prev());
-    }
-
-    /**
-     * Turns the player to the left or right depending on the command.
-     *
-     * @param player the player to be turned
-     * @param command the command to be executed
-     * @author Emil
-     */
-    public void optionLeftOrRight(Player player, Command command) {
-        if (command == Command.LEFT) {
-            turnLeft(player);
-        } else if (command == Command.RIGHT) {
-            turnRight(player);
-        }
     }
 
     /**
@@ -95,15 +88,38 @@ public class MoveController {
      * @param player the player to be moved
      * @author Adel
      */
-    public void fastForward(@NotNull Player player) {
+    public void fastForward(@NotNull Player player)
+    {
         movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 2);
     }
 
-    public void movePlayerAmountOfTimesWithHeading(Player player, Heading heading, int amountOfTimesToMove) {
-        for (int i = 0; i < amountOfTimesToMove; i++) {
+    /**
+     * Turns the player to the left or right depending on the command.
+     *
+     * @param player  the player to be turned
+     * @param command the command to be executed
+     * @author Emil
+     */
+    public void optionLeftOrRight(Player player, Command command)
+    {
+        if (command == Command.LEFT)
+        {
+            turnLeft(player);
+        }
+        else if (command == Command.RIGHT)
+        {
+            turnRight(player);
+        }
+    }
+
+    public void movePlayerAmountOfTimesWithHeading(Player player, Heading heading, int amountOfTimesToMove)
+    {
+        for (int i = 0; i < amountOfTimesToMove; i++)
+        {
             Space currentSpace = player.getSpace();
             Space newSpace = gameController.board.getNeighbour(currentSpace, heading);
-            if (currentSpace.getBoardElement().getCanWalkOutOf(heading) && newSpace.getBoardElement().getCanWalkInto(heading)) {
+            if (currentSpace.getBoardElement().getCanWalkOutOf(heading) && newSpace.getBoardElement().getCanWalkInto(heading))
+            {
                 //Logic for moving to a space should be put here:
                 player.setSpace(newSpace);
                 newSpace.getBoardElement().onWalkOver(player);
@@ -111,18 +127,21 @@ public class MoveController {
         }
     }
 
-    public void moveCurrentPlayerToSpace(Space space) {
+    public void moveCurrentPlayerToSpace(Space space)
+    {
         Player currentPlayer = gameController.board.getCurrentPlayer();
         currentPlayer.setSpace(space);
     }
 
-    class ImpossibleMoveException extends Exception {
+    class ImpossibleMoveException extends Exception
+    {
 
-        private Player player;
-        private Space space;
-        private Heading heading;
+        private final Player player;
+        private final Space space;
+        private final Heading heading;
 
-        public ImpossibleMoveException(Player player, Space space, Heading heading) {
+        public ImpossibleMoveException(Player player, Space space, Heading heading)
+        {
             super("Move impossible");
             this.player = player;
             this.space = space;
