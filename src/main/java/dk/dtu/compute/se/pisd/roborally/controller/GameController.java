@@ -46,15 +46,16 @@ public class GameController
 
     /**
      * Starts Activation phase. This method should be called when the players have pressed finished programming button.
+     *
      * @author
      */
     // XXX: implemented in the current version
-    
-    public void openShop(){
+    public void openShop()
+    {
 
 
     }
-    
+
     public void finishProgrammingPhase()
     {
         makeProgramFieldsInvisible();
@@ -132,7 +133,6 @@ public class GameController
      * @author
      */
     // XXX: implemented in the current version
-
     private void executeNextStep()
     {
         Player currentPlayer = board.getCurrentPlayer();
@@ -187,38 +187,6 @@ public class GameController
     }
 
     /**
-     * Executes the command option and continues the program. This method should be called when the player has chosen
-     * an option for an interactive command.
-     *
-     * @param commandOption the command option to be executed
-     * @author Emil
-     */
-
-    public void executeCommandOptionAndContinue(Command commandOption) {
-        Player currentPlayer = board.getCurrentPlayer();
-        moveController.executeCommand(currentPlayer, commandOption);
-        board.setPhase(Phase.ACTIVATION);
-        int step = board.getStep();
-        int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
-        if (nextPlayerNumber < board.getPlayersNumber()) {
-            board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
-        }
-        else {
-            step++;
-            board.activateBoardElements();
-            if (step < Player.NO_REGISTERS) {
-                makeProgramFieldsVisible(step);
-                board.setStep(step);
-                board.setCurrentPlayer(board.getPlayer(0));
-            }
-            else {
-                startProgrammingPhase();
-            }
-        }
-    }
-
-
-    /**
      * Starts the programming phase of the game. This method should be called when the game
      *
      * @author
@@ -245,9 +213,45 @@ public class GameController
                 for (int j = 0; j < Player.NO_CARDS; j++)
                 {
                     CardField field = player.getCardField(j);
-                    field.setCard(generateRandomCommandCard());
+                    field.setCard(player.drawTopCard());
                     field.setVisible(true);
                 }
+            }
+        }
+    }
+
+    /**
+     * Executes the command option and continues the program. This method should be called when the player has chosen
+     * an option for an interactive command.
+     *
+     * @param commandOption the command option to be executed
+     * @author Emil
+     */
+
+    public void executeCommandOptionAndContinue(Command commandOption)
+    {
+        Player currentPlayer = board.getCurrentPlayer();
+        moveController.executeCommand(currentPlayer, commandOption);
+        board.setPhase(Phase.ACTIVATION);
+        int step = board.getStep();
+        int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
+        if (nextPlayerNumber < board.getPlayersNumber())
+        {
+            board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+        }
+        else
+        {
+            step++;
+            board.activateBoardElements();
+            if (step < Player.NO_REGISTERS)
+            {
+                makeProgramFieldsVisible(step);
+                board.setStep(step);
+                board.setCurrentPlayer(board.getPlayer(0));
+            }
+            else
+            {
+                startProgrammingPhase();
             }
         }
     }

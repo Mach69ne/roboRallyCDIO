@@ -20,7 +20,31 @@ public class Deck
     public void initializeAPlayerDeck()
     {
         playerCards.clear();
-        //TODO Add different cards for a player to start with.
+        int amountOfForwards = 5;
+        int amountOfRight = 5;
+        int amountOfLeft = 5;
+        int amountOfFastForward = 5;
+        int amountOfOptionLeftOrRight = 5;
+        for (int i = 0; i < amountOfForwards; i++)
+        {
+            playerCards.add(new Card(Command.FORWARD));
+        }
+        for (int i = 0; i < amountOfRight; i++)
+        {
+            playerCards.add(new Card(Command.RIGHT));
+        }
+        for (int i = 0; i < amountOfLeft; i++)
+        {
+            playerCards.add(new Card(Command.LEFT));
+        }
+        for (int i = 0; i < amountOfFastForward; i++)
+        {
+            playerCards.add(new Card(Command.FAST_FORWARD));
+        }
+        for (int i = 0; i < amountOfOptionLeftOrRight; i++)
+        {
+            playerCards.add(new Card(Command.OPTION_LEFT_RIGHT));
+        }
     }
 
     /**

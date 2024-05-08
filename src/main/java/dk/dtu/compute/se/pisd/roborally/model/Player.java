@@ -28,8 +28,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
+import static dk.dtu.compute.se.pisd.roborally.model.Command.SPAM;
 import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
-import static dk.dtu.compute.se.pisd.roborally.model.Command.*;
 
 /**
  * ...
@@ -279,17 +279,21 @@ public class Player extends Subject
      */
 
     //adding this method as discardPile is private
-    public void addCardToDiscardPile(Card card) {
+    public void addCardToDiscardPile(Card card)
+    {
         this.discardedCardsPile.playerCards.add(card);
     }
 
-    public void discardAllCardsUponReboot() {
-        for (int i = 0; i < program.length; i++) {
+    public void discardAllCardsUponReboot()
+    {
+        for (int i = 0; i < program.length; i++)
+        {
             this.discardedCardsPile.playerCards.add(program[i].getCard());
             program[i] = null;
         }
 
-        for (int i = 0; i < cards.length; i++) {
+        for (int i = 0; i < cards.length; i++)
+        {
             this.discardedCardsPile.playerCards.add(cards[i].getCard());
             cards[i] = null;
         }
@@ -299,7 +303,13 @@ public class Player extends Subject
 
     }
 
-    public void pickUpEnergyCube() {
+    public void pickUpEnergyCube()
+    {
         energyCubes++;
+    }
+
+    public Card drawTopCard()
+    {
+        return activeCardsPile.drawTopCard();
     }
 }
