@@ -78,6 +78,10 @@ public class Deck
      */
     public Card drawTopCard()
     {
+        if (playerCards.isEmpty())
+        {
+            return null;
+        }
         Card tempCard = playerCards.get(0);
         playerCards.remove(0);
         return tempCard;

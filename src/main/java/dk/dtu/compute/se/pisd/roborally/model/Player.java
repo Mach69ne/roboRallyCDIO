@@ -72,6 +72,7 @@ public class Player extends Subject
         this.moveController = moveController;
         activeCardsPile = new Deck();
         activeCardsPile.initializeAPlayerDeck();
+        activeCardsPile.shuffleDeck();
         discardedCardsPile = new Deck();
         energyCubes = 0;
         program = new CardField[NO_REGISTERS];
@@ -310,6 +311,11 @@ public class Player extends Subject
 
     public Card drawTopCard()
     {
-        return activeCardsPile.drawTopCard();
+        Card cardToReturn = activeCardsPile.drawTopCard();
+        if (cardToReturn == null)
+        {
+            System.out.println("DEAN");
+        }
+        return cardToReturn;
     }
 }
