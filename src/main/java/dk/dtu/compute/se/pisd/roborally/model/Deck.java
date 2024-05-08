@@ -2,10 +2,16 @@ package dk.dtu.compute.se.pisd.roborally.model;
 
 import java.util.ArrayList;
 
+/**
+ * @author
+ */
 public class Deck
 {
     public final ArrayList<Card> playerCards = new ArrayList<>();
 
+    /**
+     * @author
+     */
     public Deck()
     {
 
@@ -17,6 +23,10 @@ public class Deck
         //TODO Add different cards for a player to start with.
     }
 
+    /**
+     * @param otherDeck
+     * @author
+     */
     public void shuffleDeckIntoAnotherDeck(Deck otherDeck)
     {
         this.playerCards.addAll(otherDeck.playerCards);
@@ -24,6 +34,9 @@ public class Deck
         otherDeck.playerCards.clear();
     }
 
+    /**
+     * @author
+     */
     public void shuffleDeck()
     {
         for (int i = 0; i < playerCards.size(); i++)
@@ -35,6 +48,10 @@ public class Deck
         }
     }
 
+    /**
+     * @return
+     * @author
+     */
     public Card drawTopCard()
     {
         Card tempCard = playerCards.get(0);

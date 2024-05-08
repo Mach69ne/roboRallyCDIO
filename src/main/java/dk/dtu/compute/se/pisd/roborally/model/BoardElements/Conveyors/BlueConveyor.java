@@ -4,6 +4,9 @@ import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
+/**
+ * @author
+ */
 public class BlueConveyor extends Conveyor
 {
     BlueConveyor(Heading heading, Space space)

@@ -4,6 +4,9 @@ import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
+/**
+ * @author
+ */
 public class Checkpoint extends NullBoardElement
 {
     public Checkpoint(Space space)
@@ -12,6 +15,9 @@ public class Checkpoint extends NullBoardElement
         space.board.addBoardElement(Board.CHECKPOINTS_INDEX, this);
     }
 
+    /**
+     * @author
+     */
     @Override
     public void activate()
     {

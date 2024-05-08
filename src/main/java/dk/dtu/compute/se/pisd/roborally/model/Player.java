@@ -29,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
+import static dk.dtu.compute.se.pisd.roborally.model.Command.*;
 
 /**
  * ...
@@ -54,11 +55,13 @@ public class Player extends Subject
     private Heading heading = SOUTH;
     private int tabNumber;
     private boolean movedByConveyorThisTurn;
+    private int energyCubes;
 
     /**
      * @param board the board to which this player belongs
      * @param color the color of the player
      * @param name  the name of the player
+     * @author
      */
     public Player(@NotNull Board board, String color, @NotNull String name, MoveController moveController)
     {
@@ -70,6 +73,7 @@ public class Player extends Subject
         activeCardsPile = new Deck();
         activeCardsPile.initializeAPlayerDeck();
         discardedCardsPile = new Deck();
+        energyCubes = 0;
         program = new CardField[NO_REGISTERS];
         for (int i = 0; i < program.length; i++)
         {
@@ -84,6 +88,9 @@ public class Player extends Subject
     }
 
 
+    /**
+     * @author Elias
+     */
     public void die()
     {
         this.board.getRebootToken().reboot(this);
@@ -91,6 +98,7 @@ public class Player extends Subject
 
     /**
      * @return the name of the player
+     * @author
      */
     public String getName()
     {
@@ -99,6 +107,7 @@ public class Player extends Subject
 
     /**
      * @param name the name of the player
+     * @author
      */
     public void setName(String name)
     {
@@ -115,6 +124,7 @@ public class Player extends Subject
 
     /**
      * @return the color of the player
+     * @author
      */
     public String getColor()
     {
@@ -123,6 +133,7 @@ public class Player extends Subject
 
     /**
      * @param color the color of the player
+     * @author
      */
     public void setColor(String color)
     {
@@ -136,6 +147,7 @@ public class Player extends Subject
 
     /**
      * @return the space on which the player is located
+     * @author
      */
     public Space getSpace()
     {
@@ -144,6 +156,7 @@ public class Player extends Subject
 
     /**
      * @param space the space on which the player is located
+     * @author
      */
     public void setSpace(Space space)
     {
@@ -165,6 +178,7 @@ public class Player extends Subject
 
     /**
      * @return the heading of the player
+     * @author
      */
     public Heading getHeading()
     {
@@ -173,6 +187,7 @@ public class Player extends Subject
 
     /**
      * @param heading the heading of the player
+     * @author
      */
     public void setHeading(@NotNull Heading heading)
     {
@@ -190,6 +205,7 @@ public class Player extends Subject
     /**
      * @param i the index of the register to be returned
      * @return the register with the given index
+     * @author
      */
     public CardField getProgramField(int i)
     {
@@ -199,12 +215,17 @@ public class Player extends Subject
     /**
      * @param i the index of the card field to be returned
      * @return the card field with the given index
+     * @author
      */
     public CardField getCardField(int i)
     {
         return cards[i];
     }
 
+    /**
+     * @param checkpoint
+     * @author
+     */
     public void addCheckPointAsVisited(Checkpoint checkpoint)
     {
         int indexOfCheckPoint = board.getIndexOfCheckPoint(checkpoint);
@@ -217,31 +238,68 @@ public class Player extends Subject
     }
 
 
+    /**
+     * @return
+     * @author
+     */
     public int getTabNumber()
     {
         return tabNumber;
     }
 
+    /**
+     * @param tabNumber
+     * @author
+     */
     public void setTabNumber(int tabNumber)
     {
         this.tabNumber = tabNumber;
     }
 
+    /**
+     * @return
+     * @author
+     */
     public boolean getMovedByConveyorThisTurn()
     {
         return movedByConveyorThisTurn;
     }
 
+    /**
+     * @param movedByConveyorThisTurn
+     * @author
+     */
     public void setMovedByConveyorThisTurn(boolean movedByConveyorThisTurn)
     {
         this.movedByConveyorThisTurn = movedByConveyorThisTurn;
     }
 
-    public void clearRegisters()
-    {
-        for (int i = board.getStep(); i < program.length; i++)
-        {
+    /**
+     * @author
+     */
+
+    //adding this method as discardPile is private
+    public void addCardToDiscardPile(Card card) {
+        this.discardedCardsPile.playerCards.add(card);
+    }
+
+    public void discardAllCardsUponReboot() {
+        for (int i = 0; i < program.length; i++) {
+            this.discardedCardsPile.playerCards.add(program[i].getCard());
             program[i] = null;
         }
+
+        for (int i = 0; i < cards.length; i++) {
+            this.discardedCardsPile.playerCards.add(cards[i].getCard());
+            cards[i] = null;
+        }
+        this.discardedCardsPile.playerCards.add(new Card((SPAM)));
+        this.discardedCardsPile.playerCards.add(new Card((SPAM)));
+
+
+    }
+
+    public void pickUpEnergyCube() {
+        energyCubes++;
     }
 }

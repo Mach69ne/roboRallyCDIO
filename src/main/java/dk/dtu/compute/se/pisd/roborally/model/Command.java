@@ -39,22 +39,37 @@ public enum Command {
     RIGHT("Turn Right"),
     LEFT("Turn Left"),
     FAST_FORWARD("Fast Fwd"),
-
-    OPTION_LEFT_RIGHT("Left OR Right",LEFT, RIGHT);
+    OPTION_LEFT_RIGHT("Left OR Right",LEFT, RIGHT),
+    TROJAN_HORSE("Trojan Horse"),
+    SPAM("SPAM");
 
 
     final public String displayName;
 
     final private List<Command> options;
 
+    /**
+     * @param displayName
+     * @param options
+     * @author
+     */
     Command(String displayName, Command... options) {
         this.displayName = displayName;
         this.options = Collections.unmodifiableList(Arrays.asList(options));
     }
 
+    /**
+     * @return
+     * @author
+     */
     public boolean isInteractive() {
         return !options.isEmpty();
     }
+
+    /**
+     * @return
+     * @author
+     */
     public List<Command> getOptions() {
         return options;
     }

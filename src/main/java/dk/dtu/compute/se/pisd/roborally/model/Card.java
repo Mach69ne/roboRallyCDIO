@@ -36,6 +36,7 @@ public class Card extends Subject {
 
     /**
      * @param command the command represented by this card
+     * @author
      */
     public Card(@NotNull Command command) {
         this.command = command;
@@ -43,10 +44,10 @@ public class Card extends Subject {
 
     /**
      * @return the name of the command represented by this card
+     * @author
      */
     public String getName() {
         return command.displayName;
     }
-
 
 }

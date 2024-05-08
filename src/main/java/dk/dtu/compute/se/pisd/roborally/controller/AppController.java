@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * ...
+ * ....
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  */
@@ -73,7 +73,7 @@ public class AppController implements Observer
     /**
      * Start a new game. The user is asked to select the number of players.
      *
-     * @return void
+     * @author
      */
     public void newGame()
     {
@@ -122,6 +122,7 @@ public class AppController implements Observer
      * game); returns false, if the current game was not stopped. In case
      * there is no current game, false is returned.
      *
+     * @author
      * @return true if the current game was stopped, false otherwise
      */
     public boolean stopGame()
@@ -140,6 +141,12 @@ public class AppController implements Observer
         return false;
     }
 
+
+    /**
+     * Saves the game
+     *
+     * @author
+     */
     public void saveGame()
     {
         // XXX needs to be implemented eventually
@@ -148,7 +155,7 @@ public class AppController implements Observer
     /**
      * Exit the RoboRally application. If there is a game running, the user is asked whether the game should be closed
      *
-     * @return void
+     * @author
      */
     public void exit()
     {
@@ -173,12 +180,20 @@ public class AppController implements Observer
         }
     }
 
+    /**
+     * @author
+     * @return true if gameController is not null, false otherwise
+     */
     public boolean isGameRunning()
     {
         return gameController != null;
     }
 
 
+    /**
+     * @param subject
+     * @author
+     */
     @Override
     public void update(Subject subject)
     {

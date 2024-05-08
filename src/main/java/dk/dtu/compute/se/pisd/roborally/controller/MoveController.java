@@ -1,25 +1,40 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
-import dk.dtu.compute.se.pisd.roborally.model.Command;
-import dk.dtu.compute.se.pisd.roborally.model.Heading;
-import dk.dtu.compute.se.pisd.roborally.model.Player;
-import dk.dtu.compute.se.pisd.roborally.model.Space;
+import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
-public class MoveController {
+import java.util.Random;
+
+import static dk.dtu.compute.se.pisd.roborally.model.Command.SPAM;
+
+public class MoveController
+{
     GameController gameController;
 
-    public MoveController(GameController gameController) {
+    /**
+     * @param gameController
+     * @author
+     */
+    public MoveController(GameController gameController)
+    {
         this.gameController = gameController;
     }
 
-    public void executeCommand(@NotNull Player player, Command command) {
-        if (player.board == gameController.board && command != null) {
+    /**
+     * @param player
+     * @param command
+     * @author
+     */
+    public void executeCommand(@NotNull Player player, Command command)
+    {
+        if (player.board == gameController.board && command != null)
+        {
             // XXX This is a very simplistic way of dealing with some basic cards and
             //     their execution. This should eventually be done in a more elegant way
             //     (this concerns the way cards are modelled as well as the way they are executed).
 
-            switch (command) {
+            switch (command)
+            {
                 case FORWARD:
                     this.moveForward(player);
                     break;
@@ -33,12 +48,35 @@ public class MoveController {
                     this.fastForward(player);
                     break;
                 case OPTION_LEFT_RIGHT:
-                    this.optionLeftOrRight(player);
+                    this.optionLeftOrRight(player, command);
+                    break;
+                case SPAM:
+                    this.useSpamCard(player, command);
+                    break;
+                case TROJAN_HORSE:
+                    this.useTrojanHorse(player, command);
                     break;
                 default:
-                    // DO NOTHING (for now)
+                    throw new RuntimeException("Something went wrong");
             }
         }
+    }
+
+    /**
+     * @param player
+     * @author Mustafa
+     */
+    public void useTrojanHorse(@NotNull Player player, Command command) {
+        useSpamCard(player, command);
+        useSpamCard(player, command);
+    }
+
+    /**
+     * @param player
+     * @author Mustafa
+     */
+    public void useSpamCard(@NotNull Player player, Command command) {
+        player.addCardToDiscardPile(new Card(command));
     }
 
     /**
@@ -47,7 +85,8 @@ public class MoveController {
      * @param player the player to be moved
      * @author Adel
      */
-    public void moveForward(@NotNull Player player) {
+    public void moveForward(@NotNull Player player)
+    {
         movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 1);
     }
 
@@ -57,7 +96,8 @@ public class MoveController {
      * @param player the player to be turned
      * @author Mustafa
      */
-    public void turnRight(@NotNull Player player) {
+    public void turnRight(@NotNull Player player)
+    {
         Heading heading = player.getHeading();
         player.setHeading(heading.next());
 
@@ -69,7 +109,8 @@ public class MoveController {
      * @param player the player to be turned
      * @author Mustafa
      */
-    public void turnLeft(@NotNull Player player) {
+    public void turnLeft(@NotNull Player player)
+    {
         Heading heading = player.getHeading();
         player.setHeading(heading.prev());
     }
@@ -80,19 +121,44 @@ public class MoveController {
      * @param player the player to be moved
      * @author Adel
      */
-    public void fastForward(@NotNull Player player) {
+    public void fastForward(@NotNull Player player)
+    {
         movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 2);
     }
 
-    public void optionLeftOrRight (@NotNull Player player) {
-        
+    /**
+     * Turns the player to the left or right depending on the command.
+     *
+     * @param player  the player to be turned
+     * @param command the command to be executed
+     * @author Emil
+     */
+    public void optionLeftOrRight(Player player, Command command)
+    {
+        if (command == Command.LEFT)
+        {
+            turnLeft(player);
+        }
+        else if (command == Command.RIGHT)
+        {
+            turnRight(player);
+        }
     }
 
-    public void movePlayerAmountOfTimesWithHeading(Player player, Heading heading, int amountOfTimesToMove) {
-        for (int i = 0; i < amountOfTimesToMove; i++) {
+    /**
+     * @param player
+     * @param heading
+     * @param amountOfTimesToMove
+     * @author
+     */
+    public void movePlayerAmountOfTimesWithHeading(Player player, Heading heading, int amountOfTimesToMove)
+    {
+        for (int i = 0; i < amountOfTimesToMove; i++)
+        {
             Space currentSpace = player.getSpace();
             Space newSpace = gameController.board.getNeighbour(currentSpace, heading);
-            if (currentSpace.getBoardElement().getCanWalkOutOf(heading) && newSpace.getBoardElement().getCanWalkInto(heading)) {
+            if (currentSpace.getBoardElement().getCanWalkOutOf(heading) && newSpace.getBoardElement().getCanWalkInto(heading))
+            {
                 //Logic for moving to a space should be put here:
                 player.setSpace(newSpace);
                 newSpace.getBoardElement().onWalkOver(player);
@@ -100,18 +166,34 @@ public class MoveController {
         }
     }
 
-    public void moveCurrentPlayerToSpace(Space space) {
+    /**
+     * @param space
+     * @author
+     */
+    public void moveCurrentPlayerToSpace(Space space)
+    {
         Player currentPlayer = gameController.board.getCurrentPlayer();
         currentPlayer.setSpace(space);
     }
 
-    class ImpossibleMoveException extends Exception {
+    /**
+     * @author
+     */
+    class ImpossibleMoveException extends Exception
+    {
 
-        private Player player;
-        private Space space;
-        private Heading heading;
+        private final Player player;
+        private final Space space;
+        private final Heading heading;
 
-        public ImpossibleMoveException(Player player, Space space, Heading heading) {
+        /**
+         * @param player
+         * @param space
+         * @param heading
+         * @author
+         */
+        public ImpossibleMoveException(Player player, Space space, Heading heading)
+        {
             super("Move impossible");
             this.player = player;
             this.space = space;

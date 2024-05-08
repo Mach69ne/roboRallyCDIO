@@ -34,6 +34,10 @@ public class GameController
     final public Board board;
     final public MoveController moveController;
 
+    /**
+     * @param board
+     * @author
+     */
     public GameController(@NotNull Board board)
     {
         this.board = board;
@@ -42,8 +46,15 @@ public class GameController
 
     /**
      * Starts Activation phase. This method should be called when the players have pressed finished programming button.
+     * @author
      */
     // XXX: implemented in the current version
+    
+    public void openShop(){
+
+
+    }
+    
     public void finishProgrammingPhase()
     {
         makeProgramFieldsInvisible();
@@ -53,6 +64,9 @@ public class GameController
         board.setStep(0);
     }
 
+    /**
+     * @author
+     */
     // XXX: implemented in the current version
     private void makeProgramFieldsInvisible()
     {
@@ -67,6 +81,10 @@ public class GameController
         }
     }
 
+    /**
+     * @param register
+     * @author
+     */
     // XXX: implemented in the current version
     private void makeProgramFieldsVisible(int register)
     {
@@ -85,7 +103,7 @@ public class GameController
      * Executes the registers of the players. This method should be called when the players have pressed the execute
      * registers button.
      *
-     * @return void
+     * @author
      */
     // XXX: implemented in the current version
     public void executePrograms()
@@ -98,7 +116,7 @@ public class GameController
     /**
      * Continues the execution of the programs of the players. This method should be called when the
      *
-     * @return void
+     * @author
      */
     // XXX: implemented in the current version
     public void continuePrograms()
@@ -110,7 +128,11 @@ public class GameController
         while (board.getPhase() == Phase.ACTIVATION && !board.isStepMode());
     }
 
+    /**
+     * @author
+     */
     // XXX: implemented in the current version
+
     private void executeNextStep()
     {
         Player currentPlayer = board.getCurrentPlayer();
@@ -122,6 +144,11 @@ public class GameController
                 Card card = currentPlayer.getProgramField(step).getCard();
                 if (card != null)
                 {
+                    if (card.command.isInteractive())
+                    {
+                        board.setPhase(Phase.PLAYER_INTERACTION);
+                        return;
+                    }
                     Command command = card.command;
                     moveController.executeCommand(currentPlayer, command);
                 }
@@ -159,11 +186,42 @@ public class GameController
         }
     }
 
+    /**
+     * Executes the command option and continues the program. This method should be called when the player has chosen
+     * an option for an interactive command.
+     *
+     * @param commandOption the command option to be executed
+     * @author Emil
+     */
+
+    public void executeCommandOptionAndContinue(Command commandOption) {
+        Player currentPlayer = board.getCurrentPlayer();
+        moveController.executeCommand(currentPlayer, commandOption);
+        board.setPhase(Phase.ACTIVATION);
+        int step = board.getStep();
+        int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
+        if (nextPlayerNumber < board.getPlayersNumber()) {
+            board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+        }
+        else {
+            step++;
+            board.activateBoardElements();
+            if (step < Player.NO_REGISTERS) {
+                makeProgramFieldsVisible(step);
+                board.setStep(step);
+                board.setCurrentPlayer(board.getPlayer(0));
+            }
+            else {
+                startProgrammingPhase();
+            }
+        }
+    }
+
 
     /**
      * Starts the programming phase of the game. This method should be called when the game
      *
-     * @return void
+     * @author
      */
     // XXX: implemented in the current version
     public void startProgrammingPhase()
@@ -194,6 +252,10 @@ public class GameController
         }
     }
 
+    /**
+     * @return new Card with random commands
+     * @author
+     */
     // XXX: implemented in the current version
     private Card generateRandomCommandCard()
     {
@@ -202,6 +264,9 @@ public class GameController
         return new Card(commands[random]);
     }
 
+    /**
+     * @author
+     */
     // XXX: implemented in the current version
     public void executeStep()
     {
@@ -209,6 +274,12 @@ public class GameController
         continuePrograms();
     }
 
+    /**
+     * @param source
+     * @param target
+     * @return true if sourceCard is not null and targetCard is null, false otherwise
+     * @author
+     */
     public boolean moveCards(@NotNull CardField source, @NotNull CardField target)
     {
         Card sourceCard = source.getCard();

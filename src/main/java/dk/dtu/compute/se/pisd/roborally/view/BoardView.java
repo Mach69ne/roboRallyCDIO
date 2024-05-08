@@ -51,6 +51,10 @@ public class BoardView extends VBox implements ViewObserver
     private final Label statusLabel;
 
 
+    /**
+     * @param gameController
+     * @author
+     */
     public BoardView(@NotNull GameController gameController)
     {
         board = gameController.board;
@@ -79,6 +83,10 @@ public class BoardView extends VBox implements ViewObserver
         update(board);
     }
 
+    /**
+     * @param subject
+     * @author
+     */
     @Override
     public void updateView(Subject subject)
     {
@@ -92,15 +100,26 @@ public class BoardView extends VBox implements ViewObserver
     // XXX this handler and its uses should eventually be deleted! This is just to help test the
     //     behaviour of the game by being able to explicitly move the players on the board!
 
+    /**
+     * @author
+     */
     // one line is currently commented out as our moveCurrentPlayerToSpace is in MoveController
     private class SpaceEventHandler implements EventHandler<MouseEvent> {
 
         final public GameController gameController;
 
+        /**
+         * @param gameController
+         * @author
+         */
         public SpaceEventHandler(@NotNull GameController gameController) {
             this.gameController = gameController;
         }
 
+        /**
+         * @param event
+         * @author
+         */
         @Override
         public void handle(MouseEvent event) {
             Object source = event.getSource();

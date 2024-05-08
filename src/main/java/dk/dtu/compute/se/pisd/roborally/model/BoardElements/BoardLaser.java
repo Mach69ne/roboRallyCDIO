@@ -4,6 +4,9 @@ import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
+/**
+ * @author
+ */
 public class BoardLaser extends BoardElement
 {
 
@@ -13,6 +16,9 @@ public class BoardLaser extends BoardElement
         space.board.addBoardElement(Board.BOARD_LASER_INDEX, this);
     }
 
+    /**
+     * @author
+     */
     @Override
     public void activate()
     {

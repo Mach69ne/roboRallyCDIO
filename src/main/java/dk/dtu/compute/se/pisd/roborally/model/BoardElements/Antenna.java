@@ -5,6 +5,9 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Position;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
+/**
+ * @author
+ */
 public class Antenna extends NullBoardElement
 {
     private Player[] players;
@@ -16,6 +19,9 @@ public class Antenna extends NullBoardElement
         space.board.addBoardElement(Board.ANTENNA_INDEX, this);
     }
 
+    /**
+     * @author
+     */
     @Override
     public void activate()
     {
@@ -35,6 +41,10 @@ public class Antenna extends NullBoardElement
         board.setPlayers(this.players);
     }
 
+    /**
+     * @param playerToInsert
+     * @author
+     */
     private void insertPlayerIntoTempArr(Player playerToInsert)
     {
         Board board = this.getSpace().board;

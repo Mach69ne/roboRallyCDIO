@@ -47,6 +47,10 @@ public class SpaceView extends StackPane implements ViewObserver {
     public final Space space;
 
 
+    /**
+     * @param space
+     * @author
+     */
     public SpaceView(@NotNull Space space) {
         this.space = space;
 
@@ -72,6 +76,9 @@ public class SpaceView extends StackPane implements ViewObserver {
         update(space);
     }
 
+    /**
+     * @author
+     */
     private void updatePlayer() {
         this.getChildren().clear();
 
@@ -91,6 +98,10 @@ public class SpaceView extends StackPane implements ViewObserver {
         }
     }
 
+    /**
+     * @param subject
+     * @author
+     */
     @Override
     public void updateView(Subject subject) {
         if (subject == this.space) {

@@ -39,6 +39,10 @@ public class PlayersView extends TabPane implements ViewObserver
 
     private final PlayerView[] playerViews;
 
+    /**
+     * @param gameController
+     * @author
+     */
     public PlayersView(GameController gameController)
     {
         board = gameController.board;
@@ -55,6 +59,10 @@ public class PlayersView extends TabPane implements ViewObserver
         update(board);
     }
 
+    /**
+     * @param subject
+     * @author
+     */
     @Override
     public void updateView(Subject subject)
     {
