@@ -126,6 +126,7 @@ public class GameController
      * @author
      */
     // XXX: implemented in the current version
+
     private void executeNextStep()
     {
         Player currentPlayer = board.getCurrentPlayer();
@@ -191,6 +192,7 @@ public class GameController
         Player currentPlayer = board.getCurrentPlayer();
         moveController.executeCommand(currentPlayer, commandOption);
         board.setPhase(Phase.ACTIVATION);
+        board.setStep(board.getStep() + 1);
         continuePrograms();
     }
 
