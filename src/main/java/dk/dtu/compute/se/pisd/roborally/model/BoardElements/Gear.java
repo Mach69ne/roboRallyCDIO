@@ -3,6 +3,9 @@ package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
+/**
+ * @author
+ */
 public class Gear extends NullBoardElement
 {
     private final boolean isClockwise;
@@ -14,6 +17,9 @@ public class Gear extends NullBoardElement
         space.board.addBoardElement(Board.GEARS_INDEX, this);
     }
 
+    /**
+     * @author
+     */
     public void activate()
     {
         if (isClockwise)
