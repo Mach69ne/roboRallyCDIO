@@ -67,6 +67,11 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     private GameController gameController;
 
+    /**
+     * @param gameController
+     * @param field
+     * @author
+     */
     public CardFieldView(@NotNull GameController gameController, @NotNull CardField field) {
         this.gameController = gameController;
         this.field = field;
@@ -100,6 +105,11 @@ public class CardFieldView extends GridPane implements ViewObserver {
         update(field);
     }
 
+    /**
+     * @param cardField
+     * @return
+     * @author
+     */
     private String cardFieldRepresentation(CardField cardField) {
         if (cardField.player != null) {
 
@@ -121,6 +131,11 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * @param rep
+     * @return
+     * @author
+     */
     private CardField cardFieldFromRepresentation(String rep) {
         if (rep != null && field.player != null) {
             String[] strings = rep.split(",");
@@ -140,6 +155,10 @@ public class CardFieldView extends GridPane implements ViewObserver {
         return null;
     }
 
+    /**
+     * @param subject
+     * @author
+     */
     @Override
     public void updateView(Subject subject) {
         if (subject == field && subject != null) {
@@ -152,8 +171,15 @@ public class CardFieldView extends GridPane implements ViewObserver {
         }
     }
 
+    /**
+     * @author
+     */
     private class OnDragDetectedHandler implements EventHandler<MouseEvent> {
 
+        /**
+         * @param event
+         * @author
+         */
         @Override
         public void handle(MouseEvent event) {
             Object t = event.getTarget();
@@ -181,8 +207,15 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * @author
+     */
     private class OnDragOverHandler implements EventHandler<DragEvent> {
 
+        /**
+         * @param event
+         * @author
+         */
         @Override
         public void handle(DragEvent event) {
             Object t = event.getTarget();
@@ -203,8 +236,15 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * @author
+     */
     private class OnDragEnteredHandler implements EventHandler<DragEvent> {
 
+        /**
+         * @param event
+         * @author
+         */
         @Override
         public void handle(DragEvent event) {
             Object t = event.getTarget();
@@ -226,6 +266,9 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * @author
+     */
     private class OnDragExitedHandler implements EventHandler<DragEvent> {
 
         @Override
@@ -249,8 +292,15 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * @author
+     */
     private class OnDragDroppedHandler implements EventHandler<DragEvent> {
 
+        /**
+         * @param event
+         * @author
+         */
         @Override
         public void handle(DragEvent event) {
             Object t = event.getTarget();
@@ -288,8 +338,15 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * @author
+     */
     private class OnDragDoneHandler implements EventHandler<DragEvent> {
 
+        /**
+         * @param event
+         * @author
+         */
         @Override
         public void handle(DragEvent event) {
             Object t = event.getTarget();
