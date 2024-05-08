@@ -5,6 +5,9 @@ import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
+/**
+ * @author
+ */
 public class Conveyor extends NullBoardElement
 {
     private final int moveAmount;
@@ -17,6 +20,9 @@ public class Conveyor extends NullBoardElement
         this.moveAmount = moveAmount;
     }
 
+    /**
+     * @author
+     */
     @Override
     public void activate()
     {
@@ -27,11 +33,20 @@ public class Conveyor extends NullBoardElement
         }
         playerToMove.setMovedByConveyorThisTurn(true);
     }
+
+    /**
+     * @param heading
+     * @author
+     */
     public void setHeading(Heading heading)
     {
         this.orientation = heading;
     }
 
+    /**
+     * @return the heading of the player
+     * @author
+     */
     public Heading getHeading()
     {
         return this.orientation;
