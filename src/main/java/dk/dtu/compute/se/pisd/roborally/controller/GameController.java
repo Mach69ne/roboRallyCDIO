@@ -207,12 +207,20 @@ public class GameController
                 for (int j = 0; j < Player.NO_REGISTERS; j++)
                 {
                     CardField field = player.getProgramField(j);
+                    if (field.getCard() != null)
+                    {
+                        player.addCardToDiscardPile(field.getCard());
+                    }
                     field.setCard(null);
                     field.setVisible(true);
                 }
                 for (int j = 0; j < Player.NO_CARDS; j++)
                 {
                     CardField field = player.getCardField(j);
+                    if (field.getCard() != null)
+                    {
+                        player.addCardToDiscardPile(field.getCard());
+                    }
                     field.setCard(player.drawTopCard());
                     field.setVisible(true);
                 }

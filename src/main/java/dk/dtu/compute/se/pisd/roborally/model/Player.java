@@ -314,8 +314,10 @@ public class Player extends Subject
         Card cardToReturn = activeCardsPile.drawTopCard();
         if (cardToReturn == null)
         {
-            System.out.println("DEAN");
+            activeCardsPile.shuffleDeckIntoAnotherDeck(discardedCardsPile);
+            cardToReturn = activeCardsPile.drawTopCard();
         }
+
         return cardToReturn;
     }
 }
