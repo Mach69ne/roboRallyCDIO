@@ -28,6 +28,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
+import static dk.dtu.compute.se.pisd.roborally.model.Command.*;
 import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 
 /**
@@ -275,12 +276,23 @@ public class Player extends Subject
     /**
      * @author
      */
-    public void clearRegisters()
+    public void discardAllCardsUponReboot()
     {
-        for (int i = board.getStep(); i < program.length; i++)
+        for (int i = 0; i < program.length; i++)
         {
+            this.discardedCardsPile.playerCards.add(program[i].getCard());
             program[i] = null;
         }
+
+        for (int i = 0; i < cards.length; i++)
+        {
+            this.discardedCardsPile.playerCards.add(cards[i].getCard());
+            cards[i] = null;
+        }
+        this.discardedCardsPile.playerCards.add(new Card((SPAM)));
+        this.discardedCardsPile.playerCards.add(new Card((SPAM)));
+
+
     }
 
     public void pickUpEnergyCube() {
