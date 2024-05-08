@@ -107,6 +107,9 @@ public class Board extends Subject
         this.activateBoardElements();
     }
 
+    /**
+     * @author
+     */
     public void activateBoardElements()
     {
         for (int i = 0; i < boardElements.length; i++)
@@ -122,6 +125,10 @@ public class Board extends Subject
         }
     }
 
+    /**
+     * @param indexOfElementsToBeActivated
+     * @author
+     */
     public void activateBoardElementsOfIndex(int indexOfElementsToBeActivated)
     {
         for (BoardElement boardElement : boardElements[indexOfElementsToBeActivated])
@@ -130,11 +137,21 @@ public class Board extends Subject
         }
     }
 
+    /**
+     * @param index
+     * @param boardElement
+     * @author
+     */
     public void addBoardElement(int index, BoardElement boardElement)
     {
         this.boardElements[index].add(boardElement);
     }
 
+    /**
+     * @param space
+     * @return
+     * @author
+     */
     public Position getIndexOfSpace(Space space)
     {
         for (int i = 0; i < this.width; i++)
@@ -152,6 +169,7 @@ public class Board extends Subject
 
     /**
      * @return the name of the board
+     * @author
      */
     public Integer getGameId()
     {
@@ -160,6 +178,7 @@ public class Board extends Subject
 
     /**
      * @param gameId the id of the game to which this board belongs
+     * @author
      */
     public void setGameId(int gameId)
     {
@@ -176,6 +195,10 @@ public class Board extends Subject
         }
     }
 
+    /**
+     * @param playersArr
+     * @author
+     */
     public void setPlayers(Player[] playersArr)
     {
         players.clear();
@@ -187,6 +210,9 @@ public class Board extends Subject
         this.setCurrentPlayer(players.get(0));
     }
 
+    /**
+     * @author
+     */
     public void setTabNumbersOnPlayers()
     {
         for (int i = 0; i < players.size(); i++)
@@ -197,6 +223,7 @@ public class Board extends Subject
 
     /**
      * @return the number of players on the board
+     * @author
      */
     public int getPlayersNumber()
     {
@@ -205,6 +232,7 @@ public class Board extends Subject
 
     /**
      * @param player the player to be added to the board
+     * @author
      */
     public void addPlayer(@NotNull Player player)
     {
@@ -218,6 +246,7 @@ public class Board extends Subject
     /**
      * @param i the index of the player to be returned
      * @return the player with the given index
+     * @author
      */
     public Player getPlayer(int i)
     {
@@ -234,6 +263,7 @@ public class Board extends Subject
 
     /**
      * @return the list of players on the board
+     * @author
      */
     public boolean isStepMode()
     {
@@ -242,6 +272,7 @@ public class Board extends Subject
 
     /**
      * @param stepMode the step mode to be set
+     * @author
      */
     public void setStepMode(boolean stepMode)
     {
@@ -255,6 +286,7 @@ public class Board extends Subject
     /**
      * @param player the player for which the number should be returned
      * @return the number of the player on the board; -1 if the player is not on the board
+     * @author
      */
     public int getPlayerNumber(@NotNull Player player)
     {
@@ -277,6 +309,7 @@ public class Board extends Subject
      * @param space   the space for which the neighbour should be computed
      * @param heading the heading of the neighbour
      * @return the space in the given direction; null if there is no (reachable) neighbour
+     * @author
      */
     public Space getNeighbour(@NotNull Space space, @NotNull Heading heading)
     {
@@ -318,6 +351,7 @@ public class Board extends Subject
      * @param x the x-coordinate of the space
      * @param y the y-coordinate of the space
      * @return the space at the given coordinates; null if the coordinates are out of bounds
+     * @author
      */
     public Space getSpace(int x, int y)
     {
@@ -333,6 +367,7 @@ public class Board extends Subject
 
     /**
      * @return the list of players on the board
+     * @author
      */
     public String getStatusMessage()
     {
@@ -346,6 +381,7 @@ public class Board extends Subject
 
     /**
      * @return the current phase of the board
+     * @author
      */
     public Phase getPhase()
     {
@@ -354,6 +390,7 @@ public class Board extends Subject
 
     /**
      * @return the current player
+     * @author
      */
     public Player getCurrentPlayer()
     {
@@ -362,6 +399,7 @@ public class Board extends Subject
 
     /**
      * @param player the player to be set as the current player
+     * @author
      */
     public void setCurrentPlayer(Player player)
     {
@@ -374,6 +412,7 @@ public class Board extends Subject
 
     /**
      * @return the list of players on the board
+     * @author
      */
     public int getStep()
     {
@@ -382,6 +421,7 @@ public class Board extends Subject
 
     /**
      * @param step the step to be set
+     * @author
      */
     public void setStep(int step)
     {
@@ -394,6 +434,7 @@ public class Board extends Subject
 
     /**
      * @param phase the phase to be set
+     * @author
      */
     public void setPhase(Phase phase)
     {
@@ -405,7 +446,7 @@ public class Board extends Subject
     }
 
     /**
-     * @return the list of players on the board
+     * @author
      */
     public void nextPlayerTurn()
     {
@@ -430,24 +471,38 @@ public class Board extends Subject
 
     }
 
+    /**
+     * @param checkpoint
+     * @return
+     * @author
+     */
     public int getIndexOfCheckPoint(Checkpoint checkpoint)
     {
         return this.boardElements[CHECKPOINTS_INDEX].indexOf(checkpoint);
     }
 
     /**
-     * @return the list of players on the board
+     * @return
+     * @author
      */
     public boolean playerIsLast()
     {
         return players.get(players.size() - 1).equals(current);
     }
 
+    /**
+     * @return
+     * @author
+     */
     public RebootToken getRebootToken()
     {
         return rebootToken;
     }
 
+    /**
+     * @param rebootToken
+     * @author
+     */
     public void setRebootToken(RebootToken rebootToken)
     {
         this.rebootToken = rebootToken;

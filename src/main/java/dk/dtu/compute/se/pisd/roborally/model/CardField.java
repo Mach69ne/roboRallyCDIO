@@ -39,6 +39,7 @@ public class CardField extends Subject {
 
     /**
      * @param player the player to which this field belongs
+     * @author
      */
     public CardField(Player player) {
         this.player = player;
@@ -48,6 +49,7 @@ public class CardField extends Subject {
 
     /**
      * @return the card in this field
+     * @author
      */
     public Card getCard() {
         return card;
@@ -55,6 +57,7 @@ public class CardField extends Subject {
 
     /**
      * @param card the card to be placed in this field
+     * @author
      */
     public void setCard(Card card) {
         if (card != this.card) {
@@ -65,6 +68,7 @@ public class CardField extends Subject {
 
     /**
      * @return whether the card in this field is visible
+     * @author
      */
     public boolean isVisible() {
         return visible;
@@ -72,6 +76,7 @@ public class CardField extends Subject {
 
     /**
      * @param visible whether the card in this field should be visible
+     * @author
      */
     public void setVisible(boolean visible) {
         if (visible != this.visible) {
