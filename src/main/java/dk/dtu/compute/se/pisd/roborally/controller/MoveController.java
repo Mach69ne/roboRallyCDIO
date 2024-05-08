@@ -6,6 +6,8 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Random;
+
 public class MoveController
 {
     GameController gameController;
@@ -49,10 +51,25 @@ public class MoveController
                 case OPTION_LEFT_RIGHT:
                     this.optionLeftOrRight(player, command);
                     break;
+                case SPAM:
+                    this.useSpamCard(player);
+                    break;
                 default:
                     throw new RuntimeException("Something went wrong");
             }
         }
+    }
+
+    /**
+     * @param player
+     * @author Mustafa
+     */
+    public void useSpamCard(@NotNull Player player) {
+        Heading[] headings = Heading.values();
+        Random random = new Random();
+        Heading randomHeading = headings[random.nextInt(headings.length)];
+
+        movePlayerAmountOfTimesWithHeading(player, randomHeading, 1);
     }
 
     /**
