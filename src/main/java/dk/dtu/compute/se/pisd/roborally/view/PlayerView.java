@@ -65,6 +65,11 @@ public class PlayerView extends Tab implements ViewObserver
 
     private final GameController gameController;
 
+    /**
+     * @param gameController
+     * @param player
+     * @author
+     */
     public PlayerView(@NotNull GameController gameController, @NotNull Player player)
     {
         super(player.getName());
@@ -141,6 +146,10 @@ public class PlayerView extends Tab implements ViewObserver
         }
     }
 
+    /**
+     * @param subject
+     * @author
+     */
     @Override
     public void updateView(Subject subject)
     {
