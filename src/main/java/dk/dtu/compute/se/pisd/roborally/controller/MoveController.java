@@ -1,11 +1,10 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
-import dk.dtu.compute.se.pisd.roborally.model.*;
+import dk.dtu.compute.se.pisd.roborally.model.Command;
+import dk.dtu.compute.se.pisd.roborally.model.Heading;
+import dk.dtu.compute.se.pisd.roborally.model.Player;
+import dk.dtu.compute.se.pisd.roborally.model.Space;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Random;
-
-import static dk.dtu.compute.se.pisd.roborally.model.Command.SPAM;
 
 public class MoveController
 {
@@ -63,29 +62,10 @@ public class MoveController
     }
 
     /**
-     * @param player
-     * @author Mustafa
-     */
-    public void useTrojanHorse(@NotNull Player player, Command command) {
-        useSpamCard(player, command);
-        useSpamCard(player, command);
-    }
-
-    /**
-     * @param player
-     * @author Mustafa
-     */
-    public void useSpamCard(@NotNull Player player, Command command) {
-        // Take the top card from the activeDeck that the player has and play that in this register instead of the spam card
-        // Spam card gets deleted and is therefore not discarded
-
-    }
-
-    /**
      * Moves the player one step forward in the direction of the player's heading.
      *
      * @param player the player to be moved
-     * @author Adel
+     * @author Adel, Refactored by Elias
      */
     public void moveForward(@NotNull Player player)
     {
@@ -121,7 +101,7 @@ public class MoveController
      * Moves the player two steps forward in the direction of the player's heading.
      *
      * @param player the player to be moved
-     * @author Adel
+     * @author Adel, Refactored by Elias
      */
     public void fastForward(@NotNull Player player)
     {
@@ -149,9 +129,31 @@ public class MoveController
 
     /**
      * @param player
+     * @author Mustafa
+     */
+    public void useSpamCard(@NotNull Player player, Command command)
+    {
+        // Take the top card from the activeDeck that the player has and play that in this register instead of the
+        // spam card
+        // Spam card gets deleted and is therefore not discarded
+
+    }
+
+    /**
+     * @param player
+     * @author Mustafa
+     */
+    public void useTrojanHorse(@NotNull Player player, Command command)
+    {
+        useSpamCard(player, command);
+        useSpamCard(player, command);
+    }
+
+    /**
+     * @param player
      * @param heading
      * @param amountOfTimesToMove
-     * @author
+     * @author Elias
      */
     public void movePlayerAmountOfTimesWithHeading(Player player, Heading heading, int amountOfTimesToMove)
     {
