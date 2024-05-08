@@ -63,7 +63,7 @@ public class RoboRally extends Application
 
     /**
      * @throws Exception in case of an exception during the initialization
-     * @return void
+     * @author
      * Initialize the application
      */
     @Override
@@ -74,7 +74,7 @@ public class RoboRally extends Application
 
     /**
      * @param primaryStage the primary stage for the application
-     * @return void
+     * @author
      * Start the application
      */
     @Override
@@ -117,7 +117,7 @@ public class RoboRally extends Application
 
     /**
      * @throws Exception in case of an exception during the stop
-     * @return void
+     * @author
      * Stop the application
      */
     @Override
@@ -133,7 +133,7 @@ public class RoboRally extends Application
 
     /**
      * @param appController the controller for the application
-     * @return void
+     * @author
      * Create the main menu view
      */
     public void createMainMenuView(AppController appController)
@@ -152,7 +152,7 @@ public class RoboRally extends Application
 
     /**
      * @param gameController the controller for the game
-     * @return void
+     * @author
      * Create the board view
      */
     public void createBoardView(GameController gameController)
