@@ -192,8 +192,23 @@ public class GameController
         Player currentPlayer = board.getCurrentPlayer();
         moveController.executeCommand(currentPlayer, commandOption);
         board.setPhase(Phase.ACTIVATION);
-        board.setStep(board.getStep() + 1);
-        continuePrograms();
+        int step = board.getStep();
+        int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
+        if (nextPlayerNumber < board.getPlayersNumber()) {
+            board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+        }
+        else {
+            step++;
+            board.activateBoardElements();
+            if (step < Player.NO_REGISTERS) {
+                makeProgramFieldsVisible(step);
+                board.setStep(step);
+                board.setCurrentPlayer(board.getPlayer(0));
+            }
+            else {
+                startProgrammingPhase();
+            }
+        }
     }
 
 
