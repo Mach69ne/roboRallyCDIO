@@ -282,7 +282,10 @@ public class Player extends Subject
     //adding this method as discardPile is private
     public void addCardToDiscardPile(Card card)
     {
-        this.discardedCardsPile.playerCards.add(card);
+        if (card != null)
+        {
+            this.discardedCardsPile.playerCards.add(card);
+        }
     }
 
     public void discardAllCardsUponReboot()
