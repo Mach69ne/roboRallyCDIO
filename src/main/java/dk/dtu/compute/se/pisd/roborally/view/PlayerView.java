@@ -245,8 +245,7 @@ public class PlayerView extends Tab implements ViewObserver
                             Command oneCommandToChoseBetween =
                                     player.getProgramField(player.board.getStep()).getCard().command.getOptions().get(i);
                             Button optionButton = new Button(oneCommandToChoseBetween.displayName);
-                            optionButton.setOnAction(e -> gameController.moveController.executeCommand(player,
-                                    oneCommandToChoseBetween));
+                            optionButton.setOnAction(e -> gameController.executeCommandOptionAndContinue(oneCommandToChoseBetween));
                             playerInteractionPanel.getChildren().add(optionButton);
                             optionButton.setDisable(false);
                         }

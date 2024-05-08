@@ -122,6 +122,11 @@ public class GameController
                 Card card = currentPlayer.getProgramField(step).getCard();
                 if (card != null)
                 {
+                    if (card.command.isInteractive())
+                    {
+                        board.setPhase(Phase.PLAYER_INTERACTION);
+                        return;
+                    }
                     Command command = card.command;
                     moveController.executeCommand(currentPlayer, command);
                 }
@@ -157,6 +162,22 @@ public class GameController
             // this should not happen
             assert false;
         }
+    }
+
+    /**
+     * Executes the command option and continues the program. This method should be called when the player has chosen
+     * an option for an interactive command.
+     *
+     * @param commandOption the command option to be executed
+     * @return void
+     * @Author Emil
+     */
+
+    public void executeCommandOptionAndContinue(Command commandOption) {
+        Player currentPlayer = board.getCurrentPlayer();
+        moveController.executeCommand(currentPlayer, commandOption);
+        board.setPhase(Phase.ACTIVATION);
+        continuePrograms();
     }
 
 
