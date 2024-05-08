@@ -10,11 +10,20 @@ public class MoveController
 {
     GameController gameController;
 
+    /**
+     * @param gameController
+     * @author
+     */
     public MoveController(GameController gameController)
     {
         this.gameController = gameController;
     }
 
+    /**
+     * @param player
+     * @param command
+     * @author
+     */
     public void executeCommand(@NotNull Player player, Command command)
     {
         if (player.board == gameController.board && command != null)
@@ -112,6 +121,12 @@ public class MoveController
         }
     }
 
+    /**
+     * @param player
+     * @param heading
+     * @param amountOfTimesToMove
+     * @author
+     */
     public void movePlayerAmountOfTimesWithHeading(Player player, Heading heading, int amountOfTimesToMove)
     {
         for (int i = 0; i < amountOfTimesToMove; i++)
@@ -127,12 +142,19 @@ public class MoveController
         }
     }
 
+    /**
+     * @param space
+     * @author
+     */
     public void moveCurrentPlayerToSpace(Space space)
     {
         Player currentPlayer = gameController.board.getCurrentPlayer();
         currentPlayer.setSpace(space);
     }
 
+    /**
+     * @author
+     */
     class ImpossibleMoveException extends Exception
     {
 
@@ -140,6 +162,12 @@ public class MoveController
         private final Space space;
         private final Heading heading;
 
+        /**
+         * @param player
+         * @param space
+         * @param heading
+         * @author
+         */
         public ImpossibleMoveException(Player player, Space space, Heading heading)
         {
             super("Move impossible");
