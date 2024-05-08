@@ -36,7 +36,8 @@ import static dk.dtu.compute.se.pisd.roborally.model.Command.*;
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  */
-public class Player extends Subject {
+public class Player extends Subject
+{
 
     final public static int NO_REGISTERS = 5;
     final public static int NO_CARDS = 8;
@@ -62,7 +63,8 @@ public class Player extends Subject {
      * @param name  the name of the player
      * @author
      */
-    public Player(@NotNull Board board, String color, @NotNull String name, MoveController moveController) {
+    public Player(@NotNull Board board, String color, @NotNull String name, MoveController moveController)
+    {
         this.board = board;
         this.name = name;
         this.color = color;
@@ -72,12 +74,14 @@ public class Player extends Subject {
         discardedCardsPile = new Deck();
         energyCubes = 0;
         program = new CardField[NO_REGISTERS];
-        for (int i = 0; i < program.length; i++) {
+        for (int i = 0; i < program.length; i++)
+        {
             program[i] = new CardField(this);
         }
 
         cards = new CardField[NO_CARDS];
-        for (int i = 0; i < cards.length; i++) {
+        for (int i = 0; i < cards.length; i++)
+        {
             cards[i] = new CardField(this);
         }
     }
@@ -86,7 +90,8 @@ public class Player extends Subject {
     /**
      * @author Elias
      */
-    public void die() {
+    public void die()
+    {
         this.board.getRebootToken().reboot(this);
     }
 
@@ -94,7 +99,8 @@ public class Player extends Subject {
      * @return the name of the player
      * @author
      */
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
@@ -102,11 +108,14 @@ public class Player extends Subject {
      * @param name the name of the player
      * @author
      */
-    public void setName(String name) {
-        if (name != null && !name.equals(this.name)) {
+    public void setName(String name)
+    {
+        if (name != null && !name.equals(this.name))
+        {
             this.name = name;
             notifyChange();
-            if (space != null) {
+            if (space != null)
+            {
                 space.playerChanged();
             }
         }
@@ -116,7 +125,8 @@ public class Player extends Subject {
      * @return the color of the player
      * @author
      */
-    public String getColor() {
+    public String getColor()
+    {
         return color;
     }
 
@@ -124,10 +134,12 @@ public class Player extends Subject {
      * @param color the color of the player
      * @author
      */
-    public void setColor(String color) {
+    public void setColor(String color)
+    {
         this.color = color;
         notifyChange();
-        if (space != null) {
+        if (space != null)
+        {
             space.playerChanged();
         }
     }
@@ -136,7 +148,8 @@ public class Player extends Subject {
      * @return the space on which the player is located
      * @author
      */
-    public Space getSpace() {
+    public Space getSpace()
+    {
         return space;
     }
 
@@ -144,14 +157,18 @@ public class Player extends Subject {
      * @param space the space on which the player is located
      * @author
      */
-    public void setSpace(Space space) {
+    public void setSpace(Space space)
+    {
         Space oldSpace = this.space;
-        if (space != oldSpace && (space == null || space.board == this.board)) {
+        if (space != oldSpace && (space == null || space.board == this.board))
+        {
             this.space = space;
-            if (oldSpace != null) {
+            if (oldSpace != null)
+            {
                 oldSpace.setPlayer(null);
             }
-            if (space != null) {
+            if (space != null)
+            {
                 space.setPlayer(this);
             }
             notifyChange();
@@ -162,7 +179,8 @@ public class Player extends Subject {
      * @return the heading of the player
      * @author
      */
-    public Heading getHeading() {
+    public Heading getHeading()
+    {
         return heading;
     }
 
@@ -170,11 +188,14 @@ public class Player extends Subject {
      * @param heading the heading of the player
      * @author
      */
-    public void setHeading(@NotNull Heading heading) {
-        if (heading != this.heading) {
+    public void setHeading(@NotNull Heading heading)
+    {
+        if (heading != this.heading)
+        {
             this.heading = heading;
             notifyChange();
-            if (space != null) {
+            if (space != null)
+            {
                 space.playerChanged();
             }
         }
@@ -185,7 +206,8 @@ public class Player extends Subject {
      * @return the register with the given index
      * @author
      */
-    public CardField getProgramField(int i) {
+    public CardField getProgramField(int i)
+    {
         return program[i];
     }
 
@@ -194,7 +216,8 @@ public class Player extends Subject {
      * @return the card field with the given index
      * @author
      */
-    public CardField getCardField(int i) {
+    public CardField getCardField(int i)
+    {
         return cards[i];
     }
 
@@ -202,11 +225,13 @@ public class Player extends Subject {
      * @param checkpoint
      * @author
      */
-    public void addCheckPointAsVisited(Checkpoint checkpoint) {
+    public void addCheckPointAsVisited(Checkpoint checkpoint)
+    {
         int indexOfCheckPoint = board.getIndexOfCheckPoint(checkpoint);
         int wouldBeIndexOfVisitedCheckPoints = visitedCheckPoints.size() - 1;
 
-        if (indexOfCheckPoint == wouldBeIndexOfVisitedCheckPoints) {
+        if (indexOfCheckPoint == wouldBeIndexOfVisitedCheckPoints)
+        {
             visitedCheckPoints.add(checkpoint);
         }
     }
@@ -216,7 +241,8 @@ public class Player extends Subject {
      * @return
      * @author
      */
-    public int getTabNumber() {
+    public int getTabNumber()
+    {
         return tabNumber;
     }
 
@@ -224,7 +250,8 @@ public class Player extends Subject {
      * @param tabNumber
      * @author
      */
-    public void setTabNumber(int tabNumber) {
+    public void setTabNumber(int tabNumber)
+    {
         this.tabNumber = tabNumber;
     }
 
@@ -232,7 +259,8 @@ public class Player extends Subject {
      * @return
      * @author
      */
-    public boolean getMovedByConveyorThisTurn() {
+    public boolean getMovedByConveyorThisTurn()
+    {
         return movedByConveyorThisTurn;
     }
 
@@ -240,7 +268,8 @@ public class Player extends Subject {
      * @param movedByConveyorThisTurn
      * @author
      */
-    public void setMovedByConveyorThisTurn(boolean movedByConveyorThisTurn) {
+    public void setMovedByConveyorThisTurn(boolean movedByConveyorThisTurn)
+    {
         this.movedByConveyorThisTurn = movedByConveyorThisTurn;
     }
 
