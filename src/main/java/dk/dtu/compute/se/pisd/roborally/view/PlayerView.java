@@ -60,6 +60,7 @@ public class PlayerView extends Tab implements ViewObserver
     private final Button finishButton;
     private final Button executeButton;
     private final Button stepButton;
+    private final Button shopButton;
 
     private final VBox playerInteractionPanel;
 
@@ -110,7 +111,10 @@ public class PlayerView extends Tab implements ViewObserver
         stepButton = new Button("Execute Current Register");
         stepButton.setOnAction(e -> gameController.executeStep());
 
-        buttonPanel = new VBox(finishButton, executeButton, stepButton);
+        shopButton = new Button("Upgrade Shop");
+        shopButton.setOnAction(e -> gameController.openShop());
+
+        buttonPanel = new VBox(finishButton, executeButton, stepButton, shopButton);
         buttonPanel.setAlignment(Pos.CENTER_LEFT);
         buttonPanel.setSpacing(3.0);
         // programPane.add(buttonPanel, Player.NO_REGISTERS, 0); done in update now
@@ -214,18 +218,22 @@ public class PlayerView extends Tab implements ViewObserver
                         finishButton.setDisable(false);
                         executeButton.setDisable(true);
                         stepButton.setDisable(true);
+                        shopButton.setDisable(false);
+
                         break;
 
                     case ACTIVATION:
                         finishButton.setDisable(true);
                         executeButton.setDisable(false);
                         stepButton.setDisable(false);
+                        shopButton.setDisable(true);
                         break;
 
                     default:
                         finishButton.setDisable(true);
                         executeButton.setDisable(true);
                         stepButton.setDisable(true);
+                        shopButton.setDisable(true);
                 }
 
 

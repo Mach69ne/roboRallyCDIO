@@ -49,6 +49,12 @@ public class GameController
      * @author
      */
     // XXX: implemented in the current version
+    
+    public void openShop(){
+
+
+    }
+    
     public void finishProgrammingPhase()
     {
         makeProgramFieldsInvisible();
