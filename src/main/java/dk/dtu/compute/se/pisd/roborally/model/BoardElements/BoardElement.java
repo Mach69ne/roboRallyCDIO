@@ -10,7 +10,7 @@ public abstract class BoardElement
     private final Heading heading;
     private final Space space;
 
-    BoardElement(Heading heading, boolean isWalkable, Space space)
+    protected BoardElement(Heading heading, boolean isWalkable, Space space)
     {
         this.isWalkable = isWalkable;
         this.heading = heading;

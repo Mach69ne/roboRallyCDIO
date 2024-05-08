@@ -1,6 +1,7 @@
-package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
+package dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls;
 
 import dk.dtu.compute.se.pisd.roborally.model.Board;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
