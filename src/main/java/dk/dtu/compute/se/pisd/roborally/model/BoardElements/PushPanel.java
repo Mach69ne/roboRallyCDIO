@@ -5,7 +5,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 /**
- * @author
+ * @author Emil
  */
 public class PushPanel extends BoardElement
 {
@@ -19,7 +19,7 @@ public class PushPanel extends BoardElement
     }
 
     /**
-     * @author
+     * @author Emil
      */
     @Override
     public void activate()
