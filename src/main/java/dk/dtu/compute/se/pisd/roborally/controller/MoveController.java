@@ -1,12 +1,11 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
-import dk.dtu.compute.se.pisd.roborally.model.Command;
-import dk.dtu.compute.se.pisd.roborally.model.Heading;
-import dk.dtu.compute.se.pisd.roborally.model.Player;
-import dk.dtu.compute.se.pisd.roborally.model.Space;
+import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
+
+import static dk.dtu.compute.se.pisd.roborally.model.Command.SPAM;
 
 public class MoveController
 {
@@ -52,10 +51,10 @@ public class MoveController
                     this.optionLeftOrRight(player, command);
                     break;
                 case SPAM:
-                    this.useSpamCard(player);
+                    this.useSpamCard(player, command);
                     break;
                 case TROJAN_HORSE:
-                    this.useTrojanHorse(player);
+                    this.useTrojanHorse(player, command);
                     break;
                 default:
                     throw new RuntimeException("Something went wrong");
@@ -67,21 +66,17 @@ public class MoveController
      * @param player
      * @author Mustafa
      */
-    public void useTrojanHorse(@NotNull Player player) {
-        useSpamCard(player);
-        useSpamCard(player);
+    public void useTrojanHorse(@NotNull Player player, Command command) {
+        useSpamCard(player, command);
+        useSpamCard(player, command);
     }
 
     /**
      * @param player
      * @author Mustafa
      */
-    public void useSpamCard(@NotNull Player player) {
-        Heading[] headings = Heading.values();
-        Random random = new Random();
-        Heading randomHeading = headings[random.nextInt(headings.length)];
-
-        movePlayerAmountOfTimesWithHeading(player, randomHeading, 1);
+    public void useSpamCard(@NotNull Player player, Command command) {
+        player.addCardToDiscardPile(new Card(command));
     }
 
     /**
