@@ -27,7 +27,7 @@ public class RebootToken extends BoardElement
             this.getSpace().getPlayer().moveController.movePlayerAmountOfTimesWithHeading(player, this.getHeading(), 1);
         }
         this.getSpace().setPlayer(player);
-        player.clearRegisters();
+        player.discardAllCardsUponReboot();
         player.setHeading(this.getHeading());
     }
 }
