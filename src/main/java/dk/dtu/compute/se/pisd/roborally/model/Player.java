@@ -55,6 +55,7 @@ public class Player extends Subject
     private Heading heading = SOUTH;
     private int tabNumber;
     private boolean movedByConveyorThisTurn;
+    private int energyCubes;
 
     /**
      * @param board the board to which this player belongs
@@ -71,6 +72,7 @@ public class Player extends Subject
         this.moveController = moveController;
         activeCardsPile = new Deck();
         discardedCardsPile = new Deck();
+        energyCubes = 0;
         program = new CardField[NO_REGISTERS];
         for (int i = 0; i < program.length; i++)
         {
@@ -291,5 +293,9 @@ public class Player extends Subject
         this.discardedCardsPile.playerCards.add(new Card((SPAM)));
 
 
+    }
+
+    public void pickUpEnergyCube() {
+        energyCubes++;
     }
 }
