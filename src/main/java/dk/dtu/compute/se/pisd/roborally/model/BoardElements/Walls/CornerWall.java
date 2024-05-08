@@ -5,6 +5,9 @@ import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
+/**
+ * @author
+ */
 public class CornerWall extends BoardElement
 {
     private final Heading heading2;
@@ -16,11 +19,21 @@ public class CornerWall extends BoardElement
         space.board.addBoardElement(Board.NOT_ACTIVATE_ABLE_INDEX, this);
     }
 
+    /**
+     * @param heading
+     * @return
+     * @author
+     */
     public boolean getCanWalkOutOf(Heading heading)
     {
         return getIsWalkable() && (getHeading() != heading && this.heading2 != heading);
     }
 
+    /**
+     * @param heading
+     * @return
+     * @author
+     */
     public boolean getCanWalkInto(Heading heading)
     {
         Heading headingToCheck = heading.next().next();
