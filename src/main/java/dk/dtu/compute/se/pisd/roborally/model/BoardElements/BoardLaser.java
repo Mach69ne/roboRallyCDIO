@@ -1,8 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
-import dk.dtu.compute.se.pisd.roborally.model.Board;
-import dk.dtu.compute.se.pisd.roborally.model.Heading;
-import dk.dtu.compute.se.pisd.roborally.model.Space;
+import dk.dtu.compute.se.pisd.roborally.model.*;
 
 /**
  * @author
@@ -29,7 +27,8 @@ public class BoardLaser extends BoardElement
         {
             if (spaceToCheck.getPlayer() != null)
             {
-                //TODO Add functionality for getting hit by laser here
+                spaceToCheck.getPlayer().addCardToDiscardPile(new Card(Command.SPAM));
+                spaceToCheck.getPlayer().addCardToDiscardPile(new Card(Command.SPAM));
             }
             Space nextSpace = spaceToCheck.board.getNeighbour(this.getSpace(), headingToCheck);
             // We check if we were to hit a board element, and break if we do
