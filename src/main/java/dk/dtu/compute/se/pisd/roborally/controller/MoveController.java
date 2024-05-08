@@ -76,7 +76,9 @@ public class MoveController
      * @author Mustafa
      */
     public void useSpamCard(@NotNull Player player, Command command) {
-        player.addCardToDiscardPile(new Card(command));
+        // Take the top card from the activeDeck that the player has and play that in this register instead of the spam card
+        // Spam card gets deleted and is therefore not discarded
+
     }
 
     /**
