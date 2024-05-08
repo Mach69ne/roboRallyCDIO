@@ -71,6 +71,7 @@ public class Player extends Subject
         this.space = null;
         this.moveController = moveController;
         activeCardsPile = new Deck();
+        activeCardsPile.initializeAPlayerDeck();
         discardedCardsPile = new Deck();
         energyCubes = 0;
         program = new CardField[NO_REGISTERS];

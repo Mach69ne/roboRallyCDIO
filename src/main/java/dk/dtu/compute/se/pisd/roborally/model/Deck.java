@@ -14,6 +14,12 @@ public class Deck
      */
     public Deck()
     {
+
+    }
+
+    public void initializeAPlayerDeck()
+    {
+        playerCards.clear();
         //TODO Add different cards for a player to start with.
     }
 
