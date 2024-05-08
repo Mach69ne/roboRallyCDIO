@@ -54,10 +54,22 @@ public class MoveController
                 case SPAM:
                     this.useSpamCard(player);
                     break;
+                case TROJAN_HORSE:
+                    this.useTrojanHorse(player);
+                    break;
                 default:
                     throw new RuntimeException("Something went wrong");
             }
         }
+    }
+
+    /**
+     * @param player
+     * @author Mustafa
+     */
+    public void useTrojanHorse(@NotNull Player player) {
+        useSpamCard(player);
+        useSpamCard(player);
     }
 
     /**
