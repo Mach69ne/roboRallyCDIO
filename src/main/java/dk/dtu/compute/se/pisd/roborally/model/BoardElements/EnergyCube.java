@@ -20,6 +20,7 @@ public class EnergyCube extends NullBoardElement {
     @Override
     public void activate() {
         this.getSpace().getPlayer().pickUpEnergyCube();
-        // energy should be removed from the space
+        this.getSpace().setBoardElement(null);
+
     }
 }
