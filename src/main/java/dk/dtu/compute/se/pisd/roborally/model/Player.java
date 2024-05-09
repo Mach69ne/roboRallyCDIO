@@ -56,6 +56,7 @@ public class Player extends Subject
     private int tabNumber;
     private boolean movedByConveyorThisTurn;
     private int energyCubes;
+    private ArrayList<Card> UpgradeCardsards = new ArrayList<>();
 
     /**
      * @param board the board to which this player belongs
