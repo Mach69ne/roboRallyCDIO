@@ -21,6 +21,8 @@
  */
 package dk.dtu.compute.se.pisd.roborally.model;
 
+import static dk.dtu.compute.se.pisd.roborally.model.Command.DONT_MOVE;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -41,7 +43,9 @@ public enum Command {
     FAST_FORWARD("Fast Fwd"),
     OPTION_LEFT_RIGHT("Left OR Right",LEFT, RIGHT),
     TROJAN_HORSE("Trojan Horse"),
-    SPAM("SPAM");
+    SPAM("SPAM"),
+    DONT_MOVE("Dont Move"),
+    OPTION_FORWARD_OR_NOT("Forward or Not", FORWARD, DONT_MOVE);
 
 
     final public String displayName;

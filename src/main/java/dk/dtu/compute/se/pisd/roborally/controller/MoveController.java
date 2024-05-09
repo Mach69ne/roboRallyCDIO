@@ -4,6 +4,9 @@ import dk.dtu.compute.se.pisd.roborally.model.Command;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
+
+import static dk.dtu.compute.se.pisd.roborally.model.Command.OPTION_FORWARD_OR_NOT;
+
 import org.jetbrains.annotations.NotNull;
 
 public class MoveController
@@ -28,6 +31,8 @@ public class MoveController
     {
         if (player.board == gameController.board && command != null)
         {
+
+
             // XXX This is a very simplistic way of dealing with some basic cards and
             //     their execution. This should eventually be done in a more elegant way
             //     (this concerns the way cards are modelled as well as the way they are executed).
@@ -35,6 +40,9 @@ public class MoveController
             switch (command)
             {
                 case FORWARD:
+                    if(player.checkIfOwnsUpgradeCard("BRAKES")){
+                        executeCommand(player, OPTION_FORWARD_OR_NOT);
+                    }
                     this.moveForward(player);
                     break;
                 case RIGHT:

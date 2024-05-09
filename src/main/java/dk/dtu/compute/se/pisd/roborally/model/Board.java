@@ -64,6 +64,7 @@ public class Board extends Subject
     private Phase phase = INITIALISATION;
     private int step = 0;
     private boolean stepMode;
+    private ArrayList<UpgradeCards> upgradeCards = new ArrayList<>();
 
 
     /**
@@ -105,6 +106,9 @@ public class Board extends Subject
         }
         spaces[4][4].setBoardElement(new Antenna(spaces[4][4]));
         this.activateBoardElements();
+    
+        this.upgradeCards = UpgradeCardsInfo.createUpgradeCards();
+    
     }
 
     /**

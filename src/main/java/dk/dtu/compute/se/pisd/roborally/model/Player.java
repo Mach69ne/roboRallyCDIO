@@ -56,7 +56,7 @@ public class Player extends Subject
     private int tabNumber;
     private boolean movedByConveyorThisTurn;
     private int energyCubes;
-    private ArrayList<Card> UpgradeCardsards = new ArrayList<>();
+    private ArrayList<UpgradeCards> upgradeCards = new ArrayList<>();
 
     /**
      * @param board the board to which this player belongs
@@ -323,5 +323,16 @@ public class Player extends Subject
         }
 
         return cardToReturn;
+    }
+
+    public boolean checkIfOwnsUpgradeCard(String upgradeCardName){
+        for(int i = 0; i < upgradeCards.size(); i++){
+            if(upgradeCards.get(i).getName().equals(upgradeCardName)){
+
+                return true;
+            }
+
+        } 
+        return false;
     }
 }
