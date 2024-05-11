@@ -1,6 +1,7 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
 import dk.dtu.compute.se.pisd.roborally.model.*;
+import javafx.scene.image.Image;
 
 /**
  * @author
@@ -12,6 +13,7 @@ public class BoardLaser extends BoardElement
     {
         super(heading, true, space);
         space.board.addBoardElement(Board.BOARD_LASER_INDEX, this);
+        setImage(new Image("file:src/main/resources/images/laser.png"));
     }
 
     /**
