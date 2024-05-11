@@ -22,17 +22,12 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardLaser;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Gear;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.Wall;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -99,9 +94,6 @@ public class SpaceView extends StackPane implements ViewObserver
     @Override
     public void updateView(Subject subject)
     {
-        if(space.x==3 && space.y==1){
-            Wall wall= new Wall(Heading.SOUTH,true,space);
-        }
         if (subject == this.space)
         {
             this.getChildren().clear();
