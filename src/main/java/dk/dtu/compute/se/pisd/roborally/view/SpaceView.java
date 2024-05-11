@@ -98,8 +98,7 @@ public class SpaceView extends StackPane implements ViewObserver
     public void updateView(Subject subject)
     {
         if(space.x==3 && space.y==1){
-            Wall wall = new Wall(Heading.EAST, false, space);
-            wall.setImage(new Image("file:src/main/resources/images/wall.png"));
+            Wall wall = new Wall(Heading.WEST, true, space);
         }
         if (subject == this.space)
         {

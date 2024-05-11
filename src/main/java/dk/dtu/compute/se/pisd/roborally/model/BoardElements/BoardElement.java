@@ -48,7 +48,7 @@ public abstract class BoardElement
     public boolean getCanWalkInto(Heading heading)
     {
         Heading headingToCheck = heading.next().next();
-        return this.isWalkable && this.heading == headingToCheck;
+        return this.isWalkable && this.heading != headingToCheck;
     }
 
     /**
