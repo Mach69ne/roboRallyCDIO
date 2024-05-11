@@ -2,6 +2,7 @@ package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
+import javafx.scene.image.Image;
 
 /**
  * This class represents an energy cube on the board.
@@ -14,7 +15,7 @@ public class EnergyCube extends NullBoardElement {
     public EnergyCube(Space space) {
         super(space);
         space.board.addBoardElement(Board.ENERGY_SPACE_INDEX, this);
-
+        setImage(new Image("file:src/main/resources/images/energyCube.png"));
     }
 
     @Override
