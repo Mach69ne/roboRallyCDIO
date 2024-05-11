@@ -13,7 +13,7 @@ public abstract class BoardElement
     private final boolean isWalkable;
     private final Heading heading;
     private final Space space;
-    private final Image image;
+    private Image image;
 
     //All method calls to this method should be looked at, to ensure it is the proper functionality
     protected BoardElement(Heading heading, boolean isWalkable, Space space)
@@ -27,14 +27,7 @@ public abstract class BoardElement
         this.heading = heading;
         this.space = space;
         this.space.setBoardElement(this);
-        if (image == null)
-        {
-            this.image = new Image("file:src/main/Resources/Images/empty.png");
-        }
-        else
-        {
-            this.image = image;
-        }
+        this.setImage(image);
     }
 
     /**
@@ -102,5 +95,17 @@ public abstract class BoardElement
     public Image getImage()
     {
         return image;
+    }
+
+    public void setImage(Image image)
+    {
+        if (image == null)
+        {
+            this.image = new Image("file:src/main/Resources/Images/empty.png");
+        }
+        else
+        {
+            this.image = image;
+        }
     }
 }
