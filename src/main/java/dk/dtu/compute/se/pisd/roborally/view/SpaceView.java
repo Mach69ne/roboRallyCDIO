@@ -22,12 +22,10 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.Wall;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -122,7 +120,7 @@ public class SpaceView extends StackPane implements ViewObserver
         {
             this.getChildren().clear();
             updatePlayer();
-            updateBoardElement(this.space.getBoardElement());
+            updateBoardElement();
         }
     }
 
@@ -150,11 +148,10 @@ public class SpaceView extends StackPane implements ViewObserver
         }
     }
 
-    private void updateBoardElement(BoardElement boardElement)
+    private void updateBoardElement()
     {
         this.getChildren().add(imageView);
-        Image image = new Image("file:src/main/Resources/Images/wall.png");
-        imageView.setImage(image);
+        imageView.setImage(this.space.getBoardElement().getImage());
     }
 
 }

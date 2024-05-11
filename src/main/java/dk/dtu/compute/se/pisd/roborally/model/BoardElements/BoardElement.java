@@ -3,6 +3,7 @@ package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
+import javafx.scene.image.Image;
 
 /**
  * @author
@@ -12,13 +13,28 @@ public abstract class BoardElement
     private final boolean isWalkable;
     private final Heading heading;
     private final Space space;
+    private final Image image;
 
+    //All method calls to this method should be looked at, to ensure it is the proper functionality
     protected BoardElement(Heading heading, boolean isWalkable, Space space)
+    {
+        this(heading, isWalkable, space, null);
+    }
+
+    protected BoardElement(Heading heading, boolean isWalkable, Space space, Image image)
     {
         this.isWalkable = isWalkable;
         this.heading = heading;
         this.space = space;
         this.space.setBoardElement(this);
+        if (image == null)
+        {
+            this.image = new Image("file:src/main/Resources/Images/empty.png");
+        }
+        else
+        {
+            this.image = image;
+        }
     }
 
     /**
@@ -81,5 +97,10 @@ public abstract class BoardElement
     public Heading getHeading()
     {
         return this.heading;
+    }
+
+    public Image getImage()
+    {
+        return image;
     }
 }
