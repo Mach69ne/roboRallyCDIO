@@ -3,6 +3,7 @@ package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
+import javafx.scene.image.Image;
 
 /**
  * @author
@@ -14,6 +15,7 @@ public class RebootToken extends BoardElement
     {
         super(heading, true, space);
         space.board.setRebootToken(this);
+        setImage(new Image("file:src/main/resources/images/respawn.png"));
     }
 
     /**
