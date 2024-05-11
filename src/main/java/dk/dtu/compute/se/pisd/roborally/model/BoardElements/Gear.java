@@ -2,6 +2,7 @@ package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
+import javafx.scene.image.Image;
 
 /**
  * @author
@@ -14,6 +15,11 @@ public class Gear extends NullBoardElement
     {
         super(isWalkable, space);
         this.isClockwise = isClockwise;
+        if(this.isClockwise) {
+            setImage(new Image("file:src/main/resources/images/gearRight.png"));
+        }else {
+            setImage(new Image("file:src/main/resources/images/gearLeft.png"));
+        }
         space.board.addBoardElement(Board.GEARS_INDEX, this);
     }
 
