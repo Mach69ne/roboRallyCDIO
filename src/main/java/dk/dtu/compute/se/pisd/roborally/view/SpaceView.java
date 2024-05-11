@@ -22,6 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.Wall;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
@@ -47,6 +48,8 @@ public class SpaceView extends StackPane implements ViewObserver
 
     public final Space space;
 
+    private final ImageView imageView;
+
 
     /**
      * @param space
@@ -55,7 +58,9 @@ public class SpaceView extends StackPane implements ViewObserver
     public SpaceView(@NotNull Space space)
     {
         this.space = space;
-
+        this.imageView = new ImageView();
+        this.imageView.setFitWidth(SPACE_WIDTH);
+        this.imageView.setFitHeight(SPACE_HEIGHT);
         // XXX the following styling should better be done with styles
         this.setPrefWidth(SPACE_WIDTH);
         this.setMinWidth(SPACE_WIDTH);
@@ -115,11 +120,9 @@ public class SpaceView extends StackPane implements ViewObserver
     {
         if (subject == this.space)
         {
+            this.getChildren().clear();
             updatePlayer();
-        }
-        if (space.x == 4 && space.y == 4)
-        {
-            drawWall(new Wall(Heading.WEST, false, space));
+            updateBoardElement(this.space.getBoardElement());
         }
     }
 
@@ -128,7 +131,6 @@ public class SpaceView extends StackPane implements ViewObserver
      */
     private void updatePlayer()
     {
-        this.getChildren().clear();
 
         Player player = space.getPlayer();
         if (player != null)
@@ -148,22 +150,11 @@ public class SpaceView extends StackPane implements ViewObserver
         }
     }
 
-    private void drawWall(Wall wall)
+    private void updateBoardElement(BoardElement boardElement)
     {
-        StackPane wallPane = new StackPane();
-        wallPane.setPrefWidth(SPACE_WIDTH);
-        wallPane.setPrefHeight(SPACE_HEIGHT);
-        wallPane.setMaxWidth(SPACE_WIDTH);
-        wallPane.setMaxHeight(SPACE_HEIGHT);
-        wallPane.setMinWidth(SPACE_WIDTH);
-        wallPane.setMinHeight(SPACE_HEIGHT);
+        this.getChildren().add(imageView);
         Image image = new Image("file:src/main/Resources/Images/wall.png");
-        ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(SPACE_WIDTH);
-        imageView.setFitHeight(SPACE_HEIGHT);
-        wallPane.getChildren().add(imageView);
-        this.getChildren().add(wallPane);
-
+        imageView.setImage(image);
     }
 
 }
