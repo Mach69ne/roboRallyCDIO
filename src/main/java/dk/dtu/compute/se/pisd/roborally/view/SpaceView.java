@@ -101,9 +101,22 @@ public class SpaceView extends StackPane implements ViewObserver {
     }
 
     private void drawWall(Wall wall){
+        StackPane wallPane = new StackPane();
+        wallPane.setPrefWidth(SPACE_WIDTH);
+        wallPane.setPrefHeight(SPACE_HEIGHT);
+        wallPane.setMaxWidth(SPACE_WIDTH);
+        wallPane.setMaxHeight(SPACE_HEIGHT);
+        wallPane.setMinWidth(SPACE_WIDTH);
+        wallPane.setMinHeight(SPACE_HEIGHT);
         Rectangle wall2 = new Rectangle(SPACE_WIDTH, 3);
         wall2.setFill(Color.RED);
-        this.getChildren().add(wall2);
+        if(wall.getHeading()==Heading.NORTH) {
+            wall2.setTranslateY(-SPACE_WIDTH / 2);
+        }else{
+            wall2.setTranslateY(SPACE_WIDTH / 2);
+        }
+        wallPane.getChildren().add(wall2);
+        this.getChildren().add(wallPane);
 
     }
 
@@ -117,7 +130,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             updatePlayer();
         }
         if(space.x==4 && space.y==4){
-            drawWall(new Wall(Heading.NORTH, false, space));
+            drawWall(new Wall(Heading.SOUTH, false, space));
         }
     }
 
