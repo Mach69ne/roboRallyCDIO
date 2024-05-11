@@ -26,24 +26,21 @@ import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.Wall;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.StrokeLineCap;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
-public class SpaceView extends StackPane implements ViewObserver {
+public class SpaceView extends StackPane implements ViewObserver
+{
 
     final public static int SPACE_HEIGHT = 60; // 60; // 75;
     final public static int SPACE_WIDTH = 60;  // 60; // 75;
@@ -55,7 +52,8 @@ public class SpaceView extends StackPane implements ViewObserver {
      * @param space
      * @author
      */
-    public SpaceView(@NotNull Space space) {
+    public SpaceView(@NotNull Space space)
+    {
         this.space = space;
 
         // XXX the following styling should better be done with styles
@@ -67,9 +65,12 @@ public class SpaceView extends StackPane implements ViewObserver {
         this.setMinHeight(SPACE_HEIGHT);
         this.setMaxHeight(SPACE_HEIGHT);
 
-        if ((space.x + space.y) % 2 == 0) {
+        if ((space.x + space.y) % 2 == 0)
+        {
             this.setStyle("-fx-background-color: white;");
-        } else {
+        }
+        else
+        {
             this.setStyle("-fx-background-color: black;");
         }
 
@@ -81,28 +82,49 @@ public class SpaceView extends StackPane implements ViewObserver {
     }
 
     /**
+     * @param subject
      * @author
      */
-    private void updatePlayer() {
+    @Override
+    public void updateView(Subject subject)
+    {
+        if (subject == this.space)
+        {
+            updatePlayer();
+        }
+        if (space.x == 4 && space.y == 4)
+        {
+            drawWall(new Wall(Heading.WEST, false, space));
+        }
+    }
+
+    /**
+     * @author
+     */
+    private void updatePlayer()
+    {
         this.getChildren().clear();
 
         Player player = space.getPlayer();
-        if (player != null) {
-            Polygon arrow = new Polygon(0.0, 0.0,
-                    10.0, 20.0,
-                    20.0, 0.0 );
-            try {
+        if (player != null)
+        {
+            Polygon arrow = new Polygon(0.0, 0.0, 10.0, 20.0, 20.0, 0.0);
+            try
+            {
                 arrow.setFill(Color.valueOf(player.getColor()));
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 arrow.setFill(Color.MEDIUMPURPLE);
             }
 
-            arrow.setRotate((90*player.getHeading().ordinal())%360);
+            arrow.setRotate((90 * player.getHeading().ordinal()) % 360);
             this.getChildren().add(arrow);
         }
     }
 
-    private void drawWall(Wall wall){
+    private void drawWall(Wall wall)
+    {
         StackPane wallPane = new StackPane();
         wallPane.setPrefWidth(SPACE_WIDTH);
         wallPane.setPrefHeight(SPACE_HEIGHT);
@@ -110,48 +132,40 @@ public class SpaceView extends StackPane implements ViewObserver {
         wallPane.setMaxHeight(SPACE_HEIGHT);
         wallPane.setMinWidth(SPACE_WIDTH);
         wallPane.setMinHeight(SPACE_HEIGHT);
-        Image image = new Image("file:src/main/resources.images/wall.png");        ImageView imageView = new ImageView(image);
+        Image image = new Image("file:src/main/resources.images/wall.png");
+        ImageView imageView = new ImageView(image);
         imageView.setFitWidth(SPACE_WIDTH);
         imageView.setFitHeight(SPACE_HEIGHT);
         wallPane.getChildren().add(imageView);
         final Rectangle wall2 = getRectangle(wall);
-        wallPane.getChildren().add(wall2);
+        //wallPane.getChildren().add(wall2);
         this.getChildren().add(wallPane);
 
     }
 
-    private static @NotNull Rectangle getRectangle(Wall wall) {
+    private static @NotNull Rectangle getRectangle(Wall wall)
+    {
         Rectangle wall2 = new Rectangle(SPACE_WIDTH, 3);
         wall2.setFill(Color.RED);
-        if(wall.getHeading()==Heading.NORTH) {
+        if (wall.getHeading() == Heading.NORTH)
+        {
             wall2.setTranslateY(-SPACE_WIDTH / 2);
         }
-        if(wall.getHeading()==Heading.SOUTH){
+        if (wall.getHeading() == Heading.SOUTH)
+        {
             wall2.setTranslateY(SPACE_WIDTH / 2);
         }
-        if (wall.getHeading()==Heading.EAST) {
+        if (wall.getHeading() == Heading.EAST)
+        {
             wall2.setTranslateX(SPACE_WIDTH / 2);
             wall2.setRotate(90);
         }
-        if (wall.getHeading()==Heading.WEST) {
+        if (wall.getHeading() == Heading.WEST)
+        {
             wall2.setTranslateX(-SPACE_WIDTH / 2);
             wall2.setRotate(90);
         }
         return wall2;
-    }
-
-    /**
-     * @param subject
-     * @author
-     */
-    @Override
-    public void updateView(Subject subject) {
-        if (subject == this.space) {
-            updatePlayer();
-        }
-        if(space.x==4 && space.y==4){
-            drawWall(new Wall(Heading.WEST, false, space));
-        }
     }
 
 }

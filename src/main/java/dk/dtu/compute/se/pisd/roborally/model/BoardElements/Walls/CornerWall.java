@@ -12,9 +12,9 @@ public class CornerWall extends BoardElement
 {
     private final Heading heading2;
 
-    CornerWall(Heading heading1, Heading heading2, boolean isWalkable, Space space)
+    CornerWall(Heading heading1, Heading heading2, Space space)
     {
-        super(heading1, isWalkable, space);
+        super(heading1, true, space);
         this.heading2 = heading2;
         space.board.addBoardElement(Board.NOT_ACTIVATE_ABLE_INDEX, this);
     }
