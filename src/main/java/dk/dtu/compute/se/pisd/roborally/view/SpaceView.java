@@ -30,7 +30,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import org.jetbrains.annotations.NotNull;
 
@@ -48,6 +47,7 @@ public class SpaceView extends StackPane implements ViewObserver
     public final Space space;
 
     private final ImageView imageView;
+    private final ImageView playerImageView;
 
 
     /**
@@ -60,6 +60,9 @@ public class SpaceView extends StackPane implements ViewObserver
         this.imageView = new ImageView();
         this.imageView.setFitWidth(SPACE_WIDTH);
         this.imageView.setFitHeight(SPACE_HEIGHT);
+        this.playerImageView = new ImageView();
+        this.playerImageView.setFitWidth(SPACE_WIDTH);
+        this.playerImageView.setFitHeight(SPACE_HEIGHT);
         // XXX the following styling should better be done with styles
         this.setPrefWidth(SPACE_WIDTH);
         this.setMinWidth(SPACE_WIDTH);
@@ -139,18 +142,10 @@ public class SpaceView extends StackPane implements ViewObserver
         Player player = space.getPlayer();
         if (player != null)
         {
-            Polygon arrow = new Polygon(0.0, 0.0, 10.0, 20.0, 20.0, 0.0);
-            try
-            {
-                arrow.setFill(Color.valueOf(player.getColor()));
-            }
-            catch (Exception e)
-            {
-                arrow.setFill(Color.MEDIUMPURPLE);
-            }
-
-            arrow.setRotate((90 * player.getHeading().ordinal()) % 360);
-            this.getChildren().add(arrow);
+            int tabNumber = player.getTabNumber() + 1;
+            playerImageView.setImage(new Image("file:src/main/Resources/Images/r" + tabNumber + ".png"));
+            playerImageView.setRotate(90 * player.getHeading().ordinal() % 360);
+            this.getChildren().add(playerImageView);
         }
     }
 
