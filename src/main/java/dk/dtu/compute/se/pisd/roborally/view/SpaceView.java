@@ -26,6 +26,7 @@ import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.Wall;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -84,29 +85,25 @@ public class SpaceView extends StackPane implements ViewObserver
         update(space);
     }
 
-    private static @NotNull Rectangle getRectangle(Wall wall)
-    {
-        Rectangle wall2 = new Rectangle(SPACE_WIDTH, 3);
-        wall2.setFill(Color.RED);
-        if (wall.getHeading() == Heading.NORTH)
-        {
-            wall2.setTranslateY(-SPACE_WIDTH / 2);
+    private void drawWall(Wall wall){
+        Image image = new Image("file:src/main/resources/images/wall.png");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(10);
+        imageView.setFitHeight(SPACE_HEIGHT);
+        if(wall.getHeading()==Heading.NORTH||wall.getHeading()==Heading.SOUTH){
+            imageView.setRotate(90);
+            if(wall.getHeading()==Heading.NORTH){
+                imageView.setTranslateY(-SPACE_HEIGHT/2);
+            }else{
+                imageView.setTranslateY((SPACE_HEIGHT/2)-3);
+
+            }
+        }else if (wall.getHeading()==Heading.EAST){
+            imageView.setTranslateX((SPACE_WIDTH/2)-3);
+        }else {
+            imageView.setTranslateX(-SPACE_WIDTH/2);
         }
-        if (wall.getHeading() == Heading.SOUTH)
-        {
-            wall2.setTranslateY(SPACE_WIDTH / 2);
-        }
-        if (wall.getHeading() == Heading.EAST)
-        {
-            wall2.setTranslateX(SPACE_WIDTH / 2);
-            wall2.setRotate(90);
-        }
-        if (wall.getHeading() == Heading.WEST)
-        {
-            wall2.setTranslateX(-SPACE_WIDTH / 2);
-            wall2.setRotate(90);
-        }
-        return wall2;
+        this.getChildren().add(imageView);
     }
 
     /**
@@ -121,6 +118,9 @@ public class SpaceView extends StackPane implements ViewObserver
             this.getChildren().clear();
             updateBoardElement();
             updatePlayer();
+        }if(space.x==3 && space.y==1){
+            Wall wall = new Wall(Heading.EAST, false, space);
+            drawWall(wall);
         }
     }
 
