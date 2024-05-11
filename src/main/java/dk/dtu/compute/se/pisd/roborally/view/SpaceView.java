@@ -22,6 +22,8 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardLaser;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Gear;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.Wall;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
@@ -98,7 +100,7 @@ public class SpaceView extends StackPane implements ViewObserver
     public void updateView(Subject subject)
     {
         if(space.x==3 && space.y==1){
-            Wall wall = new Wall(Heading.WEST, true, space);
+            Wall wall= new Wall(Heading.SOUTH,true,space);
         }
         if (subject == this.space)
         {
@@ -112,6 +114,13 @@ public class SpaceView extends StackPane implements ViewObserver
     {
         this.getChildren().add(imageView);
         imageView.setImage(this.space.getBoardElement().getImage());
+        if(this.space.getBoardElement().getHeading()==Heading.NORTH){
+            imageView.setRotate(90);
+        }if(this.space.getBoardElement().getHeading()==Heading.EAST){
+            imageView.setRotate(180);
+        }if(this.space.getBoardElement().getHeading()==Heading.SOUTH){
+            imageView.setRotate(270);
+    }
     }
 
     /**
