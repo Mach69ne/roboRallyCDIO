@@ -1,7 +1,8 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
-import dk.dtu.compute.se.pisd.roborally.model.*;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.Wall;
+import dk.dtu.compute.se.pisd.roborally.model.Board;
+import dk.dtu.compute.se.pisd.roborally.model.Heading;
+import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.image.Image;
 
 /**
@@ -30,8 +31,7 @@ public class BoardLaser extends BoardElement
         {
             if (spaceToCheck.getPlayer() != null)
             {
-                spaceToCheck.getPlayer().addCardToDiscardPile(new Card(Command.SPAM));
-                spaceToCheck.getPlayer().addCardToDiscardPile(new Card(Command.SPAM));
+                spaceToCheck.getPlayer().addSpamToDiscard(2);
             }
             Space nextSpace = spaceToCheck.board.getNeighbour(this.getSpace(), headingToCheck);
             // We check if we were to hit a board element, and break if we do

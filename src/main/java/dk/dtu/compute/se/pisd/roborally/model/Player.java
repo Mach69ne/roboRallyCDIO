@@ -48,6 +48,7 @@ public class Player extends Subject
     private final CardField[] cards;
     private final Deck activeCardsPile;
     private final Deck discardedCardsPile;
+    private final ArrayList<UpgradeCards> upgradeCards = new ArrayList<>();
     private ArrayList<Checkpoint> visitedCheckPoints;
     private String name;
     private String color;
@@ -56,7 +57,6 @@ public class Player extends Subject
     private int tabNumber;
     private boolean movedByConveyorThisTurn;
     private int energyCubes;
-    private ArrayList<UpgradeCards> upgradeCards = new ArrayList<>();
 
     /**
      * @param board the board to which this player belongs
@@ -285,6 +285,10 @@ public class Player extends Subject
     {
         if (card != null)
         {
+            if (card.command == SPAM)
+            {
+                return;
+            }
             this.discardedCardsPile.playerCards.add(card);
         }
     }
@@ -325,14 +329,25 @@ public class Player extends Subject
         return cardToReturn;
     }
 
-    public boolean checkIfOwnsUpgradeCard(String upgradeCardName){
-        for(int i = 0; i < upgradeCards.size(); i++){
-            if(upgradeCards.get(i).getName().equals(upgradeCardName)){
+    public boolean checkIfOwnsUpgradeCard(String upgradeCardName)
+    {
+        for (int i = 0; i < upgradeCards.size(); i++)
+        {
+            if (upgradeCards.get(i).getName().equals(upgradeCardName))
+            {
 
                 return true;
             }
 
-        } 
+        }
         return false;
+    }
+
+    public void addSpamToDiscard(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            this.discardedCardsPile.playerCards.add(new Card(SPAM));
+        }
     }
 }
