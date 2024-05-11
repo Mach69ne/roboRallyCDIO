@@ -28,6 +28,8 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
@@ -108,16 +110,34 @@ public class SpaceView extends StackPane implements ViewObserver {
         wallPane.setMaxHeight(SPACE_HEIGHT);
         wallPane.setMinWidth(SPACE_WIDTH);
         wallPane.setMinHeight(SPACE_HEIGHT);
+        Image image = new Image("file:src/main/resources.images/wall.png");        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(SPACE_WIDTH);
+        imageView.setFitHeight(SPACE_HEIGHT);
+        wallPane.getChildren().add(imageView);
+        final Rectangle wall2 = getRectangle(wall);
+        wallPane.getChildren().add(wall2);
+        this.getChildren().add(wallPane);
+
+    }
+
+    private static @NotNull Rectangle getRectangle(Wall wall) {
         Rectangle wall2 = new Rectangle(SPACE_WIDTH, 3);
         wall2.setFill(Color.RED);
         if(wall.getHeading()==Heading.NORTH) {
             wall2.setTranslateY(-SPACE_WIDTH / 2);
-        }else{
+        }
+        if(wall.getHeading()==Heading.SOUTH){
             wall2.setTranslateY(SPACE_WIDTH / 2);
         }
-        wallPane.getChildren().add(wall2);
-        this.getChildren().add(wallPane);
-
+        if (wall.getHeading()==Heading.EAST) {
+            wall2.setTranslateX(SPACE_WIDTH / 2);
+            wall2.setRotate(90);
+        }
+        if (wall.getHeading()==Heading.WEST) {
+            wall2.setTranslateX(-SPACE_WIDTH / 2);
+            wall2.setRotate(90);
+        }
+        return wall2;
     }
 
     /**
@@ -130,7 +150,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             updatePlayer();
         }
         if(space.x==4 && space.y==4){
-            drawWall(new Wall(Heading.SOUTH, false, space));
+            drawWall(new Wall(Heading.WEST, false, space));
         }
     }
 
