@@ -88,26 +88,7 @@ public class SpaceView extends StackPane implements ViewObserver
         update(space);
     }
 
-    private void drawWall(Wall wall){
-        Image image = new Image("file:src/main/resources/images/wall.png");
-        ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(10);
-        imageView.setFitHeight(SPACE_HEIGHT);
-        if(wall.getHeading()==Heading.NORTH||wall.getHeading()==Heading.SOUTH){
-            imageView.setRotate(90);
-            if(wall.getHeading()==Heading.NORTH){
-                imageView.setTranslateY(-SPACE_HEIGHT/2);
-            }else{
-                imageView.setTranslateY((SPACE_HEIGHT/2)-3);
 
-            }
-        }else if (wall.getHeading()==Heading.EAST){
-            imageView.setTranslateX((SPACE_WIDTH/2)-3);
-        }else {
-            imageView.setTranslateX(-SPACE_WIDTH/2);
-        }
-        this.getChildren().add(imageView);
-    }
 
     /**
      * @param subject
@@ -116,14 +97,15 @@ public class SpaceView extends StackPane implements ViewObserver
     @Override
     public void updateView(Subject subject)
     {
+        if(space.x==3 && space.y==1){
+            Wall wall = new Wall(Heading.EAST, false, space);
+            wall.setImage(new Image("file:src/main/resources/images/wall.png"));
+        }
         if (subject == this.space)
         {
             this.getChildren().clear();
             updateBoardElement();
             updatePlayer();
-        }if(space.x==3 && space.y==1){
-            Wall wall = new Wall(Heading.EAST, false, space);
-            drawWall(wall);
         }
     }
 
