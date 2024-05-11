@@ -119,9 +119,15 @@ public class SpaceView extends StackPane implements ViewObserver
         if (subject == this.space)
         {
             this.getChildren().clear();
-            updatePlayer();
             updateBoardElement();
+            updatePlayer();
         }
+    }
+
+    private void updateBoardElement()
+    {
+        this.getChildren().add(imageView);
+        imageView.setImage(this.space.getBoardElement().getImage());
     }
 
     /**
@@ -146,12 +152,6 @@ public class SpaceView extends StackPane implements ViewObserver
             arrow.setRotate((90 * player.getHeading().ordinal()) % 360);
             this.getChildren().add(arrow);
         }
-    }
-
-    private void updateBoardElement()
-    {
-        this.getChildren().add(imageView);
-        imageView.setImage(this.space.getBoardElement().getImage());
     }
 
 }
