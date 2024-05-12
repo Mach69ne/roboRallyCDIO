@@ -32,6 +32,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -64,6 +65,7 @@ public class CardFieldView extends GridPane implements ViewObserver {
     private CardField field;
 
     private Label label;
+    private ImageView imageView;
 
     private GameController gameController;
 
@@ -93,6 +95,12 @@ public class CardFieldView extends GridPane implements ViewObserver {
         label.setWrapText(true);
         label.setMouseTransparent(true);
         this.add(label, 0, 0);
+
+        imageView = new ImageView();
+        imageView.setFitWidth(CARDFIELD_WIDTH);
+        imageView.setFitHeight(CARDFIELD_HEIGHT);
+        imageView.setPreserveRatio(true);
+        this.add(imageView, 0, 0);
 
         this.setOnDragDetected(new OnDragDetectedHandler());
         this.setOnDragOver(new OnDragOverHandler());
@@ -163,10 +171,13 @@ public class CardFieldView extends GridPane implements ViewObserver {
     public void updateView(Subject subject) {
         if (subject == field && subject != null) {
             Card card = field.getCard();
+
             if (card != null && field.isVisible()) {
                 label.setText(card.getName());
+                imageView.setImage(card.getImage());
             } else {
                 label.setText("");
+                imageView.setImage(null);
             }
         }
     }

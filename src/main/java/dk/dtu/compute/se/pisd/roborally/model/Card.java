@@ -42,7 +42,9 @@ public class Card extends Subject {
      * @author
      */
     public Card(@NotNull Command command) {
+
         this.command = command;
+        this.image = getImageBasedOnCommand(command);
     }
     public Card(@NotNull Command command, Image image) {
         this.command = command;
@@ -66,6 +68,22 @@ public class Card extends Subject {
         else
         {
             this.image = image;
+        }
+    }
+
+    private Image getImageBasedOnCommand(Command command) {
+        switch (command) {
+            case FORWARD:
+                return new Image("file:src/main/Resources/Images/move1.png");
+            case FAST_FORWARD:
+                return new Image("file:src/main/Resources/Images/move2.png");
+            case LEFT:
+                return new Image("file:src/main/Resources/Images/turnL.png");
+            case RIGHT:
+                return new Image("file:src/main/Resources/Images/turnR.png");
+
+            default:
+                return null;
         }
     }
 
