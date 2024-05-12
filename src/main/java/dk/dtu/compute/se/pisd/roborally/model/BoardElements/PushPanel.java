@@ -11,9 +11,9 @@ import javafx.scene.image.Image;
 public class PushPanel extends BoardElement
 {
 
-    public PushPanel(Heading orientation, Space space)
+    public PushPanel(Heading heading, Space space)
     {
-        super(orientation, true, space);
+        super(heading, true, space);
         space.board.addBoardElement(Board.PUSH_PANELS_INDEX, this);
         setImage(new Image("file:src/main/resources/images/push135.png"));
     }
