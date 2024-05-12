@@ -24,8 +24,10 @@ package dk.dtu.compute.se.pisd.roborally;
 import dk.dtu.compute.se.pisd.roborally.controller.AppController;
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 import dk.dtu.compute.se.pisd.roborally.view.BoardView;
+import dk.dtu.compute.se.pisd.roborally.view.MainMenuView;
 import dk.dtu.compute.se.pisd.roborally.view.RoboRallyMenuBar;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -37,11 +39,12 @@ import java.awt.*;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
-public class RoboRally extends Application {
+public class RoboRally extends Application
+{
 
     private static final int MIN_APP_WIDTH = 600;
+    private static final int MIN_APP_HEIGHT = 800;
 
     private Stage stage;
     private BorderPane boardRoot;
@@ -49,13 +52,34 @@ public class RoboRally extends Application {
 
     // private AppController appController;
 
+    /**
+     * @param args the command line arguments
+     * Start the application by launching the JavaFX application
+     */
+    public static void main(String[] args)
+    {
+        launch(args);
+    }
+
+    /**
+     * @throws Exception in case of an exception during the initialization
+     * @author
+     * Initialize the application
+     */
     @Override
-    public void init() throws Exception {
+    public void init() throws Exception
+    {
         super.init();
     }
 
+    /**
+     * @param primaryStage the primary stage for the application
+     * @author
+     * Start the application
+     */
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage)
+    {
         stage = primaryStage;
 
         AppController appController = new AppController(this);
@@ -64,39 +88,41 @@ public class RoboRally extends Application {
         // the board view (which initially is empty); it will be filled
         // when the user creates a new game or loads a game
         RoboRallyMenuBar menuBar = new RoboRallyMenuBar(appController);
+
         boardRoot = new BorderPane();
         VBox vbox = new VBox(menuBar, boardRoot);
         vbox.setMinWidth(MIN_APP_WIDTH);
+        vbox.setMinHeight(MIN_APP_HEIGHT);
         Scene primaryScene = new Scene(vbox);
-
+        //
+        // CREATE Main Menu
+        //
+        createMainMenuView(appController);
+        //
+        //
+        //
         stage.setScene(primaryScene);
         stage.setTitle("RoboRally");
-        stage.setOnCloseRequest(
-                e -> {
-                    e.consume();
-                    appController.exit();} );
+        stage.setOnCloseRequest(e -> {
+            e.consume();
+            appController.exit();
+        });
         stage.setResizable(false);
         stage.sizeToScene();
         stage.setX((double) (Toolkit.getDefaultToolkit().getScreenSize().width / 2) - (double) MIN_APP_WIDTH / 2);
         stage.setY(0.0);
+
         stage.show();
     }
 
-    public void createBoardView(GameController gameController) {
-        // if present, remove old BoardView
-        boardRoot.getChildren().clear();
-
-        if (gameController != null) {
-            // create and add view for new board
-            BoardView boardView = new BoardView(gameController);
-            boardRoot.setCenter(boardView);
-        }
-
-        stage.sizeToScene();
-    }
-
+    /**
+     * @throws Exception in case of an exception during the stop
+     * @author
+     * Stop the application
+     */
     @Override
-    public void stop() throws Exception {
+    public void stop() throws Exception
+    {
         super.stop();
 
         // XXX just in case we need to do something here eventually;
@@ -105,8 +131,42 @@ public class RoboRally extends Application {
         //     so that the AppController can take care of that.
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    /**
+     * @param appController the controller for the application
+     * @author
+     * Create the main menu view
+     */
+    public void createMainMenuView(AppController appController)
+    {
+        boardRoot.getChildren().clear();
+        if (appController != null)
+        {
+            MainMenuView mainMenu = new MainMenuView(appController);
+            mainMenu.setAlignment(Pos.CENTER);
+            boardRoot.setCenter(mainMenu);
+
+
+        }
+        stage.sizeToScene();
+    }
+
+    /**
+     * @param gameController the controller for the game
+     * @author
+     * Create the board view
+     */
+    public void createBoardView(GameController gameController)
+    {
+        // if present, remove old BoardView
+        boardRoot.getChildren().clear();
+
+        if (gameController != null)
+        {
+            // create and add view for new board
+            BoardView boardView = new BoardView(gameController);
+            boardRoot.setCenter(boardView);
+        }
+        stage.sizeToScene();
     }
 
 }

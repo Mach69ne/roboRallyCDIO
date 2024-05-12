@@ -25,31 +25,41 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Polygon;
-import javafx.scene.shape.StrokeLineCap;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
-public class SpaceView extends StackPane implements ViewObserver {
+public class SpaceView extends StackPane implements ViewObserver
+{
 
     final public static int SPACE_HEIGHT = 60; // 60; // 75;
     final public static int SPACE_WIDTH = 60;  // 60; // 75;
 
     public final Space space;
 
+    private final ImageView imageView;
+    private final ImageView playerImageView;
 
-    public SpaceView(@NotNull Space space) {
+
+    /**
+     * @param space
+     * @author
+     */
+    public SpaceView(@NotNull Space space)
+    {
         this.space = space;
-
+        this.imageView = new ImageView();
+        this.imageView.setFitWidth(SPACE_WIDTH);
+        this.imageView.setFitHeight(SPACE_HEIGHT);
+        this.playerImageView = new ImageView();
+        this.playerImageView.setFitWidth(SPACE_WIDTH);
+        this.playerImageView.setFitHeight(SPACE_HEIGHT);
         // XXX the following styling should better be done with styles
         this.setPrefWidth(SPACE_WIDTH);
         this.setMinWidth(SPACE_WIDTH);
@@ -59,9 +69,12 @@ public class SpaceView extends StackPane implements ViewObserver {
         this.setMinHeight(SPACE_HEIGHT);
         this.setMaxHeight(SPACE_HEIGHT);
 
-        if ((space.x + space.y) % 2 == 0) {
+        if ((space.x + space.y) % 2 == 0)
+        {
             this.setStyle("-fx-background-color: white;");
-        } else {
+        }
+        else
+        {
             this.setStyle("-fx-background-color: black;");
         }
 
@@ -72,29 +85,49 @@ public class SpaceView extends StackPane implements ViewObserver {
         update(space);
     }
 
-    private void updatePlayer() {
-        this.getChildren().clear();
 
-        Player player = space.getPlayer();
-        if (player != null) {
-            Polygon arrow = new Polygon(0.0, 0.0,
-                    10.0, 20.0,
-                    20.0, 0.0 );
-            try {
-                arrow.setFill(Color.valueOf(player.getColor()));
-            } catch (Exception e) {
-                arrow.setFill(Color.MEDIUMPURPLE);
-            }
 
-            arrow.setRotate((90*player.getHeading().ordinal())%360);
-            this.getChildren().add(arrow);
+    /**
+     * @param subject
+     * @author
+     */
+    @Override
+    public void updateView(Subject subject)
+    {
+        if (subject == this.space)
+        {
+            this.getChildren().clear();
+            updateBoardElement();
+            updatePlayer();
         }
     }
 
-    @Override
-    public void updateView(Subject subject) {
-        if (subject == this.space) {
-            updatePlayer();
+    private void updateBoardElement()
+    {
+        this.getChildren().add(imageView);
+        imageView.setImage(this.space.getBoardElement().getImage());
+        if(this.space.getBoardElement().getHeading()==Heading.NORTH){
+            imageView.setRotate(90);
+        }if(this.space.getBoardElement().getHeading()==Heading.EAST){
+            imageView.setRotate(180);
+        }if(this.space.getBoardElement().getHeading()==Heading.SOUTH){
+            imageView.setRotate(270);
+    }
+    }
+
+    /**
+     * @author
+     */
+    private void updatePlayer()
+    {
+
+        Player player = space.getPlayer();
+        if (player != null)
+        {
+            int tabNumber = player.getTabNumber() + 1;
+            playerImageView.setImage(new Image("file:src/main/Resources/Images/r" + tabNumber + ".png"));
+            playerImageView.setRotate(90 * player.getHeading().ordinal() % 360);
+            this.getChildren().add(playerImageView);
         }
     }
 

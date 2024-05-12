@@ -22,115 +22,332 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.controller.MoveController;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
+import static dk.dtu.compute.se.pisd.roborally.model.Command.SPAM;
 import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 
 /**
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
-public class Player extends Subject {
+public class Player extends Subject
+{
 
     final public static int NO_REGISTERS = 5;
     final public static int NO_CARDS = 8;
 
     final public Board board;
-
+    public final MoveController moveController;
+    private final CardField[] program;
+    private final CardField[] cards;
+    private final Deck activeCardsPile;
+    private final Deck discardedCardsPile;
+    private final ArrayList<UpgradeCards> upgradeCards = new ArrayList<>();
+    private ArrayList<Checkpoint> visitedCheckPoints;
     private String name;
     private String color;
-
     private Space space;
     private Heading heading = SOUTH;
+    private int tabNumber;
+    private boolean movedByConveyorThisTurn;
+    private int energyCubes;
 
-    private CommandCardField[] program;
-    private CommandCardField[] cards;
-
-    public Player(@NotNull Board board, String color, @NotNull String name) {
+    /**
+     * @param board the board to which this player belongs
+     * @param color the color of the player
+     * @param name  the name of the player
+     * @author
+     */
+    public Player(@NotNull Board board, String color, @NotNull String name, MoveController moveController)
+    {
         this.board = board;
         this.name = name;
         this.color = color;
-
         this.space = null;
-
-        program = new CommandCardField[NO_REGISTERS];
-        for (int i = 0; i < program.length; i++) {
-            program[i] = new CommandCardField(this);
+        this.moveController = moveController;
+        activeCardsPile = new Deck();
+        activeCardsPile.initializeAPlayerDeck();
+        activeCardsPile.shuffleDeck();
+        discardedCardsPile = new Deck();
+        energyCubes = 0;
+        program = new CardField[NO_REGISTERS];
+        for (int i = 0; i < program.length; i++)
+        {
+            program[i] = new CardField(this);
         }
 
-        cards = new CommandCardField[NO_CARDS];
-        for (int i = 0; i < cards.length; i++) {
-            cards[i] = new CommandCardField(this);
+        cards = new CardField[NO_CARDS];
+        for (int i = 0; i < cards.length; i++)
+        {
+            cards[i] = new CardField(this);
         }
     }
 
-    public String getName() {
+
+    /**
+     * @author Elias
+     */
+    public void die()
+    {
+        this.board.getRebootToken().reboot(this);
+    }
+
+    /**
+     * @return the name of the player
+     * @author
+     */
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
-        if (name != null && !name.equals(this.name)) {
+    /**
+     * @param name the name of the player
+     * @author
+     */
+    public void setName(String name)
+    {
+        if (name != null && !name.equals(this.name))
+        {
             this.name = name;
             notifyChange();
-            if (space != null) {
+            if (space != null)
+            {
                 space.playerChanged();
             }
         }
     }
 
-    public String getColor() {
+    /**
+     * @return the color of the player
+     * @author
+     */
+    public String getColor()
+    {
         return color;
     }
 
-    public void setColor(String color) {
+    /**
+     * @param color the color of the player
+     * @author
+     */
+    public void setColor(String color)
+    {
         this.color = color;
         notifyChange();
-        if (space != null) {
+        if (space != null)
+        {
             space.playerChanged();
         }
     }
 
-    public Space getSpace() {
+    /**
+     * @return the space on which the player is located
+     * @author
+     */
+    public Space getSpace()
+    {
         return space;
     }
 
-    public void setSpace(Space space) {
+    /**
+     * @param space the space on which the player is located
+     * @author
+     */
+    public void setSpace(Space space)
+    {
         Space oldSpace = this.space;
-        if (space != oldSpace &&
-                (space == null || space.board == this.board)) {
+        if (space != oldSpace && (space == null || space.board == this.board))
+        {
             this.space = space;
-            if (oldSpace != null) {
+            if (oldSpace != null)
+            {
                 oldSpace.setPlayer(null);
             }
-            if (space != null) {
+            if (space != null)
+            {
                 space.setPlayer(this);
             }
             notifyChange();
         }
     }
 
-    public Heading getHeading() {
+    /**
+     * @return the heading of the player
+     * @author
+     */
+    public Heading getHeading()
+    {
         return heading;
     }
 
-    public void setHeading(@NotNull Heading heading) {
-        if (heading != this.heading) {
+    /**
+     * @param heading the heading of the player
+     * @author
+     */
+    public void setHeading(@NotNull Heading heading)
+    {
+        if (heading != this.heading)
+        {
             this.heading = heading;
             notifyChange();
-            if (space != null) {
+            if (space != null)
+            {
                 space.playerChanged();
             }
         }
     }
 
-    public CommandCardField getProgramField(int i) {
+    /**
+     * @param i the index of the register to be returned
+     * @return the register with the given index
+     * @author
+     */
+    public CardField getProgramField(int i)
+    {
         return program[i];
     }
 
-    public CommandCardField getCardField(int i) {
+    /**
+     * @param i the index of the card field to be returned
+     * @return the card field with the given index
+     * @author
+     */
+    public CardField getCardField(int i)
+    {
         return cards[i];
     }
 
+    /**
+     * @param checkpoint
+     * @author
+     */
+    public void addCheckPointAsVisited(Checkpoint checkpoint)
+    {
+        int indexOfCheckPoint = board.getIndexOfCheckPoint(checkpoint);
+        int wouldBeIndexOfVisitedCheckPoints = visitedCheckPoints.size() - 1;
+
+        if (indexOfCheckPoint == wouldBeIndexOfVisitedCheckPoints)
+        {
+            visitedCheckPoints.add(checkpoint);
+        }
+    }
+
+
+    /**
+     * @return
+     * @author
+     */
+    public int getTabNumber()
+    {
+        return tabNumber;
+    }
+
+    /**
+     * @param tabNumber
+     * @author
+     */
+    public void setTabNumber(int tabNumber)
+    {
+        this.tabNumber = tabNumber;
+    }
+
+    /**
+     * @return
+     * @author
+     */
+    public boolean getMovedByConveyorThisTurn()
+    {
+        return movedByConveyorThisTurn;
+    }
+
+    /**
+     * @param movedByConveyorThisTurn
+     * @author
+     */
+    public void setMovedByConveyorThisTurn(boolean movedByConveyorThisTurn)
+    {
+        this.movedByConveyorThisTurn = movedByConveyorThisTurn;
+    }
+
+    /**
+     * @author
+     */
+
+    //adding this method as discardPile is private
+    public void addCardToDiscardPile(Card card)
+    {
+        if (card != null)
+        {
+            if (card.command == SPAM)
+            {
+                return;
+            }
+            this.discardedCardsPile.playerCards.add(card);
+        }
+    }
+
+    public void discardAllCardsUponReboot()
+    {
+        for (int i = 0; i < program.length; i++)
+        {
+            this.discardedCardsPile.playerCards.add(program[i].getCard());
+            program[i] = null;
+        }
+
+        for (int i = 0; i < cards.length; i++)
+        {
+            this.discardedCardsPile.playerCards.add(cards[i].getCard());
+            cards[i] = null;
+        }
+        this.discardedCardsPile.playerCards.add(new Card((SPAM)));
+        this.discardedCardsPile.playerCards.add(new Card((SPAM)));
+
+
+    }
+
+    public void pickUpEnergyCube()
+    {
+        energyCubes++;
+    }
+
+    public Card drawTopCard()
+    {
+        Card cardToReturn = activeCardsPile.drawTopCard();
+        if (cardToReturn == null)
+        {
+            activeCardsPile.shuffleDeckIntoAnotherDeck(discardedCardsPile);
+            cardToReturn = activeCardsPile.drawTopCard();
+        }
+
+        return cardToReturn;
+    }
+
+    public boolean checkIfOwnsUpgradeCard(String upgradeCardName)
+    {
+        for (int i = 0; i < upgradeCards.size(); i++)
+        {
+            if (upgradeCards.get(i).getName().equals(upgradeCardName))
+            {
+
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    public void addSpamToDiscard(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            this.discardedCardsPile.playerCards.add(new Card(SPAM));
+        }
+    }
 }
