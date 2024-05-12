@@ -4,10 +4,9 @@ import dk.dtu.compute.se.pisd.roborally.model.Command;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
+import org.jetbrains.annotations.NotNull;
 
 import static dk.dtu.compute.se.pisd.roborally.model.Command.OPTION_FORWARD_OR_NOT;
-
-import org.jetbrains.annotations.NotNull;
 
 public class MoveController
 {
@@ -40,7 +39,8 @@ public class MoveController
             switch (command)
             {
                 case FORWARD:
-                    if(player.checkIfOwnsUpgradeCard("BRAKES")){
+                    if (player.checkIfOwnsUpgradeCard("BRAKES"))
+                    {
                         executeCommand(player, OPTION_FORWARD_OR_NOT);
                     }
                     this.moveForward(player);
@@ -153,8 +153,7 @@ public class MoveController
      */
     public void useTrojanHorse(@NotNull Player player, Command command)
     {
-        useSpamCard(player, command);
-        useSpamCard(player, command);
+        player.addSpamToDiscard(2);
     }
 
     /**

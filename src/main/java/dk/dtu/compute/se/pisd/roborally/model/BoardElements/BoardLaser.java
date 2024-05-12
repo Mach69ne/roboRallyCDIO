@@ -31,7 +31,7 @@ public class BoardLaser extends BoardElement
         {
             if (spaceToCheck.getPlayer() != null)
             {
-                spaceToCheck.getPlayer().addSpamToDiscard(2);
+                spaceToCheck.getPlayer().addSpamToDiscard(1);
             }
             Space nextSpace = spaceToCheck.board.getNeighbour(this.getSpace(), headingToCheck);
             // We check if we were to hit a board element, and break if we do
