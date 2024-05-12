@@ -24,6 +24,8 @@ package dk.dtu.compute.se.pisd.roborally.model;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import org.jetbrains.annotations.NotNull;
 
+import javafx.scene.image.Image;
+
 /**
  * ...
  *
@@ -33,6 +35,7 @@ import org.jetbrains.annotations.NotNull;
 public class Card extends Subject {
 
     final public Command command;
+    private Image image;
 
     /**
      * @param command the command represented by this card
@@ -41,6 +44,10 @@ public class Card extends Subject {
     public Card(@NotNull Command command) {
         this.command = command;
     }
+    public Card(@NotNull Command command, Image image) {
+        this.command = command;
+        this.image = image;
+    }
 
     /**
      * @return the name of the command represented by this card
@@ -48,6 +55,18 @@ public class Card extends Subject {
      */
     public String getName() {
         return command.displayName;
+    }
+    public Image getImage() { return image; }
+
+    public void setImage(Image image) {
+        if (image == null)
+        {
+            this.image = new Image("file:src/main/Resources/Images/empty.png");
+        }
+        else
+        {
+            this.image = image;
+        }
     }
 
 }
