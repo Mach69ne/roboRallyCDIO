@@ -99,7 +99,6 @@ public class CardFieldView extends GridPane implements ViewObserver {
         imageView = new ImageView();
         imageView.setFitWidth(CARDFIELD_WIDTH);
         imageView.setFitHeight(CARDFIELD_HEIGHT);
-        imageView.setPreserveRatio(true);
         this.add(imageView, 0, 0);
 
         this.setOnDragDetected(new OnDragDetectedHandler());
