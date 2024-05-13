@@ -39,32 +39,30 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * ....
- *
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class AppController implements Observer
 {
-
     final private List<Integer> PLAYER_NUMBER_OPTIONS = Arrays.asList(2, 3, 4, 5, 6);
     final private List<String> PLAYER_COLORS = Arrays.asList("red", "green", "blue", "orange", "grey", "magenta");
-
     final private RoboRally roboRally;
-
     private GameController gameController;
 
     /**
      * @param roboRally the RoboRally application
+     * @author Elias
      */
     public AppController(@NotNull RoboRally roboRally)
     {
         this.roboRally = roboRally;
     }
 
+    /**
+     * @author Elias
+     */
     public void loadGame()
     {
-        // XXX needs to be implemented eventually
-        // for now, we just create a new game
+        // XXX needs to be implemented eventually, creates new game for now
         if (gameController == null)
         {
             newGame();
@@ -74,7 +72,7 @@ public class AppController implements Observer
     /**
      * Start a new game. The user is asked to select the number of players.
      *
-     * @author
+     * @author Elias
      */
     public void newGame()
     {
@@ -94,9 +92,8 @@ public class AppController implements Observer
                     return;
                 }
             }
-
             // XXX the board should eventually be created programmatically or loaded from a file
-            //     here we just create an empty board with the required number of players.
+            // here we just create an empty board with the required number of players.
             Board board = LoadBoard.loadBoard(null);
             gameController = new GameController(board);
             int no = result.get();
@@ -109,9 +106,7 @@ public class AppController implements Observer
             }
             board.setTabNumbersOnPlayers();
             // XXX: the line below is commented out in the current version
-            // board.setCurrentPlayer(board.getPlayer(0));
             gameController.startProgrammingPhase();
-
             roboRally.createBoardView(gameController);
         }
     }
@@ -124,16 +119,14 @@ public class AppController implements Observer
      * there is no current game, false is returned.
      *
      * @return true if the current game was stopped, false otherwise
-     * @author
+     * @author Elias
      */
     public boolean stopGame()
     {
         if (gameController != null)
         {
-
             // here we save the game (without asking the user).
             saveGame();
-
             gameController = null;
             roboRally.createBoardView(null);
             roboRally.createMainMenuView(this);
@@ -145,8 +138,7 @@ public class AppController implements Observer
 
     /**
      * Saves the game
-     *
-     * @author
+     * @author Elias
      */
     public void saveGame()
     {
@@ -155,8 +147,7 @@ public class AppController implements Observer
 
     /**
      * Exit the RoboRally application. If there is a game running, the user is asked whether the game should be closed
-     *
-     * @author
+     * @author Elias
      */
     public void exit()
     {
@@ -183,22 +174,20 @@ public class AppController implements Observer
 
     /**
      * @return true if gameController is not null, false otherwise
-     * @author
+     * @author Elias
      */
     public boolean isGameRunning()
     {
         return gameController != null;
     }
 
-
     /**
      * @param subject
-     * @author
+     * @author Elias
      */
     @Override
     public void update(Subject subject)
     {
         // XXX do nothing for now
     }
-
 }
