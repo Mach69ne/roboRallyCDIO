@@ -3,20 +3,23 @@ package dk.dtu.compute.se.pisd.roborally.model;
 import java.util.ArrayList;
 
 /**
- * @author
+ * @author Elias & Emil
  */
 public class Deck
 {
     public final ArrayList<Card> playerCards = new ArrayList<>();
 
     /**
-     * @author
+     * @author Elias
      */
     public Deck()
     {
 
     }
 
+    /**
+     * @author Elias & Emil
+     */
     public void initializeAPlayerDeck()
     {
         playerCards.clear();
@@ -74,7 +77,7 @@ public class Deck
 
     /**
      * @param otherDeck
-     * @author
+     * @author Elias
      */
     public void shuffleDeckIntoAnotherDeck(Deck otherDeck)
     {
@@ -84,7 +87,7 @@ public class Deck
     }
 
     /**
-     * @author
+     * @author Elias
      */
     public void shuffleDeck()
     {
@@ -99,7 +102,7 @@ public class Deck
 
     /**
      * @return
-     * @author
+     * @author Elias
      */
     public Card drawTopCard()
     {
