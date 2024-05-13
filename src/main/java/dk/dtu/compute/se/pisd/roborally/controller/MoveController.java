@@ -67,6 +67,10 @@ public class MoveController
                     break;
                 case AGAIN:
                     // TODO
+                    if (player.getSpace().board.getStep() > 0) {
+                        command = player.getProgramField(player.getSpace().board.getStep()-1).getCard().command;
+                        executeCommand(player, command);
+                    }
                     break;
                 case POWER_UP:
                     // TODO
