@@ -2,13 +2,20 @@ package dk.dtu.compute.se.pisd.roborally.fileaccess;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import dk.dtu.compute.se.pisd.roborally.controller.GameController;
+import dk.dtu.compute.se.pisd.roborally.fileaccess.model.BoardTemplate;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.PlayerTemplate;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.SpaceTemplate;
+import dk.dtu.compute.se.pisd.roborally.model.Card;
+import dk.dtu.compute.se.pisd.roborally.model.Command;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class LoadSavePlayer
 {
@@ -86,5 +93,67 @@ public class LoadSavePlayer
                 }
             }
         }
+    }
+
+    public static Player loadPlayer(GameController gameController, String name)
+    {
+
+        ClassLoader classLoader = LoadSavePlayer.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(PLAYERFOLDER + "/" + name + "." + JSON_EXT);
+        // In simple cases, we can create a Gson object with new Gson():
+        GsonBuilder simpleBuilder = new GsonBuilder().registerTypeAdapter(Player.class, new Adapter<Player>());
+        Gson gson = simpleBuilder.create();
+        Player result;
+        // FileReader fileReader = null;
+        JsonReader reader = null;
+        try
+        {
+            // fileReader = new FileReader(filename);
+            reader = gson.newJsonReader(new InputStreamReader(inputStream));
+            PlayerTemplate playerTemplate = gson.fromJson(reader, BoardTemplate.class);
+            result = new Player(gameController.board, playerTemplate.color, playerTemplate.name,
+                    gameController.moveController);
+            result.activeCardsPile.playerCards.clear();
+            for (Command command : playerTemplate.activeCards)
+            {
+                result.activeCardsPile.playerCards.add(new Card(command));
+            }
+            for (Command command : playerTemplate.discardedCards)
+            {
+                result.discardedCardsPile.playerCards.add(new Card(command));
+            }
+            result.setHeading(playerTemplate.heading);
+            result.setTabNumber(playerTemplate.tabNumber);
+            result.setEnergyCubes(playerTemplate.energyCubes);
+            result.setMovedByConveyorThisTurn(playerTemplate.movedByConveyorThisTurn);
+            result.setSpace(gameController.board.getSpace(playerTemplate.spaceTemplate.x,
+                    playerTemplate.spaceTemplate.y));
+            return result;
+        }
+        catch (Exception e1)
+        {
+            if (reader != null)
+            {
+                try
+                {
+                    reader.close();
+                    inputStream = null;
+                }
+                catch (IOException e2)
+                {
+                }
+            }
+            if (inputStream != null)
+            {
+                try
+                {
+                    inputStream.close();
+                }
+                catch (IOException e2)
+                {
+                }
+            }
+        }
+        return null;
     }
 }

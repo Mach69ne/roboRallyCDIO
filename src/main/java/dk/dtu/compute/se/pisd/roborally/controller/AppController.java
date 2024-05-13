@@ -24,7 +24,7 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Observer;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.RoboRally;
-import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadSavePlayer;
+import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadSaveGameState;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import javafx.application.Platform;
@@ -65,10 +65,8 @@ public class AppController implements Observer
     {
         // XXX needs to be implemented eventually
         // for now, we just create a new game
-        if (gameController == null)
-        {
-            newGame();
-        }
+        this.gameController = LoadSaveGameState.loadGameState("deanPHARPHAR");
+        roboRally.createBoardView(gameController);
     }
 
     /**
@@ -98,9 +96,7 @@ public class AppController implements Observer
             // XXX the board should eventually be created programmatically or loaded from a file
             //     here we just create an empty board with the required number of players.
             Board board = new Board(8, 8);
-            //LoadSaveGameState.saveGameState(gameController, "dean");
             gameController = new GameController(board);
-            //board = LoadBoard.loadBoard("dean");
 
 
             int no = result.get();
@@ -112,10 +108,10 @@ public class AppController implements Observer
                 player.setSpace(board.getSpace(i % board.width, i));
             }
             board.setTabNumbersOnPlayers();
-            LoadSavePlayer.savePlayer(board.getPlayer(0), "bygge");
             // XXX: the line below is commented out in the current version
             // board.setCurrentPlayer(board.getPlayer(0));
             gameController.startProgrammingPhase();
+
 
             roboRally.createBoardView(gameController);
         }
@@ -156,6 +152,7 @@ public class AppController implements Observer
     public void saveGame()
     {
         // XXX needs to be implemented eventually
+        LoadSaveGameState.saveGameState(gameController, "deanPHARPHAR");
     }
 
     /**
