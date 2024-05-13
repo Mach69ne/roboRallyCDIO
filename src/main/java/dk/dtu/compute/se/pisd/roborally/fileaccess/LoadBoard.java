@@ -63,8 +63,7 @@ public class LoadBoard
             return new Board(8, 8);
         }
         // In simple cases, we can create a Gson object with new Gson():
-        GsonBuilder simpleBuilder = new GsonBuilder().registerTypeAdapter(BoardElement.class,
-                new Adapter<BoardElement>());
+        GsonBuilder simpleBuilder = new GsonBuilder().registerTypeAdapter(Board.class, new Adapter<Board>());
         Gson gson = simpleBuilder.create();
         Board result;
         // FileReader fileReader = null;
@@ -158,8 +157,8 @@ public class LoadBoard
         // But, if you need to configure it, it is better to create it from
         // a builder (here, we want to configure the JSON serialisation with
         // a pretty printer):
-        GsonBuilder simpleBuilder = new GsonBuilder().registerTypeAdapter(BoardElement.class,
-                new Adapter<BoardElement>()).setPrettyPrinting();
+        GsonBuilder simpleBuilder =
+                new GsonBuilder().registerTypeAdapter(Board.class, new Adapter<Board>()).setPrettyPrinting();
         Gson gson = simpleBuilder.create();
 
         FileWriter fileWriter = null;
