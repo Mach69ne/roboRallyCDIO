@@ -58,7 +58,6 @@ public class Board extends Subject
     private final ArrayList<BoardElement>[] boardElements = new ArrayList[10];
     private final Space[][] spaces;
     private final List<Player> players = new ArrayList<>();
-    private final boolean toSaveTabNumber = true;
     private RebootToken rebootToken;
     private Integer gameId;
     private Player current;
