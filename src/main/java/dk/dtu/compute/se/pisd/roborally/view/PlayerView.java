@@ -69,7 +69,7 @@ public class PlayerView extends Tab implements ViewObserver
     /**
      * @param gameController
      * @param player
-     * @author
+     * @author Elias, Frederik, Adel & Mads
      */
     public PlayerView(@NotNull GameController gameController, @NotNull Player player)
     {
@@ -152,7 +152,7 @@ public class PlayerView extends Tab implements ViewObserver
 
     /**
      * @param subject
-     * @author
+     * @author Elias, Mads & Emil
      */
     @Override
     public void updateView(Subject subject)
