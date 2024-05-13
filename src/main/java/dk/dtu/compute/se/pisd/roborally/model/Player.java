@@ -358,4 +358,14 @@ public class Player extends Subject
             this.discardedCardsPile.playerCards.add(new Card(SPAM));
         }
     }
+
+    public int getEnergyCubes()
+    {
+        return energyCubes;
+    }
+
+    public void setEnergyCubes(int energyCubes)
+    {
+        this.energyCubes = energyCubes;
+    }
 }
