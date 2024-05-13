@@ -11,9 +11,9 @@ public class Gear extends NullBoardElement
 {
     private final boolean isClockwise;
 
-    public Gear(boolean isWalkable, Space space, boolean isClockwise)
+    public Gear(Space space, boolean isClockwise)
     {
-        super(isWalkable, space);
+        super(true, space);
         this.isClockwise = isClockwise;
         if (this.isClockwise)
         {
