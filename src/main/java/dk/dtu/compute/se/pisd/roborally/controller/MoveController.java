@@ -88,6 +88,9 @@ public class MoveController
                 case WORM:
                     this.useWormCard(player, command);
                     break;
+                case VIRUS:
+                    this.useVirusCard(player);
+                    break;
                 default:
                     throw new RuntimeException("Something went wrong");
             }
@@ -181,11 +184,45 @@ public class MoveController
         player.addSpamToDiscard(2);
     }
 
+    /**
+     * @param player
+     * @param command
+     * @author Mustafa
+     */
     public void useWormCard(@NotNull Player player, Command command) {
         if(player != null) {
             RebootToken rebootToken = new RebootToken(player.getHeading(), player.getSpace());
             rebootToken.reboot(player);
         }
+    }
+
+    /**
+     * @param currentplayer
+     * @author Mustafa
+     */
+    public void useVirusCard(@NotNull Player currentplayer) {
+        int numberOfPlayers = gameController.board.getPlayersNumber();
+        for(int i = 0; i < numberOfPlayers; i++) {
+            Player player = gameController.board.getPlayer(i);
+            if(player != currentplayer) {
+                int distance = getSpaceDistance(currentplayer.getSpace(), player.getSpace());
+                if(distance <= 6) {
+                    player.addSpamToDiscard(1);
+                }
+            }
+        }
+    }
+
+    /**
+     * @param s1
+     * @param s2
+     * @return
+     * @author Mustafa
+     */
+    private int getSpaceDistance(Space s1, Space s2) {
+        int xDist = Math.abs(s1.x - s2.x);
+        int yDist = Math.abs(s1.y - s2.y);
+        return xDist + yDist;
     }
 
     /**
