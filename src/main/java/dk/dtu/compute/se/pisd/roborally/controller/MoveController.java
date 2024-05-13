@@ -259,24 +259,13 @@ public class MoveController
         for(int i = 0; i < numberOfPlayers; i++) {
             Player player = gameController.board.getPlayer(i);
             if(player != currentplayer) {
-                int distance = getSpaceDistance(currentplayer.getSpace(), player.getSpace());
-                if(distance <= 6) {
+                int xDist = Math.abs(currentplayer.getSpace().x - player.getSpace().x);
+                int yDist = Math.abs(currentplayer.getSpace().y - player.getSpace().y);
+                if(xDist <= 6 && yDist <= 6) {
                     player.addSpamToDiscard(1);
                 }
             }
         }
-    }
-
-    /**
-     * @param s1
-     * @param s2
-     * @return
-     * @author Mustafa
-     */
-    private int getSpaceDistance(Space s1, Space s2) {
-        int xDist = Math.abs(s1.x - s2.x);
-        int yDist = Math.abs(s1.y - s2.y);
-        return xDist + yDist;
     }
 
     /**
