@@ -59,6 +59,8 @@ public class Card extends Subject
                 return new Image("file:src/main/Resources/Images/turnL.png");
             case RIGHT:
                 return new Image("file:src/main/Resources/Images/turnR.png");
+            case OPTION_LEFT_RIGHT:
+                return new Image("file:src/main/Resources/Images/turnLorR.png");
 
             default:
                 return null;
