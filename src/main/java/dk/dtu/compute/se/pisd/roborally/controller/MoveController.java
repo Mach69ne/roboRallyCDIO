@@ -7,6 +7,8 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import org.jetbrains.annotations.NotNull;
 
+import static dk.dtu.compute.se.pisd.roborally.model.Command.OPTION_FORWARD_OR_NOT;
+
 public class MoveController
 {
     GameController gameController;
@@ -38,6 +40,10 @@ public class MoveController
             switch (command)
             {
                 case FORWARD:
+                    if (player.checkIfOwnsUpgradeCard("BRAKES"))
+                    {
+                        executeCommand(player, OPTION_FORWARD_OR_NOT);
+                    }
                     this.moveForward(player);
                     break;
                 case RIGHT:
@@ -75,6 +81,9 @@ public class MoveController
                     break;
                 case WORM:
                     this.useWormCard(player, command);
+                    break;
+                case VIRUS:
+                    this.useVirusCard(player);
                     break;
                 default:
                     throw new RuntimeException("Something went wrong");
@@ -214,8 +223,7 @@ public class MoveController
      */
     public void useSpamCard(@NotNull Player player, Command command)
     {
-        // Take the top card from the activeDeck that the player has and play that in this register instead of the
-        // spam card
+        // Take the top card from the activeDeck that the player has and play that in this register instead of the spam card
         // Spam card gets deleted and is therefore not discarded
 
     }
@@ -229,12 +237,33 @@ public class MoveController
         player.addSpamToDiscard(2);
     }
 
-    public void useWormCard(@NotNull Player player, Command command)
-    {
-        if (player != null)
-        {
+    /**
+     * @param player
+     * @param command
+     * @author Mustafa
+     */
+    public void useWormCard(@NotNull Player player, Command command) {
+        if(player != null) {
             RebootToken rebootToken = new RebootToken(player.getHeading(), player.getSpace());
             rebootToken.reboot(player);
+        }
+    }
+
+    /**
+     * @param currentplayer
+     * @author Mustafa
+     */
+    public void useVirusCard(@NotNull Player currentplayer) {
+        int numberOfPlayers = gameController.board.getPlayersNumber();
+        for(int i = 0; i < numberOfPlayers; i++) {
+            Player player = gameController.board.getPlayer(i);
+            if(player != currentplayer) {
+                int xDist = Math.abs(currentplayer.getSpace().x - player.getSpace().x);
+                int yDist = Math.abs(currentplayer.getSpace().y - player.getSpace().y);
+                if(xDist <= 6 && yDist <= 6) {
+                    player.addSpamToDiscard(1);
+                }
+            }
         }
     }
 
