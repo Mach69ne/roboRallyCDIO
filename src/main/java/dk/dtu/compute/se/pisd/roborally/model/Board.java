@@ -72,6 +72,7 @@ public class Board extends Subject
     /**
      * @param width  the width of the board
      * @param height the height of the board
+     * @author Elias
      */
     public Board(int width, int height)
     {
@@ -83,6 +84,7 @@ public class Board extends Subject
      * @param height    the height of the board
      * @param boardName the name of the board
      *                  (this is used for the name of the file in which the board is stored)
+     * @author Elias, Adel & Mads
      */
 
     //In the files given to us by the teacher spaces are stored in an arraylist instead of an array, maybe we should
@@ -114,7 +116,7 @@ public class Board extends Subject
     }
 
     /**
-     * @author
+     * @author Elias
      */
     public void activateBoardElements()
     {
@@ -133,7 +135,7 @@ public class Board extends Subject
 
     /**
      * @param indexOfElementsToBeActivated
-     * @author
+     * @author Elias
      */
     public void activateBoardElementsOfIndex(int indexOfElementsToBeActivated)
     {
@@ -146,7 +148,7 @@ public class Board extends Subject
     /**
      * @param index
      * @param boardElement
-     * @author
+     * @author Elias
      */
     public void addBoardElement(int index, BoardElement boardElement)
     {
@@ -156,7 +158,7 @@ public class Board extends Subject
     /**
      * @param space
      * @return
-     * @author
+     * @author Elias
      */
     public Position getIndexOfSpace(Space space)
     {
@@ -175,7 +177,7 @@ public class Board extends Subject
 
     /**
      * @return the name of the board
-     * @author
+     * @author Elias
      */
     public Integer getGameId()
     {
@@ -184,7 +186,7 @@ public class Board extends Subject
 
     /**
      * @param gameId the id of the game to which this board belongs
-     * @author
+     * @author Elias
      */
     public void setGameId(int gameId)
     {
@@ -203,7 +205,7 @@ public class Board extends Subject
 
     /**
      * @param playersArr
-     * @author
+     * @author Elias
      */
     public void setPlayers(Player[] playersArr)
     {
@@ -217,7 +219,7 @@ public class Board extends Subject
     }
 
     /**
-     * @author
+     * @author Elias
      */
     public void setTabNumbersOnPlayers()
     {
@@ -229,7 +231,7 @@ public class Board extends Subject
 
     /**
      * @return the number of players on the board
-     * @author
+     * @author Elias
      */
     public int getPlayersNumber()
     {
@@ -238,7 +240,7 @@ public class Board extends Subject
 
     /**
      * @param player the player to be added to the board
-     * @author
+     * @author Elias
      */
     public void addPlayer(@NotNull Player player)
     {
@@ -252,7 +254,7 @@ public class Board extends Subject
     /**
      * @param i the index of the player to be returned
      * @return the player with the given index
-     * @author
+     * @author Elias
      */
     public Player getPlayer(int i)
     {
@@ -269,7 +271,7 @@ public class Board extends Subject
 
     /**
      * @return the list of players on the board
-     * @author
+     * @author Elias
      */
     public boolean isStepMode()
     {
@@ -278,7 +280,7 @@ public class Board extends Subject
 
     /**
      * @param stepMode the step mode to be set
-     * @author
+     * @author Elias
      */
     public void setStepMode(boolean stepMode)
     {
@@ -292,7 +294,7 @@ public class Board extends Subject
     /**
      * @param player the player for which the number should be returned
      * @return the number of the player on the board; -1 if the player is not on the board
-     * @author
+     * @author Elias
      */
     public int getPlayerNumber(@NotNull Player player)
     {
@@ -315,7 +317,7 @@ public class Board extends Subject
      * @param space   the space for which the neighbour should be computed
      * @param heading the heading of the neighbour
      * @return the space in the given direction; null if there is no (reachable) neighbour
-     * @author
+     * @author Elias & Mads
      */
     public Space getNeighbour(@NotNull Space space, @NotNull Heading heading)
     {
@@ -357,7 +359,7 @@ public class Board extends Subject
      * @param x the x-coordinate of the space
      * @param y the y-coordinate of the space
      * @return the space at the given coordinates; null if the coordinates are out of bounds
-     * @author
+     * @author Elias
      */
     public Space getSpace(int x, int y)
     {
@@ -373,7 +375,7 @@ public class Board extends Subject
 
     /**
      * @return the list of players on the board
-     * @author
+     * @author Elias
      */
     public String getStatusMessage()
     {
@@ -387,7 +389,7 @@ public class Board extends Subject
 
     /**
      * @return the current phase of the board
-     * @author
+     * @author Elias
      */
     public Phase getPhase()
     {
@@ -396,7 +398,7 @@ public class Board extends Subject
 
     /**
      * @return the current player
-     * @author
+     * @author Elias
      */
     public Player getCurrentPlayer()
     {
@@ -405,7 +407,7 @@ public class Board extends Subject
 
     /**
      * @param player the player to be set as the current player
-     * @author
+     * @author Elias
      */
     public void setCurrentPlayer(Player player)
     {
@@ -418,7 +420,7 @@ public class Board extends Subject
 
     /**
      * @return the list of players on the board
-     * @author
+     * @author Elias
      */
     public int getStep()
     {
@@ -427,7 +429,7 @@ public class Board extends Subject
 
     /**
      * @param step the step to be set
-     * @author
+     * @author Elias
      */
     public void setStep(int step)
     {
@@ -440,7 +442,7 @@ public class Board extends Subject
 
     /**
      * @param phase the phase to be set
-     * @author
+     * @author Elias
      */
     public void setPhase(Phase phase)
     {
@@ -452,7 +454,7 @@ public class Board extends Subject
     }
 
     /**
-     * @author
+     * @author Elias
      */
     public void nextPlayerTurn()
     {
@@ -480,7 +482,7 @@ public class Board extends Subject
     /**
      * @param checkpoint
      * @return
-     * @author
+     * @author Elias
      */
     public int getIndexOfCheckPoint(Checkpoint checkpoint)
     {
@@ -489,7 +491,7 @@ public class Board extends Subject
 
     /**
      * @return
-     * @author
+     * @author Elias
      */
     public boolean playerIsLast()
     {
@@ -498,7 +500,7 @@ public class Board extends Subject
 
     /**
      * @return
-     * @author
+     * @author Elias
      */
     public RebootToken getRebootToken()
     {
@@ -507,7 +509,7 @@ public class Board extends Subject
 
     /**
      * @param rebootToken
-     * @author
+     * @author Elias
      */
     public void setRebootToken(RebootToken rebootToken)
     {
