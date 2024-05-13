@@ -120,7 +120,7 @@ public class LoadBoard
             for (int j = 0; j < board.height; j++)
             {
                 Space space = board.getSpace(i, j);
-                if (space.getBoardElement() != null)
+                if (space != null)
                 {
                     SpaceTemplate spaceTemplate = new SpaceTemplate();
                     spaceTemplate.x = space.x;
@@ -129,12 +129,7 @@ public class LoadBoard
                 }
             }
         }
-
-        ClassLoader classLoader = LoadBoard.class.getClassLoader();
-        // TODO: this is not very defensive, and will result in a NullPointerException
-        //       when the folder "resources" does not exist! But, it does not need
-        //       the file "simpleCards.json" to exist!
-        String filename = classLoader.getResource(BOARDSFOLDER).getPath() + "/" + name + "." + JSON_EXT;
+        String filename = "src/main/Resources/" + BOARDSFOLDER + "/" + name + "." + JSON_EXT;
 
         // In simple cases, we can create a Gson object with new:
         //
@@ -143,8 +138,8 @@ public class LoadBoard
         // But, if you need to configure it, it is better to create it from
         // a builder (here, we want to configure the JSON serialisation with
         // a pretty printer):
-        GsonBuilder simpleBuilder = new GsonBuilder().registerTypeAdapter(SpaceTemplate.class,
-                new Adapter<SpaceTemplate>()).setPrettyPrinting();
+        GsonBuilder simpleBuilder =
+                new GsonBuilder().registerTypeAdapter(Space.class, new Adapter<Space>()).setPrettyPrinting();
         Gson gson = simpleBuilder.create();
 
         FileWriter fileWriter = null;

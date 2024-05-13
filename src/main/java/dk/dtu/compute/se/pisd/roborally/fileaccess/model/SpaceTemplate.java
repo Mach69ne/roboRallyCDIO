@@ -21,22 +21,13 @@
  */
 package dk.dtu.compute.se.pisd.roborally.fileaccess.model;
 
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
-import dk.dtu.compute.se.pisd.roborally.model.Board;
-import dk.dtu.compute.se.pisd.roborally.model.Heading;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
-public class SpaceTemplate {
-
-    public ArrayList<BoardElement>[] boardElements = new ArrayList[10];
+public class SpaceTemplate
+{
 
     public int x;
     public int y;
