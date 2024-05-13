@@ -24,6 +24,7 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Observer;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.RoboRally;
+import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import javafx.application.Platform;
@@ -97,6 +98,7 @@ public class AppController implements Observer
             // XXX the board should eventually be created programmatically or loaded from a file
             //     here we just create an empty board with the required number of players.
             Board board = new Board(8, 8);
+            board = LoadBoard.loadBoard("DEA");
             gameController = new GameController(board);
             int no = result.get();
             for (int i = 0; i < no; i++)
@@ -122,8 +124,8 @@ public class AppController implements Observer
      * game); returns false, if the current game was not stopped. In case
      * there is no current game, false is returned.
      *
-     * @author
      * @return true if the current game was stopped, false otherwise
+     * @author
      */
     public boolean stopGame()
     {
@@ -181,8 +183,8 @@ public class AppController implements Observer
     }
 
     /**
-     * @author
      * @return true if gameController is not null, false otherwise
+     * @author
      */
     public boolean isGameRunning()
     {
