@@ -54,6 +54,22 @@ public class MoveController
                 case FAST_FORWARD:
                     this.fastForward(player);
                     break;
+                case MOVE_THREE:
+                    movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 3);
+                    break;
+                case U_TURN:
+                    turnRight(player);
+                    turnRight(player);
+                    break;
+                case MOVE_BACK:
+                    movePlayerAmountOfTimesWithHeading(player, player.getHeading().next().next(), 1);
+                    break;
+                case AGAIN:
+                    // TODO
+                    break;
+                case POWER_UP:
+                    // TODO
+                    break;
                 case OPTION_LEFT_RIGHT:
                     this.optionLeftOrRight(player, command);
                     break;

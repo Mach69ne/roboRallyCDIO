@@ -11,9 +11,9 @@ import javafx.scene.image.Image;
  */
 public class Wall extends BoardElement
 {
-    public Wall(Heading heading, boolean isWalkable, Space space)
+    public Wall(Heading heading, Space space)
     {
-        super(heading, isWalkable, space);
+        super(heading, true, space);
         space.board.addBoardElement(Board.NOT_ACTIVATE_ABLE_INDEX, this);
         setImage(new Image("file:src/main/resources/images/wall.png"));
     }

@@ -61,6 +61,15 @@ public class Card extends Subject
                 return new Image("file:src/main/Resources/Images/turnR.png");
             case OPTION_LEFT_RIGHT:
                 return new Image("file:src/main/Resources/Images/turnLorR.png");
+            case SPAM:
+                return new Image("file:src/main/Resources/Images/SPAM.png");
+            case TROJAN_HORSE:
+                return new Image("file:src/main/Resources/Images/TROJANH.png");
+            case WORM:
+                return new Image("file:src/main/Resources/Images/WORM.png");
+            case VIRUS:
+                return new Image("file:src/main/Resources/Images/VIRUS.png");
+
 
             default:
                 return null;
