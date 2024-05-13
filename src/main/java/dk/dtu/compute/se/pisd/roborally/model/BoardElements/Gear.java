@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
  */
 public class Gear extends NullBoardElement
 {
-    private final boolean isClockwise;
+    public final boolean isClockwise;
 
     /**
      * @param space

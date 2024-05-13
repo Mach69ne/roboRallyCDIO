@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
  */
 public class CornerWall extends BoardElement
 {
-    private final Heading heading2;
+    public final Heading heading2;
 
     public CornerWall(Heading heading1, Heading heading2, Space space)
     {
