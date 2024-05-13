@@ -160,7 +160,7 @@ public class MoveController
      * @param player
      * @param heading
      * @param amountOfTimesToMove
-     * @author Elias
+     * @author Elias og Emil
      */
     public void movePlayerAmountOfTimesWithHeading(Player player, Heading heading, int amountOfTimesToMove)
     {
@@ -171,8 +171,19 @@ public class MoveController
             if (currentSpace.getBoardElement().getCanWalkOutOf(heading) && newSpace.getBoardElement().getCanWalkInto(heading))
             {
                 //Logic for moving to a space should be put here:
-                player.setSpace(newSpace);
-                newSpace.getBoardElement().onWalkOver(player);
+                if (newSpace.getPlayer() == null) {
+                    player.setSpace(newSpace);
+                    newSpace.getBoardElement().onWalkOver(player);
+                } else {
+                    //If there is a player on the space, the player should be pushed
+                    Space pushedToSpace = gameController.board.getNeighbour(newSpace, heading);
+                    if (pushedToSpace.getBoardElement().getCanWalkInto(heading) && pushedToSpace.getPlayer() == null) {
+                        newSpace.getPlayer().setSpace(pushedToSpace);
+                        pushedToSpace.getBoardElement().onWalkOver(newSpace.getPlayer());
+                        player.setSpace(newSpace);
+                        newSpace.getBoardElement().onWalkOver(player);
+                    }
+                }
             }
         }
     }
