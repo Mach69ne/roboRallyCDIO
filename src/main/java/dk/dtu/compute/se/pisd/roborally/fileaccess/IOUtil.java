@@ -43,6 +43,7 @@ public class IOUtil {
      *
      * @param inputStream the input stream
      * @return the string of the input stream
+     * @author Frederik
      */
     public static String readString(InputStream inputStream) {
 
@@ -67,6 +68,7 @@ public class IOUtil {
      *
      * @param relativeResourcePath the relative path to the resource
      * @return the string contents of the resource
+     * @author Frederik
      */
     public static String readResource(String relativeResourcePath) {
         ClassLoader classLoader = IOUtil.class.getClassLoader();
