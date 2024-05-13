@@ -8,7 +8,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.image.Image;
 
 /**
- * @author
+ * @author Elias, Frederik & Adel
  */
 public class CornerWall extends BoardElement
 {
@@ -43,7 +43,7 @@ public class CornerWall extends BoardElement
     /**
      * @param heading
      * @return boolean that states if the player can walk into the space
-     * @author Frederik
+     * @author Frederik & Adel
      */
     @Override
     public boolean getCanWalkInto(Heading heading)
