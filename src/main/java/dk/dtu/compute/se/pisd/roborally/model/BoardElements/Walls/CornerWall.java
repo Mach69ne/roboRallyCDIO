@@ -12,15 +12,23 @@ import javafx.scene.image.Image;
  */
 public class CornerWall extends BoardElement
 {
-    private final Heading heading2;
+    public final Heading heading2;
 
     public CornerWall(Heading heading1, Heading heading2, Space space)
     {
         super(heading1, true, space);
-        this.heading2 = heading2;
-        space.board.addBoardElement(Board.NOT_ACTIVATE_ABLE_INDEX, this);
-        setImage(new Image("file:src/main/resources/images/cornerWall.png"));
-        this.setType(ElementsEnum.CORNERWALL);
+        if(heading1.next().next()==heading2){
+            throw new IllegalArgumentException("The two headings must be adjacent");
+        }else {
+            this.heading2 = heading2;
+            space.board.addBoardElement(Board.NOT_ACTIVATE_ABLE_INDEX, this);
+            if ((heading1 == Heading.NORTH && heading2 == Heading.WEST) || (heading1 == Heading.EAST && heading2 == Heading.NORTH) || (heading1 == Heading.SOUTH && heading2 == Heading.EAST) || (heading1 == Heading.WEST && heading2 == Heading.SOUTH)) {
+                setImage(new Image("file:src/main/resources/images/cornerWall.png"));
+            } else {
+                setImage(new Image("file:src/main/resources/images/cornerWall2.png"));
+            }
+            this.setType(ElementsEnum.CORNERWALL);
+        }
 
     }
 

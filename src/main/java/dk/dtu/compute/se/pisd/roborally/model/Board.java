@@ -25,9 +25,8 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Antenna;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors.BlueConveyor;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors.GreenConveyor;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.RebootToken;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.CornerWall;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -59,7 +58,6 @@ public class Board extends Subject
     private final ArrayList<BoardElement>[] boardElements = new ArrayList[10];
     private final Space[][] spaces;
     private final List<Player> players = new ArrayList<>();
-    private final boolean toSaveTabNumber = true;
     private RebootToken rebootToken;
     private Integer gameId;
     private Player current;
@@ -109,10 +107,11 @@ public class Board extends Subject
             boardElements[i] = new ArrayList<BoardElement>();
         }
         spaces[4][4].setBoardElement(new Antenna(spaces[4][4]));
+        spaces[3][3].setBoardElement(new CornerWall(Heading.NORTH, Heading.EAST, spaces[3][3]));
         this.activateBoardElements();
-    
+
         this.upgradeCards = UpgradeCardsInfo.createUpgradeCards();
-    
+
     }
 
     /**

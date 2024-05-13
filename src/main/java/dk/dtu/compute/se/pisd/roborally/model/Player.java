@@ -44,10 +44,10 @@ public class Player extends Subject
 
     final public Board board;
     public final MoveController moveController;
+    public final Deck activeCardsPile;
+    public final Deck discardedCardsPile;
     private final CardField[] program;
     private final CardField[] cards;
-    private final Deck activeCardsPile;
-    private final Deck discardedCardsPile;
     private final ArrayList<UpgradeCards> upgradeCards = new ArrayList<>();
     private final ArrayList<Checkpoint> visitedCheckPoints = new ArrayList<>();
     private String name;
@@ -366,5 +366,15 @@ public class Player extends Subject
         {
             this.discardedCardsPile.playerCards.add(new Card(SPAM));
         }
+    }
+
+    public int getEnergyCubes()
+    {
+        return energyCubes;
+    }
+
+    public void setEnergyCubes(int energyCubes)
+    {
+        this.energyCubes = energyCubes;
     }
 }

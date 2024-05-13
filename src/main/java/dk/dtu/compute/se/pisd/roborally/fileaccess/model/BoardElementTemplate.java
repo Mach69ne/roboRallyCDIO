@@ -11,4 +11,6 @@ public class BoardElementTemplate
     public ElementsEnum type;
     public Heading heading;
     public boolean isWalkable;
+    public Heading heading2;
+    public boolean isClockwise;
 }
