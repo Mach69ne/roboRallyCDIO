@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
-import dk.dtu.compute.se.pisd.roborally.fileaccess.model.BoardTemplate;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.PlayerTemplate;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.SpaceTemplate;
 import dk.dtu.compute.se.pisd.roborally.model.Card;
@@ -100,6 +99,7 @@ public class LoadSavePlayer
 
         ClassLoader classLoader = LoadSavePlayer.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(PLAYERFOLDER + "/" + name + "." + JSON_EXT);
+
         // In simple cases, we can create a Gson object with new Gson():
         GsonBuilder simpleBuilder = new GsonBuilder().registerTypeAdapter(Player.class, new Adapter<Player>());
         Gson gson = simpleBuilder.create();
@@ -109,8 +109,9 @@ public class LoadSavePlayer
         try
         {
             // fileReader = new FileReader(filename);
+
             reader = gson.newJsonReader(new InputStreamReader(inputStream));
-            PlayerTemplate playerTemplate = gson.fromJson(reader, BoardTemplate.class);
+            PlayerTemplate playerTemplate = gson.fromJson(reader, PlayerTemplate.class);
             result = new Player(gameController.board, playerTemplate.color, playerTemplate.name,
                     gameController.moveController);
             result.activeCardsPile.playerCards.clear();
@@ -128,6 +129,7 @@ public class LoadSavePlayer
             result.setMovedByConveyorThisTurn(playerTemplate.movedByConveyorThisTurn);
             result.setSpace(gameController.board.getSpace(playerTemplate.spaceTemplate.x,
                     playerTemplate.spaceTemplate.y));
+
             return result;
         }
         catch (Exception e1)
@@ -154,6 +156,7 @@ public class LoadSavePlayer
                 }
             }
         }
+
         return null;
     }
 }

@@ -24,7 +24,6 @@ public class LoadSaveGameState
             if (player != null)
             {
                 gameController.board.addPlayer(player);
-                System.out.println(gameController.board.getPlayersNumber());
             }
 
         }
