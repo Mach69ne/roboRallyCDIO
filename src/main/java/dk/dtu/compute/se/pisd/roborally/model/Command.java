@@ -60,7 +60,7 @@ public enum Command
     /**
      * @param displayName
      * @param options
-     * @author
+     * @author Elias & Frederik
      */
     Command(String displayName, Command... options)
     {
@@ -70,7 +70,7 @@ public enum Command
 
     /**
      * @return boolean as of whether the command has more than one option
-     * @author
+     * @author Frederik
      */
     public boolean isInteractive()
     {
@@ -79,7 +79,7 @@ public enum Command
 
     /**
      * @return list of all the command-options the player must choose between.
-     * @author
+     * @author Frederik
      */
     public List<Command> getOptions()
     {
