@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 /**
- * @author Elias 
+ * @author Elias
  */
 public class MainMenuView extends VBox
 {

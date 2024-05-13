@@ -34,14 +34,12 @@ import javafx.scene.control.TabPane;
  */
 public class PlayersView extends TabPane implements ViewObserver
 {
-
     private final Board board;
-
     private final PlayerView[] playerViews;
 
     /**
      * @param gameController
-     * @author
+     * @author Elias
      */
     public PlayersView(GameController gameController)
     {
@@ -61,7 +59,7 @@ public class PlayersView extends TabPane implements ViewObserver
 
     /**
      * @param subject
-     * @author
+     * @author Elias
      */
     @Override
     public void updateView(Subject subject)
@@ -72,5 +70,4 @@ public class PlayersView extends TabPane implements ViewObserver
             this.getSelectionModel().select(current.getTabNumber());
         }
     }
-
 }
