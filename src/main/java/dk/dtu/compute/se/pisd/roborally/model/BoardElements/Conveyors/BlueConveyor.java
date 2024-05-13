@@ -1,6 +1,7 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors;
 
 import dk.dtu.compute.se.pisd.roborally.model.Board;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.ElementsEnum;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
@@ -13,5 +14,6 @@ public class BlueConveyor extends Conveyor
     {
         super(heading, 3, space);
         space.board.addBoardElement(Board.BLUE_CONVEYOR_INDEX, this);
+        this.setType(ElementsEnum.BLUE_CONVEYOR);
     }
 }

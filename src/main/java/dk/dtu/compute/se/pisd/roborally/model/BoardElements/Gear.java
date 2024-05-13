@@ -12,9 +12,9 @@ public class Gear extends NullBoardElement
     private final boolean isClockwise;
 
     /**
-     * @author Frederik
      * @param space
      * @param isClockwise
+     * @author Frederik
      */
     public Gear(Space space, boolean isClockwise)
     {
@@ -29,6 +29,7 @@ public class Gear extends NullBoardElement
             setImage(new Image("file:src/main/resources/images/gearLeft.png"));
         }
         space.board.addBoardElement(Board.GEARS_INDEX, this);
+        this.setType(ElementsEnum.GEAR);
     }
 
     /**

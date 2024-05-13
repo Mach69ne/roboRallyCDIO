@@ -8,7 +8,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 /**
  * @author
  */
-public class Conveyor extends BoardElement
+public abstract class Conveyor extends BoardElement
 {
     private final int moveAmount;
 

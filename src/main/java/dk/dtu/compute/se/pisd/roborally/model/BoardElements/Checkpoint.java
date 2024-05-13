@@ -16,6 +16,7 @@ public class Checkpoint extends NullBoardElement
         space.board.addBoardElement(Board.CHECKPOINTS_INDEX, this);
         int index = space.board.getIndexOfCheckPoint(this);
         setImage(new Image("file:src/main/resources/images/" + (index + 1) + ".png"));
+        this.setType(ElementsEnum.BOARDLASER);
     }
 
     /**

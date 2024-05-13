@@ -1,5 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.RebootToken;
 import dk.dtu.compute.se.pisd.roborally.model.Command;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
@@ -99,6 +100,7 @@ public class MoveController
      */
     public void moveForward(@NotNull Player player)
     {
+        LoadBoard.saveBoard(player.board, "DEAN");
         movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 1);
     }
 
@@ -173,7 +175,8 @@ public class MoveController
     }
 
     /**
-     * Executes the command card in the previous register. If the player is on the first register, no command is not executed.
+     * Executes the command card in the previous register. If the player is on the first register, no command is not
+     * executed.
      *
      * @param player the player to be moved
      * @Author Emil
@@ -223,7 +226,8 @@ public class MoveController
      */
     public void useSpamCard(@NotNull Player player, Command command)
     {
-        // Take the top card from the activeDeck that the player has and play that in this register instead of the spam card
+        // Take the top card from the activeDeck that the player has and play that in this register instead of the
+        // spam card
         // Spam card gets deleted and is therefore not discarded
 
     }
@@ -242,8 +246,10 @@ public class MoveController
      * @param command
      * @author Mustafa
      */
-    public void useWormCard(@NotNull Player player, Command command) {
-        if(player != null) {
+    public void useWormCard(@NotNull Player player, Command command)
+    {
+        if (player != null)
+        {
             RebootToken rebootToken = new RebootToken(player.getHeading(), player.getSpace());
             rebootToken.reboot(player);
         }
@@ -253,14 +259,18 @@ public class MoveController
      * @param currentplayer
      * @author Mustafa
      */
-    public void useVirusCard(@NotNull Player currentplayer) {
+    public void useVirusCard(@NotNull Player currentplayer)
+    {
         int numberOfPlayers = gameController.board.getPlayersNumber();
-        for(int i = 0; i < numberOfPlayers; i++) {
+        for (int i = 0; i < numberOfPlayers; i++)
+        {
             Player player = gameController.board.getPlayer(i);
-            if(player != currentplayer) {
+            if (player != currentplayer)
+            {
                 int xDist = Math.abs(currentplayer.getSpace().x - player.getSpace().x);
                 int yDist = Math.abs(currentplayer.getSpace().y - player.getSpace().y);
-                if(xDist <= 6 && yDist <= 6) {
+                if (xDist <= 6 && yDist <= 6)
+                {
                     player.addSpamToDiscard(1);
                 }
             }

@@ -16,6 +16,7 @@ public class RebootToken extends BoardElement
         super(heading, true, space);
         space.board.setRebootToken(this);
         setImage(new Image("file:src/main/resources/images/respawn.png"));
+        this.setType(ElementsEnum.REBOOTTOKEN);
     }
 
     /**
