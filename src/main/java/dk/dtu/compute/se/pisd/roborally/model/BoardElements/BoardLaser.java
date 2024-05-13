@@ -6,11 +6,10 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.image.Image;
 
 /**
- * @author
+ * @author Elias & Mads
  */
 public class BoardLaser extends BoardElement
 {
-
     public BoardLaser(Space space, Heading heading)
     {
         super(heading, true, space);
@@ -20,7 +19,7 @@ public class BoardLaser extends BoardElement
     }
 
     /**
-     * @author
+     * @author Elias & Mads
      */
     @Override
     public void activate()
@@ -40,11 +39,7 @@ public class BoardLaser extends BoardElement
             {
                 break;
             }
-
-
             spaceToCheck = nextSpace;
         }
-
     }
-
 }
