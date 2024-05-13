@@ -86,7 +86,9 @@ public class LoadSaveGameState
     {
         GameStateInfo gameStateInfo = loadGameStateFromFile(name);
         GameController gameController = new GameController(LoadBoard.loadBoard(name));
-        for (int i = 0; i < 10; i++)
+        gameController.board.setPhase(gameStateInfo.phase);
+        gameController.board.setStep(gameStateInfo.step);
+        for (int i = 0; i < gameStateInfo.amountOfPlayers; i++)
         {
             Player player = LoadSavePlayer.loadPlayer(gameController, name + i);
             if (player != null)
@@ -104,8 +106,7 @@ public class LoadSaveGameState
         ClassLoader classLoader = LoadBoard.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream("GameStateInfo" + "/" + boardname + "." + "json");
         // In simple cases, we can create a Gson object with new Gson():
-        GsonBuilder simpleBuilder = new GsonBuilder().registerTypeAdapter(GameStateInfo.class,
-                new Adapter<GameStateInfo>());
+        GsonBuilder simpleBuilder = new GsonBuilder().registerTypeAdapter(Board.class, new Adapter<Board>());
         Gson gson = simpleBuilder.create();
         // FileReader fileReader = null;
         JsonReader reader = null;
