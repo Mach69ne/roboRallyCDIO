@@ -31,6 +31,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.*;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors.BlueConveyor;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors.GreenConveyor;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.CornerWall;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.Wall;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
@@ -90,6 +91,9 @@ public class LoadBoard
                     case BLUE_CONVEYOR -> boardElement = new BlueConveyor(elementTemplate.heading, space);
                     case BOARDLASER -> boardElement = new BoardLaser(space, elementTemplate.heading);
                     case REBOOTTOKEN -> boardElement = new RebootToken(elementTemplate.heading, space);
+                    case GEAR -> boardElement = new Gear(space, elementTemplate.isClockwise);
+                    case CORNERWALL ->
+                            boardElement = new CornerWall(elementTemplate.heading, elementTemplate.heading2, space);
                 }
                 space.setBoardElement(boardElement);
             }
@@ -142,6 +146,14 @@ public class LoadBoard
                 boardElementTemplate.heading = boardElement.getHeading();
                 boardElementTemplate.isWalkable = boardElement.getIsWalkable();
                 boardElementTemplate.type = boardElement.getType();
+                if (boardElement instanceof Gear)
+                {
+                    boardElementTemplate.isClockwise = ((Gear) boardElement).isClockwise;
+                }
+                if (boardElement instanceof CornerWall)
+                {
+                    boardElementTemplate.heading2 = ((CornerWall) boardElement).heading2;
+                }
                 spaceTemplate.x = space.x;
                 spaceTemplate.y = space.y;
                 spaceTemplate.boardElementTemplate = boardElementTemplate;
