@@ -76,7 +76,7 @@ public class CardFieldView extends GridPane implements ViewObserver
     /**
      * @param gameController
      * @param field
-     * @author
+     * @author Elias, Adel & Mustafa
      */
     public CardFieldView(@NotNull GameController gameController, @NotNull CardField field)
     {
@@ -121,7 +121,7 @@ public class CardFieldView extends GridPane implements ViewObserver
     /**
      * @param cardField
      * @return
-     * @author
+     * @author Elias & Frederik
      */
     private String cardFieldRepresentation(CardField cardField)
     {
@@ -153,7 +153,7 @@ public class CardFieldView extends GridPane implements ViewObserver
     /**
      * @param rep
      * @return
-     * @author
+     * @author Elias
      */
     private CardField cardFieldFromRepresentation(String rep)
     {
@@ -184,7 +184,7 @@ public class CardFieldView extends GridPane implements ViewObserver
 
     /**
      * @param subject
-     * @author
+     * @author Mustafa, Elias & Frederik
      */
     @Override
     public void updateView(Subject subject)
@@ -215,14 +215,14 @@ public class CardFieldView extends GridPane implements ViewObserver
     }
 
     /**
-     * @author
+     * @author Elias & Frederik
      */
     private class OnDragDetectedHandler implements EventHandler<MouseEvent>
     {
 
         /**
          * @param event
-         * @author
+         * @author Elias & Frederik
          */
         @Override
         public void handle(MouseEvent event)
@@ -250,14 +250,14 @@ public class CardFieldView extends GridPane implements ViewObserver
     }
 
     /**
-     * @author
+     * @author Elias & Frederik
      */
     private class OnDragOverHandler implements EventHandler<DragEvent>
     {
 
         /**
          * @param event
-         * @author
+         * @author Elias & Frederik
          */
         @Override
         public void handle(DragEvent event)
@@ -280,14 +280,14 @@ public class CardFieldView extends GridPane implements ViewObserver
     }
 
     /**
-     * @author
+     * @author Elias & Frederik
      */
     private class OnDragEnteredHandler implements EventHandler<DragEvent>
     {
 
         /**
          * @param event
-         * @author
+         * @author Elias & Frederik
          */
         @Override
         public void handle(DragEvent event)
@@ -310,7 +310,7 @@ public class CardFieldView extends GridPane implements ViewObserver
     }
 
     /**
-     * @author
+     * @author Elias & Frederik
      */
     private class OnDragExitedHandler implements EventHandler<DragEvent>
     {
@@ -336,14 +336,14 @@ public class CardFieldView extends GridPane implements ViewObserver
     }
 
     /**
-     * @author
+     * @author Elias & Frederik
      */
     private class OnDragDroppedHandler implements EventHandler<DragEvent>
     {
 
         /**
          * @param event
-         * @author
+         * @author Elias & Frederik
          */
         @Override
         public void handle(DragEvent event)
@@ -384,14 +384,14 @@ public class CardFieldView extends GridPane implements ViewObserver
     }
 
     /**
-     * @author
+     * @author Elias
      */
     private class OnDragDoneHandler implements EventHandler<DragEvent>
     {
 
         /**
          * @param event
-         * @author
+         * @author Elias
          */
         @Override
         public void handle(DragEvent event)
