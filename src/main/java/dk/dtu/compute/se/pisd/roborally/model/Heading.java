@@ -33,7 +33,7 @@ public enum Heading {
 
     /**
      * @return
-     * @author
+     * @author Elias
      */
     public Heading next() {
         return values()[(this.ordinal() + 1) % values().length];
@@ -41,7 +41,7 @@ public enum Heading {
 
     /**
      * @return
-     * @author
+     * @author Elias
      */
     public Heading prev() {
         return values()[(this.ordinal() + values().length - 1) % values().length];
