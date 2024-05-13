@@ -16,7 +16,7 @@ public class MoveController
 
     /**
      * @param gameController
-     * @author
+     * @author Elias
      */
     public MoveController(GameController gameController)
     {
@@ -26,14 +26,12 @@ public class MoveController
     /**
      * @param player
      * @param command
-     * @author
+     * @author Elias, Emil, Frederik, Mustafa & Mads
      */
     public void executeCommand(@NotNull Player player, Command command)
     {
         if (player.board == gameController.board && command != null)
         {
-
-
             // XXX This is a very simplistic way of dealing with some basic cards and
             //     their execution. This should eventually be done in a more elegant way
             //     (this concerns the way cards are modelled as well as the way they are executed).
@@ -332,7 +330,7 @@ public class MoveController
 
     /**
      * @param space
-     * @author
+     * @author Frederik
      */
     public void moveCurrentPlayerToSpace(Space space)
     {
@@ -341,11 +339,10 @@ public class MoveController
     }
 
     /**
-     * @author
+     * @author Elias
      */
     class ImpossibleMoveException extends Exception
     {
-
         private final Player player;
         private final Space space;
         private final Heading heading;
@@ -354,7 +351,7 @@ public class MoveController
          * @param player
          * @param space
          * @param heading
-         * @author
+         * @author Frederik
          */
         public ImpossibleMoveException(Player player, Space space, Heading heading)
         {
@@ -364,6 +361,4 @@ public class MoveController
             this.heading = heading;
         }
     }
-
-
 }
