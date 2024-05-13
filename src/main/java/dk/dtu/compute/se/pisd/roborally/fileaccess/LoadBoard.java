@@ -77,7 +77,6 @@ public class LoadBoard
             result = new Board(template.width, template.height);
             for (SpaceTemplate spaceTemplate : template.spaces)
             {
-                System.out.println("dean");
                 Space space = result.getSpace(spaceTemplate.x, spaceTemplate.y);
                 BoardElementTemplate elementTemplate = spaceTemplate.boardElementTemplate;
                 BoardElement boardElement = new NullBoardElement(true, space);
