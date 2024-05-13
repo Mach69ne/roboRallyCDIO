@@ -25,8 +25,6 @@ import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
- *
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class GameController
@@ -36,7 +34,7 @@ public class GameController
 
     /**
      * @param board
-     * @author
+     * @author Elias
      */
     public GameController(@NotNull Board board)
     {
@@ -47,15 +45,18 @@ public class GameController
     /**
      * Starts Activation phase. This method should be called when the players have pressed finished programming button.
      *
-     * @author
+     * @author Mads
      */
     // XXX: implemented in the current version
     public void openShop()
     {
-
-
     }
 
+    /**
+     * Method to finish the programming phase, used after the players have used programming cards.
+     *
+     * @author Elias
+     */
     public void finishProgrammingPhase()
     {
         makeProgramFieldsInvisible();
@@ -66,7 +67,9 @@ public class GameController
     }
 
     /**
-     * @author
+     * Makes program fields invisible, used for the finishProgrammingPhase
+     *
+     * @author Elias & Frederik
      */
     // XXX: implemented in the current version
     private void makeProgramFieldsInvisible()
@@ -83,8 +86,11 @@ public class GameController
     }
 
     /**
+     * Makes program fields visible, used to revert makeProgramFieldsInvisble. Usage under
+     * programming and executing next step
+     *
      * @param register
-     * @author
+     * @author Elias & Frederik
      */
     // XXX: implemented in the current version
     private void makeProgramFieldsVisible(int register)
@@ -104,7 +110,7 @@ public class GameController
      * Executes the registers of the players. This method should be called when the players have pressed the execute
      * registers button.
      *
-     * @author
+     * @author Elias
      */
     // XXX: implemented in the current version
     public void executePrograms()
@@ -113,11 +119,10 @@ public class GameController
         continuePrograms();
     }
 
-
     /**
      * Continues the execution of the programs of the players. This method should be called when the
      *
-     * @author
+     * @author Elias
      */
     // XXX: implemented in the current version
     public void continuePrograms()
@@ -130,7 +135,9 @@ public class GameController
     }
 
     /**
-     * @author
+     * Executes the next step in the programming deck. Used for single steps or executing the whole deck
+     *
+     * @author Elias, Frederik, Emil & Adel
      */
     // XXX: implemented in the current version
     private void executeNextStep()
@@ -187,9 +194,9 @@ public class GameController
     }
 
     /**
-     * Starts the programming phase of the game. This method should be called when the game
+     * Starts the programming phase of the game. This method should be called when the game has begun
      *
-     * @author
+     * @author Elias, Adel & Frederik
      */
     // XXX: implemented in the current version
     public void startProgrammingPhase()
@@ -260,7 +267,7 @@ public class GameController
 
     /**
      * @return new Card with random commands
-     * @author
+     * @author Elias & Frederik
      */
     // XXX: implemented in the current version
     private Card generateRandomCommandCard()
@@ -271,7 +278,9 @@ public class GameController
     }
 
     /**
-     * @author
+     * Executes next step
+     *
+     * @author Elias
      */
     // XXX: implemented in the current version
     public void executeStep()
@@ -284,7 +293,7 @@ public class GameController
      * @param source
      * @param target
      * @return true if sourceCard is not null and targetCard is null, false otherwise
-     * @author
+     * @author Frederik & Elias
      */
     public boolean moveCards(@NotNull CardField source, @NotNull CardField target)
     {
