@@ -26,6 +26,7 @@ import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Antenna;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors.BlueConveyor;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors.GreenConveyor;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.RebootToken;
 import org.jetbrains.annotations.NotNull;
 
@@ -105,8 +106,7 @@ public class Board extends Subject
         {
             boardElements[i] = new ArrayList<BoardElement>();
         }
-        spaces[4][4].setBoardElement(new BlueConveyor(Heading.NORTH, spaces[4][4]));
-        spaces[5][4].setBoardElement(new BlueConveyor(Heading.NORTH, spaces[5][4]));
+        spaces[4][4].setBoardElement(new Antenna(spaces[4][4]));
         this.activateBoardElements();
     
         this.upgradeCards = UpgradeCardsInfo.createUpgradeCards();
