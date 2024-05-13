@@ -4,7 +4,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 /**
- * @author
+ * @author Elias
  */
 public class NullBoardElement extends BoardElement
 {
@@ -26,7 +26,7 @@ public class NullBoardElement extends BoardElement
     /**
      * @param heading
      * @return
-     * @author
+     * @author Elias
      */
     @Override
     public boolean getCanWalkOutOf(Heading heading)
@@ -37,7 +37,7 @@ public class NullBoardElement extends BoardElement
     /**
      * @param heading
      * @return
-     * @author
+     * @author Elias
      */
     @Override
     public boolean getCanWalkInto(Heading heading)
