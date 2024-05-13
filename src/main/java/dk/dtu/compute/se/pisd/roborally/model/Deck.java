@@ -24,6 +24,11 @@ public class Deck
         int amountOfRight = 5;
         int amountOfLeft = 5;
         int amountOfFastForward = 5;
+        int amountOfMoveThree = 5;
+        int amountOfUTurn = 5;
+        int amountOfMoveBack = 5;
+        int amountOfAgain = 5;
+        int amountOfPowerUp = 5;
         int amountOfOptionLeftOrRight = 5;
         for (int i = 0; i < amountOfForwards; i++)
         {
@@ -40,6 +45,26 @@ public class Deck
         for (int i = 0; i < amountOfFastForward; i++)
         {
             playerCards.add(new Card(Command.FAST_FORWARD));
+        }
+        for (int i = 0; i < amountOfMoveThree; i++)
+        {
+            playerCards.add(new Card(Command.MOVE_THREE));
+        }
+        for (int i = 0; i < amountOfUTurn; i++)
+        {
+            playerCards.add(new Card(Command.U_TURN));
+        }
+        for (int i = 0; i < amountOfMoveBack; i++)
+        {
+            playerCards.add(new Card(Command.MOVE_BACK));
+        }
+        for (int i = 0; i < amountOfAgain; i++)
+        {
+            playerCards.add(new Card(Command.AGAIN));
+        }
+        for (int i = 0; i < amountOfPowerUp; i++)
+        {
+            playerCards.add(new Card(Command.POWER_UP));
         }
         for (int i = 0; i < amountOfOptionLeftOrRight; i++)
         {
