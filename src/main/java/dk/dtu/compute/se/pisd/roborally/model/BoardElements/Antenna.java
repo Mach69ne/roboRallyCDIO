@@ -7,7 +7,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.image.Image;
 
 /**
- * @author
+ * @author Elias
  */
 public class Antenna extends NullBoardElement
 {
@@ -23,7 +23,7 @@ public class Antenna extends NullBoardElement
     }
 
     /**
-     * @author
+     * @author Elias
      */
     @Override
     public void activate()
@@ -46,7 +46,7 @@ public class Antenna extends NullBoardElement
 
     /**
      * @param playerToInsert
-     * @author
+     * @author Elias
      */
     private void insertPlayerIntoTempArr(Player playerToInsert)
     {
@@ -63,7 +63,6 @@ public class Antenna extends NullBoardElement
 
         for (int i = 0; i < this.players.length; i++)
         {
-
             if (players[i] == null)
             {
                 players[i] = playerToInsert;
@@ -99,7 +98,6 @@ public class Antenna extends NullBoardElement
                     insertPlayerIntoTempArr(tempPlayer);
                 }
             }
-
         }
     }
 }
