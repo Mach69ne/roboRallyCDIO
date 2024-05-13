@@ -49,7 +49,7 @@ public class SpaceView extends StackPane implements ViewObserver
 
     /**
      * @param space
-     * @author
+     * @author Elias
      */
     public SpaceView(@NotNull Space space)
     {
@@ -85,11 +85,9 @@ public class SpaceView extends StackPane implements ViewObserver
         update(space);
     }
 
-
-
     /**
      * @param subject
-     * @author
+     * @author Elias
      */
     @Override
     public void updateView(Subject subject)
@@ -102,6 +100,9 @@ public class SpaceView extends StackPane implements ViewObserver
         }
     }
 
+    /**
+     * @author Adel
+     */
     private void updateBoardElement()
     {
         this.getChildren().add(imageView);
@@ -112,11 +113,11 @@ public class SpaceView extends StackPane implements ViewObserver
             imageView.setRotate(180);
         }if(this.space.getBoardElement().getHeading()==Heading.SOUTH){
             imageView.setRotate(270);
-    }
+        }
     }
 
     /**
-     * @author
+     * @author Elias
      */
     private void updatePlayer()
     {
