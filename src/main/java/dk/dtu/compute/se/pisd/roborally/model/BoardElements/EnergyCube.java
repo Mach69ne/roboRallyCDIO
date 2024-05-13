@@ -22,6 +22,9 @@ public class EnergyCube extends NullBoardElement
         this.setType(ElementsEnum.ENERGYCUBE);
     }
 
+    /**
+     * @author Elias & Emil
+     */
     @Override
     public void activate()
     {
