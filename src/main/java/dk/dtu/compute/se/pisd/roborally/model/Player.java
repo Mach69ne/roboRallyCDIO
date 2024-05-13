@@ -277,10 +277,10 @@ public class Player extends Subject
     }
 
     /**
-     * @author
+     * @return void
+     * @param card
+     * @author Frederik
      */
-
-    //adding this method as discardPile is private
     public void addCardToDiscardPile(Card card)
     {
         if (card != null)
@@ -293,6 +293,10 @@ public class Player extends Subject
         }
     }
 
+    /**
+     * @return void
+     * @author Frederik
+     */
     public void discardAllCardsUponReboot()
     {
         for (int i = 0; i < program.length; i++)
@@ -312,6 +316,10 @@ public class Player extends Subject
 
     }
 
+    /**
+     * @return void
+     * @author Emil
+     */
     public void pickUpEnergyCube()
     {
         energyCubes++;
