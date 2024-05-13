@@ -14,7 +14,7 @@ public abstract class BoardElement
     private final Heading heading;
     private final Space space;
     private Image image;
-    private String type;
+    private ElementsEnum type;
 
     //All method calls to this method should be looked at, to ensure it is the proper functionality
     protected BoardElement(Heading heading, boolean isWalkable, Space space)
@@ -29,7 +29,7 @@ public abstract class BoardElement
         this.space = space;
         this.space.setBoardElement(this);
         this.setImage(image);
-        this.type = "";
+        this.type = ElementsEnum.NULL;
     }
 
     /**
@@ -111,12 +111,12 @@ public abstract class BoardElement
         }
     }
 
-    public String getType()
+    public ElementsEnum getType()
     {
         return type;
     }
 
-    public void setType(String type)
+    public void setType(ElementsEnum type)
     {
         this.type = type;
     }
