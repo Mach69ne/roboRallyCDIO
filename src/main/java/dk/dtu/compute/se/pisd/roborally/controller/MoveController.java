@@ -1,5 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.RebootToken;
 import dk.dtu.compute.se.pisd.roborally.model.Command;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
@@ -78,6 +79,9 @@ public class MoveController
                     break;
                 case TROJAN_HORSE:
                     this.useTrojanHorse(player, command);
+                    break;
+                case WORM:
+                    this.useWormCard(player, command);
                     break;
                 default:
                     throw new RuntimeException("Something went wrong");
@@ -170,6 +174,13 @@ public class MoveController
     public void useTrojanHorse(@NotNull Player player, Command command)
     {
         player.addSpamToDiscard(2);
+    }
+
+    public void useWormCard(@NotNull Player player, Command command) {
+        if(player != null) {
+            RebootToken rebootToken = new RebootToken(player.getHeading(), player.getSpace());
+            rebootToken.reboot(player);
+        }
     }
 
     /**
