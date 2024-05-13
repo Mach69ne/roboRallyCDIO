@@ -21,8 +21,6 @@
  */
 package dk.dtu.compute.se.pisd.roborally.model;
 
-import static dk.dtu.compute.se.pisd.roborally.model.Command.DONT_MOVE;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -31,9 +29,9 @@ import java.util.List;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
-public enum Command {
+public enum Command
+{
 
     // This is a very simplistic way of realizing different commands.
 
@@ -46,7 +44,7 @@ public enum Command {
     MOVE_BACK("Move Back"),
     AGAIN("Again"),
     POWER_UP("Power Up"),
-    OPTION_LEFT_RIGHT("Left OR Right",LEFT, RIGHT),
+    OPTION_LEFT_RIGHT("Left OR Right", LEFT, RIGHT),
     TROJAN_HORSE("Trojan Horse"),
     SPAM("SPAM"),
     VIRUS("Virus"),
@@ -64,25 +62,27 @@ public enum Command {
      * @param options
      * @author
      */
-    Command(String displayName, Command... options) {
+    Command(String displayName, Command... options)
+    {
         this.displayName = displayName;
         this.options = Collections.unmodifiableList(Arrays.asList(options));
     }
 
     /**
-     * @return
+     * @return boolean as of whether the command has more than one option
      * @author
      */
-    public boolean isInteractive() {
+    public boolean isInteractive()
+    {
         return !options.isEmpty();
     }
 
     /**
-     * @return
+     * @return list of all the command-options the player must choose between.
      * @author
      */
-    public List<Command> getOptions() {
+    public List<Command> getOptions()
+    {
         return options;
     }
-
 }
