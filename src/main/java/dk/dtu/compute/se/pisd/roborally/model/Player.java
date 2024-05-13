@@ -62,7 +62,7 @@ public class Player extends Subject
      * @param board the board to which this player belongs
      * @param color the color of the player
      * @param name  the name of the player
-     * @author
+     * @author Elias, Frederik & Emil
      */
     public Player(@NotNull Board board, String color, @NotNull String name, MoveController moveController)
     {
@@ -100,7 +100,7 @@ public class Player extends Subject
 
     /**
      * @return the name of the player
-     * @author
+     * @author Elias
      */
     public String getName()
     {
@@ -109,7 +109,7 @@ public class Player extends Subject
 
     /**
      * @param name the name of the player
-     * @author
+     * @author Elias
      */
     public void setName(String name)
     {
@@ -126,7 +126,7 @@ public class Player extends Subject
 
     /**
      * @return the color of the player
-     * @author
+     * @author Elias
      */
     public String getColor()
     {
@@ -135,7 +135,7 @@ public class Player extends Subject
 
     /**
      * @param color the color of the player
-     * @author
+     * @author Elias
      */
     public void setColor(String color)
     {
@@ -149,7 +149,7 @@ public class Player extends Subject
 
     /**
      * @return the space on which the player is located
-     * @author
+     * @author Elias
      */
     public Space getSpace()
     {
@@ -158,7 +158,7 @@ public class Player extends Subject
 
     /**
      * @param space the space on which the player is located
-     * @author
+     * @author Elias
      */
     public void setSpace(Space space)
     {
@@ -180,7 +180,7 @@ public class Player extends Subject
 
     /**
      * @return the heading of the player
-     * @author
+     * @author Elias
      */
     public Heading getHeading()
     {
@@ -189,7 +189,7 @@ public class Player extends Subject
 
     /**
      * @param heading the heading of the player
-     * @author
+     * @author Elias
      */
     public void setHeading(@NotNull Heading heading)
     {
@@ -207,7 +207,7 @@ public class Player extends Subject
     /**
      * @param i the index of the register to be returned
      * @return the register with the given index
-     * @author
+     * @author Frederik
      */
     public CardField getProgramField(int i)
     {
@@ -217,7 +217,7 @@ public class Player extends Subject
     /**
      * @param i the index of the card field to be returned
      * @return the card field with the given index
-     * @author
+     * @author Frederik
      */
     public CardField getCardField(int i)
     {
@@ -226,7 +226,7 @@ public class Player extends Subject
 
     /**
      * @param checkpoint
-     * @author
+     * @author Elias
      */
     public void addCheckPointAsVisited(Checkpoint checkpoint)
     {
@@ -242,7 +242,7 @@ public class Player extends Subject
 
     /**
      * @return
-     * @author
+     * @author Elias
      */
     public int getTabNumber()
     {
@@ -251,7 +251,7 @@ public class Player extends Subject
 
     /**
      * @param tabNumber
-     * @author
+     * @author Elias
      */
     public void setTabNumber(int tabNumber)
     {
@@ -260,7 +260,7 @@ public class Player extends Subject
 
     /**
      * @return
-     * @author
+     * @author Elias
      */
     public boolean getMovedByConveyorThisTurn()
     {
@@ -269,7 +269,7 @@ public class Player extends Subject
 
     /**
      * @param movedByConveyorThisTurn
-     * @author
+     * @author Elias
      */
     public void setMovedByConveyorThisTurn(boolean movedByConveyorThisTurn)
     {
@@ -337,6 +337,11 @@ public class Player extends Subject
         return cardToReturn;
     }
 
+    /**
+     * @param upgradeCardName
+     * @return
+     * @author Elias & Mads
+     */
     public boolean checkIfOwnsUpgradeCard(String upgradeCardName)
     {
         for (int i = 0; i < upgradeCards.size(); i++)
@@ -351,6 +356,10 @@ public class Player extends Subject
         return false;
     }
 
+    /**
+     * @param amount
+     * @author Elias
+     */
     public void addSpamToDiscard(int amount)
     {
         for (int i = 0; i < amount; i++)
