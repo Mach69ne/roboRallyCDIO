@@ -24,8 +24,8 @@ public class CornerWall extends BoardElement
 
     /**
      * @param heading
-     * @return
-     * @author
+     * @return boolean that states if the player can walk out of the space that the corner wall is on
+     * @author Frederik
      */
     public boolean getCanWalkOutOf(Heading heading)
     {
@@ -34,8 +34,8 @@ public class CornerWall extends BoardElement
 
     /**
      * @param heading
-     * @return
-     * @author
+     * @return boolean that states if the player can walk into the space
+     * @author Frederik
      */
     public boolean getCanWalkInto(Heading heading)
     {

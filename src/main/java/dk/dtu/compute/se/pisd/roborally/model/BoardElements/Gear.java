@@ -5,12 +5,18 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.image.Image;
 
 /**
- * @author
+ * @author Frederik
  */
 public class Gear extends NullBoardElement
 {
     private final boolean isClockwise;
 
+    /**
+     * @author Frederik
+     * @param isWalkable
+     * @param space
+     * @param isClockwise
+     */
     public Gear(boolean isWalkable, Space space, boolean isClockwise)
     {
         super(isWalkable, space);
@@ -24,7 +30,7 @@ public class Gear extends NullBoardElement
     }
 
     /**
-     * @author
+     * @author Frederik
      */
     public void activate()
     {
