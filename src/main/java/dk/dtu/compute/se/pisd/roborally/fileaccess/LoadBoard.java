@@ -24,9 +24,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import dk.dtu.compute.se.pisd.roborally.fileaccess.model.BoardElementTemplate;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.BoardTemplate;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.SpaceTemplate;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 import java.io.FileWriter;
@@ -120,13 +122,18 @@ public class LoadBoard
             for (int j = 0; j < board.height; j++)
             {
                 Space space = board.getSpace(i, j);
-                if (space != null)
-                {
-                    SpaceTemplate spaceTemplate = new SpaceTemplate();
-                    spaceTemplate.x = space.x;
-                    spaceTemplate.y = space.y;
-                    template.spaces.add(spaceTemplate);
-                }
+                BoardElement boardElement = space.getBoardElement();
+
+
+                SpaceTemplate spaceTemplate = new SpaceTemplate();
+                BoardElementTemplate boardElementTemplate = new BoardElementTemplate();
+                boardElementTemplate.heading = boardElement.getHeading();
+                boardElementTemplate.isWalkable = boardElement.getIsWalkable();
+                boardElementTemplate.type = boardElement.getType();
+                spaceTemplate.x = space.x;
+                spaceTemplate.y = space.y;
+                spaceTemplate.boardElementTemplate = boardElementTemplate;
+                template.spaces.add(spaceTemplate);
             }
         }
         String filename = "src/main/Resources/" + BOARDSFOLDER + "/" + name + "." + JSON_EXT;
