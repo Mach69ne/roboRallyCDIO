@@ -11,7 +11,6 @@ import javafx.scene.image.Image;
  */
 public class PushPanel extends BoardElement
 {
-
     public PushPanel(Heading heading, Space space)
     {
         super(heading, true, space);
@@ -33,8 +32,5 @@ public class PushPanel extends BoardElement
             this.getSpace().getPlayer().moveController.movePlayerAmountOfTimesWithHeading(playerToMove,
                     heading, 1);
         }
-
-
     }
-
 }
