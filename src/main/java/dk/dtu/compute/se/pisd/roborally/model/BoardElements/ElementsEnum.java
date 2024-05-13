@@ -1,5 +1,8 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
+/**
+ * @author Elias
+ */
 public enum ElementsEnum
 {
     ANTENNA,
