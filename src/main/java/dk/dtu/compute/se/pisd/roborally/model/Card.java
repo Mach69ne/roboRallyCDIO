@@ -38,7 +38,7 @@ public class Card extends Subject
 
     /**
      * @param command the command represented by this card
-     * @author
+     * @author Elias & Mustafa
      */
     public Card(@NotNull Command command)
     {
@@ -47,6 +47,11 @@ public class Card extends Subject
         this.image = getImageBasedOnCommand(command);
     }
 
+    /**
+     * @param command
+     * @return
+     * @author Elias, Mustafa & Frederik
+     */
     private Image getImageBasedOnCommand(Command command)
     {
         switch (command)
@@ -85,6 +90,11 @@ public class Card extends Subject
         }
     }
 
+    /**
+     * @param command
+     * @param image
+     * @author Mustafa
+     */
     public Card(@NotNull Command command, Image image)
     {
         this.command = command;
@@ -93,18 +103,26 @@ public class Card extends Subject
 
     /**
      * @return the name of the command represented by this card
-     * @author
+     * @author Elias
      */
     public String getName()
     {
         return command.displayName;
     }
 
+    /**
+     * @return
+     * @author Elias
+     */
     public Image getImage()
     {
         return image;
     }
 
+    /**
+     * @param image
+     * @author Mustafa
+     */
     public void setImage(Image image)
     {
         if (image == null)
@@ -116,5 +134,4 @@ public class Card extends Subject
             this.image = image;
         }
     }
-
 }
