@@ -201,7 +201,15 @@ public class CardFieldView extends GridPane implements ViewObserver
             else
             {
                 label.setText("");
-                imageView.setImage(null);
+                if (card != null && !field.isVisible())
+                {
+                    imageView.setImage(new Image("file:src/main/Resources/Images/facedownCard.png"));
+                }
+                else
+                {
+                    imageView.setImage(null);
+                }
+
             }
         }
     }

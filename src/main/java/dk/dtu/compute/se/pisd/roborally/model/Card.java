@@ -22,17 +22,16 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import org.jetbrains.annotations.NotNull;
-
 import javafx.scene.image.Image;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
-public class Card extends Subject {
+public class Card extends Subject
+{
 
     final public Command command;
     private Image image;
@@ -41,38 +40,17 @@ public class Card extends Subject {
      * @param command the command represented by this card
      * @author
      */
-    public Card(@NotNull Command command) {
+    public Card(@NotNull Command command)
+    {
 
         this.command = command;
         this.image = getImageBasedOnCommand(command);
     }
-    public Card(@NotNull Command command, Image image) {
-        this.command = command;
-        this.image = image;
-    }
 
-    /**
-     * @return the name of the command represented by this card
-     * @author
-     */
-    public String getName() {
-        return command.displayName;
-    }
-    public Image getImage() { return image; }
-
-    public void setImage(Image image) {
-        if (image == null)
+    private Image getImageBasedOnCommand(Command command)
+    {
+        switch (command)
         {
-            this.image = new Image("file:src/main/Resources/Images/empty.png");
-        }
-        else
-        {
-            this.image = image;
-        }
-    }
-
-    private Image getImageBasedOnCommand(Command command) {
-        switch (command) {
             case FORWARD:
                 return new Image("file:src/main/Resources/Images/move1.png");
             case FAST_FORWARD:
@@ -84,6 +62,38 @@ public class Card extends Subject {
 
             default:
                 return null;
+        }
+    }
+
+    public Card(@NotNull Command command, Image image)
+    {
+        this.command = command;
+        this.image = image;
+    }
+
+    /**
+     * @return the name of the command represented by this card
+     * @author
+     */
+    public String getName()
+    {
+        return command.displayName;
+    }
+
+    public Image getImage()
+    {
+        return image;
+    }
+
+    public void setImage(Image image)
+    {
+        if (image == null)
+        {
+            this.image = new Image("file:src/main/Resources/Images/facedownCard.png");
+        }
+        else
+        {
+            this.image = image;
         }
     }
 
