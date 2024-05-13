@@ -1,5 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.RebootToken;
 import dk.dtu.compute.se.pisd.roborally.model.Command;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
@@ -99,6 +100,7 @@ public class MoveController
      */
     public void moveForward(@NotNull Player player)
     {
+        LoadBoard.saveBoard(player.board, "DEA");
         movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 1);
     }
 

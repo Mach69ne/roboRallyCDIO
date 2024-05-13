@@ -1,0 +1,582 @@
+{
+  "width": 8,
+  "height": 8,
+  "spaces": [
+    {
+      "x": 0,
+      "y": 0,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 0,
+      "y": 2,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 0,
+      "y": 3,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 0,
+      "y": 4,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 0,
+      "y": 5,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 0,
+      "y": 6,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 0,
+      "y": 7,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 1,
+      "y": 0,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 1,
+      "y": 1,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 1,
+      "y": 2,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 1,
+      "y": 3,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 1,
+      "y": 4,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 1,
+      "y": 5,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 1,
+      "y": 6,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 1,
+      "y": 7,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 2,
+      "y": 0,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 2,
+      "y": 1,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 2,
+      "y": 2,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 2,
+      "y": 5,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 2,
+      "y": 6,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 2,
+      "y": 7,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 3,
+      "y": 0,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 3,
+      "y": 1,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 3,
+      "y": 2,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 3,
+      "y": 5,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 3,
+      "y": 6,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 3,
+      "y": 7,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 4,
+      "y": 0,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 4,
+      "y": 1,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 4,
+      "y": 2,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "boardElementTemplate": {
+        "type": "BLUE_CONVEYOR",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 4,
+      "y": 5,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 4,
+      "y": 7,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 5,
+      "y": 0,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 5,
+      "y": 1,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 5,
+      "y": 2,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 5,
+      "y": 3,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 5,
+      "y": 4,
+      "boardElementTemplate": {
+        "type": "BLUE_CONVEYOR",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 5,
+      "y": 5,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 5,
+      "y": 6,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 5,
+      "y": 7,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 6,
+      "y": 0,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 6,
+      "y": 1,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 6,
+      "y": 2,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 6,
+      "y": 3,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 6,
+      "y": 4,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 6,
+      "y": 5,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 6,
+      "y": 6,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 6,
+      "y": 7,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 7,
+      "y": 0,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 7,
+      "y": 1,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 7,
+      "y": 2,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 7,
+      "y": 3,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 7,
+      "y": 4,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 7,
+      "y": 5,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 7,
+      "y": 6,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    },
+    {
+      "x": 7,
+      "y": 7,
+      "boardElementTemplate": {
+        "type": "NULL",
+        "heading": "NORTH",
+        "isWalkable": true
+      }
+    }
+  ]
+}
