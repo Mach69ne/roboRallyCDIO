@@ -7,8 +7,6 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import org.jetbrains.annotations.NotNull;
 
-import static dk.dtu.compute.se.pisd.roborally.model.Command.OPTION_FORWARD_OR_NOT;
-
 public class MoveController
 {
     GameController gameController;
@@ -40,10 +38,6 @@ public class MoveController
             switch (command)
             {
                 case FORWARD:
-                    if (player.checkIfOwnsUpgradeCard("BRAKES"))
-                    {
-                        executeCommand(player, OPTION_FORWARD_OR_NOT);
-                    }
                     this.moveForward(player);
                     break;
                 case RIGHT:
@@ -181,8 +175,10 @@ public class MoveController
         player.addSpamToDiscard(2);
     }
 
-    public void useWormCard(@NotNull Player player, Command command) {
-        if(player != null) {
+    public void useWormCard(@NotNull Player player, Command command)
+    {
+        if (player != null)
+        {
             RebootToken rebootToken = new RebootToken(player.getHeading(), player.getSpace());
             rebootToken.reboot(player);
         }
