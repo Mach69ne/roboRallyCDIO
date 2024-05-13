@@ -28,7 +28,10 @@ import dk.dtu.compute.se.pisd.roborally.fileaccess.model.BoardElementTemplate;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.BoardTemplate;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.SpaceTemplate;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.*;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors.BlueConveyor;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors.GreenConveyor;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.Wall;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 import java.io.FileWriter;
@@ -60,8 +63,8 @@ public class LoadBoard
             return new Board(8, 8);
         }
         // In simple cases, we can create a Gson object with new Gson():
-        GsonBuilder simpleBuilder = new GsonBuilder().registerTypeAdapter(SpaceTemplate.class,
-                new Adapter<SpaceTemplate>());
+        GsonBuilder simpleBuilder = new GsonBuilder().registerTypeAdapter(BoardElement.class,
+                new Adapter<BoardElement>());
         Gson gson = simpleBuilder.create();
         Board result;
         // FileReader fileReader = null;
@@ -75,11 +78,21 @@ public class LoadBoard
             for (SpaceTemplate spaceTemplate : template.spaces)
             {
                 Space space = result.getSpace(spaceTemplate.x, spaceTemplate.y);
-                if (space != null)
+                BoardElementTemplate elementTemplate = spaceTemplate.boardElementTemplate;
+                BoardElement boardElement = new NullBoardElement(true, space);
+                switch (elementTemplate.type)
                 {
-                    //space.getActions().addAll(spaceTemplate.actions);
-                    //space.getWalls().addAll(spaceTemplate.walls);
+                    case WALL -> boardElement = new Wall(elementTemplate.heading, space);
+                    case ANTENNA -> boardElement = new Antenna(space);
+                    case PUSHPANEL -> boardElement = new PushPanel(elementTemplate.heading, space);
+                    case CHECKPOINT -> boardElement = new Checkpoint(space);
+                    case ENERGYCUBE -> boardElement = new EnergyCube(space);
+                    case GREEN_CONVEYOR -> boardElement = new GreenConveyor(elementTemplate.heading, space);
+                    case BLUE_CONVEYOR -> boardElement = new BlueConveyor(elementTemplate.heading, space);
+                    case BOARDLASER -> boardElement = new BoardLaser(space, elementTemplate.heading);
+                    case REBOOTTOKEN -> boardElement = new RebootToken(elementTemplate.heading, space);
                 }
+                space.setBoardElement(boardElement);
             }
             reader.close();
             return result;
@@ -145,8 +158,8 @@ public class LoadBoard
         // But, if you need to configure it, it is better to create it from
         // a builder (here, we want to configure the JSON serialisation with
         // a pretty printer):
-        GsonBuilder simpleBuilder =
-                new GsonBuilder().registerTypeAdapter(Space.class, new Adapter<Space>()).setPrettyPrinting();
+        GsonBuilder simpleBuilder = new GsonBuilder().registerTypeAdapter(BoardElement.class,
+                new Adapter<BoardElement>()).setPrettyPrinting();
         Gson gson = simpleBuilder.create();
 
         FileWriter fileWriter = null;

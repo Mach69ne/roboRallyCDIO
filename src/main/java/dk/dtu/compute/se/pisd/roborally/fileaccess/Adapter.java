@@ -21,16 +21,9 @@
  */
 package dk.dtu.compute.se.pisd.roborally.fileaccess;
 
-import java.lang.reflect.Type;
+import com.google.gson.*;
 
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
+import java.lang.reflect.Type;
 
 /**
  * A generic type adapter for Gson, which deals with structures, where
@@ -42,23 +35,22 @@ import com.google.gson.JsonSerializer;
  * in the structure. Note that this solution does not work if instances of
  * E itself need to be serialized (typically E would be abstract).
  *
+ * @param <E> The top of the class hierarchy
  * @author Menelaos Perdikeas, https://github.com/mperdikeas
  * @author Ekkart Kindler, ekki@dtu.dk
- *
- * @param <E> The top of the class hierarchy
  */
 
 // This was provided in the 3rd assignment by the teachers,
 // and it is used to serialize and deserialize objects of different classes
-public class Adapter<E> implements JsonSerializer<E>, JsonDeserializer<E>{
+public class Adapter<E> implements JsonSerializer<E>, JsonDeserializer<E>
+{
 
     private static final String CLASSNAME = "CLASSNAME";
-    private static final String INSTANCE  = "INSTANCE";
+    private static final String INSTANCE = "INSTANCE";
 
     @Override
-    public JsonElement serialize(E src, Type typeOfSrc,
-                                 JsonSerializationContext context) {
-
+    public JsonElement serialize(E src, Type typeOfSrc, JsonSerializationContext context)
+    {
         JsonObject retValue = new JsonObject();
         String className = src.getClass().getName();
         retValue.addProperty(CLASSNAME, className);
@@ -68,16 +60,19 @@ public class Adapter<E> implements JsonSerializer<E>, JsonDeserializer<E>{
     }
 
     @Override
-    public E deserialize(JsonElement json, Type typeOfT,
-                         JsonDeserializationContext context) throws JsonParseException  {
+    public E deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException
+    {
         JsonObject jsonObject = json.getAsJsonObject();
         JsonPrimitive prim = (JsonPrimitive) jsonObject.get(CLASSNAME);
         String className = prim.getAsString();
 
         Class<?> klass;
-        try {
+        try
+        {
             klass = Class.forName(className);
-        } catch (ClassNotFoundException e) {
+        }
+        catch (ClassNotFoundException e)
+        {
             e.printStackTrace();
             throw new JsonParseException(e.getMessage());
         }
