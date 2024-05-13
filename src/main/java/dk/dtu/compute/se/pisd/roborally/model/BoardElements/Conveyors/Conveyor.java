@@ -1,6 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors;
 
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.NullBoardElement;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
@@ -8,13 +8,13 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 /**
  * @author
  */
-public abstract class Conveyor extends BoardElement
+public abstract class Conveyor extends NullBoardElement
 {
     private final int moveAmount;
 
     Conveyor(Heading heading, int moveAmount, Space space)
     {
-        super(heading, true, space);
+        super(heading, space);
         this.moveAmount = moveAmount;
     }
 
@@ -25,9 +25,11 @@ public abstract class Conveyor extends BoardElement
     public void activate()
     {
         Player playerToMove = this.getSpace().getPlayer();
-        if(playerToMove!=null) {
+        if (playerToMove != null)
+        {
             {
-                playerToMove.moveController.movePlayerAmountOfTimesWithHeading(playerToMove, this.getHeading(), moveAmount);
+                playerToMove.moveController.movePlayerAmountOfTimesWithHeading(playerToMove, this.getHeading(),
+                        moveAmount);
             }
             playerToMove.setMovedByConveyorThisTurn(true);
         }

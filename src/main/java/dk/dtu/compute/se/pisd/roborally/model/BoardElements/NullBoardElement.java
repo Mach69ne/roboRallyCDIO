@@ -18,6 +18,11 @@ public class NullBoardElement extends BoardElement
         super(Heading.NORTH, isWalkable, space);
     }
 
+    public NullBoardElement(Heading heading, Space space)
+    {
+        super(heading, true, space);
+    }
+
     /**
      * @param heading
      * @return
