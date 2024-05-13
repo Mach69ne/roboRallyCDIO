@@ -185,7 +185,15 @@ public class MoveController
     {
         if (player.getSpace().board.getStep() > 0)
         {
-            Command command = player.getProgramField(player.getSpace().board.getStep() - 1).getCard().command;
+            int index = player.getSpace().board.getStep() - 1;
+            Command command = player.getProgramField(index).getCard().command;
+            while (command == Command.AGAIN) {
+                index--;
+                if (index < 0) {
+                    return;
+                }
+                command = player.getProgramField(index).getCard().command;
+            }
             executeCommand(player, command);
         }
     }
