@@ -44,6 +44,8 @@ public enum Command {
     OPTION_LEFT_RIGHT("Left OR Right",LEFT, RIGHT),
     TROJAN_HORSE("Trojan Horse"),
     SPAM("SPAM"),
+    VIRUS("Virus"),
+    WORM("Worm"),
     DONT_MOVE("Dont Move"),
     OPTION_FORWARD_OR_NOT("Forward or Not", FORWARD, DONT_MOVE);
 
