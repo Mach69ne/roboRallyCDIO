@@ -53,7 +53,7 @@ public class BoardView extends VBox implements ViewObserver
 
     /**
      * @param gameController
-     * @author
+     * @author Elias
      */
     public BoardView(@NotNull GameController gameController)
     {
@@ -85,7 +85,7 @@ public class BoardView extends VBox implements ViewObserver
 
     /**
      * @param subject
-     * @author
+     * @author Elias
      */
     @Override
     public void updateView(Subject subject)
@@ -101,7 +101,7 @@ public class BoardView extends VBox implements ViewObserver
     //     behaviour of the game by being able to explicitly move the players on the board!
 
     /**
-     * @author
+     * @author Frederik
      */
     // one line is currently commented out as our moveCurrentPlayerToSpace is in MoveController
     private class SpaceEventHandler implements EventHandler<MouseEvent> {
@@ -118,7 +118,7 @@ public class BoardView extends VBox implements ViewObserver
 
         /**
          * @param event
-         * @author
+         * @author Frederik
          */
         @Override
         public void handle(MouseEvent event) {
