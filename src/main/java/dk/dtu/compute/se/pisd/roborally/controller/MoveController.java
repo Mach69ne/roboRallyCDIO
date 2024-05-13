@@ -66,13 +66,14 @@ public class MoveController
                     break;
                 case AGAIN:
                     // TODO
-                    if (player.getSpace().board.getStep() > 0) {
-                        command = player.getProgramField(player.getSpace().board.getStep()-1).getCard().command;
+                    if (player.getSpace().board.getStep() > 0)
+                    {
+                        command = player.getProgramField(player.getSpace().board.getStep() - 1).getCard().command;
                         executeCommand(player, command);
                     }
                     break;
                 case POWER_UP:
-                    // TODO
+                    player.pickUpEnergyCube();
                     break;
                 case OPTION_LEFT_RIGHT:
                     this.optionLeftOrRight(player, command);
@@ -191,13 +192,17 @@ public class MoveController
             if (currentSpace.getBoardElement().getCanWalkOutOf(heading) && newSpace.getBoardElement().getCanWalkInto(heading))
             {
                 //Logic for moving to a space should be put here:
-                if (newSpace.getPlayer() == null) {
+                if (newSpace.getPlayer() == null)
+                {
                     player.setSpace(newSpace);
                     newSpace.getBoardElement().onWalkOver(player);
-                } else {
+                }
+                else
+                {
                     //If there is a player on the space, the player should be pushed
                     Space pushedToSpace = gameController.board.getNeighbour(newSpace, heading);
-                    if (pushedToSpace.getBoardElement().getCanWalkInto(heading) && pushedToSpace.getPlayer() == null) {
+                    if (pushedToSpace.getBoardElement().getCanWalkInto(heading) && pushedToSpace.getPlayer() == null)
+                    {
                         newSpace.getPlayer().setSpace(pushedToSpace);
                         pushedToSpace.getBoardElement().onWalkOver(newSpace.getPlayer());
                         player.setSpace(newSpace);
