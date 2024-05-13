@@ -25,9 +25,13 @@ public class PushPanel extends BoardElement
     @Override
     public void activate()
     {
-        Heading heading = this.getHeading().next().next();
-        this.getSpace().getPlayer().moveController.movePlayerAmountOfTimesWithHeading(this.getSpace().getPlayer(),
-                heading, 1);
+        if(this.getSpace().getPlayer() != null)
+        {
+            Heading heading = this.getHeading().next().next();
+            this.getSpace().getPlayer().moveController.movePlayerAmountOfTimesWithHeading(this.getSpace().getPlayer(),
+                    heading, 1);
+        }
+
     }
 
 }
