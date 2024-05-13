@@ -15,9 +15,12 @@ public class Gear extends NullBoardElement
     {
         super(isWalkable, space);
         this.isClockwise = isClockwise;
-        if(this.isClockwise) {
+        if (this.isClockwise)
+        {
             setImage(new Image("file:src/main/resources/images/gearRight.png"));
-        }else {
+        }
+        else
+        {
             setImage(new Image("file:src/main/resources/images/gearLeft.png"));
         }
         space.board.addBoardElement(Board.GEARS_INDEX, this);
@@ -28,6 +31,10 @@ public class Gear extends NullBoardElement
      */
     public void activate()
     {
+        if (this.getSpace() == null || this.getSpace().getPlayer() == null)
+        {
+            return;
+        }
         if (isClockwise)
         {
             getSpace().getPlayer().setHeading(getSpace().getPlayer().getHeading().next());
