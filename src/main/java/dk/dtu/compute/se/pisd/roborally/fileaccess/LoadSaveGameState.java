@@ -93,7 +93,6 @@ public class LoadSaveGameState
             {
                 gameController.board.addPlayer(player);
             }
-
         }
         gameController.board.setCurrentPlayer(gameController.board.getPlayer(0));
         //gameController.board.setCurrentPlayer(gameController.board.getPlayer(0));
@@ -108,7 +107,6 @@ public class LoadSaveGameState
         GsonBuilder simpleBuilder = new GsonBuilder().registerTypeAdapter(GameStateInfo.class,
                 new Adapter<GameStateInfo>());
         Gson gson = simpleBuilder.create();
-        GameStateInfo result;
         // FileReader fileReader = null;
         JsonReader reader = null;
         try
@@ -116,12 +114,8 @@ public class LoadSaveGameState
             // fileReader = new FileReader(filename);
             reader = gson.newJsonReader(new InputStreamReader(inputStream));
             GameStateInfo template = gson.fromJson(reader, GameStateInfo.class);
-            result = new GameStateInfo();
-            //result.gameID = template.gameID;
-            result.step = template.step;
-            result.phase = template.phase;
             reader.close();
-            return result;
+            return template;
         }
         catch (IOException e1)
         {
