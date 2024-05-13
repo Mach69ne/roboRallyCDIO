@@ -49,7 +49,7 @@ public class Player extends Subject
     private final Deck activeCardsPile;
     private final Deck discardedCardsPile;
     private final ArrayList<UpgradeCards> upgradeCards = new ArrayList<>();
-    private ArrayList<Checkpoint> visitedCheckPoints;
+    private final ArrayList<Checkpoint> visitedCheckPoints = new ArrayList<>();
     private String name;
     private String color;
     private Space space;
@@ -277,8 +277,8 @@ public class Player extends Subject
     }
 
     /**
-     * @return void
      * @param card
+     * @return void
      * @author Frederik
      */
     public void addCardToDiscardPile(Card card)
