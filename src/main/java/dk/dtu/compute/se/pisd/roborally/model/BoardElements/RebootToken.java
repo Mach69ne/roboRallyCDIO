@@ -6,7 +6,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.image.Image;
 
 /**
- * @author
+ * @author Elias, Adel & Frederik
  */
 public class RebootToken extends BoardElement
 {
@@ -21,7 +21,7 @@ public class RebootToken extends BoardElement
 
     /**
      * @param player
-     * @author
+     * @author Elias & Frederik
      */
     public void reboot(Player player)
     {
