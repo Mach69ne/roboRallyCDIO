@@ -254,10 +254,6 @@ public class PlayerView extends Tab implements ViewObserver
 
                 if (player.board.getCurrentPlayer() == player)
                 {
-                    // TODO Assignment A3: these buttons should be shown only when there is
-                    //      an interactive command card, and the buttons should represent
-                    //      the player's choices of the interactive command card. The
-                    //      following is just a mockup showing two options
                     // Phase bliver ikke sat til PLAYER_INTERACTION, så denne del af koden bliver aldrig kørt,
                     // så det skal vi lige have kigget på.
                     if (player.getProgramField(player.board.getStep()).getCard().command.isInteractive())
