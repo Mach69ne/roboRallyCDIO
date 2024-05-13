@@ -160,7 +160,7 @@ public class MoveController
      * @param player
      * @param heading
      * @param amountOfTimesToMove
-     * @author Elias
+     * @author Elias og Emil
      */
     public void movePlayerAmountOfTimesWithHeading(Player player, Heading heading, int amountOfTimesToMove)
     {
