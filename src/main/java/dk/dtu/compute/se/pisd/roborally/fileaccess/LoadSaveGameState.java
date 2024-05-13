@@ -43,8 +43,8 @@ public class LoadSaveGameState
         // But, if you need to configure it, it is better to create it from
         // a builder (here, we want to configure the JSON serialisation with
         // a pretty printer):
-        GsonBuilder simpleBuilder = new GsonBuilder().registerTypeAdapter(GameStateInfo.class,
-                new Adapter<GameStateInfo>()).setPrettyPrinting();
+        GsonBuilder simpleBuilder =
+                new GsonBuilder().registerTypeAdapter(Board.class, new Adapter<Board>()).setPrettyPrinting();
         Gson gson = simpleBuilder.create();
 
         FileWriter fileWriter = null;
