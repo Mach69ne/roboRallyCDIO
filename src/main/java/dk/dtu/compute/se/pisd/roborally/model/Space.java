@@ -49,7 +49,7 @@ public class Space extends Subject {
      * @param board the board to which this space belongs
      * @param x     the x-coordinate of this space
      * @param y     the y-coordinate of this space
-     * @author
+     * @author Elias
      */
     public Space(Board board, int x, int y) {
         this.board = board;
@@ -61,7 +61,7 @@ public class Space extends Subject {
 
     /**
      * @return the player on this space
-     * @author
+     * @author Frederik
      */
     public BoardElement getBoardElement() {
         return boardElement;
@@ -69,7 +69,7 @@ public class Space extends Subject {
 
     /**
      * @param boardElement
-     * @author
+     * @author Frederik
      */
     public void setBoardElement(BoardElement boardElement) {
         this.boardElement = boardElement;
@@ -77,7 +77,7 @@ public class Space extends Subject {
 
     /**
      * @return
-     * @author
+     * @author Frederik
      */
     public Player getPlayer() {
         return player;
@@ -85,7 +85,7 @@ public class Space extends Subject {
 
     /**
      * @param player the player to be placed on this space
-     * @author
+     * @author Elias & Frederik
      */
     public void setPlayer(Player player) {
         Player oldPlayer = this.player;
@@ -114,7 +114,7 @@ public List<Heading> getWalls() {
 */
 
     /**
-     * @author
+     * @author Elias
      */
     void playerChanged() {
         // This is a minor hack; since some views that are registered with the space
