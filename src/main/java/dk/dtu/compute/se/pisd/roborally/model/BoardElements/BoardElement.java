@@ -6,7 +6,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.image.Image;
 
 /**
- * @author
+ * @author Elias & Frederik
  */
 public abstract class BoardElement
 {
@@ -35,7 +35,7 @@ public abstract class BoardElement
     /**
      * @param heading
      * @return
-     * @author
+     * @author Elias
      */
     public boolean getCanWalkOutOf(Heading heading)
     {
@@ -45,7 +45,7 @@ public abstract class BoardElement
     /**
      * @param heading
      * @return
-     * @author
+     * @author Elias & Adel
      */
     public boolean getCanWalkInto(Heading heading)
     {
@@ -55,13 +55,16 @@ public abstract class BoardElement
 
     /**
      * @return
-     * @author
+     * @author Elias
      */
     public Space getSpace()
     {
         return this.space;
     }
 
+    /**
+     * @author Elias
+     */
     public void activate()
     {
         //
@@ -69,7 +72,7 @@ public abstract class BoardElement
 
     /**
      * @param player
-     * @author
+     * @author Elias
      */
     public void onWalkOver(Player player)
     {
@@ -78,7 +81,7 @@ public abstract class BoardElement
 
     /**
      * @return
-     * @author
+     * @author Frederik
      */
     public boolean getIsWalkable()
     {
@@ -87,18 +90,26 @@ public abstract class BoardElement
 
     /**
      * @return
-     * @author
+     * @author Frederik
      */
     public Heading getHeading()
     {
         return this.heading;
     }
 
+    /**
+     * @return
+     * @author Elias
+     */
     public Image getImage()
     {
         return image;
     }
 
+    /**
+     * @param image
+     * @author Elias
+     */
     public void setImage(Image image)
     {
         if (image == null)
@@ -111,11 +122,19 @@ public abstract class BoardElement
         }
     }
 
+    /**
+     * @return
+     * @author Elias
+     */
     public ElementsEnum getType()
     {
         return type;
     }
 
+    /**
+     * @param type
+     * @author Elias
+     */
     public void setType(ElementsEnum type)
     {
         this.type = type;
