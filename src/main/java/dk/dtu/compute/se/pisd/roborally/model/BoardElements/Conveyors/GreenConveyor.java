@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
  */
 public class GreenConveyor extends Conveyor
 {
-    GreenConveyor(Heading orientation, Space space)
+    public GreenConveyor(Heading orientation, Space space)
     {
         super(orientation, 1, space);
         space.board.addBoardElement(Board.GREEN_CONVEYOR_INDEX, this);
