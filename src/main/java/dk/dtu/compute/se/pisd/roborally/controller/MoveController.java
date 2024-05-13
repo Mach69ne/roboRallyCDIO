@@ -74,13 +74,13 @@ public class MoveController
                     this.optionLeftOrRight(player, command);
                     break;
                 case SPAM:
-                    this.useSpamCard(player, command);
+                    this.useSpamCard(player);
                     break;
                 case TROJAN_HORSE:
-                    this.useTrojanHorse(player, command);
+                    this.useTrojanHorse(player);
                     break;
                 case WORM:
-                    this.useWormCard(player, command);
+                    this.useWormCard(player);
                     break;
                 case VIRUS:
                     this.useVirusCard(player);
@@ -191,7 +191,7 @@ public class MoveController
      * Gives the player an energy cube.
      *
      * @param player the player to be powered up
-     * @Author Elias
+     * @author Elias
      */
     public void powerUp(@NotNull Player player)
     {
@@ -218,10 +218,11 @@ public class MoveController
     }
 
     /**
-     * @param player
+     * Adds a spam card to the player's discard pile.
+     * @param player the player to be affected by the spam card
      * @author Mustafa
      */
-    public void useSpamCard(@NotNull Player player, Command command)
+    public void useSpamCard(@NotNull Player player)
     {
         // Take the top card from the activeDeck that the player has and play that in this register instead of the spam card
         // Spam card gets deleted and is therefore not discarded
@@ -229,20 +230,21 @@ public class MoveController
     }
 
     /**
-     * @param player
+     * Adds 2 spam cards to the player's discard pile.
+     * @param player the player to be affected by the Trojan Horse card
      * @author Mustafa
      */
-    public void useTrojanHorse(@NotNull Player player, Command command)
+    public void useTrojanHorse(@NotNull Player player)
     {
         player.addSpamToDiscard(2);
     }
 
     /**
-     * @param player
-     * @param command
+     * Reboots the player by setting the player's heading and space to the values stored in the reboot token.
+     * @param player the player to be rebooted
      * @author Mustafa
      */
-    public void useWormCard(@NotNull Player player, Command command) {
+    public void useWormCard(@NotNull Player player) {
         if(player != null) {
             RebootToken rebootToken = new RebootToken(player.getHeading(), player.getSpace());
             rebootToken.reboot(player);
@@ -250,7 +252,8 @@ public class MoveController
     }
 
     /**
-     * @param currentplayer
+     * The virus card affects all players within a 6x6 square around the player who played the card.
+     * @param currentplayer the player who played the card
      * @author Mustafa
      */
     public void useVirusCard(@NotNull Player currentplayer) {
@@ -268,9 +271,10 @@ public class MoveController
     }
 
     /**
-     * @param player
-     * @param heading
-     * @param amountOfTimesToMove
+     * Moves the player a given amount of times in the direction of the player's heading.
+     * @param player the player to be moved
+     * @param heading the heading of the player
+     * @param amountOfTimesToMove the amount of times the player should be moved
      * @author Elias og Emil
      */
     public void movePlayerAmountOfTimesWithHeading(Player player, Heading heading, int amountOfTimesToMove)
