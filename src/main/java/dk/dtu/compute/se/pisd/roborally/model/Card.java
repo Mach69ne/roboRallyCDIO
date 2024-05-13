@@ -69,7 +69,16 @@ public class Card extends Subject
                 return new Image("file:src/main/Resources/Images/WORM.png");
             case VIRUS:
                 return new Image("file:src/main/Resources/Images/VIRUS.png");
-
+            case AGAIN:
+                return new Image("file:src/main/Resources/Images/AGAIN.png");
+            case MOVE_THREE:
+                return new Image("file:src/main/Resources/Images/move3.png");
+            case MOVE_BACK:
+                return new Image("file:src/main/Resources/Images/moveBack.png");
+            case U_TURN:
+                return new Image("file:src/main/Resources/Images/uTurn.png");
+            case POWER_UP:
+                return new Image("file:src/main/Resources/Images/POWERUP.png");
 
             default:
                 return null;

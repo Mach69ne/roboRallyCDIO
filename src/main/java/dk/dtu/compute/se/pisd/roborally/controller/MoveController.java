@@ -56,25 +56,19 @@ public class MoveController
                     this.fastForward(player);
                     break;
                 case MOVE_THREE:
-                    movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 3);
+                    this.moveThree(player);
                     break;
                 case U_TURN:
-                    turnRight(player);
-                    turnRight(player);
+                    this.uTurn(player);
                     break;
                 case MOVE_BACK:
-                    movePlayerAmountOfTimesWithHeading(player, player.getHeading().next().next(), 1);
+                    this.moveBack(player);
                     break;
                 case AGAIN:
-                    // TODO
-                    if (player.getSpace().board.getStep() > 0)
-                    {
-                        command = player.getProgramField(player.getSpace().board.getStep() - 1).getCard().command;
-                        executeCommand(player, command);
-                    }
+                    this.again(player);
                     break;
                 case POWER_UP:
-                    player.pickUpEnergyCube();
+                    this.powerUp(player);
                     break;
                 case OPTION_LEFT_RIGHT:
                     this.optionLeftOrRight(player, command);
@@ -142,6 +136,66 @@ public class MoveController
     public void fastForward(@NotNull Player player)
     {
         movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 2);
+    }
+
+    /**
+     * Moves the player three steps forward in the direction of the player's heading.
+     *
+     * @param player the player to be moved
+     * @Author Emil
+     */
+    public void moveThree(@NotNull Player player)
+    {
+        movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 3);
+    }
+
+    /**
+     * Turns the player 180 degrees.
+     *
+     * @param player the player to be turned
+     * @Author Emil
+     */
+    public void uTurn(@NotNull Player player)
+    {
+        turnRight(player);
+        turnRight(player);
+    }
+
+    /**
+     * Moves the player one step back in the direction of the player's heading.
+     *
+     * @param player the player to be moved
+     * @Author Emil
+     */
+    public void moveBack(@NotNull Player player)
+    {
+        movePlayerAmountOfTimesWithHeading(player, player.getHeading().next().next(), 1);
+    }
+
+    /**
+     * Executes the command card in the previous register. If the player is on the first register, no command is not executed.
+     *
+     * @param player the player to be moved
+     * @Author Emil
+     */
+    public void again(@NotNull Player player)
+    {
+        if (player.getSpace().board.getStep() > 0)
+        {
+            Command command = player.getProgramField(player.getSpace().board.getStep() - 1).getCard().command;
+            executeCommand(player, command);
+        }
+    }
+
+    /**
+     * Gives the player an energy cube.
+     *
+     * @param player the player to be powered up
+     * @Author Elias
+     */
+    public void powerUp(@NotNull Player player)
+    {
+        player.pickUpEnergyCube();
     }
 
     /**
