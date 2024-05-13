@@ -25,10 +25,11 @@ public abstract class Conveyor extends BoardElement
     public void activate()
     {
         Player playerToMove = this.getSpace().getPlayer();
-        if (playerToMove.getMovedByConveyorThisTurn())
-        {
-            playerToMove.moveController.movePlayerAmountOfTimesWithHeading(playerToMove, this.getHeading(), moveAmount);
+        if(playerToMove!=null) {
+            {
+                playerToMove.moveController.movePlayerAmountOfTimesWithHeading(playerToMove, this.getHeading(), moveAmount);
+            }
+            playerToMove.setMovedByConveyorThisTurn(true);
         }
-        playerToMove.setMovedByConveyorThisTurn(true);
     }
 }
