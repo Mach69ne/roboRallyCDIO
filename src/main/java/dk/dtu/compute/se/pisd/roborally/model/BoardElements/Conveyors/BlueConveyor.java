@@ -7,7 +7,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.image.Image;
 
 /**
- * @author
+ * @author Adel & Elias
  */
 public class BlueConveyor extends Conveyor
 {
