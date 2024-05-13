@@ -223,8 +223,7 @@ public class MoveController
      */
     public void useSpamCard(@NotNull Player player, Command command)
     {
-        // Take the top card from the activeDeck that the player has and play that in this register instead of the
-        // spam card
+        // Take the top card from the activeDeck that the player has and play that in this register instead of the spam card
         // Spam card gets deleted and is therefore not discarded
 
     }
