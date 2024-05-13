@@ -49,6 +49,11 @@ public class LoadBoard
     private static final String DEFAULTBOARD = "default";
     private static final String JSON_EXT = "json";
 
+    /**
+     * @param boardname
+     * @return
+     * @author Elias & Frederik
+     */
     public static Board loadBoard(String boardname)
     {
         if (boardname == null)
@@ -124,6 +129,11 @@ public class LoadBoard
         return null;
     }
 
+    /**
+     * @param board
+     * @param name
+     * @author Elias & Frederik
+     */
     public static void saveBoard(Board board, String name)
     {
         BoardTemplate template = new BoardTemplate();
