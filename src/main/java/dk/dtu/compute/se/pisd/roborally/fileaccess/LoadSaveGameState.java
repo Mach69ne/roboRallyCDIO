@@ -88,7 +88,7 @@ public class LoadSaveGameState
         GameController gameController = new GameController(LoadBoard.loadBoard(name));
         gameController.board.setPhase(gameStateInfo.phase);
         gameController.board.setStep(gameStateInfo.step);
-        for (int i = 0; i < gameStateInfo.amountOfPlayers; i++)
+        for (int i = 0; i < gameStateInfo.amountOfPlayers + 1; i++)
         {
             Player player = LoadSavePlayer.loadPlayer(gameController, name + i);
             if (player != null)

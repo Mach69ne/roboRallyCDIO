@@ -64,7 +64,7 @@ public class AppController implements Observer
     {
         // XXX needs to be implemented eventually
         // for now, we just create a new game
-        this.gameController = LoadSaveGameState.loadGameState("deanPHARPHAR");
+        this.gameController = LoadSaveGameState.loadGameState("default");
         roboRally.createBoardView(gameController);
     }
 
@@ -139,16 +139,18 @@ public class AppController implements Observer
 
     /**
      * Saves the game
+     *
      * @author Elias
      */
     public void saveGame()
     {
         // XXX needs to be implemented eventually
-        LoadSaveGameState.saveGameState(gameController, "deanPHARPHAR");
+        LoadSaveGameState.saveGameState(gameController, "default");
     }
 
     /**
      * Exit the RoboRally application. If there is a game running, the user is asked whether the game should be closed
+     *
      * @author Elias
      */
     public void exit()
