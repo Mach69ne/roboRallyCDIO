@@ -8,7 +8,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -17,7 +18,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -26,7 +28,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -35,7 +38,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -44,7 +48,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -53,7 +58,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -62,7 +68,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -71,7 +78,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -80,7 +88,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -89,7 +98,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -98,7 +108,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -107,7 +118,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -116,7 +128,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -125,7 +138,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -134,7 +148,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -143,7 +158,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -152,7 +168,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -161,7 +178,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -170,7 +188,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -179,7 +198,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -188,7 +208,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -197,7 +218,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -206,7 +228,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -215,7 +238,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -224,7 +248,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -233,7 +258,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -242,16 +268,19 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
       "x": 3,
       "y": 3,
       "boardElementTemplate": {
-        "type": "NULL",
+        "type": "CORNERWALL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "heading2": "EAST",
+        "isClockwise": false
       }
     },
     {
@@ -260,7 +289,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -269,7 +299,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -278,7 +309,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -287,7 +319,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -296,7 +329,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -305,7 +339,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -314,7 +349,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -323,16 +359,18 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
       "x": 4,
       "y": 4,
       "boardElementTemplate": {
-        "type": "BLUE_CONVEYOR",
+        "type": "ANTENNA",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": false,
+        "isClockwise": false
       }
     },
     {
@@ -341,7 +379,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -350,7 +389,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -359,7 +399,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -368,7 +409,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -377,7 +419,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -386,7 +429,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -395,16 +439,18 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
       "x": 5,
       "y": 4,
       "boardElementTemplate": {
-        "type": "BLUE_CONVEYOR",
+        "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -413,7 +459,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -422,7 +469,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -431,7 +479,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -440,7 +489,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -449,7 +499,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -458,7 +509,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -467,7 +519,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -476,7 +529,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -485,7 +539,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -494,7 +549,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -503,7 +559,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -512,7 +569,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -521,7 +579,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -530,7 +589,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -539,7 +599,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -548,7 +609,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -557,7 +619,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -566,7 +629,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     },
     {
@@ -575,7 +639,8 @@
       "boardElementTemplate": {
         "type": "NULL",
         "heading": "NORTH",
-        "isWalkable": true
+        "isWalkable": true,
+        "isClockwise": false
       }
     }
   ]
