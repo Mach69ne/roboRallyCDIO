@@ -9,10 +9,7 @@ import dk.dtu.compute.se.pisd.roborally.fileaccess.model.GameStateInfo;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class LoadSaveGameState
 {
@@ -25,6 +22,11 @@ public class LoadSaveGameState
         {
             LoadSavePlayer.savePlayer(gameController.board.getPlayer(i), name + i);
         }
+        for (int i = gameController.board.getPlayersNumber(); i < 10; i++)
+        {
+            File file = new File("src/main/Resources/Players/default" + i + ".json");
+            System.out.println(file.delete());
+        }
     }
 
     public static void saveGameStateToFile(Board board, String name)
@@ -33,7 +35,6 @@ public class LoadSaveGameState
         //template.gameID = board.getGameId();
         template.step = board.getStep();
         template.phase = board.getPhase();
-        template.amountOfPlayers = board.getPlayersNumber();
         String filename = "src/main/Resources/" + "GameStateInfo" + "/" + name + "." + "json";
 
         // In simple cases, we can create a Gson object with new:
@@ -88,7 +89,8 @@ public class LoadSaveGameState
         GameController gameController = new GameController(LoadBoard.loadBoard(name));
         gameController.board.setPhase(gameStateInfo.phase);
         gameController.board.setStep(gameStateInfo.step);
-        for (int i = 0; i < gameStateInfo.amountOfPlayers + 1; i++)
+        //TODO Currently hardcoded to not allow more than 10 players
+        for (int i = 0; i < 10; i++)
         {
             Player player = LoadSavePlayer.loadPlayer(gameController, name + i);
             if (player != null)

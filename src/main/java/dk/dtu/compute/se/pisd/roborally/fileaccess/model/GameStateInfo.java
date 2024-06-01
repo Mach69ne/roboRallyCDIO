@@ -7,6 +7,5 @@ public class GameStateInfo
     public int step;
     public Phase phase;
     public int gameID;
-    public int amountOfPlayers;
 
 }
