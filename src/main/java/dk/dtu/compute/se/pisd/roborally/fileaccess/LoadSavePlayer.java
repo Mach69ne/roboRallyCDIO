@@ -11,10 +11,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Card;
 import dk.dtu.compute.se.pisd.roborally.model.Command;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class LoadSavePlayer
 {
@@ -99,7 +96,14 @@ public class LoadSavePlayer
 
         ClassLoader classLoader = LoadSavePlayer.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(PLAYERFOLDER + "/" + name + "." + JSON_EXT);
-
+        try
+        {
+            inputStream = new FileInputStream("src/main/Resources/Players/" + name + JSON_EXT);
+        }
+        catch (FileNotFoundException e)
+        {
+            return null;
+        }
         // In simple cases, we can create a Gson object with new Gson():
         GsonBuilder simpleBuilder = new GsonBuilder().registerTypeAdapter(Player.class, new Adapter<Player>());
         Gson gson = simpleBuilder.create();
@@ -108,8 +112,6 @@ public class LoadSavePlayer
         JsonReader reader = null;
         try
         {
-            // fileReader = new FileReader(filename);
-
             reader = gson.newJsonReader(new InputStreamReader(inputStream));
             PlayerTemplate playerTemplate = gson.fromJson(reader, PlayerTemplate.class);
             result = new Player(gameController.board, playerTemplate.color, playerTemplate.name,

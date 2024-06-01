@@ -98,9 +98,13 @@ public class LoadSaveGameState
                 gameController.board.addPlayer(player);
             }
         }
-        gameController.board.setCurrentPlayer(gameController.board.getPlayer(0));
-        //gameController.board.setCurrentPlayer(gameController.board.getPlayer(0));
-        return gameController;
+        if (gameController.board.getPlayersNumber() != 0)
+        {
+            gameController.board.setCurrentPlayer(gameController.board.getPlayer(0));
+            return gameController;
+        }
+        return null;
+
     }
 
     public static GameStateInfo loadGameStateFromFile(String boardname)

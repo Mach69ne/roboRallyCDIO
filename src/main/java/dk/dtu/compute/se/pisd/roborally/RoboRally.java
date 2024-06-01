@@ -54,7 +54,7 @@ public class RoboRally extends Application
 
     /**
      * @param args the command line arguments
-     * Start the application by launching the JavaFX application
+     *             Start the application by launching the JavaFX application
      */
     public static void main(String[] args)
     {
@@ -63,8 +63,7 @@ public class RoboRally extends Application
 
     /**
      * @throws Exception in case of an exception during the initialization
-     * @author
-     * Initialize the application
+     * @author Initialize the application
      */
     @Override
     public void init() throws Exception
@@ -74,8 +73,7 @@ public class RoboRally extends Application
 
     /**
      * @param primaryStage the primary stage for the application
-     * @author
-     * Start the application
+     * @author Start the application
      */
     @Override
     public void start(Stage primaryStage)
@@ -117,8 +115,7 @@ public class RoboRally extends Application
 
     /**
      * @throws Exception in case of an exception during the stop
-     * @author
-     * Stop the application
+     * @author Stop the application
      */
     @Override
     public void stop() throws Exception
@@ -132,28 +129,8 @@ public class RoboRally extends Application
     }
 
     /**
-     * @param appController the controller for the application
-     * @author
-     * Create the main menu view
-     */
-    public void createMainMenuView(AppController appController)
-    {
-        boardRoot.getChildren().clear();
-        if (appController != null)
-        {
-            MainMenuView mainMenu = new MainMenuView(appController);
-            mainMenu.setAlignment(Pos.CENTER);
-            boardRoot.setCenter(mainMenu);
-
-
-        }
-        stage.sizeToScene();
-    }
-
-    /**
      * @param gameController the controller for the game
-     * @author
-     * Create the board view
+     * @author Create the board view
      */
     public void createBoardView(GameController gameController)
     {
@@ -165,6 +142,28 @@ public class RoboRally extends Application
             // create and add view for new board
             BoardView boardView = new BoardView(gameController);
             boardRoot.setCenter(boardView);
+        }
+        else
+        {
+            this.start(new Stage());
+        }
+        stage.sizeToScene();
+    }
+
+    /**
+     * @param appController the controller for the application
+     * @author Create the main menu view
+     */
+    public void createMainMenuView(AppController appController)
+    {
+        boardRoot.getChildren().clear();
+        if (appController != null)
+        {
+            MainMenuView mainMenu = new MainMenuView(appController);
+            mainMenu.setAlignment(Pos.CENTER);
+            boardRoot.setCenter(mainMenu);
+
+
         }
         stage.sizeToScene();
     }
