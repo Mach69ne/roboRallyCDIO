@@ -257,10 +257,6 @@ public class Board extends Subject
      */
     public Player getPlayer(int i)
     {
-        if (players.isEmpty())
-        {
-            return null;
-        }
         i %= players.size();
         if (i >= 0 && i < players.size())
         {
