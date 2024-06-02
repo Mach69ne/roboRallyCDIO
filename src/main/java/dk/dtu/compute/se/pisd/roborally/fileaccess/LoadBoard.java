@@ -28,17 +28,17 @@ import dk.dtu.compute.se.pisd.roborally.fileaccess.model.BoardElementTemplate;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.BoardTemplate;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.SpaceTemplate;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.*;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors.BlueConveyor;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors.GreenConveyor;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Gear;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.CornerWall;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.Wall;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 /**
  * @author Ekkart Kindler, ekki@dtu.dk
@@ -83,24 +83,6 @@ public class LoadBoard
             for (SpaceTemplate spaceTemplate : template.spaces)
             {
                 Space space = result.getSpace(spaceTemplate.x, spaceTemplate.y);
-                BoardElementTemplate elementTemplate = spaceTemplate.boardElementTemplate;
-                BoardElement boardElement = new NullBoardElement(space);
-                switch (elementTemplate.type)
-                {
-                    case WALL -> boardElement = new Wall(elementTemplate.heading, space);
-                    case ANTENNA -> boardElement = new Antenna(space);
-                    case PUSHPANEL -> boardElement = new PushPanel(elementTemplate.heading, space);
-                    //case CHECKPOINT -> boardElement = new Checkpoint(space);
-                    case ENERGYCUBE -> boardElement = new EnergyCube(space);
-                    case GREEN_CONVEYOR -> boardElement = new GreenConveyor(elementTemplate.heading, space);
-                    case BLUE_CONVEYOR -> boardElement = new BlueConveyor(elementTemplate.heading, space);
-                    case BOARDLASER -> boardElement = new BoardLaser(space, elementTemplate.heading);
-                    case REBOOTTOKEN -> boardElement = new RebootToken(elementTemplate.heading, space);
-                    case GEAR -> boardElement = new Gear(space, elementTemplate.isClockwise);
-                    case CORNERWALL ->
-                            boardElement = new CornerWall(elementTemplate.heading, elementTemplate.heading2, space);
-                }
-                space.setBoardElement(boardElement);
             }
             for (SpaceTemplate spaceWithCheckpoint : template.spacesWithCheckPoints)
             {
@@ -144,6 +126,10 @@ public class LoadBoard
     public static void saveBoard(Board board, String name)
     {
         BoardTemplate template = new BoardTemplate();
+        for (int i = 0; i < Board.NOT_ACTIVATE_ABLE_INDEX + 1; i++)
+        {
+            template.boardElements[i] = new ArrayList<>();
+        }
         template.width = board.width;
         template.height = board.height;
         //TODO Switch to using an array of arraylists of boardelements, instead of this piece of shit
@@ -152,35 +138,47 @@ public class LoadBoard
             for (int j = 0; j < board.height; j++)
             {
                 Space space = board.getSpace(i, j);
-                BoardElement boardElement = space.getBoardElement();
 
 
                 SpaceTemplate spaceTemplate = new SpaceTemplate();
-                BoardElementTemplate boardElementTemplate = new BoardElementTemplate();
-                boardElementTemplate.heading = boardElement.getHeading();
-                boardElementTemplate.isWalkable = boardElement.getIsWalkable();
-                boardElementTemplate.type = boardElement.getType();
-                if (boardElement instanceof Gear)
-                {
-                    boardElementTemplate.isClockwise = ((Gear) boardElement).isClockwise;
-                }
-                if (boardElement instanceof CornerWall)
-                {
-                    boardElementTemplate.heading2 = ((CornerWall) boardElement).heading2;
-                }
                 spaceTemplate.x = space.x;
                 spaceTemplate.y = space.y;
-                spaceTemplate.boardElementTemplate = boardElementTemplate;
                 template.spaces.add(spaceTemplate);
             }
         }
-        for (BoardElement boardElement : board.getBoardElementsWithIndex(Board.CHECKPOINTS_INDEX))
+        for (int i = 0; i < Board.NOT_ACTIVATE_ABLE_INDEX + 1; i++)
         {
-            SpaceTemplate spaceTemplate = new SpaceTemplate();
-            spaceTemplate.x = boardElement.getSpace().x;
-            spaceTemplate.y = boardElement.getSpace().y;
-            template.spacesWithCheckPoints.add(spaceTemplate);
+            for (BoardElement boardElement : board.getBoardElementsWithIndex(i))
+            {
+                SpaceTemplate spaceTemplate = new SpaceTemplate();
+                spaceTemplate.x = boardElement.getSpace().x;
+                spaceTemplate.y = boardElement.getSpace().y;
+                BoardElementTemplate boardElementTemplate = new BoardElementTemplate();
+                boardElementTemplate.spaceTemplate = spaceTemplate;
+                boardElementTemplate.isWalkable = boardElement.getIsWalkable();
+                boardElementTemplate.heading = boardElement.getHeading();
+                switch (i)
+                {
+                    case Board.GEARS_INDEX:
+                    {
+                        boardElementTemplate.isClockwise = ((Gear) boardElement).isClockwise;
+                        break;
+                    }
+                    case Board.NOT_ACTIVATE_ABLE_INDEX:
+                    {
+                        if (boardElement instanceof CornerWall)
+                        {
+                            boardElementTemplate.heading2 = ((CornerWall) boardElement).getHeading2();
+                        }
+                        break;
+                    }
+                }
+                template.boardElements[i].add(boardElementTemplate);
+                template.spacesWithCheckPoints.add(spaceTemplate);
+            }
+
         }
+
         String filename = "src/main/Resources/" + BOARDSFOLDER + "/" + name + "." + JSON_EXT;
 
         // In simple cases, we can create a Gson object with new:

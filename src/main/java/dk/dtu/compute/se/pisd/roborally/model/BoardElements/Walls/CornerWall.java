@@ -17,14 +17,21 @@ public class CornerWall extends BoardElement
     public CornerWall(Heading heading1, Heading heading2, Space space)
     {
         super(heading1, true, space);
-        if(heading1.next().next()==heading2){
+        if (heading1.next().next() == heading2)
+        {
             throw new IllegalArgumentException("The two headings must be adjacent");
-        }else {
+        }
+        else
+        {
             this.heading2 = heading2;
             space.board.addBoardElement(Board.NOT_ACTIVATE_ABLE_INDEX, this);
-            if ((heading1 == Heading.NORTH && heading2 == Heading.WEST) || (heading1 == Heading.EAST && heading2 == Heading.NORTH) || (heading1 == Heading.SOUTH && heading2 == Heading.EAST) || (heading1 == Heading.WEST && heading2 == Heading.SOUTH)) {
+            //TODO Rework line below using heading.next or heading.prev;
+            if ((heading1 == Heading.NORTH && heading2 == Heading.WEST) || (heading1 == Heading.EAST && heading2 == Heading.NORTH) || (heading1 == Heading.SOUTH && heading2 == Heading.EAST) || (heading1 == Heading.WEST && heading2 == Heading.SOUTH))
+            {
                 setImage(new Image("file:src/main/resources/images/cornerWall.png"));
-            } else {
+            }
+            else
+            {
                 setImage(new Image("file:src/main/resources/images/cornerWall2.png"));
             }
             this.setType(ElementsEnum.CORNERWALL);
