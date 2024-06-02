@@ -107,26 +107,6 @@ public class LoadSaveGameState
 
             }
         }
-        int tabNumberToInsert = 0;
-        for (Player player : players)
-        {
-            if (player == null)
-            {
-                continue;
-            }
-            for (int i = 0; i < players.length; i++)
-            {
-                if (players[i] == null)
-                {
-                    continue;
-                }
-                if (players[i].getTabNumber() == tabNumberToInsert)
-                {
-                    gameController.board.addPlayer(players[i]);
-                    tabNumberToInsert++;
-                }
-            }
-        }
         gameController.board.setPlayers(players);
         gameController.board.setCurrentPlayer(playerTurn);
         return gameController;
