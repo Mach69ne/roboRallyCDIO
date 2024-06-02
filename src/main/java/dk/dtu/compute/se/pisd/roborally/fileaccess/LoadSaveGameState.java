@@ -90,7 +90,7 @@ public class LoadSaveGameState
         gameController.board.setPhase(gameStateInfo.phase);
         gameController.board.setStep(gameStateInfo.step);
         //TODO Currently hardcoded to not allow more than 10 players
-        for (int i = 10; i > 0; i--)
+        for (int i = 10; i >= 0; i--)
         {
             Player player = LoadSavePlayer.loadPlayer(gameController, name + i);
             if (player != null)
@@ -109,9 +109,16 @@ public class LoadSaveGameState
 
     public static GameStateInfo loadGameStateFromFile(String boardname)
     {
-        ClassLoader classLoader = LoadBoard.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream("GameStateInfo" + "/" + boardname + "." + "json");
-        // In simple cases, we can create a Gson object with new Gson():
+        InputStream inputStream; // = classLoader.getResourceAsStream(PLAYERFOLDER + "/" + name + "." + JSON_EXT);
+        try
+        {
+            inputStream = new FileInputStream("src/main/Resources/GameStateInfo/" + boardname + ".json");
+        }
+        catch (FileNotFoundException e)
+        {
+            return null;
+        }
+
         GsonBuilder simpleBuilder = new GsonBuilder().registerTypeAdapter(Board.class, new Adapter<Board>());
         Gson gson = simpleBuilder.create();
         // FileReader fileReader = null;
