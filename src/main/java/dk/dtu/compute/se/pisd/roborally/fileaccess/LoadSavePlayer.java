@@ -33,17 +33,19 @@ public class LoadSavePlayer
         {
             if (player.getProgramField(i).getCard() == null)
             {
+                playerTemplate.registers[i] = null;
                 continue;
             }
-            playerTemplate.registers.add(player.getProgramField(i).getCard().command);
+            playerTemplate.registers[i] = player.getProgramField(i).getCard().command;
         }
         for (int i = 0; i < Player.NO_CARDS; i++)
         {
             if (player.getCardField(i).getCard() == null)
             {
+                playerTemplate.cardsOnHand[i] = null;
                 continue;
             }
-            playerTemplate.cardsOnHand.add(player.getCardField(i).getCard().command);
+            playerTemplate.cardsOnHand[i] = player.getCardField(i).getCard().command;
         }
 
         playerTemplate.color = player.getColor();
@@ -144,12 +146,22 @@ public class LoadSavePlayer
             int cardFieldToModify = 0;
             for (Command command : playerTemplate.registers)
             {
+                if (command == null)
+                {
+                    cardFieldToModify++;
+                    continue;
+                }
                 result.getProgramField(cardFieldToModify).setCard(new Card(command));
                 cardFieldToModify++;
             }
             cardFieldToModify = 0;
             for (Command command : playerTemplate.cardsOnHand)
             {
+                if (command == null)
+                {
+                    cardFieldToModify++;
+                    continue;
+                }
                 result.getCardField(cardFieldToModify).setCard(new Card(command));
                 cardFieldToModify++;
             }

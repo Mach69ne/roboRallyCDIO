@@ -2,6 +2,7 @@ package dk.dtu.compute.se.pisd.roborally.fileaccess.model;
 
 import dk.dtu.compute.se.pisd.roborally.model.Command;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
+import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.UpgradeCards;
 
 import java.util.ArrayList;
@@ -14,8 +15,8 @@ public class PlayerTemplate
     //Using commands allows me to not create a CardTemplate class
     public List<Command> activeCards = new ArrayList<>();
     public List<Command> discardedCards = new ArrayList<>();
-    public List<Command> registers = new ArrayList<>();
-    public List<Command> cardsOnHand = new ArrayList<>();
+    public Command[] registers = new Command[Player.NO_REGISTERS];
+    public Command[] cardsOnHand = new Command[Player.NO_CARDS];
 
     public String name;
     public String color;
