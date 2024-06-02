@@ -30,7 +30,6 @@ import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.CornerWall;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
@@ -203,13 +202,19 @@ public class Board extends Subject
     }
 
     /**
-     * @param playersArr
+     * @param playersArr, can contain null elements, these are ignored.
      * @author Elias
      */
     public void setPlayers(Player[] playersArr)
     {
-        players.clear();
-        Collections.addAll(players, playersArr);
+        this.players.clear();
+        for (Player player : playersArr)
+        {
+            if (player != null)
+            {
+                this.players.add(player);
+            }
+        }
         if (this.players.isEmpty())
         {
             return;
