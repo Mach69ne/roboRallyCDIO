@@ -23,7 +23,7 @@ public class LoadSavePlayer
         PlayerTemplate playerTemplate = new PlayerTemplate();
 
 
-        String filename = "src/main/Resources/" + PLAYERFOLDER + "/" + name + "." + JSON_EXT;
+        String filename = "src/main/Resources/" + PLAYERFOLDER + "/" + name + JSON_EXT;
 
         playerTemplate.spaceTemplate = new SpaceTemplate();
         playerTemplate.spaceTemplate.x = player.getSpace().x;
@@ -100,6 +100,7 @@ public class LoadSavePlayer
         }
         catch (FileNotFoundException e)
         {
+            System.out.println(name);
             return null;
         }
         // In simple cases, we can create a Gson object with new Gson():

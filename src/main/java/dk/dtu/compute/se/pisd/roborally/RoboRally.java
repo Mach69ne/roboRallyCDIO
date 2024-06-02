@@ -129,28 +129,6 @@ public class RoboRally extends Application
     }
 
     /**
-     * @param gameController the controller for the game
-     * @author Create the board view
-     */
-    public void createBoardView(GameController gameController)
-    {
-        // if present, remove old BoardView
-        boardRoot.getChildren().clear();
-
-        if (gameController != null)
-        {
-            // create and add view for new board
-            BoardView boardView = new BoardView(gameController);
-            boardRoot.setCenter(boardView);
-        }
-        else
-        {
-            this.start(new Stage());
-        }
-        stage.sizeToScene();
-    }
-
-    /**
      * @param appController the controller for the application
      * @author Create the main menu view
      */
@@ -164,6 +142,24 @@ public class RoboRally extends Application
             boardRoot.setCenter(mainMenu);
 
 
+        }
+        stage.sizeToScene();
+    }
+
+    /**
+     * @param gameController the controller for the game
+     * @author Create the board view
+     */
+    public void createBoardView(GameController gameController)
+    {
+        // if present, remove old BoardView
+        boardRoot.getChildren().clear();
+
+        if (gameController != null)
+        {
+            // create and add view for new board
+            BoardView boardView = new BoardView(gameController);
+            boardRoot.setCenter(boardView);
         }
         stage.sizeToScene();
     }
