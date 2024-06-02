@@ -30,7 +30,6 @@ public class Checkpoint extends NullBoardElement
         Player playerOnBoardElement = this.getSpace().getPlayer();
         if (playerOnBoardElement != null)
         {
-            System.out.println(playerOnBoardElement.getLastVisitedCheckPoint());
             playerOnBoardElement.addCheckPointAsVisited(this);
         }
     }
