@@ -14,6 +14,8 @@ public class PlayerTemplate
     //Using commands allows me to not create a CardTemplate class
     public List<Command> activeCards = new ArrayList<>();
     public List<Command> discardedCards = new ArrayList<>();
+    public List<Command> registers = new ArrayList<>();
+    public List<Command> cardsOnHand = new ArrayList<>();
 
     public String name;
     public String color;

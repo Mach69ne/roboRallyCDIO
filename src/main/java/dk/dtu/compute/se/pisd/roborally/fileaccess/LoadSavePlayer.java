@@ -29,6 +29,23 @@ public class LoadSavePlayer
         playerTemplate.spaceTemplate.x = player.getSpace().x;
         playerTemplate.spaceTemplate.y = player.getSpace().y;
 
+        for (int i = 0; i < Player.NO_REGISTERS; i++)
+        {
+            if (player.getProgramField(i).getCard() == null)
+            {
+                continue;
+            }
+            playerTemplate.registers.add(player.getProgramField(i).getCard().command);
+        }
+        for (int i = 0; i < Player.NO_CARDS; i++)
+        {
+            if (player.getCardField(i).getCard() == null)
+            {
+                continue;
+            }
+            playerTemplate.cardsOnHand.add(player.getCardField(i).getCard().command);
+        }
+
         playerTemplate.color = player.getColor();
         playerTemplate.heading = player.getHeading();
         playerTemplate.name = player.getName();
@@ -123,6 +140,18 @@ public class LoadSavePlayer
             for (Command command : playerTemplate.discardedCards)
             {
                 result.discardedCardsPile.playerCards.add(new Card(command));
+            }
+            int cardFieldToModify = 0;
+            for (Command command : playerTemplate.registers)
+            {
+                result.getProgramField(cardFieldToModify).setCard(new Card(command));
+                cardFieldToModify++;
+            }
+            cardFieldToModify = 0;
+            for (Command command : playerTemplate.cardsOnHand)
+            {
+                result.getCardField(cardFieldToModify).setCard(new Card(command));
+                cardFieldToModify++;
             }
             result.setHeading(playerTemplate.heading);
             result.setTabNumber(playerTemplate.tabNumber);
