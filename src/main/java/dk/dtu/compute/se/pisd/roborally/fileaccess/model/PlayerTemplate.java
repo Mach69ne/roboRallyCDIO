@@ -24,4 +24,5 @@ public class PlayerTemplate
     public int tabNumber;
     public boolean movedByConveyorThisTurn;
     public int energyCubes;
+    public boolean playersTurn;
 }

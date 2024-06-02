@@ -90,15 +90,20 @@ public class LoadSaveGameState
         gameController.board.setPhase(gameStateInfo.phase);
         gameController.board.setStep(gameStateInfo.step);
         Player[] players = new Player[10];
+        Player playerTurn = null;
 
         //TODO Currently hardcoded to not allow more than 10 players
-        for (int i = 9; i >= 0; i--)
+        for (int i = 0; i < 10; i++)
         {
             Player player = LoadSavePlayer.loadPlayer(gameController, name + i);
             if (player != null)
             {
                 //gameController.board.addPlayer(player);
                 players[i] = player;
+                if (player.equals(player.board.getCurrentPlayer()))
+                {
+                    playerTurn = player;
+                }
             }
         }
         int tabNumberToInsert = 0;
@@ -122,13 +127,8 @@ public class LoadSaveGameState
             }
         }
         gameController.board.setPlayers(players);
-
-        if (gameController.board.getPlayersNumber() != 0)
-        {
-            gameController.board.setCurrentPlayer(gameController.board.getPlayer(0));
-            return gameController;
-        }
-        return null;
+        gameController.board.setCurrentPlayer(playerTurn);
+        return gameController;
 
     }
 
