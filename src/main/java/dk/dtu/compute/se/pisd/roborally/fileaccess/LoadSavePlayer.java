@@ -16,7 +16,7 @@ import java.io.*;
 public class LoadSavePlayer
 {
     private static final String PLAYERFOLDER = "Players";
-    private static final String JSON_EXT = "json";
+    private static final String JSON_EXT = ".json";
 
     public static void savePlayer(Player player, String name)
     {
@@ -93,9 +93,7 @@ public class LoadSavePlayer
 
     public static Player loadPlayer(GameController gameController, String name)
     {
-
-        ClassLoader classLoader = LoadSavePlayer.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(PLAYERFOLDER + "/" + name + "." + JSON_EXT);
+        InputStream inputStream; // = classLoader.getResourceAsStream(PLAYERFOLDER + "/" + name + "." + JSON_EXT);
         try
         {
             inputStream = new FileInputStream("src/main/Resources/Players/" + name + JSON_EXT);
