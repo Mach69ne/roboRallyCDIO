@@ -40,6 +40,5 @@ public class BoardTemplate
 
     public List<SpaceTemplate> spaces = new ArrayList<>();
     public ArrayList<BoardElementTemplate>[] boardElements = new ArrayList[Board.NOT_ACTIVATE_ABLE_INDEX + 1];
-    public List<SpaceTemplate> spacesWithCheckPoints = new ArrayList<>();
 
 }

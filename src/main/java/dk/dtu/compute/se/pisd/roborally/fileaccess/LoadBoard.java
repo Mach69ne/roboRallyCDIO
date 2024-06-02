@@ -28,10 +28,11 @@ import dk.dtu.compute.se.pisd.roborally.fileaccess.model.BoardElementTemplate;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.BoardTemplate;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.SpaceTemplate;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Gear;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.*;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors.BlueConveyor;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors.GreenConveyor;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.CornerWall;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.Wall;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 import java.io.FileWriter;
@@ -84,9 +85,70 @@ public class LoadBoard
             {
                 Space space = result.getSpace(spaceTemplate.x, spaceTemplate.y);
             }
-            for (SpaceTemplate spaceWithCheckpoint : template.spacesWithCheckPoints)
+            for (int i = 0; i < Board.NOT_ACTIVATE_ABLE_INDEX + 1; i++)
             {
-                new Checkpoint(result.getSpace(spaceWithCheckpoint.x, spaceWithCheckpoint.y));
+                for (BoardElementTemplate boardElementTemplate : template.boardElements[i])
+                {
+                    Space space = result.getSpace(boardElementTemplate.spaceTemplate.x,
+                            boardElementTemplate.spaceTemplate.y);
+                    switch (i)
+                    {
+                        case Board.GREEN_CONVEYOR_INDEX:
+                        {
+                            new GreenConveyor(boardElementTemplate.heading, space);
+                            break;
+                        }
+                        case Board.BLUE_CONVEYOR_INDEX:
+                        {
+                            new BlueConveyor(boardElementTemplate.heading, space);
+                            break;
+                        }
+                        case Board.PUSH_PANELS_INDEX:
+                        {
+                            new PushPanel(boardElementTemplate.heading, space);
+                            break;
+                        }
+                        case Board.GEARS_INDEX:
+                        {
+                            new Gear(space, boardElementTemplate.isClockwise);
+                            break;
+                        }
+                        case Board.BOARD_LASER_INDEX:
+                        {
+                            new BoardLaser(space, boardElementTemplate.heading);
+                            break;
+                        }
+                        case Board.ENERGY_SPACE_INDEX:
+                        {
+                            new EnergyCube(space);
+                            break;
+                        }
+                        case Board.CHECKPOINTS_INDEX:
+                        {
+                            new Checkpoint(space);
+                            break;
+                        }
+                        case Board.ANTENNA_INDEX:
+                        {
+                            new Antenna(space);
+                            break;
+                        }
+                        case Board.NOT_ACTIVATE_ABLE_INDEX:
+                        {
+                            if (boardElementTemplate.type == null)
+                            {
+                                break;
+                            }
+                            switch (boardElementTemplate.type)
+                            {
+                                case WALL -> new Wall(boardElementTemplate.heading, space);
+                                case CORNERWALL ->
+                                        new CornerWall(boardElementTemplate.heading, boardElementTemplate.heading2,
+                                                space);
+                            }
+                        }
+                    }
+                }
             }
             reader.close();
             return result;
@@ -132,7 +194,6 @@ public class LoadBoard
         }
         template.width = board.width;
         template.height = board.height;
-        //TODO Switch to using an array of arraylists of boardelements, instead of this piece of shit
         for (int i = 0; i < board.width; i++)
         {
             for (int j = 0; j < board.height; j++)
@@ -169,12 +230,16 @@ public class LoadBoard
                         if (boardElement instanceof CornerWall)
                         {
                             boardElementTemplate.heading2 = ((CornerWall) boardElement).getHeading2();
+                            boardElementTemplate.type = ElementsEnum.CORNERWALL;
+                        }
+                        if (boardElement instanceof Wall)
+                        {
+                            boardElementTemplate.type = ElementsEnum.WALL;
                         }
                         break;
                     }
                 }
                 template.boardElements[i].add(boardElementTemplate);
-                template.spacesWithCheckPoints.add(spaceTemplate);
             }
 
         }
