@@ -25,7 +25,7 @@ public class LoadSaveGameState
         for (int i = gameController.board.getPlayersNumber(); i < 10; i++)
         {
             File file = new File("src/main/Resources/Players/default" + i + ".json");
-            System.out.println(file.delete());
+            file.delete();
         }
     }
 
