@@ -100,10 +100,11 @@ public class LoadSaveGameState
             {
                 //gameController.board.addPlayer(player);
                 players[i] = player;
-                if (player.equals(player.board.getCurrentPlayer()))
+                if (player.isThisPlayerTurn())
                 {
                     playerTurn = player;
                 }
+
             }
         }
         int tabNumberToInsert = 0;

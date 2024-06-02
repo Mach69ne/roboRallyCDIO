@@ -58,6 +58,8 @@ public class Player extends Subject
     private boolean movedByConveyorThisTurn;
     private int energyCubes;
 
+    private boolean thisPlayerTurn = false;
+
     /**
      * @param board the board to which this player belongs
      * @param color the color of the player
@@ -376,5 +378,15 @@ public class Player extends Subject
     public void setEnergyCubes(int energyCubes)
     {
         this.energyCubes = energyCubes;
+    }
+
+    public boolean isThisPlayerTurn()
+    {
+        return thisPlayerTurn;
+    }
+
+    public void setThisPlayerTurn(boolean thisPlayerTurn)
+    {
+        this.thisPlayerTurn = thisPlayerTurn;
     }
 }

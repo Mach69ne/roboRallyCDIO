@@ -173,8 +173,7 @@ public class LoadSavePlayer
                     playerTemplate.spaceTemplate.y));
             if (playerTemplate.playersTurn)
             {
-                gameController.board.addPlayer(result);
-                gameController.board.setCurrentPlayer(result);
+                result.setThisPlayerTurn(true);
             }
             return result;
         }

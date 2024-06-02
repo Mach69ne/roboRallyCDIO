@@ -417,7 +417,15 @@ public class Board extends Subject
     {
         if (player != this.current && players.contains(player))
         {
+            if (this.current != null)
+            {
+                this.current.setThisPlayerTurn(false);
+            }
             this.current = player;
+            if (player != null)
+            {
+                player.setThisPlayerTurn(true);
+            }
             notifyChange();
         }
     }
