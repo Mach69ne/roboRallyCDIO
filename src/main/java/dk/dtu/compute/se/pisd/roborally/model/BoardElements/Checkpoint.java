@@ -25,10 +25,12 @@ public class Checkpoint extends NullBoardElement
     @Override
     public void activate()
     {
+
         // Method should already check if checkpoint is visited in the correct order.
         Player playerOnBoardElement = this.getSpace().getPlayer();
         if (playerOnBoardElement != null)
         {
+            System.out.println(playerOnBoardElement.getLastVisitedCheckPoint());
             playerOnBoardElement.addCheckPointAsVisited(this);
         }
     }

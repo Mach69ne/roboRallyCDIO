@@ -22,11 +22,9 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Antenna;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.RebootToken;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.CornerWall;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -105,8 +103,10 @@ public class Board extends Subject
         {
             boardElements[i] = new ArrayList<BoardElement>();
         }
-        spaces[4][4].setBoardElement(new Antenna(spaces[4][4]));
+        /*spaces[4][4].setBoardElement(new Antenna(spaces[4][4]));
         spaces[3][3].setBoardElement(new CornerWall(Heading.NORTH, Heading.EAST, spaces[3][3]));
+        new Checkpoint(spaces[7][7]);
+        */
         this.activateBoardElements();
 
         this.upgradeCards = UpgradeCardsInfo.createUpgradeCards();
@@ -129,6 +129,11 @@ public class Board extends Subject
         {
             player.setMovedByConveyorThisTurn(false);
         }
+    }
+
+    public BoardElement getCheckPointAtIndex(int index)
+    {
+        return boardElements[CHECKPOINTS_INDEX].get(index);
     }
 
     /**
@@ -293,6 +298,11 @@ public class Board extends Subject
             this.stepMode = stepMode;
             notifyChange();
         }
+    }
+
+    public ArrayList<BoardElement> getBoardElementsWithIndex(int index)
+    {
+        return boardElements[index];
     }
 
     /**

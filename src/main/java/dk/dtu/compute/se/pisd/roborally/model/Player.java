@@ -49,7 +49,7 @@ public class Player extends Subject
     private final CardField[] program;
     private final CardField[] cards;
     private final ArrayList<UpgradeCards> upgradeCards = new ArrayList<>();
-    private final ArrayList<Checkpoint> visitedCheckPoints = new ArrayList<>();
+    private int lastVisitedCheckPoint = 0;
     private String name;
     private String color;
     private Space space;
@@ -57,9 +57,7 @@ public class Player extends Subject
     private int tabNumber;
     private boolean movedByConveyorThisTurn;
     private int energyCubes;
-
     private boolean thisPlayerTurn = false;
-
     /**
      * @param board the board to which this player belongs
      * @param color the color of the player
@@ -91,6 +89,15 @@ public class Player extends Subject
         }
     }
 
+    public int getLastVisitedCheckPoint()
+    {
+        return lastVisitedCheckPoint;
+    }
+
+    public void setLastVisitedCheckPoint(int lastVisitedCheckPoint)
+    {
+        this.lastVisitedCheckPoint = lastVisitedCheckPoint;
+    }
 
     /**
      * @author Elias
@@ -233,11 +240,10 @@ public class Player extends Subject
     public void addCheckPointAsVisited(Checkpoint checkpoint)
     {
         int indexOfCheckPoint = board.getIndexOfCheckPoint(checkpoint);
-        int wouldBeIndexOfVisitedCheckPoints = visitedCheckPoints.size();
 
-        if (indexOfCheckPoint == wouldBeIndexOfVisitedCheckPoints)
+        if (indexOfCheckPoint == lastVisitedCheckPoint)
         {
-            visitedCheckPoints.add(checkpoint);
+            lastVisitedCheckPoint++;
         }
     }
 

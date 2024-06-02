@@ -84,13 +84,13 @@ public class LoadBoard
             {
                 Space space = result.getSpace(spaceTemplate.x, spaceTemplate.y);
                 BoardElementTemplate elementTemplate = spaceTemplate.boardElementTemplate;
-                BoardElement boardElement = new NullBoardElement(true, space);
+                BoardElement boardElement = new NullBoardElement(space);
                 switch (elementTemplate.type)
                 {
                     case WALL -> boardElement = new Wall(elementTemplate.heading, space);
                     case ANTENNA -> boardElement = new Antenna(space);
                     case PUSHPANEL -> boardElement = new PushPanel(elementTemplate.heading, space);
-                    case CHECKPOINT -> boardElement = new Checkpoint(space);
+                    //case CHECKPOINT -> boardElement = new Checkpoint(space);
                     case ENERGYCUBE -> boardElement = new EnergyCube(space);
                     case GREEN_CONVEYOR -> boardElement = new GreenConveyor(elementTemplate.heading, space);
                     case BLUE_CONVEYOR -> boardElement = new BlueConveyor(elementTemplate.heading, space);
@@ -101,6 +101,10 @@ public class LoadBoard
                             boardElement = new CornerWall(elementTemplate.heading, elementTemplate.heading2, space);
                 }
                 space.setBoardElement(boardElement);
+            }
+            for (SpaceTemplate spaceWithCheckpoint : template.spacesWithCheckPoints)
+            {
+                new Checkpoint(result.getSpace(spaceWithCheckpoint.x, spaceWithCheckpoint.y));
             }
             reader.close();
             return result;
@@ -142,7 +146,7 @@ public class LoadBoard
         BoardTemplate template = new BoardTemplate();
         template.width = board.width;
         template.height = board.height;
-
+        //TODO Switch to using an array of arraylists of boardelements, instead of this piece of shit
         for (int i = 0; i < board.width; i++)
         {
             for (int j = 0; j < board.height; j++)
@@ -169,6 +173,13 @@ public class LoadBoard
                 spaceTemplate.boardElementTemplate = boardElementTemplate;
                 template.spaces.add(spaceTemplate);
             }
+        }
+        for (BoardElement boardElement : board.getBoardElementsWithIndex(Board.CHECKPOINTS_INDEX))
+        {
+            SpaceTemplate spaceTemplate = new SpaceTemplate();
+            spaceTemplate.x = boardElement.getSpace().x;
+            spaceTemplate.y = boardElement.getSpace().y;
+            template.spacesWithCheckPoints.add(spaceTemplate);
         }
         String filename = "src/main/Resources/" + BOARDSFOLDER + "/" + name + "." + JSON_EXT;
 

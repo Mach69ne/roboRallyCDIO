@@ -11,7 +11,7 @@ import java.util.List;
 public class PlayerTemplate
 {
     public List<UpgradeCards> upgradeCards = new ArrayList<>();
-    public List<Integer> visitedCheckpoints = new ArrayList<>();
+    public int lastVisitedCheckpoint;
     //Using commands allows me to not create a CardTemplate class
     public List<Command> activeCards = new ArrayList<>();
     public List<Command> discardedCards = new ArrayList<>();

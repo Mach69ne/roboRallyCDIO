@@ -64,6 +64,8 @@ public class LoadSavePlayer
         playerTemplate.tabNumber = player.getTabNumber();
         playerTemplate.playersTurn = player.board.getCurrentPlayer().equals(player);
 
+        playerTemplate.lastVisitedCheckpoint = player.getLastVisitedCheckPoint();
+
 
         // In simple cases, we can create a Gson object with new:
         //
@@ -171,6 +173,8 @@ public class LoadSavePlayer
             result.setMovedByConveyorThisTurn(playerTemplate.movedByConveyorThisTurn);
             result.setSpace(gameController.board.getSpace(playerTemplate.spaceTemplate.x,
                     playerTemplate.spaceTemplate.y));
+            result.setLastVisitedCheckPoint(playerTemplate.lastVisitedCheckpoint);
+
             if (playerTemplate.playersTurn)
             {
                 result.setThisPlayerTurn(true);

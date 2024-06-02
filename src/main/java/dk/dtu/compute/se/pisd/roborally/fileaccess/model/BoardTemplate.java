@@ -29,13 +29,14 @@ import java.util.List;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
-public class BoardTemplate {
+public class BoardTemplate
+{
 
     public int width;
     public int height;
 
     public List<SpaceTemplate> spaces = new ArrayList<>();
+    public List<SpaceTemplate> spacesWithCheckPoints = new ArrayList<>();
 
 }
