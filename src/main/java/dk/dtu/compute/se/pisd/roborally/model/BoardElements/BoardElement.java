@@ -1,5 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
+import dk.dtu.compute.se.pisd.roborally.fileaccess.model.ElementsEnum;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
@@ -29,7 +30,6 @@ public abstract class BoardElement
         this.space = space;
         this.space.setBoardElement(this);
         this.setImage(image);
-        this.type = ElementsEnum.NULL;
     }
 
     /**
@@ -120,23 +120,5 @@ public abstract class BoardElement
         {
             this.image = image;
         }
-    }
-
-    /**
-     * @return
-     * @author Elias
-     */
-    public ElementsEnum getType()
-    {
-        return type;
-    }
-
-    /**
-     * @param type
-     * @author Elias
-     */
-    public void setType(ElementsEnum type)
-    {
-        this.type = type;
     }
 }

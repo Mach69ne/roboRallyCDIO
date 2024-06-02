@@ -16,7 +16,6 @@ public class PushPanel extends BoardElement
         super(heading, true, space);
         space.board.addBoardElement(Board.PUSH_PANELS_INDEX, this);
         setImage(new Image("file:src/main/resources/images/push135.png"));
-        this.setType(ElementsEnum.PUSHPANEL);
     }
 
     /**
@@ -26,11 +25,10 @@ public class PushPanel extends BoardElement
     public void activate()
     {
         Player playerToMove = this.getSpace().getPlayer();
-        if(playerToMove != null)
+        if (playerToMove != null)
         {
             Heading heading = this.getHeading().next().next();
-            this.getSpace().getPlayer().moveController.movePlayerAmountOfTimesWithHeading(playerToMove,
-                    heading, 1);
+            this.getSpace().getPlayer().moveController.movePlayerAmountOfTimesWithHeading(playerToMove, heading, 1);
         }
     }
 }

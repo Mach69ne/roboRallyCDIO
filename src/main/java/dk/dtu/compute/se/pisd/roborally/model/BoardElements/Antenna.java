@@ -19,7 +19,6 @@ public class Antenna extends NullBoardElement
         super(false, space);
         this.setImage(new Image("file:src/main/Resources/Images/antenna.png"));
         space.board.addBoardElement(Board.ANTENNA_INDEX, this);
-        this.setType(ElementsEnum.ANTENNA);
     }
 
     /**

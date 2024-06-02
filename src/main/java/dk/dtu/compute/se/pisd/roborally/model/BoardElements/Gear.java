@@ -29,7 +29,6 @@ public class Gear extends NullBoardElement
             setImage(new Image("file:src/main/resources/images/gearLeft.png"));
         }
         space.board.addBoardElement(Board.GEARS_INDEX, this);
-        this.setType(ElementsEnum.GEAR);
     }
 
     /**

@@ -2,7 +2,6 @@ package dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls;
 
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.ElementsEnum;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.image.Image;
@@ -34,7 +33,6 @@ public class CornerWall extends BoardElement
             {
                 setImage(new Image("file:src/main/resources/images/cornerWall2.png"));
             }
-            this.setType(ElementsEnum.CORNERWALL);
         }
 
     }
