@@ -117,7 +117,6 @@ public class LoadSavePlayer
         }
         catch (FileNotFoundException e)
         {
-            System.out.println(name);
             return null;
         }
         // In simple cases, we can create a Gson object with new Gson():
