@@ -233,7 +233,7 @@ public class Player extends Subject
     public void addCheckPointAsVisited(Checkpoint checkpoint)
     {
         int indexOfCheckPoint = board.getIndexOfCheckPoint(checkpoint);
-        int wouldBeIndexOfVisitedCheckPoints = visitedCheckPoints.size() - 1;
+        int wouldBeIndexOfVisitedCheckPoints = visitedCheckPoints.size();
 
         if (indexOfCheckPoint == wouldBeIndexOfVisitedCheckPoints)
         {
