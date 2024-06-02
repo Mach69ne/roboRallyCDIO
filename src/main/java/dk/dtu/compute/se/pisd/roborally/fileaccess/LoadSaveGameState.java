@@ -90,7 +90,7 @@ public class LoadSaveGameState
         gameController.board.setPhase(gameStateInfo.phase);
         gameController.board.setStep(gameStateInfo.step);
         //TODO Currently hardcoded to not allow more than 10 players
-        for (int i = 0; i < 10; i++)
+        for (int i = 10; i > 0; i--)
         {
             Player player = LoadSavePlayer.loadPlayer(gameController, name + i);
             if (player != null)
