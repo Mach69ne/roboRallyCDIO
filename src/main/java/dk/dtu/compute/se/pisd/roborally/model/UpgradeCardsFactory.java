@@ -19,7 +19,11 @@ public class UpgradeCardsFactory
 
         upgradeCards.add(new UpgradeCard("BRAKES", 3));
         upgradeCards.add(new UpgradeCard("DOUBLE BARREL LASER", 2));
-        upgradeCards.add(new UpgradeCard("DEFRAG GIZMO", 5));
+        upgradeCards.add(new UpgradeCard("FIREWALL", 3));
+        upgradeCards.add(new UpgradeCard("HOVER UNIT", 1));
+        upgradeCards.add(new UpgradeCard("MEMORY STICK", 3));
+        upgradeCards.add(new UpgradeCard("MEMORY STICK", 3));
+        upgradeCards.add(new UpgradeCard("TELEPORTER", 3));
 
         return upgradeCards;
     }
