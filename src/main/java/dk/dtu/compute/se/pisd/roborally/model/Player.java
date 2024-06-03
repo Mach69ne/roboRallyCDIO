@@ -48,7 +48,7 @@ public class Player extends Subject
     public final Deck discardedCardsPile;
     private final CardField[] program;
     private final CardField[] cards;
-    private final ArrayList<UpgradeCards> upgradeCards = new ArrayList<>();
+    private final ArrayList<UpgradeCard> upgradeCards = new ArrayList<>();
     private int lastVisitedCheckPoint = 0;
     private String name;
     private String color;
@@ -58,6 +58,7 @@ public class Player extends Subject
     private boolean movedByConveyorThisTurn;
     private int energyCubes;
     private boolean thisPlayerTurn = false;
+
     /**
      * @param board the board to which this player belongs
      * @param color the color of the player
@@ -211,6 +212,11 @@ public class Player extends Subject
                 space.playerChanged();
             }
         }
+    }
+
+    public void addUpgradeCard(UpgradeCard upgradeCard)
+    {
+        this.upgradeCards.add(upgradeCard);
     }
 
     /**

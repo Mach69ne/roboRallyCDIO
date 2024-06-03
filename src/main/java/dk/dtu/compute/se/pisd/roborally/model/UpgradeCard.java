@@ -2,17 +2,19 @@ package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 
-public class UpgradeCards extends Subject {
-    
-    private String name;
-    private int price;
+public class UpgradeCard extends Subject
+{
+
+    private final String name;
+    private final int price;
 
     /**
      * @param name
      * @param price
      * @author Mads
      */
-    UpgradeCards(String name, int price) {
+    UpgradeCard(String name, int price)
+    {
         this.name = name;
         this.price = price;
     }
@@ -21,7 +23,8 @@ public class UpgradeCards extends Subject {
      * @return
      * @author Mads
      */
-    public String getName() {
+    public String getName()
+    {
         return this.name;
     }
 
@@ -30,7 +33,8 @@ public class UpgradeCards extends Subject {
      * @return
      * @author Mads
      */
-    public int getPrice() {
+    public int getPrice()
+    {
         return this.price;
     }
 
