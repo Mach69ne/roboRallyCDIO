@@ -32,6 +32,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.TextInputDialog;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -104,6 +105,22 @@ public class AppController implements Observer
                         gameController.moveController);
                 board.addPlayer(player);
                 player.setSpace(board.getSpace(i % board.width, i));
+
+                TextInputDialog chooseName = new TextInputDialog("Player " + (i + 1));
+                chooseName.setTitle("Player name");
+                chooseName.setHeaderText("Choose a name for player " + (i + 1));
+                Optional<String> name = chooseName.showAndWait();
+                if (name.isPresent())
+                {
+                    if (name.get().isEmpty() || name.get().isBlank())
+                    {
+                        player.setName("Player " + (i + 1));
+                    }
+                    else
+                    {
+                        player.setName(name.get());
+                    }
+                }
             }
             board.setTabNumbersOnPlayers();
             // XXX: the line below is commented out in the current version
