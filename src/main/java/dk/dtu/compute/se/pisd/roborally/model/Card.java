@@ -33,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
 public class Card extends Subject
 {
 
-    final public Command command;
+    public Command command;
     private Image image;
 
     /**

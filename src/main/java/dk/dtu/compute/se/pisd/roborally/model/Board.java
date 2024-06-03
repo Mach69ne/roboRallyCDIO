@@ -132,6 +132,15 @@ public class Board extends Subject
         }
     }
 
+    public void buyUpgradeCard(Player player, UpgradeCard upgradeCard)
+    {
+        if (player.getEnergyCubes() >= upgradeCard.getPrice())
+        {
+            player.addUpgradeCard(upgradeCard);
+            this.upgradeCards.remove(upgradeCard);
+        }
+    }
+
     public BoardElement getCheckPointAtIndex(int index)
     {
         return boardElements[CHECKPOINTS_INDEX].get(index);

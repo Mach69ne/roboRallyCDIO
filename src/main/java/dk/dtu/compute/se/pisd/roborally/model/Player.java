@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-import static dk.dtu.compute.se.pisd.roborally.model.Command.SPAM;
+import static dk.dtu.compute.se.pisd.roborally.model.Command.*;
 import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 
 /**
@@ -214,19 +214,53 @@ public class Player extends Subject
         }
     }
 
-    public void addUpgradeCard(UpgradeCard upgradeCard)
+    public void addUpgradeCard(@NotNull UpgradeCard upgradeCard)
     {
         this.upgradeCards.add(upgradeCard);
+        if (upgradeCard.getName().equals("BRAKES"))
+        {
+            this.changeCardsOfCertainType(FORWARD, OPTION_FORWARD_OR_NOT);
+        }
     }
 
-    /**
-     * @param i the index of the register to be returned
-     * @return the register with the given index
-     * @author Frederik
-     */
-    public CardField getProgramField(int i)
+    private void changeCardsOfCertainType(Command cmd, Command newCommand)
     {
-        return program[i];
+        for (Card activeCards : this.activeCardsPile.playerCards)
+        {
+            if (activeCards.command == cmd)
+            {
+                activeCards.command = newCommand;
+            }
+        }
+        for (Card discardedCards : this.discardedCardsPile.playerCards)
+        {
+            if (discardedCards.command == cmd)
+            {
+                discardedCards.command = newCommand;
+            }
+        }
+        for (int i = 0; i < Player.NO_CARDS; i++)
+        {
+            CardField cardField = this.getCardField(i);
+            if (cardField != null && cardField.getCard() != null)
+            {
+                if (cardField.getCard().command == cmd)
+                {
+                    cardField.getCard().command = newCommand;
+                }
+            }
+        }
+        for (int i = 0; i < Player.NO_REGISTERS; i++)
+        {
+            CardField cardField = this.getProgramField(i);
+            if (cardField != null && cardField.getCard() != null)
+            {
+                if (cardField.getCard().command == cmd)
+                {
+                    cardField.getCard().command = newCommand;
+                }
+            }
+        }
     }
 
     /**
@@ -237,6 +271,16 @@ public class Player extends Subject
     public CardField getCardField(int i)
     {
         return cards[i];
+    }
+
+    /**
+     * @param i the index of the register to be returned
+     * @return the register with the given index
+     * @author Frederik
+     */
+    public CardField getProgramField(int i)
+    {
+        return program[i];
     }
 
     /**
