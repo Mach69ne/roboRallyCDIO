@@ -80,7 +80,7 @@ public class LoadBoard
             // fileReader = new FileReader(filename);
             reader = gson.newJsonReader(new InputStreamReader(inputStream));
             BoardTemplate template = gson.fromJson(reader, BoardTemplate.class);
-            result = new Board(template.width, template.height);
+            result = new Board(template.width, template.height, boardname);
             for (int i = 0; i < Board.NOT_ACTIVATE_ABLE_INDEX + 1; i++)
             {
                 for (BoardElementTemplate boardElementTemplate : template.boardElements[i])
