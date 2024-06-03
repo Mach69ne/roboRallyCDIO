@@ -81,10 +81,6 @@ public class LoadBoard
             reader = gson.newJsonReader(new InputStreamReader(inputStream));
             BoardTemplate template = gson.fromJson(reader, BoardTemplate.class);
             result = new Board(template.width, template.height);
-            for (SpaceTemplate spaceTemplate : template.spaces)
-            {
-                Space space = result.getSpace(spaceTemplate.x, spaceTemplate.y);
-            }
             for (int i = 0; i < Board.NOT_ACTIVATE_ABLE_INDEX + 1; i++)
             {
                 for (BoardElementTemplate boardElementTemplate : template.boardElements[i])
