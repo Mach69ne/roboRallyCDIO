@@ -18,12 +18,15 @@ public class UpgradeCardsFactory
         ArrayList<UpgradeCard> upgradeCards = new ArrayList<>();
 
         upgradeCards.add(new UpgradeCard("BRAKES", 3));
-        upgradeCards.add(new UpgradeCard("DOUBLE BARREL LASER", 2));
+
         upgradeCards.add(new UpgradeCard("FIREWALL", 3));
+
+        upgradeCards.add(new UpgradeCard("MEMORY STICK", 3));
+
+        //TODO Awaiting PIT
         upgradeCards.add(new UpgradeCard("HOVER UNIT", 1));
-        upgradeCards.add(new UpgradeCard("MEMORY STICK", 3));
-        upgradeCards.add(new UpgradeCard("MEMORY STICK", 3));
-        upgradeCards.add(new UpgradeCard("TELEPORTER", 3));
+        //TODO Awaiting Robot Laser
+        upgradeCards.add(new UpgradeCard("DOUBLE BARREL LASER", 2));
 
         return upgradeCards;
     }
