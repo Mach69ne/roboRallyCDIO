@@ -923,7 +923,7 @@
         "isWalkable": true,
         "spaceTemplate": {
           "x": 12,
-          "y": 10
+          "y": 9
         }
       }
     ],

@@ -17,7 +17,7 @@ public class LoadSaveGameState
     public static void saveGameState(GameController gameController, String name)
     {
         saveGameStateToFile(gameController.board, name);
-        LoadBoard.saveBoard(gameController.board, name);
+        //LoadBoard.saveBoard(gameController.board, name);
         for (int i = 0; i < gameController.board.getPlayersNumber(); i++)
         {
             LoadSavePlayer.savePlayer(gameController.board.getPlayer(i), name + i);
@@ -86,7 +86,7 @@ public class LoadSaveGameState
     public static GameController loadGameState(String name)
     {
         GameStateInfo gameStateInfo = loadGameStateFromFile(name);
-        GameController gameController = new GameController(LoadBoard.loadBoard(name));
+        GameController gameController = new GameController(LoadBoard.loadBoard("dizzyHighway"));
         gameController.board.setPhase(gameStateInfo.phase);
         gameController.board.setStep(gameStateInfo.step);
         Player[] players = new Player[10];
