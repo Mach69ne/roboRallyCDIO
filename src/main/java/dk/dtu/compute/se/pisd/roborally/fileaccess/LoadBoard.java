@@ -36,10 +36,7 @@ import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.CornerWall;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.Wall;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -63,11 +60,13 @@ public class LoadBoard
         {
             boardname = DEFAULTBOARD;
         }
-        ClassLoader classLoader = LoadBoard.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(BOARDSFOLDER + "/" + boardname + "." + JSON_EXT);
-        if (inputStream == null)
+        InputStream inputStream; // = classLoader.getResourceAsStream(PLAYERFOLDER + "/" + name + "." + JSON_EXT);
+        try
         {
-            // TODO these constants should be defined somewhere
+            inputStream = new FileInputStream("src/main/Resources/boards/" + boardname + ".json");
+        }
+        catch (FileNotFoundException e)
+        {
             return new Board(8, 8);
         }
         // In simple cases, we can create a Gson object with new Gson():
