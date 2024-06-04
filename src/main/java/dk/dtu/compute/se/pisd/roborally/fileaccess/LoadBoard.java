@@ -137,10 +137,18 @@ public class LoadBoard
                             }
                             switch (boardElementTemplate.type)
                             {
-                                case WALL -> new Wall(boardElementTemplate.heading, space);
-                                case CORNERWALL ->
-                                        new CornerWall(boardElementTemplate.heading, boardElementTemplate.heading2,
-                                                space);
+                                case WALL:
+                                    new Wall(boardElementTemplate.heading, space);
+                                    break;
+                                case CORNERWALL:
+                                    new CornerWall(boardElementTemplate.heading, boardElementTemplate.heading2, space);
+                                    break;
+                                case REBOOTTOKEN:
+                                    new RebootToken(boardElementTemplate.heading, space);
+                                    break;
+                                case SPAWNPOINT:
+                                    new SpawnPoint(space);
+                                    break;
                             }
                         }
                     }
