@@ -254,8 +254,6 @@ public class PlayerView extends Tab implements ViewObserver
 
                 if (player.board.getCurrentPlayer() == player)
                 {
-                    // Phase bliver ikke sat til PLAYER_INTERACTION, så denne del af koden bliver aldrig kørt,
-                    // så det skal vi lige have kigget på.
                     if (player.getProgramField(player.board.getStep()).getCard().command.isInteractive())
                     {
                         for (int i = 0; i < player.getProgramField(player.board.getStep()).getCard().command.getOptions().size(); i++)
