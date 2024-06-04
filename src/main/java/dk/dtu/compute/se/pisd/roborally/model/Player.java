@@ -424,6 +424,8 @@ public class Player extends Subject
         {
             this.discardedCardsPile.playerCards.add(new Card(SPAM));
         }
+
+
     }
 
     public int getEnergyCubes()
@@ -444,5 +446,26 @@ public class Player extends Subject
     public void setThisPlayerTurn(boolean thisPlayerTurn)
     {
         this.thisPlayerTurn = thisPlayerTurn;
+    }
+
+    public void activate()
+    {
+        Heading headingToCheck = this.getHeading().next().next();
+        Space spaceToCheck = this.getSpace();
+
+        while (spaceToCheck != null)
+        {
+            if (spaceToCheck.getPlayer() != null)
+            {
+                spaceToCheck.getPlayer().addSpamToDiscard(1);
+            }
+            Space nextSpace = spaceToCheck.board.getNeighbour(this.getSpace(), headingToCheck);
+            // We check if we were to hit a board element, and break if we do
+            if (!spaceToCheck.getBoardElement().getCanWalkOutOf(headingToCheck) || !nextSpace.getBoardElement().getCanWalkInto(headingToCheck))
+            {
+                break;
+            }
+            spaceToCheck = nextSpace;
+        }
     }
 }
