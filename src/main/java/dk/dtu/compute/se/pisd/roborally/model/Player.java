@@ -448,7 +448,7 @@ public class Player extends Subject
         this.thisPlayerTurn = thisPlayerTurn;
     }
 
-    public void activate()
+    public void shoot()
     {
         Heading headingToCheck = this.getHeading().next().next();
         Space spaceToCheck = this.getSpace();
