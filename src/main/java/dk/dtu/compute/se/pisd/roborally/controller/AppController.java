@@ -73,7 +73,7 @@ public class AppController implements Observer
     /**
      * Start a new game. The user is asked to select the number of players.
      *
-     * @author Elias
+     * @author Elias & Emil
      */
     public void newGame()
     {
