@@ -94,4 +94,17 @@ public class PlayerMovementTest {
             current.moveController.moveThree(current);
             Assertions.assertEquals(current.getSpace(), board.getSpace(0, 3));
         }
+
+        @Test
+        void pushPlayer() {
+            Board board = gameController.board;
+            Player current = board.getCurrentPlayer();
+            Player playerToBePushed = board.getPlayer(1);
+            current.setSpace(board.getSpace(1, 0));
+            playerToBePushed.setSpace(board.getSpace(1, 1));
+            current.moveController.moveForward(current);
+            Assertions.assertEquals(playerToBePushed.getSpace(), board.getSpace(1, 2));
+            Assertions.assertEquals(current.getSpace(), board.getSpace(1, 1));
+        }
+
 }
