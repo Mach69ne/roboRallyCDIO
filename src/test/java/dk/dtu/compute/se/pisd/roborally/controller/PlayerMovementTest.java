@@ -4,12 +4,12 @@ import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import javafx.application.Platform;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
-
+/**
+ * Test class for playermovement.
+ * @Author Emil
+ */
 public class PlayerMovementTest {
     private final int TEST_WIDTH = 8;
     private final int TEST_HEIGHT = 8;
@@ -17,9 +17,13 @@ public class PlayerMovementTest {
     private GameController gameController;
     private MoveController moveController;
 
+        @BeforeAll
+        static void setUpAll() {
+            Platform.startup(() -> {});
+        }
+
         @BeforeEach
         void setUp() {
-            Platform.startup(() -> {});
             Board board = new Board(TEST_WIDTH, TEST_HEIGHT);
             gameController = new GameController(board);
             moveController = new MoveController(gameController);
@@ -36,6 +40,7 @@ public class PlayerMovementTest {
         @AfterEach
         void tearDown() {
             gameController = null;
+            moveController = null;
         }
 
         @Test
