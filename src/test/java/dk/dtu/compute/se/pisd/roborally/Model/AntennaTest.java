@@ -51,9 +51,9 @@ public class AntennaTest
     void activate()
     {
         Board board = gameController.board;
+        Player player = board.getPlayer(1);
         BoardElement antenna = board.getSpace(5, 5).getBoardElement();
         antenna.activate();
-        Player player = board.getCurrentPlayer();
         Assertions.assertEquals(player, board.getPlayer(0));
     }
 }
