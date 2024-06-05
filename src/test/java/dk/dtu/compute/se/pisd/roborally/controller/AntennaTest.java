@@ -27,7 +27,7 @@ public class AntennaTest {
         for (int i = 0; i < 2; i++) {
             Player player = new Player(board, null,"Player " + i, moveController);
             board.addPlayer(player);
-            player.setSpace(board.getSpace(i, 1));
+            player.setSpace(board.getSpace(i, i));
             player.setHeading(Heading.values()[i % Heading.values().length]);
         }
 
