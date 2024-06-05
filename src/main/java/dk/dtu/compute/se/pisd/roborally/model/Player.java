@@ -39,16 +39,15 @@ import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 public class Player extends Subject
 {
 
-    final public static int NO_REGISTERS = 5;
-    final public static int NO_CARDS = 8;
-
+    public static int NO_CARDS = 8;
+    public static int NO_REGISTERS = 5;
     final public Board board;
     public final MoveController moveController;
     public final Deck activeCardsPile;
     public final Deck discardedCardsPile;
     private final CardField[] program;
-    private final CardField[] cards;
     private final ArrayList<UpgradeCard> upgradeCards = new ArrayList<>();
+    private CardField[] cards;
     private int lastVisitedCheckPoint = 0;
     private String name;
     private String color;
@@ -163,6 +162,17 @@ public class Player extends Subject
         if (upgradeCard.getName().equals("BRAKES"))
         {
             this.changeCardsOfCertainType(FORWARD, OPTION_FORWARD_OR_NOT);
+        }
+        if (upgradeCard.getName().equals("MEMORY STICK"))
+        {
+            NO_CARDS += 1;
+            CardField[] newCardArr = new CardField[NO_CARDS];
+            if (NO_CARDS - 1 >= 0)
+            {
+                System.arraycopy(this.cards, 0, newCardArr, 0, NO_CARDS - 1);
+            }
+            newCardArr[NO_CARDS - 1] = new CardField(this);
+            this.cards = new CardField[NO_CARDS];
         }
     }
 

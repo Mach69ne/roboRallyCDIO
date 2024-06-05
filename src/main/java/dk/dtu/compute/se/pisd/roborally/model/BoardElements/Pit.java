@@ -7,16 +7,29 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 /**
  * @Author Emil
  */
-public class Pit extends NullBoardElement {
-    public Pit(Space space) {
+public class Pit extends NullBoardElement
+{
+    public Pit(Space space)
+    {
         super(space);
     }
 
     @Override
-    public void activate() {
+    public void activate()
+    {
         Player player = this.getSpace().getPlayer();
-        if (player != null) {
-            this.getSpace().board.getRebootToken().reboot(player);
+        if (player != null)
+        {
+            player.die();
+        }
+    }
+
+    @Override
+    public void onWalkOver(Player player)
+    {
+        if (!player.checkIfOwnsUpgradeCard("HOVER UNIT"))
+        {
+            player.die();
         }
     }
 }

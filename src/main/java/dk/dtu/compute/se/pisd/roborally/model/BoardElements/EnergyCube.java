@@ -1,6 +1,7 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
 import dk.dtu.compute.se.pisd.roborally.model.Board;
+import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.image.Image;
 
@@ -27,8 +28,12 @@ public class EnergyCube extends NullBoardElement
     @Override
     public void activate()
     {
-        this.getSpace().getPlayer().pickUpEnergyCube();
-        this.getSpace().setBoardElement(null);
+        Player playerOnSquare = this.getSpace().getPlayer();
+        if (playerOnSquare != null)
+        {
+            this.getSpace().getPlayer().pickUpEnergyCube();
+            this.getSpace().setBoardElement(null);
+        }
 
     }
 }

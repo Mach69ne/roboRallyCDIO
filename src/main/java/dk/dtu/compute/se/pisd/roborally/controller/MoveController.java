@@ -314,6 +314,7 @@ public class MoveController
                 }
                 else
                 {
+                    //TODO Update the code below to use the function its in
                     //If there is a player on the space, the player should be pushed
                     Space pushedToSpace = gameController.board.getNeighbour(newSpace, heading);
                     if (pushedToSpace.getBoardElement().getCanWalkInto(heading) && pushedToSpace.getPlayer() == null)

@@ -359,28 +359,16 @@ public class Board extends Subject
         switch (heading)
         {
             case SOUTH:
-                if (y + 1 < height)
-                {
-                    y = y + 1;
-                }
+                y = y + 1;
                 break;
             case WEST:
-                if (x - 1 >= 0)
-                {
-                    x = x - 1;
-                }
+                x = x - 1;
                 break;
             case NORTH:
-                if (y - 1 >= 0)
-                {
-                    y = y - 1;
-                }
+                y = y - 1;
                 break;
             case EAST:
-                if (x + 1 < width)
-                {
-                    x = x + 1;
-                }
+                x = x + 1;
                 break;
         }
 

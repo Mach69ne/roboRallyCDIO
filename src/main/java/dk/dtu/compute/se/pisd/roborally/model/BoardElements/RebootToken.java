@@ -30,6 +30,10 @@ public class RebootToken extends BoardElement
         }
         this.getSpace().setPlayer(player);
         player.discardAllCardsUponReboot();
+        if (!player.checkIfOwnsUpgradeCard("FIREWALL"))
+        {
+            player.addSpamToDiscard(2);
+        }
         player.setHeading(this.getHeading());
     }
 }
