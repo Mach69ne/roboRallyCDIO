@@ -27,6 +27,9 @@ public class Pit extends NullBoardElement
     @Override
     public void onWalkOver(Player player)
     {
-        player.die();
+        if (!player.checkIfOwnsUpgradeCard("HOVER UNIT"))
+        {
+            player.die();
+        }
     }
 }
