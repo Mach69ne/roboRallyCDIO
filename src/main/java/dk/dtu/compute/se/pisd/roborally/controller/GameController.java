@@ -159,7 +159,6 @@ public class GameController
                     Command command = card.command;
                     moveController.executeCommand(currentPlayer, command);
                 }
-                currentPlayer.shoot();
                 int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (nextPlayerNumber < board.getPlayersNumber())
                 {

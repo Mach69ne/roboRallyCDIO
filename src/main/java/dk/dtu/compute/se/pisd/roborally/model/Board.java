@@ -121,6 +121,14 @@ public class Board extends Subject
     {
         for (int i = 0; i < boardElements.length; i++)
         {
+            if (i == Board.ROBOT_LASER_INDEX)
+            {
+                for (Player player : players)
+                {
+                    player.shoot();
+                }
+                continue;
+            }
             for (int k = 0; k < boardElements[i].size(); k++)
             {
                 boardElements[i].get(k).activate();

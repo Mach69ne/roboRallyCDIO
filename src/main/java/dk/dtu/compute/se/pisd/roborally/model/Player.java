@@ -157,63 +157,6 @@ public class Player extends Subject
         }
     }
 
-    /**
-     * @return the space on which the player is located
-     * @author Elias
-     */
-    public Space getSpace()
-    {
-        return space;
-    }
-
-    /**
-     * @param space the space on which the player is located
-     * @author Elias
-     */
-    public void setSpace(Space space)
-    {
-        Space oldSpace = this.space;
-        if (space != oldSpace && (space == null || space.board == this.board))
-        {
-            this.space = space;
-            if (oldSpace != null)
-            {
-                oldSpace.setPlayer(null);
-            }
-            if (space != null)
-            {
-                space.setPlayer(this);
-            }
-            notifyChange();
-        }
-    }
-
-    /**
-     * @return the heading of the player
-     * @author Elias
-     */
-    public Heading getHeading()
-    {
-        return heading;
-    }
-
-    /**
-     * @param heading the heading of the player
-     * @author Elias
-     */
-    public void setHeading(@NotNull Heading heading)
-    {
-        if (heading != this.heading)
-        {
-            this.heading = heading;
-            notifyChange();
-            if (space != null)
-            {
-                space.playerChanged();
-            }
-        }
-    }
-
     public void addUpgradeCard(@NotNull UpgradeCard upgradeCard)
     {
         this.upgradeCards.add(upgradeCard);
@@ -296,7 +239,6 @@ public class Player extends Subject
             lastVisitedCheckPoint++;
         }
     }
-
 
     /**
      * @return
@@ -414,20 +356,6 @@ public class Player extends Subject
         return false;
     }
 
-    /**
-     * @param amount
-     * @author Elias
-     */
-    public void addSpamToDiscard(int amount)
-    {
-        for (int i = 0; i < amount; i++)
-        {
-            this.discardedCardsPile.playerCards.add(new Card(SPAM));
-        }
-
-
-    }
-
     public int getEnergyCubes()
     {
         return energyCubes;
@@ -450,22 +378,97 @@ public class Player extends Subject
 
     public void shoot()
     {
-        Heading headingToCheck = this.getHeading().next().next();
+        Heading headingToCheck = this.getHeading();
         Space spaceToCheck = this.getSpace();
 
         while (spaceToCheck != null)
         {
             if (spaceToCheck.getPlayer() != null)
             {
-                spaceToCheck.getPlayer().addSpamToDiscard(1);
+                if (!spaceToCheck.getPlayer().equals(this))
+                {
+                    spaceToCheck.getPlayer().addSpamToDiscard(1);
+                    break;
+                }
             }
-            Space nextSpace = spaceToCheck.board.getNeighbour(this.getSpace(), headingToCheck);
+            Space nextSpace = spaceToCheck.board.getNeighbour(spaceToCheck, headingToCheck);
             // We check if we were to hit a board element, and break if we do
-            if (!spaceToCheck.getBoardElement().getCanWalkOutOf(headingToCheck) || !nextSpace.getBoardElement().getCanWalkInto(headingToCheck))
+            if (!spaceToCheck.getBoardElement().getCanWalkOutOf(headingToCheck) || nextSpace == null || !nextSpace.getBoardElement().getCanWalkInto(headingToCheck))
             {
                 break;
             }
             spaceToCheck = nextSpace;
+        }
+    }
+
+    /**
+     * @return the heading of the player
+     * @author Elias
+     */
+    public Heading getHeading()
+    {
+        return heading;
+    }
+
+    /**
+     * @return the space on which the player is located
+     * @author Elias
+     */
+    public Space getSpace()
+    {
+        return space;
+    }
+
+    /**
+     * @param space the space on which the player is located
+     * @author Elias
+     */
+    public void setSpace(Space space)
+    {
+        Space oldSpace = this.space;
+        if (space != oldSpace && (space == null || space.board == this.board))
+        {
+            this.space = space;
+            if (oldSpace != null)
+            {
+                oldSpace.setPlayer(null);
+            }
+            if (space != null)
+            {
+                space.setPlayer(this);
+            }
+            notifyChange();
+        }
+    }
+
+    /**
+     * @param amount
+     * @author Elias
+     */
+    public void addSpamToDiscard(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            this.discardedCardsPile.playerCards.add(new Card(SPAM));
+        }
+
+
+    }
+
+    /**
+     * @param heading the heading of the player
+     * @author Elias
+     */
+    public void setHeading(@NotNull Heading heading)
+    {
+        if (heading != this.heading)
+        {
+            this.heading = heading;
+            notifyChange();
+            if (space != null)
+            {
+                space.playerChanged();
+            }
         }
     }
 }
