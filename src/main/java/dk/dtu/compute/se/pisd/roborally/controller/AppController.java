@@ -100,6 +100,7 @@ public class AppController implements Observer
 
 
             int no = result.get();
+            List<String> namesChosen = Arrays.asList(new String[no]);
             for (int i = 0; i < no; i++)
             {
                 Player player = new Player(board, PLAYER_COLORS.get(i), "Player " + (i + 1),
@@ -113,7 +114,7 @@ public class AppController implements Observer
                 Optional<String> name = chooseName.showAndWait();
                 if (name.isPresent())
                 {
-                    if (name.get().isEmpty() || name.get().isBlank())
+                    if (name.get().isEmpty() || name.get().isBlank() || namesChosen.contains(name.get()))
                     {
                         player.setName("Player " + (i + 1));
                     }
@@ -121,6 +122,7 @@ public class AppController implements Observer
                     {
                         player.setName(name.get());
                     }
+                    namesChosen.set(i, player.getName());
                 }
             }
             board.setTabNumbersOnPlayers();
