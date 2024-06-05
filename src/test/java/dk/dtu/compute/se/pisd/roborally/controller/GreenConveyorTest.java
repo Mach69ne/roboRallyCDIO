@@ -1,7 +1,7 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors.BlueConveyor;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors.GreenConveyor;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import javafx.application.Platform;
@@ -11,10 +11,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Test class for blueconveyor.
+ * Test class for greenconveyor.
  * @Author Emil
  */
-public class BlueConveyorTest {
+public class GreenConveyorTest {
     private final int TEST_WIDTH = 8;
     private final int TEST_HEIGHT = 8;
 
@@ -35,7 +35,7 @@ public class BlueConveyorTest {
             player.setHeading(Heading.values()[i % Heading.values().length]);
         }
 
-        new BlueConveyor(Heading.SOUTH, board.getSpace(0, 1));
+        new GreenConveyor(Heading.SOUTH, board.getSpace(0, 1));
         board.setCurrentPlayer(board.getPlayer(0));
     }
 
@@ -47,10 +47,10 @@ public class BlueConveyorTest {
     @Test
     void activate() {
         Board board = gameController.board;
-        BoardElement blueConveyor = board.getSpace(0, 1).getBoardElement();
+        BoardElement greenConveyor = board.getSpace(0, 1).getBoardElement();
         Player player = board.getCurrentPlayer();
         player.moveController.moveForward(player);
-        blueConveyor.activate();
-        Assertions.assertEquals(board.getSpace(0, 3), player.getSpace());
+        greenConveyor.activate();
+        Assertions.assertEquals(board.getSpace(0, 2), player.getSpace());
     }
 }
