@@ -1,17 +1,17 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
 import dk.dtu.compute.se.pisd.roborally.model.Board;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.Wall;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Walls.CornerWall;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import javafx.application.Platform;
 import org.junit.jupiter.api.*;
 
 /**
- * Test class for the wall element.
+ * Test class for the corner wall element.
  * @Author Emil
  */
-public class WallTest {
+public class CornerWallTest {
     private final int TEST_WIDTH = 8;
     private final int TEST_HEIGHT = 8;
 
@@ -36,9 +36,8 @@ public class WallTest {
             player.setHeading(Heading.SOUTH);
         }
 
-        new Wall(Heading.NORTH, board.getSpace(1, 2));
-        new Wall(Heading.WEST, board.getSpace(0, 1));
-        new Wall(Heading.SOUTH, board.getSpace(0, 2));
+        new CornerWall(Heading.NORTH, Heading.EAST, board.getSpace(1, 2));
+        new CornerWall(Heading.WEST, Heading.SOUTH, board.getSpace(0, 1));
         board.setCurrentPlayer(board.getPlayer(0));
     }
 
@@ -59,9 +58,9 @@ public class WallTest {
     void walkOutFromValidDirection() {
         Board board = gameController.board;
         Player player = board.getCurrentPlayer();
-        player.moveController.moveForward(player);
-        player.moveController.moveForward(player);
-        Assertions.assertEquals(board.getSpace(0, 2), player.getSpace());
+        player.setSpace(board.getSpace(0, 1));
+        player.moveController.moveBack(player);
+        Assertions.assertEquals(board.getSpace(0, 0), player.getSpace());
     }
 
     @Test
@@ -78,9 +77,8 @@ public class WallTest {
         Board board = gameController.board;
         board.setCurrentPlayer(board.getPlayer(0));
         Player player = board.getCurrentPlayer();
-        player.setSpace(board.getSpace(0, 2));
+        player.setSpace(board.getSpace(0, 1));
         player.moveController.moveForward(player);
-        player.moveController.moveForward(player);
-        Assertions.assertEquals(board.getSpace(0, 2), player.getSpace());
+        Assertions.assertEquals(board.getSpace(0, 1), player.getSpace());
     }
 }

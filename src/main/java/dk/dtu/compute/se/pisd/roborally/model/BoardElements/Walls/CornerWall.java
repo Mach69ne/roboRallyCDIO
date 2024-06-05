@@ -63,6 +63,6 @@ public class CornerWall extends BoardElement
     {
         Heading headingToCheck = heading.next().next();
 
-        return getIsWalkable() && (getHeading() != headingToCheck || this.heading2 != headingToCheck);
+        return getIsWalkable() && (getHeading() != headingToCheck && this.heading2 != headingToCheck);
     }
 }

@@ -8,6 +8,10 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import javafx.application.Platform;
 import org.junit.jupiter.api.*;
 
+/**
+ * Test class for the push panel element.
+ * @Author Emil
+ */
 public class PushPanelTest {
     private final int TEST_WIDTH = 8;
     private final int TEST_HEIGHT = 8;
