@@ -32,7 +32,7 @@ public class PlayerMovementTest {
                 Player player = new Player(board, null,"Player " + i, moveController);
                 board.addPlayer(player);
                 player.setSpace(board.getSpace(i, i));
-                player.setHeading(Heading.values()[i % Heading.values().length]);
+                player.setHeading(Heading.SOUTH);
             }
             board.setCurrentPlayer(board.getPlayer(0));
         }
@@ -49,6 +49,8 @@ public class PlayerMovementTest {
             Player current = board.getCurrentPlayer();
             current.moveController.moveForward(current);
             Assertions.assertEquals(current.getSpace(), board.getSpace(0, 1));
+            Assertions.assertEquals(Heading.SOUTH, current.getHeading());
+            Assertions.assertNull(board.getSpace(0, 0).getPlayer());
         }
 
         @Test
@@ -57,7 +59,9 @@ public class PlayerMovementTest {
             Player current = board.getCurrentPlayer();
             current.setSpace(board.getSpace(0, 1));
             current.moveController.moveBack(current);
-            Assertions.assertEquals(current.getSpace(), board.getSpace(0, 0));
+            Assertions.assertEquals(board.getSpace(0, 0), current.getSpace());
+            Assertions.assertEquals(Heading.SOUTH, current.getHeading());
+            Assertions.assertNull(board.getSpace(0, 1).getPlayer());
         }
 
         @Test
@@ -65,7 +69,8 @@ public class PlayerMovementTest {
             Board board = gameController.board;
             Player current = board.getCurrentPlayer();
             current.moveController.turnRight(current);
-            Assertions.assertEquals(current.getHeading(), Heading.WEST);
+            Assertions.assertEquals(Heading.WEST, current.getHeading());
+            Assertions.assertEquals(board.getSpace(0, 0), current.getSpace());
         }
 
         @Test
@@ -73,7 +78,8 @@ public class PlayerMovementTest {
             Board board = gameController.board;
             Player current = board.getCurrentPlayer();
             current.moveController.turnLeft(current);
-            Assertions.assertEquals(current.getHeading(), Heading.EAST);
+            Assertions.assertEquals(Heading.EAST, current.getHeading());
+            Assertions.assertEquals(board.getSpace(0, 0), current.getSpace());
         }
 
         @Test
@@ -81,7 +87,8 @@ public class PlayerMovementTest {
             Board board = gameController.board;
             Player current = board.getCurrentPlayer();
             current.moveController.uTurn(current);
-            Assertions.assertEquals(current.getHeading(), Heading.NORTH);
+            Assertions.assertEquals(Heading.NORTH, current.getHeading());
+            Assertions.assertEquals(board.getSpace(0, 0), current.getSpace());
         }
 
         @Test
@@ -89,7 +96,9 @@ public class PlayerMovementTest {
             Board board = gameController.board;
             Player current = board.getCurrentPlayer();
             current.moveController.fastForward(current);
-            Assertions.assertEquals(current.getSpace(), board.getSpace(0, 2));
+            Assertions.assertEquals(board.getSpace(0, 2), current.getSpace());
+            Assertions.assertEquals(Heading.SOUTH, current.getHeading());
+            Assertions.assertNull(board.getSpace(0, 0).getPlayer());
         }
 
         @Test
@@ -97,7 +106,9 @@ public class PlayerMovementTest {
             Board board = gameController.board;
             Player current = board.getCurrentPlayer();
             current.moveController.moveThree(current);
-            Assertions.assertEquals(current.getSpace(), board.getSpace(0, 3));
+            Assertions.assertEquals(board.getSpace(0, 3), current.getSpace());
+            Assertions.assertEquals(Heading.SOUTH, current.getHeading());
+            Assertions.assertNull(board.getSpace(0, 0).getPlayer());
         }
 
         @Test
@@ -108,8 +119,11 @@ public class PlayerMovementTest {
             current.setSpace(board.getSpace(1, 0));
             playerToBePushed.setSpace(board.getSpace(1, 1));
             current.moveController.moveForward(current);
-            Assertions.assertEquals(playerToBePushed.getSpace(), board.getSpace(1, 2));
-            Assertions.assertEquals(current.getSpace(), board.getSpace(1, 1));
+            Assertions.assertEquals(board.getSpace(1, 2), playerToBePushed.getSpace());
+            Assertions.assertEquals(board.getSpace(1, 1), current.getSpace());
+            Assertions.assertEquals(Heading.SOUTH, playerToBePushed.getHeading());
+            Assertions.assertEquals(Heading.SOUTH, current.getHeading());
+            Assertions.assertNull(board.getSpace(1, 0).getPlayer());
         }
 
 }

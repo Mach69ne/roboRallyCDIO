@@ -53,5 +53,6 @@ public class GearTest {
         player.moveController.moveForward(player);
         gear.activate();
         Assertions.assertEquals(Heading.WEST, player.getHeading());
+        Assertions.assertEquals(board.getSpace(0, 1), player.getSpace());
     }
 }

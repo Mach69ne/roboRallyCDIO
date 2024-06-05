@@ -52,5 +52,7 @@ public class BlueConveyorTest {
         player.moveController.moveForward(player);
         blueConveyor.activate();
         Assertions.assertEquals(board.getSpace(0, 3), player.getSpace());
+        Assertions.assertEquals(Heading.SOUTH, player.getHeading());
+        Assertions.assertNull(board.getSpace(0, 1).getPlayer());
     }
 }

@@ -54,6 +54,8 @@ public class PushPanelTest {
         player.moveController.moveForward(player);
         pushPanel.activate();
         Assertions.assertEquals(board.getSpace(2, 2), player.getSpace());
+        Assertions.assertEquals(Heading.SOUTH, player.getHeading());
+        Assertions.assertNull(board.getSpace(1, 2).getPlayer());
     }
 
     @Test
@@ -66,5 +68,6 @@ public class PushPanelTest {
         player.moveController.moveForward(player);
         pushPanel.activate();
         Assertions.assertEquals(board.getSpace(0, 2), player.getSpace());
+        Assertions.assertEquals(Heading.EAST, player.getHeading());
     }
 }

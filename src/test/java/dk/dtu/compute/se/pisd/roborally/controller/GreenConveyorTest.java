@@ -52,5 +52,7 @@ public class GreenConveyorTest {
         player.moveController.moveForward(player);
         greenConveyor.activate();
         Assertions.assertEquals(board.getSpace(0, 2), player.getSpace());
+        Assertions.assertEquals(Heading.SOUTH, player.getHeading());
+        Assertions.assertNull(board.getSpace(0, 1).getPlayer());
     }
 }
