@@ -76,7 +76,7 @@ public abstract class BoardElement
      */
     public void onWalkOver(Player player)
     {
-
+        
     }
 
     /**

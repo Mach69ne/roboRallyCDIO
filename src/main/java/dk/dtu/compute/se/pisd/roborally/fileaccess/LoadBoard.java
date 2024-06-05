@@ -80,7 +80,7 @@ public class LoadBoard
             // fileReader = new FileReader(filename);
             reader = gson.newJsonReader(new InputStreamReader(inputStream));
             BoardTemplate template = gson.fromJson(reader, BoardTemplate.class);
-            result = new Board(template.width, template.height);
+            result = new Board(template.width, template.height, boardname);
             for (int i = 0; i < Board.NOT_ACTIVATE_ABLE_INDEX + 1; i++)
             {
                 for (BoardElementTemplate boardElementTemplate : template.boardElements[i])
@@ -137,10 +137,18 @@ public class LoadBoard
                             }
                             switch (boardElementTemplate.type)
                             {
-                                case WALL -> new Wall(boardElementTemplate.heading, space);
-                                case CORNERWALL ->
-                                        new CornerWall(boardElementTemplate.heading, boardElementTemplate.heading2,
-                                                space);
+                                case WALL:
+                                    new Wall(boardElementTemplate.heading, space);
+                                    break;
+                                case CORNERWALL:
+                                    new CornerWall(boardElementTemplate.heading, boardElementTemplate.heading2, space);
+                                    break;
+                                case REBOOTTOKEN:
+                                    new RebootToken(boardElementTemplate.heading, space);
+                                    break;
+                                case SPAWNPOINT:
+                                    new SpawnPoint(space);
+                                    break;
                             }
                         }
                     }

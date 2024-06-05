@@ -24,6 +24,7 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Observer;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.RoboRally;
+import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadSaveGameState;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
@@ -32,6 +33,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.TextInputDialog;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -71,7 +73,7 @@ public class AppController implements Observer
     /**
      * Start a new game. The user is asked to select the number of players.
      *
-     * @author Elias
+     * @author Elias & Emil
      */
     public void newGame()
     {
@@ -93,7 +95,7 @@ public class AppController implements Observer
             }
             // XXX the board should eventually be created programmatically or loaded from a file
             //     here we just create an empty board with the required number of players.
-            Board board = new Board(8, 8);
+            Board board = LoadBoard.loadBoard("dizzyHighway");
             gameController = new GameController(board);
 
 
@@ -104,6 +106,22 @@ public class AppController implements Observer
                         gameController.moveController);
                 board.addPlayer(player);
                 player.setSpace(board.getSpace(i % board.width, i));
+
+                TextInputDialog chooseName = new TextInputDialog("Player " + (i + 1));
+                chooseName.setTitle("Player name");
+                chooseName.setHeaderText("Choose a name for player " + (i + 1));
+                Optional<String> name = chooseName.showAndWait();
+                if (name.isPresent())
+                {
+                    if (name.get().isEmpty() || name.get().isBlank())
+                    {
+                        player.setName("Player " + (i + 1));
+                    }
+                    else
+                    {
+                        player.setName(name.get());
+                    }
+                }
             }
             board.setTabNumbersOnPlayers();
             // XXX: the line below is commented out in the current version

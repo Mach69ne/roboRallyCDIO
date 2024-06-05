@@ -17,7 +17,7 @@ public class LoadSaveGameState
     public static void saveGameState(GameController gameController, String name)
     {
         saveGameStateToFile(gameController.board, name);
-        LoadBoard.saveBoard(gameController.board, name);
+        //LoadBoard.saveBoard(gameController.board, name);
         for (int i = 0; i < gameController.board.getPlayersNumber(); i++)
         {
             LoadSavePlayer.savePlayer(gameController.board.getPlayer(i), name + i);
@@ -35,6 +35,7 @@ public class LoadSaveGameState
         //template.gameID = board.getGameId();
         template.step = board.getStep();
         template.phase = board.getPhase();
+        template.boardName = board.boardName;
         String filename = "src/main/Resources/" + "GameStateInfo" + "/" + name + "." + "json";
 
         // In simple cases, we can create a Gson object with new:
@@ -86,7 +87,7 @@ public class LoadSaveGameState
     public static GameController loadGameState(String name)
     {
         GameStateInfo gameStateInfo = loadGameStateFromFile(name);
-        GameController gameController = new GameController(LoadBoard.loadBoard(name));
+        GameController gameController = new GameController(LoadBoard.loadBoard(gameStateInfo.boardName));
         gameController.board.setPhase(gameStateInfo.phase);
         gameController.board.setStep(gameStateInfo.step);
         Player[] players = new Player[10];

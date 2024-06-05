@@ -1,6 +1,5 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
-import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.RebootToken;
 import dk.dtu.compute.se.pisd.roborally.model.Command;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
@@ -98,7 +97,6 @@ public class MoveController
      */
     public void moveForward(@NotNull Player player)
     {
-        LoadBoard.saveBoard(player.board, "DEA");
         movePlayerAmountOfTimesWithHeading(player, player.getHeading(), 1);
     }
 
@@ -185,9 +183,11 @@ public class MoveController
         {
             int index = player.getSpace().board.getStep() - 1;
             Command command = player.getProgramField(index).getCard().command;
-            while (command == Command.AGAIN) {
+            while (command == Command.AGAIN)
+            {
                 index--;
-                if (index < 0) {
+                if (index < 0)
+                {
                     return;
                 }
                 command = player.getProgramField(index).getCard().command;
@@ -314,6 +314,7 @@ public class MoveController
                 }
                 else
                 {
+                    //TODO Update the code below to use the function its in
                     //If there is a player on the space, the player should be pushed
                     Space pushedToSpace = gameController.board.getNeighbour(newSpace, heading);
                     if (pushedToSpace.getBoardElement().getCanWalkInto(heading) && pushedToSpace.getPlayer() == null)
