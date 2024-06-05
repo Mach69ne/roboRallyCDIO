@@ -1,4 +1,7 @@
-package dk.dtu.compute.se.pisd.roborally.controller;
+package dk.dtu.compute.se.pisd.roborally.Model;
+
+import dk.dtu.compute.se.pisd.roborally.controller.GameController;
+import dk.dtu.compute.se.pisd.roborally.controller.MoveController;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Conveyors.BlueConveyor;
@@ -12,9 +15,11 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test class for blueconveyor.
+ *
  * @Author Emil
  */
-public class BlueConveyorTest {
+public class BlueConveyorTest
+{
     private final int TEST_WIDTH = 8;
     private final int TEST_HEIGHT = 8;
 
@@ -22,14 +27,17 @@ public class BlueConveyorTest {
     private MoveController moveController;
 
     @BeforeEach
-    void setUp() {
-        Platform.startup(() -> {});
+    void setUp()
+    {
+        Platform.startup(() -> {
+        });
         Board board = new Board(TEST_WIDTH, TEST_HEIGHT);
         gameController = new GameController(board);
         moveController = new MoveController(gameController);
 
-        for (int i = 0; i < 2; i++) {
-            Player player = new Player(board, null,"Player " + i, moveController);
+        for (int i = 0; i < 2; i++)
+        {
+            Player player = new Player(board, null, "Player " + i, moveController);
             board.addPlayer(player);
             player.setSpace(board.getSpace(i, i));
             player.setHeading(Heading.values()[i % Heading.values().length]);
@@ -40,12 +48,14 @@ public class BlueConveyorTest {
     }
 
     @AfterEach
-    void tearDown() {
+    void tearDown()
+    {
         gameController = null;
     }
 
     @Test
-    void activate() {
+    void activate()
+    {
         Board board = gameController.board;
         BoardElement blueConveyor = board.getSpace(0, 1).getBoardElement();
         Player player = board.getCurrentPlayer();

@@ -1,7 +1,10 @@
-package dk.dtu.compute.se.pisd.roborally.controller;
+package dk.dtu.compute.se.pisd.roborally.Model;
+
+import dk.dtu.compute.se.pisd.roborally.controller.GameController;
+import dk.dtu.compute.se.pisd.roborally.controller.MoveController;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Antenna;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.EnergyCube;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import javafx.application.Platform;
@@ -10,7 +13,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class AntennaTest {
+/**
+ * Test class for gear.
+ *
+ * @Author Emil
+ */
+public class EnergyCubeTest
+{
     private final int TEST_WIDTH = 8;
     private final int TEST_HEIGHT = 8;
 
@@ -18,33 +27,42 @@ public class AntennaTest {
     private MoveController moveController;
 
     @BeforeEach
-    void setUp() {
-        Platform.startup(() -> {});
+    void setUp()
+    {
+        Platform.startup(() -> {
+        });
         Board board = new Board(TEST_WIDTH, TEST_HEIGHT);
         gameController = new GameController(board);
         moveController = new MoveController(gameController);
 
-        for (int i = 0; i < 2; i++) {
-            Player player = new Player(board, null,"Player " + i, moveController);
+        for (int i = 0; i < 2; i++)
+        {
+            Player player = new Player(board, null, "Player " + i, moveController);
             board.addPlayer(player);
             player.setSpace(board.getSpace(i, i));
             player.setHeading(Heading.values()[i % Heading.values().length]);
         }
 
-        new Antenna(board.getSpace(5, 5));
+        new EnergyCube(board.getSpace(0, 1));
+        board.setCurrentPlayer(board.getPlayer(0));
     }
 
     @AfterEach
-    void tearDown() {
+    void tearDown()
+    {
         gameController = null;
     }
 
     @Test
-    void activate() {
+    void activate()
+    {
         Board board = gameController.board;
-        BoardElement antenna = board.getSpace(5, 5).getBoardElement();
-        antenna.activate();
+        BoardElement energyCube = board.getSpace(0, 1).getBoardElement();
         Player player = board.getCurrentPlayer();
-        Assertions.assertEquals(player, board.getPlayer(1));
+        int expectedAmountOfEnergyCubes = player.getEnergyCubes() + 1;
+        player.moveController.moveForward(player);
+        energyCube.activate();
+        Assertions.assertEquals(expectedAmountOfEnergyCubes, player.getEnergyCubes());
+        Assertions.assertNull(board.getSpace(0, 1).getBoardElement());
     }
 }
