@@ -304,6 +304,10 @@ public class MoveController
         {
             Space currentSpace = player.getSpace();
             Space newSpace = gameController.board.getNeighbour(currentSpace, heading);
+            if (newSpace == null)
+            {
+                return;
+            }
             if (currentSpace.getBoardElement().getCanWalkOutOf(heading) && newSpace.getBoardElement().getCanWalkInto(heading))
             {
                 //Logic for moving to a space should be put here:
