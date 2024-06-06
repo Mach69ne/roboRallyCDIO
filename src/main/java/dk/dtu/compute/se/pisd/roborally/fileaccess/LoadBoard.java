@@ -198,19 +198,6 @@ public class LoadBoard
         }
         template.width = board.width;
         template.height = board.height;
-        for (int i = 0; i < board.width; i++)
-        {
-            for (int j = 0; j < board.height; j++)
-            {
-                Space space = board.getSpace(i, j);
-
-
-                SpaceTemplate spaceTemplate = new SpaceTemplate();
-                spaceTemplate.x = space.x;
-                spaceTemplate.y = space.y;
-                template.spaces.add(spaceTemplate);
-            }
-        }
         for (int i = 0; i < Board.NOT_ACTIVATE_ABLE_INDEX + 1; i++)
         {
             for (BoardElement boardElement : board.getBoardElementsWithIndex(i))
