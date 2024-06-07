@@ -3,6 +3,7 @@ package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
+import dk.dtu.compute.se.pisd.roborally.controller.SoundController;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -44,5 +45,7 @@ public class BoardLaser extends BoardElement
             }
             spaceToCheck = nextSpace;
         }
+        SoundController sc = new SoundController();
+        sc.playSound("laser_sound");
     }
 }
