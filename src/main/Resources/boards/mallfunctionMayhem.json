@@ -1,7 +1,8 @@
 {
-  "width": 15,
+  "width": 20,
   "height": 10,
   "boardElements": [
+    //GREEN CONVEYORS
     [
       {
         "heading": "EAST",
@@ -23,324 +24,24 @@
         "heading": "EAST",
         "isWalkable": true,
         "spaceTemplate": {
-          "x": 4,
-          "y": 7
+          "x": 11,
+          "y": 6
         }
       },
+        {
+            "heading": "EAST",
+            "isWalkable": true,
+            "spaceTemplate": {
+            "x": 12,
+            "y": 6
+            }
+        },
       {
         "heading": "EAST",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 8,
-          "y": 9
-        }
-      }
-    ],
-    [
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 10,
-          "y": 9
-        }
-      },
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 11,
-          "y": 9
-        }
-      },
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 11,
-          "y": 8
-        }
-      },
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 11,
-          "y": 7
-        }
-      },
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 11,
-          "y": 6
-        }
-      },
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 11,
-          "y": 5
-        }
-      },
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 11,
-          "y": 4
-        }
-      },
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 11,
-          "y": 3
-        }
-      },
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 11,
-          "y": 2
-        }
-      },
-      {
-        "heading": "SOUTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 4,
-          "y": 0
-        }
-      },
-      {
-        "heading": "SOUTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 5,
-          "y": 0
-        }
-      },
-      {
-        "heading": "SOUTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 4,
-          "y": 1
-        }
-      },
-      {
-        "heading": "SOUTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 4,
-          "y": 2
-        }
-      },
-      {
-        "heading": "SOUTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 4,
-          "y": 3
-        }
-      },
-      {
-        "heading": "SOUTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 4,
-          "y": 4
-        }
-      },
-      {
-        "heading": "SOUTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 4,
-          "y": 5
-        }
-      },
-      {
-        "heading": "SOUTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 4,
-          "y": 6
-        }
-      },
-      {
-        "heading": "SOUTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 4,
-          "y": 7
-        }
-      }
-    ],
-    [],
-    [
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 6,
-          "y": 4
-        }
-      },
-      {
-        "heading": "SOUTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 9,
-          "y": 4
-        }
-      },
-      {
-        "heading": "EAST",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 8,
-          "y": 3
-        }
-      },
-      {
-        "heading": "WEST",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 7,
-          "y": 6
-        }
-      },
-      {
-        "heading": "NORTH",
         "isWalkable": true,
         "spaceTemplate": {
           "x": 13,
-          "y": 5
-        }
-      },
-      {
-        "heading": "WEST",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 9,
-          "y": 8
-        }
-      }
-    ],
-    [],
-    [
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 6,
-          "y": 4
-        }
-      },
-      {
-        "heading": "SOUTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 9,
-          "y": 4
-        }
-      },
-      {
-        "heading": "EAST",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 8,
-          "y": 3
-        }
-      },
-      {
-        "heading": "WEST",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 7,
           "y": 6
-        }
-      },
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 4,
-          "y": 5
-        }
-      },
-      {
-        "heading": "SOUTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 7,
-          "y": 8
-        }
-      }
-    ],
-    [
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 3,
-          "y": 9
-        }
-      },
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 5,
-          "y": 2
-        }
-      },
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 7,
-          "y": 5
-        }
-      },
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 8,
-          "y": 4
-        }
-      },
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 10,
-          "y": 7
-        }
-      },
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 12,
-          "y": 0
-        }
-      }
-    ],
-    [
-      {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 12,
-          "y": 3
         }
       },
       {
@@ -348,21 +49,332 @@
         "isWalkable": true,
         "spaceTemplate": {
           "x": 14,
+          "y": 6
+        }
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 15,
+          "y": 6
+        }
+      },
+      {
+        "heading": "WEST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 11,
+          "y": 3
+        }
+      },
+      {
+"heading": "WEST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 12,
+          "y": 3
+        }
+      },
+      {
+        "heading": "WEST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 13,
+          "y": 3
+        }
+      },
+      {
+        "heading": "WEST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 14,
+          "y": 3
+        }
+      },
+      {
+        "heading": "WEST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 15,
+          "y": 3
+        }
+      }
+    ],
+    //BLUE CONVEYORS
+    [],
+    //PUSH PANELS
+    [],
+    //GEARS
+    [
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 7,
+          "y": 5
+        }
+      },
+      {
+        "heading": "WEST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 8,
+          "y": 3
+        }
+      }
+    ],
+    //BOARD LASER
+    [
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 12,
+          "y": 8
+        }
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 13,
+          "y": 8
+        }
+      }
+    ],
+    [],
+    // ENERGY CUBES
+    [
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 18,
+          "y": 3
+        }
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 19,
+          "y": 7
+        }
+      }
+    ],
+    //CHECKPOINTS
+    [
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 5,
+          "y": 4
+        }
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 7,
           "y": 2
         }
       }
     ],
+    //ANTENNA
     [
       {
         "heading": "NORTH",
-        "isWalkable": false,
+        "isWalkable": true,
         "spaceTemplate": {
-          "x": 0,
-          "y": 4
+          "x": 18,
+          "y": 8
         }
       }
     ],
+    //NOT ACTIVATABLE
     [
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 11,
+          "y": 7
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 12,
+          "y": 7
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 13,
+          "y": 7
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 14,
+          "y": 7
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 15,
+          "y": 7
+        },
+        "type": "CORNERWALL"
+      },
+      {
+        "heading": "SOUTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 11,
+          "y": 5
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "SOUTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 12,
+          "y": 5
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "SOUTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 13,
+          "y": 5
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "SOUTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 14,
+          "y": 5
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 15,
+          "y": 5
+        },
+        "type": "CORNERWALL"
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 11,
+          "y": 4
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 12,
+          "y": 4
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 13,
+          "y": 4
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 14,
+          "y": 4
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 15,
+          "y": 4
+        },
+        "type": "CORNERWALL"
+      },
+      {
+        "heading": "SOUTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 11,
+          "y": 2
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "SOUTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 12,
+          "y": 2
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "SOUTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 13,
+          "y": 2
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "SOUTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 14,
+          "y": 2
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 15,
+          "y": 2
+        },
+        "type": "CORNERWALL"
+      },
       {
         "heading": "NORTH",
         "isWalkable": true,
@@ -370,7 +382,7 @@
           "x": 1,
           "y": 8
         },
-        "Type": "SPAWNPOINT"
+        "type": "SPAWNPOINT"
       },
       {
         "heading": "NORTH",
@@ -379,43 +391,52 @@
           "x": 0,
           "y": 6
         },
-        "Type": "SPAWNPOINT"
+        "type": "SPAWNPOINT"
       },
       {
         "heading": "NORTH",
         "isWalkable": true,
         "spaceTemplate": {
           "x": 1,
-          "y": 7
+          "y": 5
         },
-        "Type": "SPAWNPOINT"
+        "type": "SPAWNPOINT"
       },
       {
         "heading": "NORTH",
         "isWalkable": true,
         "spaceTemplate": {
-          "x": 2,
-          "y": 5
+          "x": 1,
+          "y": 4
         },
-        "Type": "SPAWNPOINT"
+        "type": "SPAWNPOINT"
       },
       {
         "heading": "NORTH",
         "isWalkable": true,
         "spaceTemplate": {
           "x": 0,
-          "y": 1
+          "y": 3
         },
-        "Type": "SPAWNPOINT"
+        "type": "SPAWNPOINT"
       },
       {
         "heading": "NORTH",
         "isWalkable": true,
         "spaceTemplate": {
-          "x": 2,
+          "x": 1,
+          "y": 1
+        },
+        "type": "SPAWNPOINT"
+      },
+      {
+        "heading": "SOUTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 7,
           "y": 3
         },
-        "Type": "SPAWNPOINT"
+        "type": "REBOOTTOKEN"
       }
     ]
   ]
