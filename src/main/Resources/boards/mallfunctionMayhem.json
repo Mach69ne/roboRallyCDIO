@@ -28,14 +28,14 @@
           "y": 6
         }
       },
-        {
-            "heading": "EAST",
-            "isWalkable": true,
-            "spaceTemplate": {
-            "x": 12,
-            "y": 6
-            }
-        },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 12,
+          "y": 6
+        }
+      },
       {
         "heading": "EAST",
         "isWalkable": true,
@@ -69,7 +69,7 @@
         }
       },
       {
-"heading": "WEST",
+        "heading": "WEST",
         "isWalkable": true,
         "spaceTemplate": {
           "x": 12,
@@ -102,17 +102,56 @@
       }
     ],
     //BLUE CONVEYORS
-    [],
-    //PUSH PANELS
-    [],
-    //GEARS
     [
       {
         "heading": "EAST",
         "isWalkable": true,
         "spaceTemplate": {
-          "x": 7,
-          "y": 5
+          "x": 6,
+          "y": 7
+        }
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 3,
+          "y": 1
+        }
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 5,
+          "y": 0
+        }
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 4,
+          "y": 6
+        }
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 9,
+          "y": 7
+        }
+      }
+    ],
+    //PUSH PANELS
+    [
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 9,
+          "y": 9
         }
       },
       {
@@ -120,7 +159,74 @@
         "isWalkable": true,
         "spaceTemplate": {
           "x": 8,
+          "y": 6
+        }
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 3,
           "y": 3
+        }
+      },
+      {
+        "heading": "WEST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 7,
+          "y": 1
+        }
+      },
+      {
+        "heading": "WEST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 7,
+          "y": 0
+        }
+      }
+    ],
+    //GEARS
+    [
+      {
+        "heading": "WEST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 5,
+          "y": 1
+        }
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 6,
+          "y": 2
+        }
+      },
+      {
+        "heading": "WEST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 3,
+          "y": 8
+        }
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 7,
+          "y": 4
+        }
+      },
+      {
+        "heading": "WEST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 4,
+          "y": 0
         }
       }
     ],
@@ -130,8 +236,48 @@
         "heading": "NORTH",
         "isWalkable": true,
         "spaceTemplate": {
-          "x": 12,
+          "x": 11,
           "y": 8
+        }
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 1,
+          "y": 7
+        }
+      },
+      {
+        "heading": "WEST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 18,
+          "y": 5
+        }
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 17,
+          "y": 4
+        }
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 16,
+          "y": 3
+        }
+      },
+      {
+        "heading": "WEST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 14,
+          "y": 1
         }
       },
       {
@@ -139,7 +285,15 @@
         "isWalkable": true,
         "spaceTemplate": {
           "x": 13,
-          "y": 8
+          "y": 0
+        }
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 12,
+          "y": 9
         }
       }
     ],
@@ -177,8 +331,24 @@
         "heading": "NORTH",
         "isWalkable": true,
         "spaceTemplate": {
-          "x": 7,
-          "y": 2
+          "x": 17,
+          "y": 9
+        }
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 18,
+          "y": 1
+        }
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 10,
+          "y": 3
         }
       }
     ],
@@ -374,6 +544,42 @@
           "y": 2
         },
         "type": "CORNERWALL"
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 15,
+          "y": 8
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 15,
+          "y": 9
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 15,
+          "y": 0
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 15,
+          "y": 1
+        },
+        "type": "WALL"
       },
       {
         "heading": "NORTH",
