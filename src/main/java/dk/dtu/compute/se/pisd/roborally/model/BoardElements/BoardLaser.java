@@ -4,6 +4,10 @@ import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.io.File;
 
 /**
  * @author Elias & Mads
@@ -39,6 +43,14 @@ public class BoardLaser extends BoardElement
                 break;
             }
             spaceToCheck = nextSpace;
+        }
+        try {
+            String laserPath = "file:/src/main/resources/sounds/laser_sound.wav";
+            Media laserSound = new Media(laserPath);
+            MediaPlayer mp = new MediaPlayer(laserSound);
+            mp.play();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
