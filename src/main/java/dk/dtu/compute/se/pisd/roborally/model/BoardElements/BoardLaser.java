@@ -44,13 +44,5 @@ public class BoardLaser extends BoardElement
             }
             spaceToCheck = nextSpace;
         }
-        try {
-            String laserPath = "file:/src/main/resources/sounds/laser_sound.wav";
-            Media laserSound = new Media(laserPath);
-            MediaPlayer mp = new MediaPlayer(laserSound);
-            mp.play();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
