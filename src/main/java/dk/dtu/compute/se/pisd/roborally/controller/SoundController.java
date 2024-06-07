@@ -63,7 +63,7 @@ public class SoundController
     {
         try
         {
-            URL url = getClass().getResource("src/main/Resources/Sounds/" + soundSrc + ".wav");
+            URL url = getClass().getResource("/sounds/" + soundSrc + ".wav");
             if (url == null)
             {
                 return;
