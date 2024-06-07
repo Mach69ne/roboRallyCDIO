@@ -1,15 +1,12 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
-import java.net.URL;
+
+import javafx.application.Platform;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class SoundController {
     private static SoundController instance;
-    private Clip clip;
+    public MediaPlayer mediaPlayer;
 
     private SoundController() {}
 
@@ -21,27 +18,30 @@ public class SoundController {
     }
 
     public void playSound(String soundSrc) {
-        try {
-            // Open an audio input stream.
-            URL url = getClass().getResource("/sounds/" + soundSrc + ".wav");
-            AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
-            // Get a sound clip resource.
-            clip = AudioSystem.getClip();
-            // Open audio clip and load samples from the audio input stream.
-            clip.open(audioIn);
-            clip.start();
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
+        try{
+            java.net.URL resourceUrl = getClass().getResource("/Sounds/" + soundSrc + ".wav");
+            if (resourceUrl == null) {
+                throw new IllegalArgumentException("Sound file not found: " + soundSrc);
+            }
+            String soundPath = resourceUrl.toExternalForm();
+            if(soundPath == null) {
+                throw new IllegalArgumentException("Sound file not found: " + soundSrc);
+            }
+            Media soundMedia = new Media(soundPath);
+            mediaPlayer = new MediaPlayer(soundMedia);
+            mediaPlayer.play();
+        }catch (NullPointerException e) {
+            System.err.println("Sound file not found: " + soundSrc);
+        }
+        catch (Exception e) {
+            System.err.println("Error playing sound: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     public void stopSound() {
-        if(clip != null && clip.isRunning()) {
-            clip.stop();
+        if(mediaPlayer != null) {
+            mediaPlayer.stop();
         }
     }
 }
