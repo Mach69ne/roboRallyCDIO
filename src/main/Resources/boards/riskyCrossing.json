@@ -1,0 +1,28 @@
+{
+    "width": 13,
+    "height": 10,
+    "boardElements": [
+      [
+        {
+          "heading": "EAST",
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 2,
+            "y": 9
+          }
+        },
+        {
+          "heading": "EAST",
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 2,
+            "y": 0
+          }
+        }
+      ],
+      [
+
+      ]
+    ]
+}
+    
