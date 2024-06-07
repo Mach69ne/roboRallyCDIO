@@ -1,5 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
+import dk.dtu.compute.se.pisd.roborally.controller.SoundController;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
@@ -33,6 +34,8 @@ public class EnergyCube extends NullBoardElement
         {
             this.getSpace().getPlayer().pickUpEnergyCube();
             this.getSpace().setBoardElement(null);
+            SoundController sc = SoundController.getInstance();
+            sc.playSound("pickup");
         }
 
     }
