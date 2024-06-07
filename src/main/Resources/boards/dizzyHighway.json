@@ -314,7 +314,7 @@
     [],
     [
       {
-        "heading": "NORTH",
+        "heading": "SOUTH",
         "isWalkable": true,
         "spaceTemplate": {
           "x": 6,
@@ -322,7 +322,7 @@
         }
       },
       {
-        "heading": "SOUTH",
+        "heading": "NORTH",
         "isWalkable": true,
         "spaceTemplate": {
           "x": 9,
@@ -330,7 +330,7 @@
         }
       },
       {
-        "heading": "EAST",
+        "heading": "WEST",
         "isWalkable": true,
         "spaceTemplate": {
           "x": 8,
@@ -338,7 +338,7 @@
         }
       },
       {
-        "heading": "WEST",
+        "heading": "EAST",
         "isWalkable": true,
         "spaceTemplate": {
           "x": 7,
