@@ -42,4 +42,25 @@ public class SoundController {
             clip.stop();
         }
     }
+
+    public void loopSound(String soundSrc) {
+        try {
+            URL url = getClass().getResource("/sounds/" + soundSrc + ".wav");
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+
+            clip = AudioSystem.getClip();
+
+            clip.open(audioIn);
+            FloatControl fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            fc.setValue(-15.00f);
+
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
 }
