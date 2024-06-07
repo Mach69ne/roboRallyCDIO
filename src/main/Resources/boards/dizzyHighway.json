@@ -425,7 +425,7 @@
           "x": 1,
           "y": 8
         },
-        "Type": "SPAWNPOINT"
+        "type": "SPAWNPOINT"
       },
       {
         "heading": "NORTH",
@@ -434,7 +434,7 @@
           "x": 0,
           "y": 6
         },
-        "Type": "SPAWNPOINT"
+        "type": "SPAWNPOINT"
       },
       {
         "heading": "NORTH",
@@ -443,7 +443,7 @@
           "x": 1,
           "y": 5
         },
-        "Type": "SPAWNPOINT"
+        "type": "SPAWNPOINT"
       },
       {
         "heading": "NORTH",
@@ -452,7 +452,7 @@
           "x": 1,
           "y": 4
         },
-        "Type": "SPAWNPOINT"
+        "type": "SPAWNPOINT"
       },
       {
         "heading": "NORTH",
@@ -461,7 +461,7 @@
           "x": 0,
           "y": 3
         },
-        "Type": "SPAWNPOINT"
+        "type": "SPAWNPOINT"
       },
       {
         "heading": "NORTH",
@@ -470,7 +470,7 @@
           "x": 1,
           "y": 1
         },
-        "Type": "SPAWNPOINT"
+        "type": "SPAWNPOINT"
       },
       {
         "heading": "SOUTH",
@@ -479,7 +479,7 @@
           "x": 1,
           "y": 7
         },
-        "Type": "WALL"
+        "type": "WALL"
       },
       {
         "heading": "NORTH",
@@ -488,7 +488,7 @@
           "x": 1,
           "y": 2
         },
-        "Type": "WALL"
+        "type": "WALL"
       },
       {
         "heading": "EAST",
@@ -497,7 +497,7 @@
           "x": 2,
           "y": 5
         },
-        "Type": "WALL"
+        "type": "WALL"
       },
       {
         "heading": "EAST",
@@ -506,7 +506,7 @@
           "x": 2,
           "y": 4
         },
-        "Type": "WALL"
+        "type": "WALL"
       },
       {
         "heading": "WEST",
@@ -515,7 +515,7 @@
           "x": 6,
           "y": 6
         },
-        "Type": "WALL"
+        "type": "WALL"
       },
       {
         "heading": "NORTH",
@@ -524,7 +524,7 @@
           "x": 6,
           "y": 3
         },
-        "Type": "WALL"
+        "type": "WALL"
       },
       {
         "heading": "SOUTH",
@@ -533,7 +533,7 @@
           "x": 9,
           "y": 6
         },
-        "Type": "WALL"
+        "type": "WALL"
       },
       {
         "heading": "EAST",
@@ -542,7 +542,7 @@
           "x": 9,
           "y": 3
         },
-        "Type": "WALL"
+        "type": "WALL"
       },
       {
         "heading": "SOUTH",
@@ -551,7 +551,7 @@
           "x": 7,
           "y": 3
         },
-        "Type": "REBOOTTOKEN"
+        "type": "REBOOTTOKEN"
       }
     ]
   ]
