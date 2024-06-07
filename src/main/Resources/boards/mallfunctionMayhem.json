@@ -265,14 +265,6 @@
         }
       },
       {
-        "heading": "NORTH",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 16,
-          "y": 3
-        }
-      },
-      {
         "heading": "WEST",
         "isWalkable": true,
         "spaceTemplate": {
