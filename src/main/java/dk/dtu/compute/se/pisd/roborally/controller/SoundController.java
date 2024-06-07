@@ -1,9 +1,5 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.sampled.*;
 import java.io.IOException;
 import java.net.URL;
 
@@ -29,6 +25,8 @@ public class SoundController {
             clip = AudioSystem.getClip();
             // Open audio clip and load samples from the audio input stream.
             clip.open(audioIn);
+            FloatControl fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            fc.setValue(-30.00f);
             clip.start();
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
