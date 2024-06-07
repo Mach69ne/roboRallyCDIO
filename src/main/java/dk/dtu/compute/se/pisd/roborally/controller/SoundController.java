@@ -1,11 +1,12 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import javafx.application.Platform;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class SoundController {
     private static SoundController instance;
-    private MediaPlayer mediaPlayer;
+    public MediaPlayer mediaPlayer;
 
     private SoundController() {}
 
@@ -18,7 +19,11 @@ public class SoundController {
 
     public void playSound(String soundSrc) {
         try{
-            String soundPath = getClass().getResource("/sounds"+soundSrc+".wav").toExternalForm();
+            java.net.URL resourceUrl = getClass().getResource("/Sounds/" + soundSrc + ".wav");
+            if (resourceUrl == null) {
+                throw new IllegalArgumentException("Sound file not found: " + soundSrc);
+            }
+            String soundPath = resourceUrl.toExternalForm();
             if(soundPath == null) {
                 throw new IllegalArgumentException("Sound file not found: " + soundSrc);
             }
