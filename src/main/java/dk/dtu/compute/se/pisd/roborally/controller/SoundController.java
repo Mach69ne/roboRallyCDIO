@@ -1,23 +1,31 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
+
 import javax.sound.sampled.*;
 import java.io.IOException;
 import java.net.URL;
 
-public class SoundController {
+public class SoundController
+{
     private static SoundController instance;
     private Clip clip;
 
-    private SoundController() {}
+    private SoundController()
+    {
+    }
 
-    public static SoundController getInstance() {
-        if(instance == null) {
+    public static SoundController getInstance()
+    {
+        if (instance == null)
+        {
             instance = new SoundController();
         }
         return instance;
     }
 
-    public void playSound(String soundSrc) {
-        try {
+    public void playSound(String soundSrc)
+    {
+        try
+        {
             // Open an audio input stream.
             URL url = getClass().getResource("/sounds/" + soundSrc + ".wav");
             AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
@@ -28,24 +36,38 @@ public class SoundController {
             FloatControl fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             fc.setValue(-30.00f);
             clip.start();
-        } catch (UnsupportedAudioFileException e) {
+        }
+        catch (UnsupportedAudioFileException e)
+        {
             e.printStackTrace();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
-        } catch (LineUnavailableException e) {
+        }
+        catch (LineUnavailableException e)
+        {
             e.printStackTrace();
         }
     }
 
-    public void stopSound() {
-        if(clip != null && clip.isRunning()) {
+    public void stopSound()
+    {
+        if (clip != null && clip.isRunning())
+        {
             clip.stop();
         }
     }
 
-    public void loopSound(String soundSrc) {
-        try {
-            URL url = getClass().getResource("/sounds/" + soundSrc + ".wav");
+    public void loopSound(String soundSrc)
+    {
+        try
+        {
+            URL url = getClass().getResource("src/main/Resources/Sounds/" + soundSrc + ".wav");
+            if (url == null)
+            {
+                return;
+            }
             AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
 
             clip = AudioSystem.getClip();
@@ -55,11 +77,17 @@ public class SoundController {
             fc.setValue(-15.00f);
 
             clip.loop(Clip.LOOP_CONTINUOUSLY);
-        } catch (UnsupportedAudioFileException e) {
+        }
+        catch (UnsupportedAudioFileException e)
+        {
             e.printStackTrace();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
-        } catch (LineUnavailableException e) {
+        }
+        catch (LineUnavailableException e)
+        {
             e.printStackTrace();
         }
     }

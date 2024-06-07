@@ -1,14 +1,10 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
+import dk.dtu.compute.se.pisd.roborally.controller.SoundController;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
-import dk.dtu.compute.se.pisd.roborally.controller.SoundController;
 import javafx.scene.image.Image;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-
-import java.io.File;
 
 /**
  * @author Elias & Mads
