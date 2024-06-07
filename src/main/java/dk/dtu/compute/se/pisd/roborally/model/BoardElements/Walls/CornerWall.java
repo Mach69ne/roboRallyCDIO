@@ -27,11 +27,11 @@ public class CornerWall extends BoardElement
             //TODO Rework line below using heading.next or heading.prev;
             if ((heading1 == Heading.NORTH && heading2 == Heading.WEST) || (heading1 == Heading.EAST && heading2 == Heading.NORTH) || (heading1 == Heading.SOUTH && heading2 == Heading.EAST) || (heading1 == Heading.WEST && heading2 == Heading.SOUTH))
             {
-                setImage(new Image("file:src/main/resources/images/cornerWall.png"));
+                setImage(new Image("file:src/main/resources/Images/cornerWall.png"));
             }
             else
             {
-                setImage(new Image("file:src/main/resources/images/cornerWall2.png"));
+                setImage(new Image("file:src/main/resources/Images/cornerWall2.png"));
             }
         }
 

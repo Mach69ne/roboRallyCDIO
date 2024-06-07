@@ -15,6 +15,6 @@ public class Wall extends BoardElement
     {
         super(heading, true, space);
         space.board.addBoardElement(Board.NOT_ACTIVATE_ABLE_INDEX, this);
-        setImage(new Image("file:src/main/resources/images/wall.png"));
+        setImage(new Image("file:src/main/resources/Images/wall.png"));
     }
 }
