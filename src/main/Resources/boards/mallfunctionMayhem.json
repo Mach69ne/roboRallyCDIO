@@ -2,7 +2,6 @@
   "width": 20,
   "height": 10,
   "boardElements": [
-    //GREEN CONVEYORS
     [
       {
         "heading": "EAST",
@@ -101,7 +100,6 @@
         }
       }
     ],
-    //BLUE CONVEYORS
     [
       {
         "heading": "EAST",
@@ -144,7 +142,6 @@
         }
       }
     ],
-    //PUSH PANELS
     [
       {
         "heading": "EAST",
@@ -187,7 +184,6 @@
         }
       }
     ],
-    //GEARS
     [
       {
         "heading": "WEST",
@@ -230,7 +226,6 @@
         }
       }
     ],
-    //BOARD LASER
     [
       {
         "heading": "NORTH",
@@ -282,7 +277,6 @@
       }
     ],
     [],
-    // ENERGY CUBES
     [
       {
         "heading": "NORTH",
@@ -333,7 +327,6 @@
         }
       }
     ],
-    //CHECKPOINTS
     [
       {
         "heading": "NORTH",
@@ -368,7 +361,6 @@
         }
       }
     ],
-    //ANTENNA
     [
       {
         "heading": "NORTH",
@@ -379,7 +371,6 @@
         }
       }
     ],
-    //NOT ACTIVATABLE
     [
       {
         "heading": "NORTH",
