@@ -23,6 +23,7 @@ package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.MoveController;
+import dk.dtu.compute.se.pisd.roborally.controller.SoundController;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
 import org.jetbrains.annotations.NotNull;
 
@@ -409,6 +410,7 @@ public class Player extends Subject
             }
             spaceToCheck = nextSpace;
         }
+        SoundController.getInstance().playSound("laser_sound");
     }
 
     /**

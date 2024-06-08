@@ -49,7 +49,7 @@ public class SoundController {
         }
     }
 
-    public void loopSound(String[] soundSrcs) {
+    public void loopSounds(String[] soundSrcs) {
         try {
             // Open an audio input stream.
             URL url = getClass().getResource("/sounds/" + soundSrcs[currentSoundIndex] + ".wav");
@@ -68,7 +68,7 @@ public class SoundController {
                 if (!clip.isRunning()) {
                     currentSoundIndex++;
                     currentSoundIndex %= soundSrcs.length;
-                    loopSound(soundSrcs); // play the next sound
+                    loopSounds(soundSrcs); // play the next sound
                 }
             });
 
