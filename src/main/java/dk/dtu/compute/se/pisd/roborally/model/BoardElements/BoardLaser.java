@@ -41,7 +41,10 @@ public class BoardLaser extends BoardElement
             }
             spaceToCheck = nextSpace;
         }
-        SoundController sc = SoundController.getInstance();
-        sc.playSound("laser_sound");
+        if (this.getSpace().board.isStepMode())
+        {
+            SoundController sc = SoundController.getInstance();
+            sc.playSound("laser_sound");
+        }
     }
 }

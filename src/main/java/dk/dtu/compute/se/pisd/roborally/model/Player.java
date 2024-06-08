@@ -410,7 +410,11 @@ public class Player extends Subject
             }
             spaceToCheck = nextSpace;
         }
-        SoundController.getInstance().playSound("laser_sound");
+        if (this.getSpace().board.isStepMode())
+        {
+            SoundController sc = SoundController.getInstance();
+            sc.playSound("laser_sound");
+        }
     }
 
     /**
