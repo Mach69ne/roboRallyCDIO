@@ -554,9 +554,7 @@
             }
           }
       ],
-      // board laser
       [],
-      // robot laser
       [],
       [
         {
