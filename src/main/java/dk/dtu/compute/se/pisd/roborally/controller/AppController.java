@@ -93,11 +93,24 @@ public class AppController implements Observer
                     return;
                 }
             }
-            // XXX the board should eventually be created programmatically or loaded from a file
-            //     here we just create an empty board with the required number of players.
-            Board board = LoadBoard.loadBoard("mallfunctionMayhem");
-            gameController = new GameController(board);
+            Board board = null;
+            List<String> mapOptions = Arrays.asList("Dizzy Highway", "Mallfunction Mayhem", "Risky Crossing");
+            ChoiceDialog<String> mapDialog = new ChoiceDialog<>(mapOptions.get(0), mapOptions);
+            mapDialog.setTitle("Map Selection");
+            mapDialog.setHeaderText("Select a map");
+            Optional<String> mapResult = mapDialog.showAndWait();
 
+            if (mapResult.isPresent()) {
+                if (mapResult.get().equals("Dizzy Highway")) {
+                    mapResult = Optional.of("dizzyHighway");
+                } else if (mapResult.get().equals("Mallfunction Mayhem")) {
+                    mapResult = Optional.of("mallfunctionMayhem");
+                } else if (mapResult.get().equals("Risky Crossing")) {
+                    mapResult = Optional.of("riskyCrossing");
+                }
+                board = LoadBoard.loadBoard(mapResult.get());
+                gameController = new GameController(board);
+            }
 
             int no = result.get();
             List<String> namesChosen = Arrays.asList(new String[no]);
