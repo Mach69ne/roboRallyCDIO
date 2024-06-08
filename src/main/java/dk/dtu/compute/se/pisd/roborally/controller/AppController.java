@@ -34,7 +34,14 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
 import org.jetbrains.annotations.NotNull;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.layout.HBox;
+import javafx.scene.image.ImageView;
+import java.util.Map;
+import java.util.HashMap;
 
 import java.util.Arrays;
 import java.util.List;
@@ -93,23 +100,39 @@ public class AppController implements Observer
                     return;
                 }
             }
-            Board board = null;
-            List<String> mapOptions = Arrays.asList("Dizzy Highway", "Mallfunction Mayhem", "Risky Crossing");
-            ChoiceDialog<String> mapDialog = new ChoiceDialog<>(mapOptions.get(0), mapOptions);
+            Map<String, Image> mapImages = new HashMap<>();
+            mapImages.put("dizzyHighway", new Image("file:src/main/resources/Images/dizzyHighway.png"));
+            mapImages.put("mallfunctionMayhem", new Image("file:src/main/resources/Images/mallfunctionMayhem.png"));
+            mapImages.put("riskyCrossing", new Image("file:src/main/resources/Images/riskyCrossing.png"));
+            mapImages.put("chopShopChallenge", new Image("file:src/main/resources/Images/chopShopChallenge.png"));
+
+            Dialog<String> mapDialog = new Dialog<>();
             mapDialog.setTitle("Map Selection");
             mapDialog.setHeaderText("Select a map");
-            Optional<String> mapResult = mapDialog.showAndWait();
 
+            ButtonType buttonTypeOk = new ButtonType("Okay", ButtonBar.ButtonData.OK_DONE);
+            mapDialog.getDialogPane().getButtonTypes().add(buttonTypeOk);
+
+            HBox box = new HBox();
+            box.setSpacing(10);
+
+            for (Map.Entry<String, Image> entry : mapImages.entrySet()) {
+                ImageView imageView = new ImageView(entry.getValue());
+                imageView.setFitHeight(100);
+                imageView.setFitWidth(100);
+                imageView.setOnMouseClicked(e -> mapDialog.setResult(entry.getKey()));
+                box.getChildren().add(imageView);
+            }
+
+            mapDialog.getDialogPane().setContent(box);
+
+            Optional<String> mapResult = mapDialog.showAndWait();
+            Board board = null;
             if (mapResult.isPresent()) {
-                if (mapResult.get().equals("Dizzy Highway")) {
-                    mapResult = Optional.of("dizzyHighway");
-                } else if (mapResult.get().equals("Mallfunction Mayhem")) {
-                    mapResult = Optional.of("mallfunctionMayhem");
-                } else if (mapResult.get().equals("Risky Crossing")) {
-                    mapResult = Optional.of("riskyCrossing");
-                }
+                // Load the selected map
                 board = LoadBoard.loadBoard(mapResult.get());
                 gameController = new GameController(board);
+
             }
 
             int no = result.get();
