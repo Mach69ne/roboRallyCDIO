@@ -104,7 +104,6 @@ public class AppController implements Observer
             mapImages.put("dizzyHighway", new Image("file:src/main/resources/Images/dizzyHighway.png"));
             mapImages.put("mallfunctionMayhem", new Image("file:src/main/resources/Images/mallfunctionMayhem.png"));
             mapImages.put("riskyCrossing", new Image("file:src/main/resources/Images/riskyCrossing.png"));
-            mapImages.put("chopShopChallenge", new Image("file:src/main/resources/Images/chopShopChallenge.png"));
 
             Dialog<String> mapDialog = new Dialog<>();
             mapDialog.setTitle("Map Selection");
@@ -118,8 +117,8 @@ public class AppController implements Observer
 
             for (Map.Entry<String, Image> entry : mapImages.entrySet()) {
                 ImageView imageView = new ImageView(entry.getValue());
-                imageView.setFitHeight(100);
-                imageView.setFitWidth(100);
+                imageView.setFitHeight(200);
+                imageView.setPreserveRatio(true);
                 imageView.setOnMouseClicked(e -> mapDialog.setResult(entry.getKey()));
                 box.getChildren().add(imageView);
             }
