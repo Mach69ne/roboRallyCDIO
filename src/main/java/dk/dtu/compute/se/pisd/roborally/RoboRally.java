@@ -23,9 +23,11 @@ package dk.dtu.compute.se.pisd.roborally;
 
 import dk.dtu.compute.se.pisd.roborally.controller.AppController;
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
+import dk.dtu.compute.se.pisd.roborally.controller.SoundController;
 import dk.dtu.compute.se.pisd.roborally.view.BoardView;
 import dk.dtu.compute.se.pisd.roborally.view.MainMenuView;
 import dk.dtu.compute.se.pisd.roborally.view.RoboRallyMenuBar;
+import dk.dtu.compute.se.pisd.roborally.controller.SoundController;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -111,6 +113,9 @@ public class RoboRally extends Application
         stage.setY(0.0);
 
         stage.show();
+
+        SoundController sc = SoundController.getInstance();
+        sc.loopSounds(new String[]{"RobOST","RobOST2","OST3","OST4"});
     }
 
     /**

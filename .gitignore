@@ -28,3 +28,6 @@ replay_pid*
 *.idea/*/*/*/*
 target
 /target/
+/src/main/Resources/GameStateInfo/default.json
+/src/main/Resources/Players/default0.json
+/src/main/Resources/Players/default1.json
