@@ -2,7 +2,6 @@
   "width": 20,
   "height": 10,
   "boardElements": [
-    //GREEN CONVEYORS
     [
       {
         "heading": "EAST",
@@ -101,7 +100,6 @@
         }
       }
     ],
-    //BLUE CONVEYORS
     [
       {
         "heading": "EAST",
@@ -144,7 +142,6 @@
         }
       }
     ],
-    //PUSH PANELS
     [
       {
         "heading": "EAST",
@@ -187,7 +184,6 @@
         }
       }
     ],
-    //GEARS
     [
       {
         "heading": "WEST",
@@ -230,7 +226,6 @@
         }
       }
     ],
-    //BOARD LASER
     [
       {
         "heading": "NORTH",
@@ -238,14 +233,6 @@
         "spaceTemplate": {
           "x": 11,
           "y": 8
-        }
-      },
-      {
-        "heading": "EAST",
-        "isWalkable": true,
-        "spaceTemplate": {
-          "x": 1,
-          "y": 7
         }
       },
       {
@@ -290,14 +277,13 @@
       }
     ],
     [],
-    // ENERGY CUBES
     [
       {
         "heading": "NORTH",
         "isWalkable": true,
         "spaceTemplate": {
-          "x": 18,
-          "y": 3
+          "x": 19,
+          "y": 0
         }
       },
       {
@@ -305,11 +291,42 @@
         "isWalkable": true,
         "spaceTemplate": {
           "x": 19,
-          "y": 7
+          "y": 5
+        }
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 5,
+          "y": 9
+        }
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 9,
+          "y": 8
+        }
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 10,
+          "y": 4
+        }
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 10,
+          "y": 1
         }
       }
     ],
-    //CHECKPOINTS
     [
       {
         "heading": "NORTH",
@@ -344,18 +361,16 @@
         }
       }
     ],
-    //ANTENNA
     [
       {
         "heading": "NORTH",
         "isWalkable": true,
         "spaceTemplate": {
-          "x": 18,
-          "y": 8
+          "x": 0,
+          "y": 4
         }
       }
     ],
-    //NOT ACTIVATABLE
     [
       {
         "heading": "NORTH",
@@ -570,6 +585,42 @@
         "spaceTemplate": {
           "x": 15,
           "y": 1
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "NORTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 1,
+          "y": 2
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 2,
+          "y": 4
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "EAST",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 2,
+          "y": 5
+        },
+        "type": "WALL"
+      },
+      {
+        "heading": "SOUTH",
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 1,
+          "y": 7
         },
         "type": "WALL"
       },
