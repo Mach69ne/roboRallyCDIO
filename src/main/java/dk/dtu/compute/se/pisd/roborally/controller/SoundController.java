@@ -8,6 +8,7 @@ public class SoundController {
     private static SoundController instance;
     private Clip clip;
     private int currentSoundIndex = 0;
+    private boolean isStopped = false; // new flag
 
     private SoundController() {
     }
@@ -46,12 +47,14 @@ public class SoundController {
     public void stopSound() {
         if (clip != null && clip.isRunning()) {
             clip.stop();
+            isStopped = true; // set the flag to true when stopping the sound
         }
     }
 
     public void loopSounds(String[] soundSrcs) {
         try {
             // Open an audio input stream.
+
             URL url = getClass().getResource("/sounds/" + soundSrcs[currentSoundIndex] + ".wav");
             if (url == null) {
                 return;
@@ -65,7 +68,7 @@ public class SoundController {
             fc.setValue(-20.00f);
             clip.start();
             clip.addLineListener(e -> {
-                if (!clip.isRunning()) {
+                if (!clip.isRunning() && !isStopped) { // check the flag before playing the next sound
                     currentSoundIndex++;
                     currentSoundIndex %= soundSrcs.length;
                     loopSounds(soundSrcs); // play the next sound
