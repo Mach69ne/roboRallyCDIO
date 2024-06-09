@@ -25,12 +25,9 @@ public abstract class Conveyor extends NullBoardElement
     public void activate()
     {
         Player playerToMove = this.getSpace().getPlayer();
-        if (playerToMove != null)
+        if (playerToMove != null && !playerToMove.getMovedByConveyorThisTurn())
         {
-            {
-                playerToMove.moveController.movePlayerAmountOfTimesWithHeading(playerToMove, this.getHeading(),
-                        moveAmount);
-            }
+            playerToMove.moveController.movePlayerAmountOfTimesWithHeading(playerToMove, this.getHeading(), moveAmount);
             playerToMove.setMovedByConveyorThisTurn(true);
         }
     }
