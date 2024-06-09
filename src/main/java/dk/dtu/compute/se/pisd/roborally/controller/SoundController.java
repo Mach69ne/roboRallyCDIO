@@ -62,7 +62,7 @@ public class SoundController {
             // Open audio clip and load samples from the audio input stream.
             clip.open(audioIn);
             FloatControl fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            fc.setValue(-15.00f);
+            fc.setValue(-20.00f);
             clip.start();
             clip.addLineListener(e -> {
                 if (!clip.isRunning()) {
