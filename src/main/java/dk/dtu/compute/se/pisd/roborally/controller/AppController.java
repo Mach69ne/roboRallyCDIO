@@ -104,6 +104,8 @@ public class AppController implements Observer
             mapImages.put("dizzyHighway", new Image("file:src/main/resources/Images/dizzyHighway.png"));
             mapImages.put("mallfunctionMayhem", new Image("file:src/main/resources/Images/mallfunctionMayhem.png"));
             mapImages.put("riskyCrossing", new Image("file:src/main/resources/Images/riskyCrossing.png"));
+            mapImages.put("chopShopChallenge", new Image("file:src/main/resources/Images/chopShopChallenge.png"));
+
 
             Dialog<String> mapDialog = new Dialog<>();
             mapDialog.setTitle("Map Selection");

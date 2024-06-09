@@ -773,60 +773,6 @@
       ],
       [
         {
-          "heading": "NORTH",
-          "isWalkable": true,
-          "spaceTemplate": {
-            "x": 1,
-            "y": 8
-          },
-          "type": "SPAWNPOINT"
-        },
-        {
-          "heading": "NORTH",
-          "isWalkable": true,
-          "spaceTemplate": {
-            "x": 0,
-            "y": 6
-          },
-          "type": "SPAWNPOINT"
-        },
-        {
-          "heading": "NORTH",
-          "isWalkable": true,
-          "spaceTemplate": {
-            "x": 1,
-            "y": 5
-          },
-          "type": "SPAWNPOINT"
-        },
-        {
-          "heading": "NORTH",
-          "isWalkable": true,
-          "spaceTemplate": {
-            "x": 1,
-            "y": 4
-          },
-          "type": "SPAWNPOINT"
-        },
-        {
-          "heading": "NORTH",
-          "isWalkable": true,
-          "spaceTemplate": {
-            "x": 0,
-            "y": 3
-          },
-          "type": "SPAWNPOINT"
-        },
-        {
-          "heading": "NORTH",
-          "isWalkable": true,
-          "spaceTemplate": {
-            "x": 1,
-            "y": 1
-          },
-          "type": "SPAWNPOINT"
-        },
-        {
           "heading": "SOUTH",
           "isWalkable": true,
           "spaceTemplate": {
@@ -917,20 +863,65 @@
           "type": "WALL"
         },
         {
+          "heading": "NORTH",
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 1,
+            "y": 8
+          },
+          "type": "SPAWNPOINT"
+        },
+        {
+          "heading": "NORTH",
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 0,
+            "y": 6
+          },
+          "type": "SPAWNPOINT"
+        },
+        {
+          "heading": "NORTH",
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 1,
+            "y": 5
+          },
+          "type": "SPAWNPOINT"
+        },
+        {
+          "heading": "NORTH",
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 1,
+            "y": 4
+          },
+          "type": "SPAWNPOINT"
+        },
+        {
+          "heading": "NORTH",
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 0,
+            "y": 3
+          },
+          "type": "SPAWNPOINT"
+        },
+        {
+          "heading": "NORTH",
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "SPAWNPOINT"
+        },
+        {
             "heading": "NORTH",
             "isWalkable": true,
             "spaceTemplate": {
               "x": 4,
               "y": 9
-            },
-            "type": "REBOOTTOKEN"
-          },
-          {
-            "heading": "NORTH",
-            "isWalkable": true,
-            "spaceTemplate": {
-              "x": 0,
-              "y": 15
             },
             "type": "REBOOTTOKEN"
           }
