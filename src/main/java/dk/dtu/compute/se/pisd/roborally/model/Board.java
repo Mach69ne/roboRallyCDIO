@@ -140,6 +140,15 @@ public class Board extends Subject
         }
     }
 
+    /**
+     * @return the number of players on the board
+     * @author Elias
+     */
+    public int getPlayersNumber()
+    {
+        return players.size();
+    }
+
     public void buyUpgradeCard(Player player, UpgradeCard upgradeCard)
     {
         if (player.getEnergyCubes() >= upgradeCard.getPrice())
@@ -254,15 +263,6 @@ public class Board extends Subject
         {
             players.get(i).setTabNumber(i);
         }
-    }
-
-    /**
-     * @return the number of players on the board
-     * @author Elias
-     */
-    public int getPlayersNumber()
-    {
-        return players.size();
     }
 
     /**
@@ -542,5 +542,13 @@ public class Board extends Subject
     public void setRebootToken(RebootToken rebootToken)
     {
         this.rebootToken = rebootToken;
+    }
+
+    public void deleteBoardElement(BoardElement boardElement)
+    {
+        for (int i = 0; i < boardElements.length; i++)
+        {
+            boardElements[i].remove(boardElement);
+        }
     }
 }

@@ -25,6 +25,7 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.MoveController;
 import dk.dtu.compute.se.pisd.roborally.controller.SoundController;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.NullBoardElement;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -404,6 +405,10 @@ public class Player extends Subject
             }
             Space nextSpace = spaceToCheck.board.getNeighbour(spaceToCheck, headingToCheck);
             // We check if we were to hit a board element, and break if we do
+            if (spaceToCheck.getBoardElement() == null)
+            {
+                spaceToCheck.setBoardElement(new NullBoardElement(spaceToCheck));
+            }
             if (!spaceToCheck.getBoardElement().getCanWalkOutOf(headingToCheck) || nextSpace == null || !nextSpace.getBoardElement().getCanWalkInto(headingToCheck))
             {
                 break;

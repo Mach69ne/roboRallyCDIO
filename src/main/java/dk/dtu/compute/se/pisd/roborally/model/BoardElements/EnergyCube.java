@@ -33,7 +33,7 @@ public class EnergyCube extends NullBoardElement
         if (playerOnSquare != null)
         {
             this.getSpace().getPlayer().pickUpEnergyCube();
-            this.getSpace().setBoardElement(null);
+            this.getSpace().setBoardElement(new NullBoardElement(this.getSpace()));
             SoundController sc = SoundController.getInstance();
             sc.playSound("pickup");
         }
