@@ -20,6 +20,7 @@ public class SoundController {
     }
 
     public void playSound(String soundSrc) {
+        stopSound();
         try {
             // Open an audio input stream.
             URL url = getClass().getResource("/sounds/" + soundSrc + ".wav");
@@ -50,6 +51,7 @@ public class SoundController {
     }
 
     public void loopSounds(String[] soundSrcs) {
+        stopSound();
         try {
             // Open an audio input stream.
             URL url = getClass().getResource("/sounds/" + soundSrcs[currentSoundIndex] + ".wav");
