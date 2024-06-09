@@ -115,7 +115,7 @@ public class RoboRally extends Application
         stage.show();
 
         SoundController sc = SoundController.getInstance();
-        sc.loopSounds(new String[]{"OST","OST2","OST3","OST4"});
+        sc.loopSounds(new String[]{"OST","OST2","OST3","OST4","OST5","OST6"});
     }
 
     /**
