@@ -924,7 +924,16 @@
               "y": 9
             },
             "type": "REBOOTTOKEN"
-          }
+          },
+        {
+          "heading": "WEST",
+            "isWalkable": true,
+            "spaceTemplate": {
+              "x": 15,
+              "y": 0
+            },
+          "type": "REBOOTTOKEN"
+        }
       ]
     ] 
 }
