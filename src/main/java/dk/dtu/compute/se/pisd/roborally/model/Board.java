@@ -55,7 +55,7 @@ public class Board extends Subject
     private final ArrayList<BoardElement>[] boardElements = new ArrayList[10];
     private final Space[][] spaces;
     private final List<Player> players = new ArrayList<>();
-    private RebootToken rebootToken;
+    private RebootToken[] rebootToken;
     private Integer gameId;
     private Player current;
     private Phase phase = INITIALISATION;
@@ -532,7 +532,7 @@ public class Board extends Subject
      */
     public RebootToken getRebootToken()
     {
-        return rebootToken;
+        return rebootToken[0];
     }
 
     /**
@@ -541,7 +541,7 @@ public class Board extends Subject
      */
     public void setRebootToken(RebootToken rebootToken)
     {
-        this.rebootToken = rebootToken;
+        this.rebootToken = new RebootToken[]{rebootToken};
     }
 
     public void deleteBoardElement(BoardElement boardElement)
