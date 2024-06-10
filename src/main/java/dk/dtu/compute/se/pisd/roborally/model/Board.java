@@ -64,7 +64,6 @@ public class Board extends Subject
     private boolean stepMode;
     private ArrayList<UpgradeCard> upgradeCards = new ArrayList<>();
 
-
     /**
      * @param width  the width of the board
      * @param height the height of the board
@@ -139,6 +138,16 @@ public class Board extends Subject
         {
             player.setMovedByConveyorThisTurn(false);
         }
+    }
+
+    public ArrayList<UpgradeCard> getUpgradeCards()
+    {
+        return upgradeCards;
+    }
+
+    public void setUpgradeCards(ArrayList<UpgradeCard> upgradeCards)
+    {
+        this.upgradeCards = upgradeCards;
     }
 
     /**

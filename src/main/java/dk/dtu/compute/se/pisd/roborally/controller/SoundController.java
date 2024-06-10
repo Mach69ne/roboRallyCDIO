@@ -4,6 +4,8 @@ import javax.sound.sampled.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 public class SoundController {
     private static SoundController instance;
@@ -11,6 +13,7 @@ public class SoundController {
     private boolean isStopped = false; // new flag
     private Random random = new Random();
     private int currentSoundIndex= random.nextInt(5);
+    private final BlockingQueue<URL> queue = new ArrayBlockingQueue<URL>(1);
 
     private SoundController() {
     }
@@ -37,6 +40,20 @@ public class SoundController {
             FloatControl fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             fc.setValue(-30.00f);
             clip.start();
+            LineListener listener = new LineListener() {
+                @Override
+                public void update(LineEvent event) {
+                    if(event.getType() != LineEvent.Type.STOP) {
+                        return;
+                    }
+                    try {
+                        queue.take();
+                    } catch (InterruptedException e) {
+
+                    }
+                }
+            };
+            clip.addLineListener(listener);
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         } catch (IOException e) {

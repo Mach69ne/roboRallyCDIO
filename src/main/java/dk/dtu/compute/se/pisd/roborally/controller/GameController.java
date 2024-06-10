@@ -22,6 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
 import dk.dtu.compute.se.pisd.roborally.model.*;
+import dk.dtu.compute.se.pisd.roborally.view.UpgradeShopView;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -43,13 +44,15 @@ public class GameController
     }
 
     /**
-     * Starts Activation phase. This method should be called when the players have pressed finished programming button.
-     *
-     * @author Mads
+     * Opens the upgrade shop for the current player. This method should be called when the player has pressed the
+     * upgrade button.
+     * @Author Emil
      */
     // XXX: implemented in the current version
     public void openShop()
     {
+        UpgradeShopView upgradeShopView = new UpgradeShopView(board.getCurrentPlayer());
+        upgradeShopView.showAndWait();
     }
 
     /**

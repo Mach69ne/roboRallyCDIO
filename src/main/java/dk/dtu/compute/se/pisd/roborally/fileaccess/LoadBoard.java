@@ -149,6 +149,9 @@ public class LoadBoard
                                 case SPAWNPOINT:
                                     new SpawnPoint(space);
                                     break;
+                                case PIT:
+                                    new Pit(space);
+                                    break;
                             }
                         }
                     }
