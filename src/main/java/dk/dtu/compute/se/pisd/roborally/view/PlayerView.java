@@ -23,15 +23,13 @@ package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
-import dk.dtu.compute.se.pisd.roborally.model.CardField;
-import dk.dtu.compute.se.pisd.roborally.model.Command;
-import dk.dtu.compute.se.pisd.roborally.model.Phase;
-import dk.dtu.compute.se.pisd.roborally.model.Player;
+import dk.dtu.compute.se.pisd.roborally.model.*;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
 
@@ -46,6 +44,10 @@ public class PlayerView extends Tab implements ViewObserver
     private final Player player;
 
     private final VBox top;
+    private final HBox horizontal;
+    private final VBox rightPanel;
+    private final Label upgradeCardsLabel;
+    private final Label energyCubesLabel;
 
     private final Label programLabel;
     private final GridPane programPane;
@@ -69,7 +71,7 @@ public class PlayerView extends Tab implements ViewObserver
     /**
      * @param gameController
      * @param player
-     * @author Elias, Frederik, Adel & Mads
+     * @author Elias, Frederik, Emil, Adel & Mads
      */
     public PlayerView(@NotNull GameController gameController, @NotNull Player player)
     {
@@ -77,7 +79,21 @@ public class PlayerView extends Tab implements ViewObserver
         this.setStyle("-fx-text-base-color: " + player.getColor() + ";");
 
         top = new VBox();
-        this.setContent(top);
+        top.setSpacing(3.0);
+
+        horizontal = new HBox();
+
+        rightPanel = new VBox();
+        rightPanel.setAlignment(Pos.TOP_LEFT);
+        rightPanel.setSpacing(3.0);
+
+        upgradeCardsLabel = new Label("Active Upgrade Cards");
+
+        energyCubesLabel = new Label("Energy Cubes: " + player.getEnergyCubes());
+        rightPanel.getChildren().addAll(energyCubesLabel, upgradeCardsLabel);
+        horizontal.getChildren().addAll(top ,rightPanel);
+
+        this.setContent(horizontal);
 
         this.gameController = gameController;
         this.player = player;
@@ -202,6 +218,9 @@ public class PlayerView extends Tab implements ViewObserver
                 }
             }
 
+            updateUpgradeCardsLabel();
+            updateEnergyCubesLabel();
+
             if (player.board.getPhase() != Phase.PLAYER_INTERACTION)
             {
                 if (!programPane.getChildren().contains(buttonPanel))
@@ -271,5 +290,21 @@ public class PlayerView extends Tab implements ViewObserver
                 }
             }
         }
+    }
+
+    private void updateUpgradeCardsLabel()
+    {
+        StringBuilder upgrades = new StringBuilder("Active Upgrade Cards:\n");
+
+        for (UpgradeCard upgrade : player.getUpgradeCards())
+        {
+            upgrades.append(upgrade.getName()).append("\n");
+        }
+        upgradeCardsLabel.setText(upgrades.toString());
+    }
+
+    private void updateEnergyCubesLabel()
+    {
+        energyCubesLabel.setText("Energy Cubes: " + player.getEnergyCubes());
     }
 }

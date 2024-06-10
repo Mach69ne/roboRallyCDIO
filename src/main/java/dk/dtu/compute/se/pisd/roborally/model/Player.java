@@ -178,6 +178,8 @@ public class Player extends Subject
         }
     }
 
+    public ArrayList<UpgradeCard> getUpgradeCards() { return upgradeCards; }
+
     private void changeCardsOfCertainType(Command cmd, Command newCommand)
     {
         for (Card activeCards : this.activeCardsPile.playerCards)

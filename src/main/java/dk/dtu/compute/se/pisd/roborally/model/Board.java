@@ -166,6 +166,7 @@ public class Board extends Subject
             player.addUpgradeCard(upgradeCard);
             this.upgradeCards.remove(upgradeCard);
             player.setEnergyCubes(player.getEnergyCubes() - upgradeCard.getPrice());
+            notifyChange();
         }
     }
 
