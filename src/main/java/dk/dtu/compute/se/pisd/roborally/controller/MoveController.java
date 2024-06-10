@@ -82,6 +82,8 @@ public class MoveController
                 case VIRUS:
                     this.useVirusCard(player);
                     break;
+                case DEATH:
+                    break;
                 default:
                     throw new RuntimeException("Something went wrong");
             }

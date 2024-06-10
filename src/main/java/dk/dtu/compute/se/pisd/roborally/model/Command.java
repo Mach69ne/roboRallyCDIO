@@ -50,8 +50,9 @@ public enum Command
     VIRUS("Virus"),
     WORM("Worm"),
     DONT_MOVE("Dont Move"),
-    OPTION_FORWARD_OR_NOT("Forward or Not", FORWARD, DONT_MOVE);
+    OPTION_FORWARD_OR_NOT("Forward or Not", FORWARD, DONT_MOVE),
 
+    DEATH("You reeboted, you dont get to move");
 
     final public String displayName;
 

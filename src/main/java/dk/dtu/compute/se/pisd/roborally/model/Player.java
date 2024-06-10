@@ -314,13 +314,7 @@ public class Player extends Subject
         for (int i = 0; i < program.length; i++)
         {
             this.discardedCardsPile.playerCards.add(program[i].getCard());
-            program[i] = null;
-        }
-
-        for (int i = 0; i < cards.length; i++)
-        {
-            this.discardedCardsPile.playerCards.add(cards[i].getCard());
-            cards[i] = null;
+            program[i].setCard(new Card(DEATH));
         }
         this.discardedCardsPile.playerCards.add(new Card((SPAM)));
         this.discardedCardsPile.playerCards.add(new Card((SPAM)));
