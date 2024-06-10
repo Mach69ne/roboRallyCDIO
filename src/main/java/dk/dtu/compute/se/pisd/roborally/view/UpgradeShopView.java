@@ -2,30 +2,36 @@ package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.UpgradeCard;
-import dk.dtu.compute.se.pisd.roborally.model.UpgradeCardsFactory;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.layout.VBox;
 
-public class UpgradeShopView extends Dialog<UpgradeCard> {
+public class UpgradeShopView extends Dialog<UpgradeCard>
+{
 
-    private ListView<UpgradeCard> upgradeListView;
+    private final ListView<UpgradeCard> upgradeListView;
 
-    public UpgradeShopView(Player player) {
+    public UpgradeShopView(Player player)
+    {
         setTitle("Upgrade Shop");
         setHeaderText("Select an upgrade to purchase:");
 
         upgradeListView = new ListView<>();
-        upgradeListView.getItems().addAll(UpgradeCardsFactory.createUpgradeCards());
+        upgradeListView.getItems().addAll(player.board.getUpgradeCards());
 
-        upgradeListView.setCellFactory(lv -> new ListCell<>() {
+        upgradeListView.setCellFactory(lv -> new ListCell<>()
+        {
             @Override
-            protected void updateItem(UpgradeCard upgrade, boolean empty) {
+            protected void updateItem(UpgradeCard upgrade, boolean empty)
+            {
                 super.updateItem(upgrade, empty);
-                if (empty) {
+                if (empty)
+                {
                     setText(null);
-                } else {
+                }
+                else
+                {
                     setText(upgrade.getName() + " - Price: " + upgrade.getPrice() + " Energy Cubes");
                 }
             }
@@ -40,7 +46,8 @@ public class UpgradeShopView extends Dialog<UpgradeCard> {
         getDialogPane().getButtonTypes().addAll(purchaseButtonType, ButtonType.CANCEL);
 
         setResultConverter(dialogButton -> {
-            if (dialogButton == purchaseButtonType) {
+            if (dialogButton == purchaseButtonType)
+            {
                 return upgradeListView.getSelectionModel().getSelectedItem();
             }
             return null;
@@ -51,9 +58,12 @@ public class UpgradeShopView extends Dialog<UpgradeCard> {
             Button purchaseButton = (Button) getDialogPane().lookupButton(purchaseButtonType);
             purchaseButton.addEventFilter(ActionEvent.ACTION, e -> {
                 UpgradeCard selectedUpgrade = upgradeListView.getSelectionModel().getSelectedItem();
-                if (selectedUpgrade != null && player.getEnergyCubes() >= selectedUpgrade.getPrice()) {
+                if (selectedUpgrade != null && player.getEnergyCubes() >= selectedUpgrade.getPrice())
+                {
                     selectedUpgrade.purchaseUpgrade(player, selectedUpgrade);
-                } else {
+                }
+                else
+                {
                     event.consume();
                 }
             });

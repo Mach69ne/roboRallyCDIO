@@ -25,6 +25,7 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.BoardElement;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.RebootToken;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.SpawnPoint;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -62,7 +63,6 @@ public class Board extends Subject
     private int step = 0;
     private boolean stepMode;
     private ArrayList<UpgradeCard> upgradeCards = new ArrayList<>();
-
 
     /**
      * @param width  the width of the board
@@ -138,6 +138,16 @@ public class Board extends Subject
         {
             player.setMovedByConveyorThisTurn(false);
         }
+    }
+
+    public ArrayList<UpgradeCard> getUpgradeCards()
+    {
+        return upgradeCards;
+    }
+
+    public void setUpgradeCards(ArrayList<UpgradeCard> upgradeCards)
+    {
+        this.upgradeCards = upgradeCards;
     }
 
     /**
@@ -550,5 +560,18 @@ public class Board extends Subject
         {
             boardElements[i].remove(boardElement);
         }
+    }
+
+    public Space getAvailableSpawnPoint() {
+        ArrayList<BoardElement> notactivateables = this.getBoardElementsWithIndex(Board.NOT_ACTIVATE_ABLE_INDEX);
+        for (BoardElement element : notactivateables) {
+            if (element instanceof SpawnPoint) {
+                SpawnPoint spawnPoint = (SpawnPoint) element;
+                if (spawnPoint.getSpace().getPlayer() == null) {
+                    return spawnPoint.getSpace();
+                }
+            }
+        }
+        return null;
     }
 }
