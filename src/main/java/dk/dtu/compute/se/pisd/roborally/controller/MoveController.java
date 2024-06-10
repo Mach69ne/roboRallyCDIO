@@ -314,6 +314,7 @@ public class MoveController
                 player.setSpace(newSpace);
                 newSpace.getBoardElement().onWalkOver(player);
             }
+            if (player.getProgramField(0).getCard().command == Command.DEATH) break;
         }
     }
 
