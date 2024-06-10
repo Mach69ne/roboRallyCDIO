@@ -1,6 +1,5 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.RebootToken;
 import dk.dtu.compute.se.pisd.roborally.model.Command;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
@@ -259,11 +258,7 @@ public class MoveController
      */
     public void useWormCard(@NotNull Player player)
     {
-        if (player != null)
-        {
-            RebootToken rebootToken = new RebootToken(player.getHeading(), player.getSpace());
-            rebootToken.reboot(player);
-        }
+        player.die();
     }
 
     /**
