@@ -27,7 +27,9 @@ import dk.dtu.compute.se.pisd.roborally.RoboRally;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadSaveGameState;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
+import dk.dtu.compute.se.pisd.roborally.model.BoardElements.SpawnPoint;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
+import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -130,7 +132,6 @@ public class AppController implements Observer
             Optional<String> mapResult = mapDialog.showAndWait();
             Board board = null;
             if (mapResult.isPresent()) {
-                // Load the selected map
                 board = LoadBoard.loadBoard(mapResult.get());
                 gameController = new GameController(board);
 
@@ -143,7 +144,7 @@ public class AppController implements Observer
                 Player player = new Player(board, PLAYER_COLORS.get(i), "Player " + (i + 1),
                         gameController.moveController);
                 board.addPlayer(player);
-                player.setSpace(board.getSpace(i % board.width, i));
+                player.setSpace(board.getAvailableSpawnPoint());
 
                 TextInputDialog chooseName = new TextInputDialog("Player " + (i + 1));
                 chooseName.setTitle("Player name");
