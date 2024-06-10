@@ -161,6 +161,7 @@ public class AppController implements Observer
                         player.setName(name.get());
                     }
                     namesChosen.set(i, player.getName());
+                    player.setEnergyCubes(10);
                 }
             }
             board.setTabNumbersOnPlayers();
