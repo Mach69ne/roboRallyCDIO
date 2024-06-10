@@ -3,12 +3,14 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 import javax.sound.sampled.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 
 public class SoundController {
     private static SoundController instance;
     private Clip clip;
-    private int currentSoundIndex = 0;
     private boolean isStopped = false; // new flag
+    private Random random = new Random();
+    private int currentSoundIndex= random.nextInt(5);
 
     private SoundController() {
     }
@@ -54,7 +56,6 @@ public class SoundController {
     public void loopSounds(String[] soundSrcs) {
         try {
             // Open an audio input stream.
-
             URL url = getClass().getResource("/sounds/" + soundSrcs[currentSoundIndex] + ".wav");
             if (url == null) {
                 return;
@@ -69,8 +70,11 @@ public class SoundController {
             clip.start();
             clip.addLineListener(e -> {
                 if (!clip.isRunning() && !isStopped) { // check the flag before playing the next sound
-                    currentSoundIndex++;
-                    currentSoundIndex %= soundSrcs.length;
+                    int newIndex;
+                    do {
+                        newIndex = random.nextInt(soundSrcs.length);
+                    }
+                    while (newIndex == currentSoundIndex);
                     loopSounds(soundSrcs); // play the next sound
                 }
             });
