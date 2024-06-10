@@ -18,6 +18,18 @@ public class RebootToken extends BoardElement
         setImage(new Image("file:src/main/resources/images/respawn.png"));
     }
 
+    @Override
+    public boolean getCanWalkOutOf(Heading heading)
+    {
+        return true;
+    }
+
+    @Override
+    public boolean getCanWalkInto(Heading heading)
+    {
+        return true;
+    }
+
     /**
      * @param player
      * @author Elias & Frederik
