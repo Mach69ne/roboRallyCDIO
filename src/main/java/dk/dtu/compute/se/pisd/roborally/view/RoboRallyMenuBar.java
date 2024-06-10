@@ -25,6 +25,8 @@ import dk.dtu.compute.se.pisd.roborally.controller.AppController;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * ...
@@ -55,27 +57,51 @@ public class RoboRallyMenuBar extends MenuBar {
     public RoboRallyMenuBar(AppController appController) {
         this.appController = appController;
 
+        int width = 80;
+        int height = 20;
+
         controlMenu = new Menu("File");
         this.getMenus().add(controlMenu);
 
-        newGame = new MenuItem("New Game");
-        newGame.setOnAction( e -> this.appController.newGame());
+
+        newGame = new MenuItem();
+        ImageView newGameView = new ImageView(new Image("file:src/main/resources/Images/roborally.png"));
+        newGameView.setFitWidth(width);
+        newGameView.setFitHeight(height);
+        newGame.setGraphic(newGameView);
+        newGame.setOnAction(e -> this.appController.newGame());
         controlMenu.getItems().add(newGame);
 
-        stopGame = new MenuItem("Stop Game");
-        stopGame.setOnAction( e -> this.appController.stopGame());
+        stopGame = new MenuItem();
+        ImageView stopGameView = new ImageView(new Image("file:src/main/resources/Images/roborally.png"));
+        stopGameView.setFitWidth(width);
+        stopGameView.setFitHeight(height);
+        stopGame.setGraphic(stopGameView);
+        stopGame.setOnAction(e -> this.appController.stopGame());
         controlMenu.getItems().add(stopGame);
 
-        saveGame = new MenuItem("Save Game");
-        saveGame.setOnAction( e -> this.appController.saveGame());
+        saveGame = new MenuItem();
+        ImageView saveGameView = new ImageView(new Image("file:src/main/resources/Images/roborally.png"));
+        saveGameView.setFitWidth(width);
+        saveGameView.setFitHeight(height);
+        saveGame.setGraphic(saveGameView);
+        saveGame.setOnAction(e -> this.appController.saveGame());
         controlMenu.getItems().add(saveGame);
 
-        loadGame = new MenuItem("Load Game");
-        loadGame.setOnAction( e -> this.appController.loadGame());
+        loadGame = new MenuItem();
+        ImageView loadGameView = new ImageView(new Image("file:src/main/resources/Images/roborally.png"));
+        loadGameView.setFitWidth(width);
+        loadGameView.setFitHeight(height);
+        loadGame.setGraphic(loadGameView);
+        loadGame.setOnAction(e -> this.appController.loadGame());
         controlMenu.getItems().add(loadGame);
 
-        exitApp = new MenuItem("Exit");
-        exitApp.setOnAction( e -> this.appController.exit());
+        exitApp = new MenuItem();
+        ImageView exitAppView = new ImageView(new Image("file:src/main/resources/Images/roborally.png"));
+        exitAppView.setFitWidth(width);
+        exitAppView.setFitHeight(height);
+        exitApp.setGraphic(exitAppView);
+        exitApp.setOnAction(e -> this.appController.exit());
         controlMenu.getItems().add(exitApp);
 
         controlMenu.setOnShowing(e -> update());
