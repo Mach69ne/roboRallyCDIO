@@ -283,6 +283,7 @@ public class MoveController
                 }
             }
         }
+        executeCommand(currentplayer, currentplayer.drawTopCard().command);
     }
 
     /**
