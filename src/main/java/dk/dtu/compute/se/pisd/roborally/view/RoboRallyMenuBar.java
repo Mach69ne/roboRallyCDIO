@@ -57,15 +57,15 @@ public class RoboRallyMenuBar extends MenuBar {
     public RoboRallyMenuBar(AppController appController) {
         this.appController = appController;
 
-        int width = 80;
-        int height = 20;
+        int width = 120;
+        int height = 40;
 
         controlMenu = new Menu("File");
         this.getMenus().add(controlMenu);
 
 
         newGame = new MenuItem();
-        ImageView newGameView = new ImageView(new Image("file:src/main/resources/Images/roborally.png"));
+        ImageView newGameView = new ImageView(new Image("file:src/main/resources/Images/newGamet.png"));
         newGameView.setFitWidth(width);
         newGameView.setFitHeight(height);
         newGame.setGraphic(newGameView);
@@ -73,7 +73,7 @@ public class RoboRallyMenuBar extends MenuBar {
         controlMenu.getItems().add(newGame);
 
         stopGame = new MenuItem();
-        ImageView stopGameView = new ImageView(new Image("file:src/main/resources/Images/roborally.png"));
+        ImageView stopGameView = new ImageView(new Image("file:src/main/resources/Images/stopGamet.png"));
         stopGameView.setFitWidth(width);
         stopGameView.setFitHeight(height);
         stopGame.setGraphic(stopGameView);
@@ -81,7 +81,7 @@ public class RoboRallyMenuBar extends MenuBar {
         controlMenu.getItems().add(stopGame);
 
         saveGame = new MenuItem();
-        ImageView saveGameView = new ImageView(new Image("file:src/main/resources/Images/roborally.png"));
+        ImageView saveGameView = new ImageView(new Image("file:src/main/resources/Images/saveGamet.png"));
         saveGameView.setFitWidth(width);
         saveGameView.setFitHeight(height);
         saveGame.setGraphic(saveGameView);
@@ -89,7 +89,7 @@ public class RoboRallyMenuBar extends MenuBar {
         controlMenu.getItems().add(saveGame);
 
         loadGame = new MenuItem();
-        ImageView loadGameView = new ImageView(new Image("file:src/main/resources/Images/roborally.png"));
+        ImageView loadGameView = new ImageView(new Image("file:src/main/resources/Images/loadGamet.png"));
         loadGameView.setFitWidth(width);
         loadGameView.setFitHeight(height);
         loadGame.setGraphic(loadGameView);
@@ -97,7 +97,7 @@ public class RoboRallyMenuBar extends MenuBar {
         controlMenu.getItems().add(loadGame);
 
         exitApp = new MenuItem();
-        ImageView exitAppView = new ImageView(new Image("file:src/main/resources/Images/roborally.png"));
+        ImageView exitAppView = new ImageView(new Image("file:src/main/resources/Images/exitAppt.png"));
         exitAppView.setFitWidth(width);
         exitAppView.setFitHeight(height);
         exitApp.setGraphic(exitAppView);
