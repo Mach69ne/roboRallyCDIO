@@ -933,6 +933,102 @@
               "y": 0
             },
           "type": "REBOOTTOKEN"
+        },
+        {
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 10,
+            "y": 1
+          },
+          "type": "PIT"
+        },
+        {
+          "isWalkable": true,
+            "spaceTemplate": {
+                "x": 15,
+                "y": 1
+            },
+            "type": "PIT"
+        },
+        {
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 4,
+            "y": 2
+          },
+          "type": "PIT"
+        },
+        {
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 6,
+            "y": 2
+          },
+          "type": "PIT"
+        },
+        {
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 8,
+            "y": 3
+          },
+          "type": "PIT"
+        },
+        {
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 10,
+            "y": 3
+          },
+          "type": "PIT"
+        },
+        {
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 5,
+            "y": 6
+          },
+          "type": "PIT"
+        },
+        {
+        "isWalkable": true,
+        "spaceTemplate": {
+          "x": 7,
+          "y": 6
+        },
+        "type": "PIT"
+        },
+        {
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 9,
+            "y": 7
+          },
+          "type": "PIT"
+        },
+        {
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 11,
+            "y": 7
+          },
+          "type": "PIT"
+        },
+        {
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 4,
+            "y": 8
+          },
+          "type": "PIT"
+        },
+        {
+          "isWalkable": true,
+          "spaceTemplate": {
+            "x": 19,
+            "y": 8
+          },
+          "type": "PIT"
         }
       ]
     ] 
