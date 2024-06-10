@@ -37,26 +37,4 @@ public class UpgradeCard extends Subject
     {
         return this.price;
     }
-
-    /**
-     * @param player
-     * @param upgradeCard
-     * @Author Emil
-     */
-    public void purchaseUpgrade(Player player, UpgradeCard upgradeCard)
-    {
-        if (player.getEnergyCubes() >= upgradeCard.getPrice())
-        {
-            player.setEnergyCubes(player.getEnergyCubes() - upgradeCard.getPrice());
-            player.addUpgradeCard(upgradeCard);
-
-            notifyChange();
-        } else
-        {
-
-        }
-
-    }
-
-
 }
