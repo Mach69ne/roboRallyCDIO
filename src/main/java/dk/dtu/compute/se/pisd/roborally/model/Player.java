@@ -297,7 +297,7 @@ public class Player extends Subject
     {
         if (card != null)
         {
-            if (card.command == SPAM)
+            if (card.command == SPAM || card.command == DEATH)
             {
                 return;
             }
