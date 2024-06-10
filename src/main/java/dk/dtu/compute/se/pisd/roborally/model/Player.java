@@ -399,8 +399,14 @@ public class Player extends Subject
             {
                 if (!spaceToCheck.getPlayer().equals(this))
                 {
-                    spaceToCheck.getPlayer().addSpamToDiscard(1);
-                    break;
+                    if(checkIfOwnsUpgradeCard("DOUBLE BARREL LASER")){
+                        spaceToCheck.getPlayer().addSpamToDiscard(2);
+                        break;
+                    }
+                    else {
+                        spaceToCheck.getPlayer().addSpamToDiscard(1);
+                        break;
+                    }
                 }
             }
             Space nextSpace = spaceToCheck.board.getNeighbour(spaceToCheck, headingToCheck);

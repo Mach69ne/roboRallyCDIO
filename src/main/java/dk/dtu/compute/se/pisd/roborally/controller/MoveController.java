@@ -1,6 +1,5 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
-import dk.dtu.compute.se.pisd.roborally.model.BoardElements.RebootToken;
 import dk.dtu.compute.se.pisd.roborally.model.Command;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
@@ -259,11 +258,7 @@ public class MoveController
      */
     public void useWormCard(@NotNull Player player)
     {
-        if (player != null)
-        {
-            RebootToken rebootToken = new RebootToken(player.getHeading(), player.getSpace());
-            rebootToken.reboot(player);
-        }
+        player.die();
     }
 
     /**
@@ -288,6 +283,7 @@ public class MoveController
                 }
             }
         }
+        executeCommand(currentplayer, currentplayer.drawTopCard().command);
     }
 
     /**
@@ -311,15 +307,16 @@ public class MoveController
             if (currentSpace.getBoardElement().getCanWalkOutOf(heading) && newSpace.getBoardElement().getCanWalkInto(heading))
             {
                 //Logic for moving to a space should be put here:
-                if (newSpace.getPlayer() == null)
-                {
-                    player.setSpace(newSpace);
-                    newSpace.getBoardElement().onWalkOver(player);
-                }
-                else
+                if (newSpace.getPlayer() != null)
                 {
                     movePlayerAmountOfTimesWithHeading(newSpace.getPlayer(), heading, 1);
                 }
+                if (newSpace.getPlayer() != null)
+                {
+                    newSpace.getPlayer().die();
+                }
+                player.setSpace(newSpace);
+                newSpace.getBoardElement().onWalkOver(player);
             }
         }
     }

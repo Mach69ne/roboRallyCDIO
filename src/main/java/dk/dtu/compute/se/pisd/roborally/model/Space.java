@@ -79,6 +79,7 @@ public class Space extends Subject
             this.board.deleteBoardElement(this.boardElement);
         }
         this.boardElement = boardElement;
+        notifyChange();
     }
 
     /**
