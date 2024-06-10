@@ -307,15 +307,16 @@ public class MoveController
             if (currentSpace.getBoardElement().getCanWalkOutOf(heading) && newSpace.getBoardElement().getCanWalkInto(heading))
             {
                 //Logic for moving to a space should be put here:
-                if (newSpace.getPlayer() == null)
-                {
-                    player.setSpace(newSpace);
-                    newSpace.getBoardElement().onWalkOver(player);
-                }
-                else
+                if (newSpace.getPlayer() != null)
                 {
                     movePlayerAmountOfTimesWithHeading(newSpace.getPlayer(), heading, 1);
                 }
+                if (newSpace.getPlayer() != null)
+                {
+                    newSpace.getPlayer().die();
+                }
+                player.setSpace(newSpace);
+                newSpace.getBoardElement().onWalkOver(player);
             }
         }
     }
