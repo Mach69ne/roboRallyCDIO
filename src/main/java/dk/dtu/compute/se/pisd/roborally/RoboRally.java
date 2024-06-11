@@ -27,7 +27,6 @@ import dk.dtu.compute.se.pisd.roborally.controller.SoundController;
 import dk.dtu.compute.se.pisd.roborally.view.BoardView;
 import dk.dtu.compute.se.pisd.roborally.view.MainMenuView;
 import dk.dtu.compute.se.pisd.roborally.view.RoboRallyMenuBar;
-import dk.dtu.compute.se.pisd.roborally.controller.SoundController;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -110,14 +109,13 @@ public class RoboRally extends Application
         stage.setResizable(true);
         stage.setMaximized(true);
         stage.setFullScreen(true);
-        //stage.sizeToScene();
         stage.setX((double) (Toolkit.getDefaultToolkit().getScreenSize().width / 2) - (double) MIN_APP_WIDTH / 2);
         stage.setY(0.0);
 
         stage.show();
 
         SoundController sc = SoundController.getInstance();
-        sc.loopSounds(new String[]{"OST","OST2","OST3","OST4", "OST5", "OST6"});
+        sc.loopSounds(new String[]{"OST", "OST2", "OST3", "OST4", "OST5", "OST6"});
     }
 
     /**
@@ -150,7 +148,6 @@ public class RoboRally extends Application
 
 
         }
-        //stage.sizeToScene();
     }
 
     /**
@@ -168,7 +165,6 @@ public class RoboRally extends Application
             BoardView boardView = new BoardView(gameController);
             boardRoot.setCenter(boardView);
         }
-        //stage.sizeToScene();
     }
 
 }
