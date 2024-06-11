@@ -185,6 +185,7 @@ public class Player extends Subject
             if (activeCards.command == cmd)
             {
                 activeCards.command = newCommand;
+                activeCards.notifyAll();
             }
         }
         for (Card discardedCards : this.discardedCardsPile.playerCards)
@@ -192,6 +193,7 @@ public class Player extends Subject
             if (discardedCards.command == cmd)
             {
                 discardedCards.command = newCommand;
+                discardedCards.notifyAll();
             }
         }
         for (int i = 0; i < Player.NO_CARDS; i++)
@@ -202,6 +204,7 @@ public class Player extends Subject
                 if (cardField.getCard().command == cmd)
                 {
                     cardField.getCard().command = newCommand;
+                    cardField.getCard().notifyAll();
                 }
             }
         }
@@ -213,6 +216,7 @@ public class Player extends Subject
                 if (cardField.getCard().command == cmd)
                 {
                     cardField.getCard().command = newCommand;
+                    cardField.getCard().notifyAll();
                 }
             }
         }
