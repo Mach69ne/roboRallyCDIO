@@ -178,8 +178,6 @@ public class Player extends Subject
         }
     }
 
-    public ArrayList<UpgradeCard> getUpgradeCards() { return upgradeCards; }
-
     private void changeCardsOfCertainType(Command cmd, Command newCommand)
     {
         for (Card activeCards : this.activeCardsPile.playerCards)
@@ -187,6 +185,7 @@ public class Player extends Subject
             if (activeCards.command == cmd)
             {
                 activeCards.command = newCommand;
+                activeCards.notifyAll();
             }
         }
         for (Card discardedCards : this.discardedCardsPile.playerCards)
@@ -194,6 +193,7 @@ public class Player extends Subject
             if (discardedCards.command == cmd)
             {
                 discardedCards.command = newCommand;
+                discardedCards.notifyAll();
             }
         }
         for (int i = 0; i < Player.NO_CARDS; i++)
@@ -204,6 +204,7 @@ public class Player extends Subject
                 if (cardField.getCard().command == cmd)
                 {
                     cardField.getCard().command = newCommand;
+                    cardField.getCard().notifyAll();
                 }
             }
         }
@@ -215,6 +216,7 @@ public class Player extends Subject
                 if (cardField.getCard().command == cmd)
                 {
                     cardField.getCard().command = newCommand;
+                    cardField.getCard().notifyAll();
                 }
             }
         }
@@ -238,6 +240,11 @@ public class Player extends Subject
     public CardField getProgramField(int i)
     {
         return program[i];
+    }
+
+    public ArrayList<UpgradeCard> getUpgradeCards()
+    {
+        return upgradeCards;
     }
 
     /**
@@ -291,6 +298,23 @@ public class Player extends Subject
     }
 
     /**
+     * @return void
+     * @author Frederik
+     */
+    public void discardAllCardsUponReboot()
+    {
+        for (int i = 0; i < program.length; i++)
+        {
+            this.addCardToDiscardPile(program[i].getCard());
+            program[i].setCard(new Card(DEATH));
+        }
+        this.discardedCardsPile.playerCards.add(new Card((SPAM)));
+        this.discardedCardsPile.playerCards.add(new Card((SPAM)));
+
+
+    }
+
+    /**
      * @param card
      * @return void
      * @author Frederik
@@ -305,23 +329,6 @@ public class Player extends Subject
             }
             this.discardedCardsPile.playerCards.add(card);
         }
-    }
-
-    /**
-     * @return void
-     * @author Frederik
-     */
-    public void discardAllCardsUponReboot()
-    {
-        for (int i = 0; i < program.length; i++)
-        {
-            this.discardedCardsPile.playerCards.add(program[i].getCard());
-            program[i].setCard(new Card(DEATH));
-        }
-        this.discardedCardsPile.playerCards.add(new Card((SPAM)));
-        this.discardedCardsPile.playerCards.add(new Card((SPAM)));
-
-
     }
 
     /**
@@ -343,25 +350,6 @@ public class Player extends Subject
         }
 
         return cardToReturn;
-    }
-
-    /**
-     * @param upgradeCardName
-     * @return
-     * @author Elias & Mads
-     */
-    public boolean checkIfOwnsUpgradeCard(String upgradeCardName)
-    {
-        for (int i = 0; i < upgradeCards.size(); i++)
-        {
-            if (upgradeCards.get(i).getName().equals(upgradeCardName))
-            {
-
-                return true;
-            }
-
-        }
-        return false;
     }
 
     public int getEnergyCubes()
@@ -395,11 +383,13 @@ public class Player extends Subject
             {
                 if (!spaceToCheck.getPlayer().equals(this))
                 {
-                    if(checkIfOwnsUpgradeCard("DOUBLE BARREL LASER")){
+                    if (checkIfOwnsUpgradeCard("DOUBLE BARREL LASER"))
+                    {
                         spaceToCheck.getPlayer().addSpamToDiscard(2);
                         break;
                     }
-                    else {
+                    else
+                    {
                         spaceToCheck.getPlayer().addSpamToDiscard(1);
                         break;
                     }
@@ -443,6 +433,39 @@ public class Player extends Subject
     }
 
     /**
+     * @param upgradeCardName
+     * @return
+     * @author Elias & Mads
+     */
+    public boolean checkIfOwnsUpgradeCard(String upgradeCardName)
+    {
+        for (int i = 0; i < upgradeCards.size(); i++)
+        {
+            if (upgradeCards.get(i).getName().equals(upgradeCardName))
+            {
+
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    /**
+     * @param amount
+     * @author Elias
+     */
+    public void addSpamToDiscard(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            this.discardedCardsPile.playerCards.add(new Card(SPAM));
+        }
+
+
+    }
+
+    /**
      * @param space the space on which the player is located
      * @author Elias
      */
@@ -462,20 +485,6 @@ public class Player extends Subject
             }
             notifyChange();
         }
-    }
-
-    /**
-     * @param amount
-     * @author Elias
-     */
-    public void addSpamToDiscard(int amount)
-    {
-        for (int i = 0; i < amount; i++)
-        {
-            this.discardedCardsPile.playerCards.add(new Card(SPAM));
-        }
-
-
     }
 
     /**
