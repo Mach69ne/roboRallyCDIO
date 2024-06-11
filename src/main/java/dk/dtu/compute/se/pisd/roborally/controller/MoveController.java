@@ -78,6 +78,8 @@ public class MoveController
                     break;
                 case DEATH:
                     break;
+                case DONT_MOVE:
+                    break;
                 default:
                     throw new RuntimeException("Something went wrong");
             }

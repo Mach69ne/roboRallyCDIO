@@ -84,6 +84,8 @@ public class Card extends Subject
                 return new Image("file:src/main/Resources/Images/uTurn.png");
             case POWER_UP:
                 return new Image("file:src/main/Resources/Images/POWERUP.png");
+            case OPTION_FORWARD_OR_NOT:
+                return new Image("file:src/main/Resources/Images/moveOrNot.png");
 
             default:
                 return null;
