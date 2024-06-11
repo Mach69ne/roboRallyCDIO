@@ -566,14 +566,17 @@ public class Board extends Subject
 
     public Space getAvailableSpawnPoint() {
         ArrayList<BoardElement> notactivateables = this.getBoardElementsWithIndex(Board.NOT_ACTIVATE_ABLE_INDEX);
+        Space lowestYSpace = null;
         for (BoardElement element : notactivateables) {
             if (element instanceof SpawnPoint) {
                 SpawnPoint spawnPoint = (SpawnPoint) element;
                 if (spawnPoint.getSpace().getPlayer() == null) {
-                    return spawnPoint.getSpace();
+                    if (lowestYSpace == null || spawnPoint.getSpace().y < lowestYSpace.y) {
+                        lowestYSpace = spawnPoint.getSpace();
+                    }
                 }
             }
         }
-        return null;
+        return lowestYSpace;
     }
 }
