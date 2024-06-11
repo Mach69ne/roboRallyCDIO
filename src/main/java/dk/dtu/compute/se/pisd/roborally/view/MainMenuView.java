@@ -4,14 +4,9 @@ import dk.dtu.compute.se.pisd.roborally.controller.AppController;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 
 /**
  * @author Elias
@@ -27,12 +22,13 @@ public class MainMenuView extends VBox
     public MainMenuView(AppController appController)
     {
         Image backgroundImage = new Image("file:src/main/resources/Images/dizzyHighway.png");
-        BackgroundImage backgroundImg = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        BackgroundSize backgroundSize = new BackgroundSize(600.0, 1500.0, true, true, false, true);
+        BackgroundImage backgroundImg = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, backgroundSize);
         this.setBackground(new Background(backgroundImg));
 
         // Move all elements 50 pixels down.
         // Format is Top, Left, Down, Right (I think, i cant really remember at this point)
-        this.setPadding(new Insets(50, 0, 0, 0));
+        //this.setPadding(new Insets(50, 0, 0, 0));
 
         Label newGameLabel = createLabel("file:src/main/resources/Images/roborally.png", "RoboRally");
         this.getChildren().add(newGameLabel);
@@ -51,6 +47,13 @@ public class MainMenuView extends VBox
 
         // Set spacing between buttons
         this.setSpacing(30);
+        this.setHeight(1500);
+        this.setPrefHeight(1500);
+        VBox.setVgrow(newGameLabel, Priority.ALWAYS);
+        VBox.setVgrow(newGameButton, Priority.ALWAYS);
+        VBox.setVgrow(loadGameButton, Priority.ALWAYS);
+        VBox.setVgrow(exitGameButton, Priority.ALWAYS);
+
     }
     private Button createButton(String imagePath, String tooltipText) {
         Button button = new Button();
@@ -58,6 +61,7 @@ public class MainMenuView extends VBox
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(100);
         imageView.setFitWidth(350);
+        imageView.setPreserveRatio(true);
         button.setGraphic(imageView);
         return button;
     }
@@ -67,6 +71,7 @@ public class MainMenuView extends VBox
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(80);
         imageView.setFitWidth(280);
+        imageView.setPreserveRatio(true);
         label.setGraphic(imageView);
         return label;
     }
