@@ -1,9 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
-import dk.dtu.compute.se.pisd.roborally.model.Command;
-import dk.dtu.compute.se.pisd.roborally.model.Heading;
-import dk.dtu.compute.se.pisd.roborally.model.Player;
-import dk.dtu.compute.se.pisd.roborally.model.Space;
+import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
 public class MoveController
@@ -231,10 +228,8 @@ public class MoveController
      */
     public void useSpamCard(@NotNull Player player)
     {
-        // Take the top card from the activeDeck that the player has and play that in this register instead of the
-        // spam card
-        // Spam card gets deleted and is therefore not discarded
-
+        Card card=player.drawTopCard();
+        executeCommand(player,  card.command);
     }
 
     /**
