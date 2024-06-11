@@ -107,8 +107,10 @@ public class RoboRally extends Application
             e.consume();
             appController.exit();
         });
-        stage.setResizable(false);
-        stage.sizeToScene();
+        stage.setResizable(true);
+        stage.setMaximized(true);
+        stage.setFullScreen(true);
+        //stage.sizeToScene();
         stage.setX((double) (Toolkit.getDefaultToolkit().getScreenSize().width / 2) - (double) MIN_APP_WIDTH / 2);
         stage.setY(0.0);
 
@@ -148,7 +150,7 @@ public class RoboRally extends Application
 
 
         }
-        stage.sizeToScene();
+        //stage.sizeToScene();
     }
 
     /**
@@ -166,7 +168,7 @@ public class RoboRally extends Application
             BoardView boardView = new BoardView(gameController);
             boardRoot.setCenter(boardView);
         }
-        stage.sizeToScene();
+        //stage.sizeToScene();
     }
 
 }
