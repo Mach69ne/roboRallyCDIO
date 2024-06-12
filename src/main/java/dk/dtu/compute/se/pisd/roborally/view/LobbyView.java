@@ -14,8 +14,12 @@ public class LobbyView extends VBox {
     public LobbyView() {
         searchBar = new TextField();
         searchBar.setPromptText("Search lobbies...");
+        searchBar.setMinSize(300,20);
         chatArea = new TextArea();
-        chatArea.setEditable(false);
+        chatArea.setMinSize(300, 700);
+        chatArea.setTranslateX(400);
+        chatArea.setTranslateY(0);
+        chatArea.setEditable(true);
         this.getChildren().addAll(searchBar, chatArea);
     }
 
