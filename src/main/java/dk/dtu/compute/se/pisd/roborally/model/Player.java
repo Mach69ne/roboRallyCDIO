@@ -26,6 +26,7 @@ import dk.dtu.compute.se.pisd.roborally.controller.MoveController;
 import dk.dtu.compute.se.pisd.roborally.controller.SoundController;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.Checkpoint;
 import dk.dtu.compute.se.pisd.roborally.model.BoardElements.NullBoardElement;
+import javafx.scene.image.Image;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -180,12 +181,15 @@ public class Player extends Subject
 
     private void changeCardsOfCertainType(Command cmd, Command newCommand)
     {
+        Card card = new Card(newCommand);
+        Image image = card.getImage();
+
         for (Card activeCards : this.activeCardsPile.playerCards)
         {
             if (activeCards.command == cmd)
             {
                 activeCards.command = newCommand;
-                activeCards.notifyAll();
+                activeCards.setImage(image);
             }
         }
         for (Card discardedCards : this.discardedCardsPile.playerCards)
@@ -193,7 +197,7 @@ public class Player extends Subject
             if (discardedCards.command == cmd)
             {
                 discardedCards.command = newCommand;
-                discardedCards.notifyAll();
+                discardedCards.setImage(image);
             }
         }
         for (int i = 0; i < Player.NO_CARDS; i++)
@@ -204,7 +208,7 @@ public class Player extends Subject
                 if (cardField.getCard().command == cmd)
                 {
                     cardField.getCard().command = newCommand;
-                    cardField.getCard().notifyAll();
+                    cardField.getCard().setImage(image);
                 }
             }
         }
@@ -216,7 +220,7 @@ public class Player extends Subject
                 if (cardField.getCard().command == cmd)
                 {
                     cardField.getCard().command = newCommand;
-                    cardField.getCard().notifyAll();
+                    cardField.getCard().setImage(image);
                 }
             }
         }

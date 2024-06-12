@@ -52,7 +52,7 @@ public class Card extends Subject
      * @return
      * @author Elias, Mustafa & Frederik
      */
-    private Image getImageBasedOnCommand(Command command)
+    protected Image getImageBasedOnCommand(Command command)
     {
         switch (command)
         {
@@ -135,5 +135,6 @@ public class Card extends Subject
         {
             this.image = image;
         }
+        this.notifyChange();
     }
 }
