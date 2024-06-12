@@ -35,6 +35,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.util.Objects;
+
+import javafx.scene.image.Image;
 
 /**
  * ...
@@ -112,6 +115,7 @@ public class RoboRally extends Application
         stage.setFullScreen(true);
         stage.setX((double) (Toolkit.getDefaultToolkit().getScreenSize().width / 2) - (double) MIN_APP_WIDTH / 2);
         stage.setY(0.0);
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/images/logo.png")).toExternalForm()));
 
         stage.show();
 
