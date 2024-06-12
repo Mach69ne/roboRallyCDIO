@@ -37,6 +37,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.ButtonBar;
@@ -86,9 +88,12 @@ public class AppController implements Observer
      */
     public void newGame()
     {
+        Stage primStage = roboRally.getStage();
+
         ChoiceDialog<Integer> dialog = new ChoiceDialog<>(PLAYER_NUMBER_OPTIONS.get(0), PLAYER_NUMBER_OPTIONS);
         dialog.setTitle("Player number");
         dialog.setHeaderText("Select number of players");
+        dialog.initOwner(primStage);
         Optional<Integer> result = dialog.showAndWait();
 
         if (result.isPresent())
@@ -110,6 +115,7 @@ public class AppController implements Observer
 
 
             Dialog<String> mapDialog = new Dialog<>();
+            mapDialog.initOwner(primStage);
             mapDialog.setTitle("Map Selection");
             mapDialog.setHeaderText("Select a map");
 
@@ -133,7 +139,7 @@ public class AppController implements Observer
             Board board = null;
             if (mapResult.isPresent()) {
                 board = LoadBoard.loadBoard(mapResult.get());
-                gameController = new GameController(board);
+                gameController = new GameController(board, roboRally);
 
             }
 
@@ -147,6 +153,7 @@ public class AppController implements Observer
                 player.setSpace(board.getAvailableSpawnPoint());
 
                 TextInputDialog chooseName = new TextInputDialog("Player " + (i + 1));
+                chooseName.initOwner(primStage);
                 chooseName.setTitle("Player name");
                 chooseName.setHeaderText("Choose a name for player " + (i + 1));
                 Optional<String> name = chooseName.showAndWait();

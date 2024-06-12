@@ -44,7 +44,7 @@ public class Card extends Subject
     {
 
         this.command = command;
-        this.image = getImageBasedOnCommand(command);
+           this.image = getImageBasedOnCommand(command);
     }
 
     /**

@@ -27,7 +27,6 @@ import dk.dtu.compute.se.pisd.roborally.controller.SoundController;
 import dk.dtu.compute.se.pisd.roborally.view.BoardView;
 import dk.dtu.compute.se.pisd.roborally.view.MainMenuView;
 import dk.dtu.compute.se.pisd.roborally.view.RoboRallyMenuBar;
-import dk.dtu.compute.se.pisd.roborally.controller.SoundController;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -36,6 +35,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.util.Objects;
+
+import javafx.scene.image.Image;
 
 /**
  * ...
@@ -93,6 +95,7 @@ public class RoboRally extends Application
         VBox vbox = new VBox(menuBar, boardRoot);
         vbox.setMinWidth(MIN_APP_WIDTH);
         vbox.setMinHeight(MIN_APP_HEIGHT);
+        boardRoot.setMinSize(MIN_APP_WIDTH, MIN_APP_HEIGHT);
         Scene primaryScene = new Scene(vbox);
         //
         // CREATE Main Menu
@@ -107,15 +110,17 @@ public class RoboRally extends Application
             e.consume();
             appController.exit();
         });
-        stage.setResizable(false);
-        stage.sizeToScene();
+        stage.setResizable(true);
+        stage.setMaximized(true);
+        stage.setFullScreen(true);
         stage.setX((double) (Toolkit.getDefaultToolkit().getScreenSize().width / 2) - (double) MIN_APP_WIDTH / 2);
         stage.setY(0.0);
+        stage.getIcons().add(new Image("file:src/main/Resources/Images/roborally.png"));
 
         stage.show();
 
         SoundController sc = SoundController.getInstance();
-        sc.loopSounds(new String[]{"OST","OST2","OST3","OST4", "OST5", "OST6"});
+        sc.loopSounds(new String[]{"OST", "OST2", "OST3", "OST4", "OST5", "OST6"});
     }
 
     /**
@@ -148,7 +153,6 @@ public class RoboRally extends Application
 
 
         }
-        stage.sizeToScene();
     }
 
     /**
@@ -166,7 +170,10 @@ public class RoboRally extends Application
             BoardView boardView = new BoardView(gameController);
             boardRoot.setCenter(boardView);
         }
-        stage.sizeToScene();
+    }
+
+    public Stage getStage() {
+        return this.stage;
     }
 
 }

@@ -21,9 +21,11 @@
  */
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import dk.dtu.compute.se.pisd.roborally.RoboRally;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import dk.dtu.compute.se.pisd.roborally.view.UpgradeShopView;
 import org.jetbrains.annotations.NotNull;
+import javafx.stage.Stage;
 
 /**
  * @author Ekkart Kindler, ekki@dtu.dk
@@ -32,6 +34,7 @@ public class GameController
 {
     final public Board board;
     final public MoveController moveController;
+    private RoboRally roboRally;
 
     /**
      * @param board
@@ -41,17 +44,28 @@ public class GameController
     {
         this.board = board;
         this.moveController = new MoveController(this);
+
+    }
+
+    public GameController(@NotNull Board board, RoboRally roboRally) {
+        this.board = board;
+        this.moveController = new MoveController(this);
+        this.roboRally = roboRally;
     }
 
     /**
      * Opens the upgrade shop for the current player. This method should be called when the player has pressed the
      * upgrade button.
+     *
      * @Author Emil
      */
     // XXX: implemented in the current version
     public void openShop()
     {
+        Stage primStage = roboRally.getStage();
+
         UpgradeShopView upgradeShopView = new UpgradeShopView(board.getCurrentPlayer());
+        upgradeShopView.initOwner(primStage);
         upgradeShopView.showAndWait();
     }
 
@@ -224,7 +238,10 @@ public class GameController
                 for (int j = 0; j < Player.NO_CARDS; j++)
                 {
                     CardField field = player.getCardField(j);
-                    player.addCardToDiscardPile(field.getCard());
+                    if (player.getCardField(j).getCard() != null)
+                    {
+                        player.addDamageCardToPile(player.getCardField(j).getCard().command, 1);
+                    }
                     field.setCard(player.drawTopCard());
                     field.setVisible(true);
                 }

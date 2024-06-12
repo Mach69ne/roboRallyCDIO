@@ -228,8 +228,8 @@ public class MoveController
      */
     public void useSpamCard(@NotNull Player player)
     {
-        Card card=player.drawTopCard();
-        executeCommand(player,  card.command);
+        Card card = player.drawTopCard();
+        executeCommand(player, card.command);
     }
 
     /**
@@ -240,7 +240,7 @@ public class MoveController
      */
     public void useTrojanHorse(@NotNull Player player)
     {
-        player.addSpamToDiscard(2);
+        player.addDamageCardToPile(Command.SPAM, 2);
     }
 
     /**
@@ -272,7 +272,7 @@ public class MoveController
                 int yDist = Math.abs(currentplayer.getSpace().y - player.getSpace().y);
                 if (xDist <= 6 && yDist <= 6)
                 {
-                    player.addSpamToDiscard(1);
+                    player.addDamageCardToPile(Command.SPAM, 1);
                 }
             }
         }
@@ -311,7 +311,10 @@ public class MoveController
                 player.setSpace(newSpace);
                 newSpace.getBoardElement().onWalkOver(player);
             }
-            if (player.getProgramField(0).getCard().command == Command.DEATH) break;
+            if (player.getProgramField(0).getCard().command == Command.DEATH)
+            {
+                break;
+            }
         }
     }
 
