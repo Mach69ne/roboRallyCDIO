@@ -33,6 +33,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import java.awt.*;
 import java.util.Objects;
@@ -97,6 +99,11 @@ public class RoboRally extends Application
         vbox.setMinHeight(MIN_APP_HEIGHT);
         boardRoot.setMinSize(MIN_APP_WIDTH, MIN_APP_HEIGHT);
         Scene primaryScene = new Scene(vbox);
+        primaryScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+            if(event.getCode() == KeyCode.F11) {
+                stage.setFullScreen(!primaryStage.isFullScreen());
+            }
+        });
         //
         // CREATE Main Menu
         //
