@@ -92,6 +92,7 @@ public class RoboRally extends Application
         VBox vbox = new VBox(menuBar, boardRoot);
         vbox.setMinWidth(MIN_APP_WIDTH);
         vbox.setMinHeight(MIN_APP_HEIGHT);
+        boardRoot.setMinSize(MIN_APP_WIDTH, MIN_APP_HEIGHT);
         Scene primaryScene = new Scene(vbox);
         //
         // CREATE Main Menu
@@ -165,6 +166,10 @@ public class RoboRally extends Application
             BoardView boardView = new BoardView(gameController);
             boardRoot.setCenter(boardView);
         }
+    }
+
+    public Stage getStage() {
+        return this.stage;
     }
 
 }

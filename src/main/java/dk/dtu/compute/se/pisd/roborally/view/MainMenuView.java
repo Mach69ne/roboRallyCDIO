@@ -47,8 +47,8 @@ public class MainMenuView extends VBox
 
         // Set spacing between buttons
         this.setSpacing(30);
-        this.setHeight(1500);
-        this.setPrefHeight(1500);
+        this.setHeight(800);
+        this.setPrefHeight(600);
         VBox.setVgrow(newGameLabel, Priority.ALWAYS);
         VBox.setVgrow(newGameButton, Priority.ALWAYS);
         VBox.setVgrow(loadGameButton, Priority.ALWAYS);
