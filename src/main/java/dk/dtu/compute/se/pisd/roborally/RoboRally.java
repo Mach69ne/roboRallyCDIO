@@ -115,7 +115,7 @@ public class RoboRally extends Application
         stage.setFullScreen(true);
         stage.setX((double) (Toolkit.getDefaultToolkit().getScreenSize().width / 2) - (double) MIN_APP_WIDTH / 2);
         stage.setY(0.0);
-        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/images/logo.png")).toExternalForm()));
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/images/roborally.png")).toExternalForm()));
 
         stage.show();
 
