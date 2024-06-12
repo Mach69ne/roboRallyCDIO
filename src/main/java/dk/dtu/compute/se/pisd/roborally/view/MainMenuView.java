@@ -41,6 +41,10 @@ public class MainMenuView extends VBox
         this.getChildren().add(loadGameButton);
         loadGameButton.setOnAction(e -> appController.loadGame());
 
+        Button joinGameButton = createButton("file:src/main/resources/Images/joinGame.png", "Join Game");
+        this.getChildren().add(joinGameButton);
+        joinGameButton.setOnAction(e -> appController.joinGame());
+
         Button exitGameButton = createButton("file:src/main/resources/Images/exitGame.png", "Exit Game");
         this.getChildren().add(exitGameButton);
         exitGameButton.setOnAction(e -> appController.exit());

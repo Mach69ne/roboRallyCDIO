@@ -202,6 +202,10 @@ public class AppController implements Observer
         return false;
     }
 
+    public void joinGame() {
+        System.out.println("Joined LobbyView");
+    }
+
 
     /**
      * Saves the game
