@@ -323,7 +323,7 @@ public class Player extends Subject
     {
         if (card != null)
         {
-            if (card.command == SPAM || card.command == DEATH)
+            if (card.command == SPAM || card.command == DEATH || card.command == TROJAN_HORSE || card.command == WORM || card.command == VIRUS)
             {
                 return;
             }
@@ -385,12 +385,12 @@ public class Player extends Subject
                 {
                     if (checkIfOwnsUpgradeCard("DOUBLE BARREL LASER"))
                     {
-                        spaceToCheck.getPlayer().addSpamToDiscard(2);
+                        spaceToCheck.getPlayer().addDamageCardToPile(SPAM, 2);
                         break;
                     }
                     else
                     {
-                        spaceToCheck.getPlayer().addSpamToDiscard(1);
+                        spaceToCheck.getPlayer().addDamageCardToPile(SPAM, 1);
                         break;
                     }
                 }
@@ -455,11 +455,11 @@ public class Player extends Subject
      * @param amount
      * @author Elias
      */
-    public void addSpamToDiscard(int amount)
+    public void addDamageCardToPile(Command command, int amount)
     {
         for (int i = 0; i < amount; i++)
         {
-            this.discardedCardsPile.playerCards.add(new Card(SPAM));
+            this.discardedCardsPile.playerCards.add(new Card(command));
         }
 
 
