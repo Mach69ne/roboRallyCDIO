@@ -1,5 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.model.BoardElements;
 
+import dk.dtu.compute.se.pisd.roborally.model.Command;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
@@ -44,7 +45,7 @@ public class RebootToken extends BoardElement
         player.discardAllCardsUponReboot();
         if (!player.checkIfOwnsUpgradeCard("FIREWALL"))
         {
-            player.addSpamToDiscard(2);
+            player.addDamageCardToPile(Command.SPAM, 2);
         }
         player.setHeading(this.getHeading());
     }

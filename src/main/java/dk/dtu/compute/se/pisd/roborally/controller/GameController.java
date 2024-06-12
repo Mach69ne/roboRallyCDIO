@@ -46,6 +46,7 @@ public class GameController
     /**
      * Opens the upgrade shop for the current player. This method should be called when the player has pressed the
      * upgrade button.
+     *
      * @Author Emil
      */
     // XXX: implemented in the current version
@@ -224,7 +225,10 @@ public class GameController
                 for (int j = 0; j < Player.NO_CARDS; j++)
                 {
                     CardField field = player.getCardField(j);
-                    player.addCardToDiscardPile(field.getCard());
+                    if (player.getCardField(j).getCard() != null)
+                    {
+                        player.addDamageCardToPile(player.getCardField(j).getCard().command, 1);
+                    }
                     field.setCard(player.drawTopCard());
                     field.setVisible(true);
                 }
