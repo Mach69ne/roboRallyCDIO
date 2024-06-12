@@ -139,7 +139,7 @@ public class AppController implements Observer
             Board board = null;
             if (mapResult.isPresent()) {
                 board = LoadBoard.loadBoard(mapResult.get());
-                gameController = new GameController(board);
+                gameController = new GameController(board, roboRally);
 
             }
 

@@ -21,9 +21,11 @@
  */
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import dk.dtu.compute.se.pisd.roborally.RoboRally;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import dk.dtu.compute.se.pisd.roborally.view.UpgradeShopView;
 import org.jetbrains.annotations.NotNull;
+import javafx.stage.Stage;
 
 /**
  * @author Ekkart Kindler, ekki@dtu.dk
@@ -32,6 +34,7 @@ public class GameController
 {
     final public Board board;
     final public MoveController moveController;
+    private RoboRally roboRally;
 
     /**
      * @param board
@@ -41,6 +44,13 @@ public class GameController
     {
         this.board = board;
         this.moveController = new MoveController(this);
+
+    }
+
+    public GameController(@NotNull Board board, RoboRally roboRally) {
+        this.board = board;
+        this.moveController = new MoveController(this);
+        this.roboRally = roboRally;
     }
 
     /**
@@ -52,7 +62,10 @@ public class GameController
     // XXX: implemented in the current version
     public void openShop()
     {
+        Stage primStage = roboRally.getStage();
+
         UpgradeShopView upgradeShopView = new UpgradeShopView(board.getCurrentPlayer());
+        upgradeShopView.initOwner(primStage);
         upgradeShopView.showAndWait();
     }
 
