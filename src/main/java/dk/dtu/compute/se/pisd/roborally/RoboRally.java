@@ -25,11 +25,13 @@ import dk.dtu.compute.se.pisd.roborally.controller.AppController;
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 import dk.dtu.compute.se.pisd.roborally.controller.SoundController;
 import dk.dtu.compute.se.pisd.roborally.view.BoardView;
+import dk.dtu.compute.se.pisd.roborally.view.LobbyView;
 import dk.dtu.compute.se.pisd.roborally.view.MainMenuView;
 import dk.dtu.compute.se.pisd.roborally.view.RoboRallyMenuBar;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -177,6 +179,11 @@ public class RoboRally extends Application
             BoardView boardView = new BoardView(gameController);
             boardRoot.setCenter(boardView);
         }
+    }
+
+    public void createLobbyView(LobbyView lobbyView) {
+        boardRoot.getChildren().clear();
+        boardRoot.getChildren().add(lobbyView);
     }
 
     public Stage getStage() {
